@@ -541,6 +541,7 @@ public class GDChinh extends javax.swing.JFrame {
                 .addComponent(pListMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE))
         );
 
+        pNoiDung.setMaximumSize(new java.awt.Dimension(958, 735));
         pNoiDung.setPreferredSize(new java.awt.Dimension(958, 735));
 
         pTittle.setBackground(new java.awt.Color(0, 0, 0));
