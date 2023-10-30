@@ -823,6 +823,9 @@
         </Container>
         <Container class="javax.swing.JPanel" name="pNoiDung">
           <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[958, 735]"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[958, 735]"/>
             </Property>
