@@ -18,7 +18,7 @@ public class SanPham {
     private String thongTin;
     private int soCongDoan;
     private String chatLieu;
-    private String doViTinh;
+    private String donViTinh;
     private HopDong hopDong;
 
     public String getMaSP() {
@@ -77,12 +77,12 @@ public class SanPham {
         this.chatLieu = chatLieu;
     }
 
-    public String getDoViTinh() {
-        return doViTinh;
+    public String getDonViTinh() {
+        return donViTinh;
     }
 
-    public void setDoViTinh(String doViTinh) {
-        this.doViTinh = doViTinh;
+    public void setDonViTinh(String donViTinh) {
+        this.donViTinh = donViTinh;
     }
 
     public HopDong getHopDong() {
@@ -93,7 +93,7 @@ public class SanPham {
         this.hopDong = hopDong;
     }
 
-    public SanPham(String maSP, String tenSP, int soLuong, double donGia, String thongTin, int soCongDoan, String chatLieu, String doViTinh, HopDong hopDong) {
+    public SanPham(String maSP, String tenSP, int soLuong, double donGia, String thongTin, int soCongDoan, String chatLieu, String donViTinh, HopDong hopDong) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.soLuong = soLuong;
@@ -101,7 +101,7 @@ public class SanPham {
         this.thongTin = thongTin;
         this.soCongDoan = soCongDoan;
         this.chatLieu = chatLieu;
-        this.doViTinh = doViTinh;
+        this.donViTinh = donViTinh;
         this.hopDong = hopDong;
     }
 
@@ -136,7 +136,7 @@ public class SanPham {
 
     @Override
     public String toString() {
-        return "SanPham{" + "maSP=" + maSP + ", tenSP=" + tenSP + ", soLuong=" + soLuong + ", donGia=" + donGia + ", thongTin=" + thongTin + ", soCongDoan=" + soCongDoan + ", chatLieu=" + chatLieu + ", doViTinh=" + doViTinh + ", hopDong=" + hopDong + '}';
+        return "SanPham{" + "maSP=" + maSP + ", tenSP=" + tenSP + ", soLuong=" + soLuong + ", donGia=" + donGia + ", thongTin=" + thongTin + ", soCongDoan=" + soCongDoan + ", chatLieu=" + chatLieu + ", donViTinh=" + donViTinh + ", hopDong=" + hopDong + '}';
     }
    
     

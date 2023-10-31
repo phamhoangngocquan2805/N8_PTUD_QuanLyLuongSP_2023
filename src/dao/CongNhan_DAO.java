@@ -71,9 +71,9 @@ public class CongNhan_DAO {
                         stm.setString(6, cn.getDiaChi());
                         stm.setBoolean(7, cn.isTinhTrang());
                         stm.setString(8, cn.getNgayVaoLamString());
-                        stm.setBytes(9, null);
-                        stm.setString(10, null);
-                        stm.setString(11, null);
+                        stm.setBytes(9, cn.getHinhAnh());
+                        stm.setString(10, cn.getTayNghe());
+                        stm.setString(11, cn.getKinhNghiem());
                         stm.setFloat(12, (float )cn.getTienPhuCapTheoNgay());
                         stm.setFloat(13, (float)cn.getTienChuyenCan());
 			n = stm.executeUpdate();
@@ -98,7 +98,7 @@ public boolean updateCongNhan(CongNhan cn)
 		PreparedStatement stm = null;
 		int n = 0;
 		try {
-			stm = con.prepareStatement("update CongNhan set tenCN = ?, phai = ?, ngaySinh = ?, soDT = ?, diaChi = ?, tinhTrang = ?, ngayVaoLam = ?, hinhAnh = ?, tayNghe = ?, kinhNghiem = ?, tienPhuCapTheoNgay = ?, tienChuuyenCan = ? where maCN = ?");
+			stm = con.prepareStatement("update CongNhan set tenCN = ?, phai = ?, ngaySinh = ?, soDT = ?, diaChi = ?, tinhTrang = ?, ngayVaoLam = ?, hinhAnh = ?, tayNghe = ?, kinhNghiem = ?, tienPhuCapTheoNgay = ?, tienChuyenCan = ? where maCN = ?");
 			stm.setString(13, cn.getMaCN());
 			stm.setString(1, cn.getHoTen());
 			stm.setBoolean(2, cn.isPhai());
@@ -107,9 +107,9 @@ public boolean updateCongNhan(CongNhan cn)
                         stm.setString(5, cn.getDiaChi());
                         stm.setBoolean(6, cn.isTinhTrang());
                         stm.setString(7, cn.getNgayVaoLamString());
-                        stm.setBytes(8, null);
-                        stm.setString(9, null);
-                        stm.setString(10, null);
+                        stm.setBytes(8, cn.getHinhAnh());
+                        stm.setString(9, cn.getTayNghe());
+                        stm.setString(10, cn.getKinhNghiem());
                         stm.setFloat(11, (float )cn.getTienPhuCapTheoNgay());
                         stm.setFloat(12, (float)cn.getTienChuyenCan());
 			n = stm.executeUpdate();

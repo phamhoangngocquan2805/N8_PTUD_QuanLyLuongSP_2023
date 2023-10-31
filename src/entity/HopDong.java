@@ -119,4 +119,16 @@ public class HopDong {
     public String toString() {
         return "HopDong{" + "maHD=" + maHD + ", tenHD=" + tenHD + ", ngayKiHD=" + ngayKiHD + ", ngayBanGiao=" + ngayBanGiao + ", ghiChu=" + ghiChu + ", trangThai=" + trangThai + ", nv=" + nv + '}';
     }
+    
+     public String get10char(String s) {
+        return s.substring(0, 10);
+    }
+
+    public String getNgayKiHDString() {
+        return get10char(this.ngayKiHD.toString());
+    }
+    public String getNgayBanGiaoString() {
+        return get10char(this.ngayBanGiao.toString());
+    }
+
 }

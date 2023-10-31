@@ -229,4 +229,16 @@ public class NhanVienHanhChinh {
     public String toString() {
         return "NhanVienHanhChinh{" + "maNV=" + maNV + ", hoTen=" + hoTen + ", phai=" + phai + ", ngaySinh=" + ngaySinh + ", soDT=" + soDT + ", diaChi=" + diaChi + ", tinhTrang=" + tinhTrang + ", ngayVaoLam=" + ngayVaoLam + ", hinhAnh=" + hinhAnh + ", heSoLuong=" + heSoLuong + ", luongCoBan=" + luongCoBan + ", tenTaiKhoan=" + tenTaiKhoan + ", matKhau=" + matKhau + ", chucVu=" + chucVu + ", email=" + email + ", tienPhuCapTheoNgay=" + tienPhuCapTheoNgay + ", tienChuyenCan=" + tienChuyenCan + ", phongBan=" + phongBan + '}';
     }
+    
+     public String get10char(String s) {
+        return s.substring(0, 10);
+    }
+
+    public String getNgaySinhString() {
+        return get10char(this.ngaySinh.toString());
+    }
+    public String getNgayVaoLamString() {
+        return get10char(this.ngayVaoLam.toString());
+    }
+
 }
