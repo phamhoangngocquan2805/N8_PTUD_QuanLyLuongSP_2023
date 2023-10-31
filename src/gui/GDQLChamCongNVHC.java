@@ -30,28 +30,7 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
         pTittle = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         pTongQuan = new javax.swing.JPanel();
-        pXuLy = new javax.swing.JPanel();
-        btnBatDauCC = new javax.swing.JButton();
-        btnKetThucCC = new javax.swing.JButton();
-        btnChonTatCa = new javax.swing.JButton();
-        dateNgayCC = new com.toedter.calendar.JDateChooser();
-        pLoc = new javax.swing.JPanel();
-        cbxLocTheoCV = new javax.swing.JComboBox<>();
-        cbxLocTheoPB = new javax.swing.JComboBox<>();
-        jscrDSNhanVien = new javax.swing.JScrollPane();
-        tableDSNhanVien = new javax.swing.JTable();
-        pTraCuu = new javax.swing.JPanel();
-        btnXemCong = new javax.swing.JButton();
-        dateTuNgay = new com.toedter.calendar.JDateChooser();
-        dateDenNgay = new com.toedter.calendar.JDateChooser();
-        pXoa = new javax.swing.JPanel();
-        btnXoaCC = new javax.swing.JButton();
-        jscrChamCong = new javax.swing.JScrollPane();
-        tableChamCong = new javax.swing.JTable();
 
-        setMaximumSize(new java.awt.Dimension(958, 735));
-
-        pQLChamCongNVHC.setMaximumSize(new java.awt.Dimension(958, 735));
         pQLChamCongNVHC.setPreferredSize(new java.awt.Dimension(958, 735));
 
         pTittle.setBackground(new java.awt.Color(0, 0, 0));
@@ -66,7 +45,7 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
             pTittleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pTittleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pTittleLayout.setVerticalGroup(
@@ -74,280 +53,17 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        pTongQuan.setBackground(new java.awt.Color(217, 217, 217));
-
-        pXuLy.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, new java.awt.Color(204, 204, 255)), "Xử lý"));
-
-        btnBatDauCC.setBackground(new java.awt.Color(255, 102, 102));
-        btnBatDauCC.setForeground(new java.awt.Color(255, 255, 255));
-        btnBatDauCC.setText("<html><center>Bắt đầu<br>chấm công</center></html>");
-        btnBatDauCC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBatDauCCActionPerformed(evt);
-            }
-        });
-
-        btnKetThucCC.setBackground(new java.awt.Color(255, 102, 102));
-        btnKetThucCC.setForeground(new java.awt.Color(255, 255, 255));
-        btnKetThucCC.setText("<html><center>Kết thúc<br>chấm công</center></html>");
-        btnKetThucCC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKetThucCCActionPerformed(evt);
-            }
-        });
-
-        btnChonTatCa.setBackground(new java.awt.Color(255, 102, 102));
-        btnChonTatCa.setForeground(new java.awt.Color(255, 255, 255));
-        btnChonTatCa.setText("<html><center>Chọn<br>Tất cả</center></html>");
-        btnChonTatCa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChonTatCaActionPerformed(evt);
-            }
-        });
-
-        dateNgayCC.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(204, 204, 204), null, null), "Ngày chấm công", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
-
-        javax.swing.GroupLayout pXuLyLayout = new javax.swing.GroupLayout(pXuLy);
-        pXuLy.setLayout(pXuLyLayout);
-        pXuLyLayout.setHorizontalGroup(
-            pXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pXuLyLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(btnChonTatCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(dateNgayCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBatDauCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnKetThucCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pXuLyLayout.setVerticalGroup(
-            pXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pXuLyLayout.createSequentialGroup()
-                .addGroup(pXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnBatDauCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnKetThucCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnChonTatCa)
-                    .addComponent(dateNgayCC, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pLoc.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, new java.awt.Color(255, 255, 255), null, new java.awt.Color(204, 204, 255)), "Lọc theo:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-
-        cbxLocTheoCV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản đốc", "Trưởng phòng kế toán", "Trưởng phòng nhân sự", "Nhân viên" }));
-        cbxLocTheoCV.setBorder(javax.swing.BorderFactory.createTitledBorder("Chức vụ"));
-        cbxLocTheoCV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxLocTheoCVActionPerformed(evt);
-            }
-        });
-
-        cbxLocTheoPB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phòng kế toán", "Phòng nhân sự", "Phòng điều hành phân xưởng" }));
-        cbxLocTheoPB.setBorder(javax.swing.BorderFactory.createTitledBorder("Phòng ban"));
-        cbxLocTheoPB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxLocTheoPBActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pLocLayout = new javax.swing.GroupLayout(pLoc);
-        pLoc.setLayout(pLocLayout);
-        pLocLayout.setHorizontalGroup(
-            pLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLocLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cbxLocTheoPB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxLocTheoCV, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pLocLayout.setVerticalGroup(
-            pLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(cbxLocTheoPB, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(cbxLocTheoCV))
-        );
-
-        jscrDSNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(102, 102, 102), null, new java.awt.Color(204, 0, 0)), "Danh sách nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-
-        tableDSNhanVien.setAutoCreateRowSorter(true);
-        tableDSNhanVien.setBackground(new java.awt.Color(204, 204, 204));
-        tableDSNhanVien.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 0, 0), new java.awt.Color(153, 153, 153)));
-        tableDSNhanVien.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "STT", "Chọn", "Mã nhân viên", "Tên nhânviên", "Phòng ban", "Chức vụ"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tableDSNhanVien.setGridColor(new java.awt.Color(153, 153, 153));
-        jscrDSNhanVien.setViewportView(tableDSNhanVien);
-
-        pTraCuu.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, new java.awt.Color(204, 204, 255)), "Tra cứu chấm công"));
-        pTraCuu.setPreferredSize(new java.awt.Dimension(419, 65));
-
-        btnXemCong.setBackground(new java.awt.Color(255, 102, 102));
-        btnXemCong.setForeground(new java.awt.Color(255, 255, 255));
-        btnXemCong.setText("Xem công");
-        btnXemCong.setActionCommand("");
-        btnXemCong.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXemCongActionPerformed(evt);
-            }
-        });
-
-        dateTuNgay.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(204, 204, 204), null, null), "Từ ngày", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
-
-        dateDenNgay.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(204, 204, 204), null, null), "Đến ngày", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
-
-        javax.swing.GroupLayout pTraCuuLayout = new javax.swing.GroupLayout(pTraCuu);
-        pTraCuu.setLayout(pTraCuuLayout);
-        pTraCuuLayout.setHorizontalGroup(
-            pTraCuuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTraCuuLayout.createSequentialGroup()
-                .addComponent(dateTuNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(dateDenNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnXemCong)
-                .addContainerGap())
-        );
-        pTraCuuLayout.setVerticalGroup(
-            pTraCuuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnXemCong, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(pTraCuuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(dateTuNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(dateDenNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        pXoa.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, new java.awt.Color(204, 204, 255)), "Chỉnh sửa chấm công"));
-
-        btnXoaCC.setBackground(new java.awt.Color(255, 102, 102));
-        btnXoaCC.setForeground(new java.awt.Color(255, 255, 255));
-        btnXoaCC.setText("Xóa");
-        btnXoaCC.setActionCommand("");
-        btnXoaCC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaCCActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pXoaLayout = new javax.swing.GroupLayout(pXoa);
-        pXoa.setLayout(pXoaLayout);
-        pXoaLayout.setHorizontalGroup(
-            pXoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pXoaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnXoaCC, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pXoaLayout.setVerticalGroup(
-            pXoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pXoaLayout.createSequentialGroup()
-                .addComponent(btnXoaCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jscrChamCong.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(102, 102, 102), null, new java.awt.Color(204, 0, 0)), "Danh sách chấm công", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-
-        tableChamCong.setBackground(new java.awt.Color(204, 204, 204));
-        tableChamCong.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 0, 0), new java.awt.Color(153, 153, 153)));
-        tableChamCong.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "STT", "Mã nhân viên", "Tên nhân viên", "Ngày chấm", "Giờ vào", "Giờ ra", "Ca làm việc"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tableChamCong.setGridColor(new java.awt.Color(153, 153, 153));
-        jscrChamCong.setViewportView(tableChamCong);
+        pTongQuan.setBackground(new java.awt.Color(255, 153, 255));
 
         javax.swing.GroupLayout pTongQuanLayout = new javax.swing.GroupLayout(pTongQuan);
         pTongQuan.setLayout(pTongQuanLayout);
         pTongQuanLayout.setHorizontalGroup(
             pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jscrDSNhanVien)
-            .addGroup(pTongQuanLayout.createSequentialGroup()
-                .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pTongQuanLayout.createSequentialGroup()
-                        .addComponent(pXuLy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pLoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pTongQuanLayout.createSequentialGroup()
-                        .addComponent(pTraCuu, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addComponent(jscrChamCong)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         pTongQuanLayout.setVerticalGroup(
             pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pTongQuanLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pXuLy, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(pLoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jscrDSNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pTraCuu, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                    .addComponent(pXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jscrChamCong, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 679, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pQLChamCongNVHCLayout = new javax.swing.GroupLayout(pQLChamCongNVHC);
@@ -381,58 +97,11 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBatDauCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatDauCCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBatDauCCActionPerformed
-
-    private void btnKetThucCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThucCCActionPerformed
-        // TODO add your handling code here:
-//        comfirmCC.setVisible(true);
-    }//GEN-LAST:event_btnKetThucCCActionPerformed
-
-    private void btnChonTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonTatCaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnChonTatCaActionPerformed
-
-    private void cbxLocTheoCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLocTheoCVActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxLocTheoCVActionPerformed
-
-    private void cbxLocTheoPBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLocTheoPBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxLocTheoPBActionPerformed
-
-    private void btnXemCongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemCongActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnXemCongActionPerformed
-
-    private void btnXoaCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaCCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnXoaCCActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBatDauCC;
-    private javax.swing.JButton btnChonTatCa;
-    private javax.swing.JButton btnKetThucCC;
-    private javax.swing.JButton btnXemCong;
-    private javax.swing.JButton btnXoaCC;
-    private javax.swing.JComboBox<String> cbxLocTheoCV;
-    private javax.swing.JComboBox<String> cbxLocTheoPB;
-    private com.toedter.calendar.JDateChooser dateDenNgay;
-    private com.toedter.calendar.JDateChooser dateNgayCC;
-    private com.toedter.calendar.JDateChooser dateTuNgay;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JScrollPane jscrChamCong;
-    private javax.swing.JScrollPane jscrDSNhanVien;
-    private javax.swing.JPanel pLoc;
     private javax.swing.JPanel pQLChamCongNVHC;
     private javax.swing.JPanel pTittle;
     private javax.swing.JPanel pTongQuan;
-    private javax.swing.JPanel pTraCuu;
-    private javax.swing.JPanel pXoa;
-    private javax.swing.JPanel pXuLy;
-    private javax.swing.JTable tableChamCong;
-    private javax.swing.JTable tableDSNhanVien;
     // End of variables declaration//GEN-END:variables
 }
