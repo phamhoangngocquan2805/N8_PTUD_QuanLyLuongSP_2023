@@ -129,7 +129,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="pBoLoc" min="-2" pref="561" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel2" max="32767" attributes="0"/>
+                              <Component id="pTimKiem" max="32767" attributes="0"/>
                           </Group>
                           <Component id="pChucNang" max="32767" attributes="0"/>
                       </Group>
@@ -148,7 +148,7 @@
                       <Component id="pChucNang" min="-2" pref="52" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pTimKiem" alignment="0" max="32767" attributes="0"/>
                           <Component id="pBoLoc" alignment="0" max="32767" attributes="0"/>
                           <Component id="pReload" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -1506,7 +1506,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel2">
+            <Container class="javax.swing.JPanel" name="pTimKiem">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="d9" green="d9" red="d9" type="rgb"/>
