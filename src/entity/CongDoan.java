@@ -141,5 +141,15 @@ public class CongDoan {
         return "CongDoan{" + "maCD=" + maCD + ", tenCD=" + tenCD + ", soLuong=" + soLuong + ", donGia=" + donGia + ", ngayBatDau=" + ngayBatDau + ", ngayKetThuc=" + ngayKetThuc + ", tenCDTruoc=" + tenCDTruoc + ", trangThai=" + trangThai + ", sanPham=" + sanPham + '}';
     }
     
-    
+     
+     public String get10char(String s) {
+        return s.substring(0, 10);
+    }
+    public String getNgayBatDauString() {
+        return get10char(this.ngayBatDau.toString());
+    }
+    public String getNgayKetThucString() {
+        return get10char(this.ngayKetThuc.toString());
+    }
+
 }

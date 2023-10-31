@@ -18,7 +18,7 @@ public class BangChamCongCongNhan {
     private LocalTime gioRa;
     private LocalDateTime ngayChamCong;
     private String caLamViec;
-    private CongDoan cn;
+    private CongNhan cn;
 
     public String getMaBangChamCong() {
         return maBangChamCong;
@@ -60,15 +60,15 @@ public class BangChamCongCongNhan {
         this.caLamViec = caLamViec;
     }
 
-    public CongDoan getCn() {
+    public CongNhan getCn() {
         return cn;
     }
 
-    public void setCn(CongDoan cn) {
+    public void setCn(CongNhan cn) {
         this.cn = cn;
     }
 
-    public BangChamCongCongNhan(String maBangChamCong, LocalTime gioVao, LocalTime gioRa, LocalDateTime ngayChamCong, String caLamViec, CongDoan cn) {
+    public BangChamCongCongNhan(String maBangChamCong, LocalTime gioVao, LocalTime gioRa, LocalDateTime ngayChamCong, String caLamViec, CongNhan cn) {
         this.maBangChamCong = maBangChamCong;
         this.gioVao = gioVao;
         this.gioRa = gioRa;
@@ -110,6 +110,16 @@ public class BangChamCongCongNhan {
     public String toString() {
         return "BangChamCongCongNhan{" + "maBangChamCong=" + maBangChamCong + ", gioVao=" + gioVao + ", gioRa=" + gioRa + ", ngayChamCong=" + ngayChamCong + ", caLamViec=" + caLamViec + ", cn=" + cn + '}';
     }
-    
-    
+    public String get10char(String s) {
+        return s.substring(0, 10);
+    }
+     public String getNgayChamCongString() {
+        return get10char(this.ngayChamCong.toString());
+    }
+    public String getGioVaoString() {
+        return get10char(this.gioVao.toString());
+    }
+    public String getGioRaString() {
+        return get10char(this.gioRa.toString());
+    }
 }

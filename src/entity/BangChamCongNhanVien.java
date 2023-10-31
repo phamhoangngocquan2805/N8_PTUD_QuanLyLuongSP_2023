@@ -110,4 +110,18 @@ public class BangChamCongNhanVien {
     public String toString() {
         return "BangChamCongNhanVien{" + "maBangChamCong=" + maBangChamCong + ", gioVao=" + gioVao + ", gioRa=" + gioRa + ", ngayChamCong=" + ngayChamCong + ", caLamViec=" + caLamViec + ", nv=" + nv + '}';
     }
+    
+    public String get10char(String s) {
+        return s.substring(0, 10);
+    }
+
+    public String getNgayChamCongString() {
+        return get10char(this.ngayChamCong.toString());
+    }
+    public String getGioVaoString() {
+        return get10char(this.gioVao.toString());
+    }
+    public String getGioRaString() {
+        return get10char(this.gioRa.toString());
+    }
 }

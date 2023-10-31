@@ -128,5 +128,14 @@ public boolean updateCongNhan(CongNhan cn)
 		return n > 0;
 	}
 
-        
+        public CongNhan getCongNhanTheoMa(String maCN)
+        {
+            ArrayList<CongNhan> dsCN = getAllCongNhan();
+            for(CongNhan x : dsCN)
+            {
+                if(x.getMaCN().equalsIgnoreCase(maCN))
+                    return x;
+            }
+            return null;
+        }
 }
