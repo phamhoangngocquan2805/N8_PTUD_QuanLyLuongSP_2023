@@ -4,11 +4,19 @@
  */
 package gui;
 
+import connectDB.ConnectDB;
+import entity.NhanVienHanhChinh;
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import xuli.ChuyenManHinh;
 import static xuli.ChuyenManHinh.pChinh;
 import xuli.DanhMucBean;
@@ -22,29 +30,81 @@ public class GDChinh extends javax.swing.JFrame {
     /**
      * Creates new form GDChinh1
      */
+    private GDLogin gdlogin;
+    private NhanVienHanhChinh nvLog;
+    
     public GDChinh() throws SQLException {
 
         icon();
         this.setTitle("Chương trình quản lý lương sản phẩm của công ty X.");
         initComponents();
         setLocationRelativeTo(null);
+        gdlogin = new GDLogin();
+        gdlogin.setVisible(true);
+        this.gdlogin.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
 
-        ChuyenManHinh dieuKhien = new ChuyenManHinh(pNoiDung);
-        dieuKhien.setManHinhNoiDung(pHome, lblHome);
+            @Override
+            public void windowClosing(WindowEvent e) {
+//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
 
-        List<DanhMucBean> listDanhMucBean = new ArrayList<>();
-        listDanhMucBean.add(new DanhMucBean("TrangChu", pHome, lblHome));
-        listDanhMucBean.add(new DanhMucBean("QLNhanSu", pQLNhanSu, lblQLNhanSu));
-        listDanhMucBean.add(new DanhMucBean("QLHopDong", pQLHopDong, lblQLHopDong));
-        listDanhMucBean.add(new DanhMucBean("QLSanPham", pQLSanPham, lblQLSanPham));
-        listDanhMucBean.add(new DanhMucBean("QLCongDoan", pQLCongDoan, lblQLCongDoan));
-        listDanhMucBean.add(new DanhMucBean("PhanCong", pPhanCong, lblPhanCong));
-        listDanhMucBean.add(new DanhMucBean("QLChamCong", pQLChamCong, lblQLChamCong));
-        listDanhMucBean.add(new DanhMucBean("QLLuong", pQLLuong, lblQLLuong));
-        listDanhMucBean.add(new DanhMucBean("BaoCaoThongKe", pBaoCao, lblBaoCao));
-        listDanhMucBean.add(new DanhMucBean("QLTaiKhoan", pQLTaiKhoan, lblQLTaiKhoan));
+            @Override
+            public void windowClosed(WindowEvent e) {
+                nvLog = gdlogin.getCurrNV();
+                setVisible(true);
+                ChuyenManHinh dieuKhien = new ChuyenManHinh(pNoiDung);
+                try {
+                    dieuKhien.setManHinhNoiDung(pHome, lblHome);
+                } catch (SQLException ex) {
+                    Logger.getLogger(GDChinh.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-        dieuKhien.setSuKienClickDanhMuc(listDanhMucBean);
+                List<DanhMucBean> listDanhMucBean = new ArrayList<>();
+                listDanhMucBean.add(new DanhMucBean("TrangChu", pHome, lblHome));
+                listDanhMucBean.add(new DanhMucBean("QLNhanSu", pQLNhanSu, lblQLNhanSu));
+                listDanhMucBean.add(new DanhMucBean("QLHopDong", pQLHopDong, lblQLHopDong));
+                listDanhMucBean.add(new DanhMucBean("QLSanPham", pQLSanPham, lblQLSanPham));
+                listDanhMucBean.add(new DanhMucBean("QLCongDoan", pQLCongDoan, lblQLCongDoan));
+                listDanhMucBean.add(new DanhMucBean("PhanCong", pPhanCong, lblPhanCong));
+                listDanhMucBean.add(new DanhMucBean("QLChamCong", pQLChamCong, lblQLChamCong));
+                listDanhMucBean.add(new DanhMucBean("QLLuong", pQLLuong, lblQLLuong));
+                listDanhMucBean.add(new DanhMucBean("BaoCaoThongKe", pBaoCao, lblBaoCao));
+                listDanhMucBean.add(new DanhMucBean("QLTaiKhoan", pQLTaiKhoan, lblQLTaiKhoan));
+
+                dieuKhien.setSuKienClickDanhMuc(listDanhMucBean);
+                String tl = LocalDateTime.now().toString();
+                jLabel12.setText("Ngày " + tl.substring(9,10) +  " tháng " + tl.substring(5,7) + " năm " + tl.substring(0, 4));
+//                JOptionPane.showMessageDialog(null, nvLog.toString());
+                jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource(nvLog.getHinhAnh())));
+                jLabel14.setText(nvLog.getHoTen());
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+
+        
     }
 
     public void icon() {
