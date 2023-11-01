@@ -18,7 +18,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-       new GDChinh().setVisible(true);
+       new GDChinh().setVisible(false);
     }
     
 }
