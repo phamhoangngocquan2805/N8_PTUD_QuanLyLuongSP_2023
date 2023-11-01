@@ -558,7 +558,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
             }
         });
 
-        txtTimTheoMaNV1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtTimTheoMaNV1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtTimTheoMaNV1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTimTheoMaNV1.setText("Mã CN");
         txtTimTheoMaNV1.setAlignmentY(1.0F);
@@ -570,7 +570,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
             }
         });
 
-        txtTimTheoMaNV2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtTimTheoMaNV2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtTimTheoMaNV2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTimTheoMaNV2.setText("Họ tên CN");
         txtTimTheoMaNV2.setAlignmentY(1.0F);
