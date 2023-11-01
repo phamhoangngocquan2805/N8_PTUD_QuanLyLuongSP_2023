@@ -4,14 +4,11 @@
  */
 package entity;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
+import java.time.LocalDateTime;
 
-/**
- *
- * @author vuhai
- */
-public class NhanVienHanhChinh {
+public class NhanVienHanhChinh
+{
     private String maNV;
     private String hoTen;
     private boolean phai;
@@ -20,162 +17,153 @@ public class NhanVienHanhChinh {
     private String diaChi;
     private boolean tinhTrang;
     private LocalDateTime ngayVaoLam;
-    private byte[] hinhAnh;
+    private String hinhAnh;
     private double heSoLuong;
     private double luongCoBan;
-    private String tenTaiKhoan;
-    private String matKhau;
     private String chucVu;
     private String email;
     private double tienPhuCapTheoNgay;
     private double tienChuyenCan;
+    private String ghiChu;
     private PhongBan phongBan;
-
+    
     public String getMaNV() {
-        return maNV;
+        return this.maNV;
     }
-
-    public void setMaNV(String maNV) {
+    
+    public void setMaNV(final String maNV) {
         this.maNV = maNV;
     }
-
+    
     public String getHoTen() {
-        return hoTen;
+        return this.hoTen;
     }
-
-    public void setHoTen(String hoTen) {
+    
+    public void setHoTen(final String hoTen) {
         this.hoTen = hoTen;
     }
-
+    
     public boolean isPhai() {
-        return phai;
+        return this.phai;
     }
-
-    public void setPhai(boolean phai) {
+    
+    public void setPhai(final boolean phai) {
         this.phai = phai;
     }
-
+    
     public LocalDateTime getNgaySinh() {
-        return ngaySinh;
+        return this.ngaySinh;
     }
-
-    public void setNgaySinh(LocalDateTime ngaySinh) {
+    
+    public void setNgaySinh(final LocalDateTime ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
-
+    
     public String getSoDT() {
-        return soDT;
+        return this.soDT;
     }
-
-    public void setSoDT(String soDT) {
+    
+    public void setSoDT(final String soDT) {
         this.soDT = soDT;
     }
-
+    
     public String getDiaChi() {
-        return diaChi;
+        return this.diaChi;
     }
-
-    public void setDiaChi(String diaChi) {
+    
+    public void setDiaChi(final String diaChi) {
         this.diaChi = diaChi;
     }
-
+    
     public boolean isTinhTrang() {
-        return tinhTrang;
+        return this.tinhTrang;
     }
-
-    public void setTinhTrang(boolean tinhTrang) {
+    
+    public void setTinhTrang(final boolean tinhTrang) {
         this.tinhTrang = tinhTrang;
     }
-
+    
     public LocalDateTime getNgayVaoLam() {
-        return ngayVaoLam;
+        return this.ngayVaoLam;
     }
-
-    public void setNgayVaoLam(LocalDateTime ngayVaoLam) {
+    
+    public void setNgayVaoLam(final LocalDateTime ngayVaoLam) {
         this.ngayVaoLam = ngayVaoLam;
     }
-
-    public byte[] getHinhAnh() {
-        return hinhAnh;
+    
+    public String getHinhAnh() {
+        return this.hinhAnh;
     }
-
-    public void setHinhAnh(byte[] hinhAnh) {
+    
+    public void setHinhAnh(final String hinhAnh) {
         this.hinhAnh = hinhAnh;
     }
-
+    
     public double getHeSoLuong() {
-        return heSoLuong;
+        return this.heSoLuong;
     }
-
-    public void setHeSoLuong(double heSoLuong) {
+    
+    public void setHeSoLuong(final double heSoLuong) {
         this.heSoLuong = heSoLuong;
     }
-
+    
     public double getLuongCoBan() {
-        return luongCoBan;
+        return this.luongCoBan;
     }
-
-    public void setLuongCoBan(double luongCoBan) {
+    
+    public void setLuongCoBan(final double luongCoBan) {
         this.luongCoBan = luongCoBan;
     }
-
-    public String getTenTaiKhoan() {
-        return tenTaiKhoan;
-    }
-
-    public void setTenTaiKhoan(String tenTaiKhoan) {
-        this.tenTaiKhoan = tenTaiKhoan;
-    }
-
-    public String getMatKhau() {
-        return matKhau;
-    }
-
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
-    }
-
+    
     public String getChucVu() {
-        return chucVu;
+        return this.chucVu;
     }
-
-    public void setChucVu(String chucVu) {
+    
+    public void setChucVu(final String chucVu) {
         this.chucVu = chucVu;
     }
-
+    
     public String getEmail() {
-        return email;
+        return this.email;
     }
-
-    public void setEmail(String email) {
+    
+    public void setEmail(final String email) {
         this.email = email;
     }
-
+    
     public double getTienPhuCapTheoNgay() {
-        return tienPhuCapTheoNgay;
+        return this.tienPhuCapTheoNgay;
     }
-
-    public void setTienPhuCapTheoNgay(double tienPhuCapTheoNgay) {
+    
+    public void setTienPhuCapTheoNgay(final double tienPhuCapTheoNgay) {
         this.tienPhuCapTheoNgay = tienPhuCapTheoNgay;
     }
-
+    
     public double getTienChuyenCan() {
-        return tienChuyenCan;
+        return this.tienChuyenCan;
     }
-
-    public void setTienChuyenCan(double tienChuyenCan) {
+    
+    public void setTienChuyenCan(final double tienChuyenCan) {
         this.tienChuyenCan = tienChuyenCan;
     }
-
-    public PhongBan getPhongBan() {
-        return phongBan;
+    
+    public String getGhiChu() {
+        return this.ghiChu;
     }
-
-    public void setPhongBan(PhongBan phongBan) {
+    
+    public void setGhiChu(final String ghiChu) {
+        this.ghiChu = ghiChu;
+    }
+    
+    public PhongBan getPhongBan() {
+        return this.phongBan;
+    }
+    
+    public void setPhongBan(final PhongBan phongBan) {
         this.phongBan = phongBan;
     }
-
-    public NhanVienHanhChinh(String maNV, String hoTen, boolean phai, LocalDateTime ngaySinh, String soDT, String diaChi, boolean tinhTrang, LocalDateTime ngayVaoLam, byte[] hinhAnh, double heSoLuong, double luongCoBan, String tenTaiKhoan, String matKhau, String chucVu, String email, double tienPhuCapTheoNgay, double tienChuyenCan, PhongBan phongBan) {
+    
+    public NhanVienHanhChinh(final String maNV, final String hoTen, final boolean phai, final LocalDateTime ngaySinh, final String soDT, final String diaChi, final boolean tinhTrang, final LocalDateTime ngayVaoLam, final String hinhAnh, final double heSoLuong, final double luongCoBan, final String chucVu, final String email, final double tienPhuCapTheoNgay, final double tienChuyenCan, final String ghiChu, final PhongBan phongBan) {
         this.maNV = maNV;
         this.hoTen = hoTen;
         this.phai = phai;
@@ -187,58 +175,59 @@ public class NhanVienHanhChinh {
         this.hinhAnh = hinhAnh;
         this.heSoLuong = heSoLuong;
         this.luongCoBan = luongCoBan;
-        this.tenTaiKhoan = tenTaiKhoan;
-        this.matKhau = matKhau;
         this.chucVu = chucVu;
         this.email = email;
         this.tienPhuCapTheoNgay = tienPhuCapTheoNgay;
         this.tienChuyenCan = tienChuyenCan;
+        this.ghiChu = ghiChu;
         this.phongBan = phongBan;
     }
-
-    public NhanVienHanhChinh(String maNV) {
+    
+    public NhanVienHanhChinh(final String maNV) {
         this.maNV = maNV;
     }
-
+    
     public NhanVienHanhChinh() {
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 5;
         hash = 79 * hash + Objects.hashCode(this.maNV);
         return hash;
     }
-
+    
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (this.getClass() != obj.getClass()) {
             return false;
         }
-        final NhanVienHanhChinh other = (NhanVienHanhChinh) obj;
+        final NhanVienHanhChinh other = (NhanVienHanhChinh)obj;
         return Objects.equals(this.maNV, other.maNV);
     }
 
     @Override
     public String toString() {
-        return "NhanVienHanhChinh{" + "maNV=" + maNV + ", hoTen=" + hoTen + ", phai=" + phai + ", ngaySinh=" + ngaySinh + ", soDT=" + soDT + ", diaChi=" + diaChi + ", tinhTrang=" + tinhTrang + ", ngayVaoLam=" + ngayVaoLam + ", hinhAnh=" + hinhAnh + ", heSoLuong=" + heSoLuong + ", luongCoBan=" + luongCoBan + ", tenTaiKhoan=" + tenTaiKhoan + ", matKhau=" + matKhau + ", chucVu=" + chucVu + ", email=" + email + ", tienPhuCapTheoNgay=" + tienPhuCapTheoNgay + ", tienChuyenCan=" + tienChuyenCan + ", phongBan=" + phongBan + '}';
+        return "NhanVienHanhChinh{" + "maNV=" + maNV + ", hoTen=" + hoTen + ", phai=" + phai + ", ngaySinh=" + ngaySinh + ", soDT=" + soDT + ", diaChi=" + diaChi + ", tinhTrang=" + tinhTrang + ", ngayVaoLam=" + ngayVaoLam + ", hinhAnh=" + hinhAnh + ", heSoLuong=" + heSoLuong + ", luongCoBan=" + luongCoBan + ", chucVu=" + chucVu + ", email=" + email + ", tienPhuCapTheoNgay=" + tienPhuCapTheoNgay + ", tienChuyenCan=" + tienChuyenCan + ", ghiChu=" + ghiChu + ", phongBan=" + phongBan + '}';
     }
     
-     public String get10char(String s) {
+    
+    
+    public String get10char(final String s) {
         return s.substring(0, 10);
     }
-
+    
     public String getNgaySinhString() {
-        return get10char(this.ngaySinh.toString());
+        return this.get10char(this.ngaySinh.toString());
     }
+    
     public String getNgayVaoLamString() {
-        return get10char(this.ngayVaoLam.toString());
+        return this.get10char(this.ngayVaoLam.toString());
     }
-
 }
