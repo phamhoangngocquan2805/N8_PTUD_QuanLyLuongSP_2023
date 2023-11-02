@@ -36,7 +36,7 @@ public class GDChinh extends javax.swing.JFrame {
     public GDChinh() throws SQLException {
 
         icon();
-        this.setTitle("Chương trình quản lý lương sản phẩm của công ty X.");
+        this.setTitle("Chương trình quản lý lương sản phẩm của công ty Thịnh Vượng.");
         initComponents();
         setLocationRelativeTo(null);
         gdlogin = new GDLogin();
