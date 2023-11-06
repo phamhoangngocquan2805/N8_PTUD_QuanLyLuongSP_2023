@@ -127,4 +127,37 @@ public class CongDoan_DAO {
             }
             return null;
         }
+         public ArrayList<CongDoan> getAllCongDoanTheoMaSP(String MaSP)
+	{
+		ArrayList<CongDoan> dsCongDoan = new ArrayList<CongDoan>();
+		try {
+			ConnectDB.getInstance();
+			Connection con = ConnectDB.getConnection();
+			String sql = "select * from CongDoan cd join SanPham sp\n" +
+                                    "on cd.maSP = sp.maSP\n" +
+                                    "where sp.maSP ="+MaSP;
+			Statement stm = con.createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			while(rs.next())
+			{
+				String maCD = rs.getString(1);
+				String tenCD = rs.getString(2);
+                                int soLuong = rs.getInt(3);
+                                double donGia = rs.getFloat(4);
+                                LocalDateTime ngayBatDau = rs.getTimestamp(5).toLocalDateTime();
+                                LocalDateTime ngayKetThuc = rs.getTimestamp(6).toLocalDateTime();
+                                String tenCDTruoc = rs.getString(7);
+                                int trangThai = rs.getInt(8);
+                                SanPham_DAO spdao = new SanPham_DAO();
+                                SanPham sp = spdao.getSanPhamTheoMa(rs.getString(9));
+
+				CongDoan cd = new CongDoan(maCD, tenCD, soLuong, donGia, ngayBatDau, ngayKetThuc, tenCDTruoc, trangThai, sp);
+				dsCongDoan.add(cd);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return dsCongDoan;
+	}
 }
