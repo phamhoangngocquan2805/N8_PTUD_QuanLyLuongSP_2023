@@ -119,9 +119,9 @@ public class BangChamCongNhanVien {
         return get10char(this.ngayChamCong.toString());
     }
     public String getGioVaoString() {
-        return get10char(this.gioVao.toString());
+        return (this.gioVao.toString());
     }
     public String getGioRaString() {
-        return get10char(this.gioRa.toString());
+        return (this.gioRa.toString());
     }
 }
