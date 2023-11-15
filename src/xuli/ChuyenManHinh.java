@@ -20,8 +20,10 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.colorchooser.AbstractColorChooserPanel;
 import others.BienMacDinh;
 import static others.BienMacDinh.mauBorderBottomMenu;
 import static others.BienMacDinh.mauDanhMucDangChon;
@@ -87,8 +89,37 @@ public class ChuyenManHinh implements BienMacDinh{
                     pNoiDung = new GDTongQuan();
                 }
                 break;
+                
+                case "QLNhanSu": {
+                    pNoiDung = new AbstractColorChooserPanel() {
+                        @Override
+                        public void updateChooser() {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
 
+                        @Override
+                        protected void buildChooser() {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
 
+                        @Override
+                        public String getDisplayName() {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+
+                        @Override
+                        public Icon getSmallDisplayIcon() {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+
+                        @Override
+                        public Icon getLargeDisplayIcon() {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+                    };
+                }
+                break;
+                
                 case "QLHopDong":  {
                     pNoiDung = new GDQLHopDong();
                 }
@@ -108,6 +139,13 @@ public class ChuyenManHinh implements BienMacDinh{
                     pNoiDung = new GDPhanCong();
                 }
                 break;
+                
+                case "QLChamCong": {
+                    pNoiDung = null;
+                }
+                case "QLLuong": {
+                    pNoiDung = null;
+                }
                 
                 case "QLTaiKhoan": {
                     pNoiDung = new GDQLTaiKhoan();

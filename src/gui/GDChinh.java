@@ -39,6 +39,7 @@ public class GDChinh extends javax.swing.JFrame {
         this.setTitle("Chương trình quản lý lương sản phẩm của công ty Thịnh Vượng.");
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
         gdlogin = new GDLogin();
         gdlogin.setVisible(true);
         this.gdlogin.addWindowListener(new WindowListener() {
@@ -76,6 +77,7 @@ public class GDChinh extends javax.swing.JFrame {
                 listDanhMucBean.add(new DanhMucBean("QLTaiKhoan", pQLTaiKhoan, lblQLTaiKhoan));
 
                 dieuKhien.setSuKienClickDanhMuc(listDanhMucBean);
+                
                 String tl = LocalDateTime.now().toString();
                 jLabel12.setText("Ngày " + tl.substring(9,10) +  " tháng " + tl.substring(5,7) + " năm " + tl.substring(0, 4));
 //                JOptionPane.showMessageDialog(null, nvLog.toString());
@@ -288,7 +290,7 @@ public class GDChinh extends javax.swing.JFrame {
 
         pHome.setBackground(new java.awt.Color(191, 95, 95));
 
-        lblHome.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblHome.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblHome.setForeground(new java.awt.Color(235, 228, 228));
         lblHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/home_32px.png"))); // NOI18N
         lblHome.setText("Trang chủ");
@@ -800,5 +802,6 @@ public class GDChinh extends javax.swing.JFrame {
     private javax.swing.JMenuItem tinhLuongNVHC;
     private javax.swing.JMenuItem xemBangLuong;
     // End of variables declaration//GEN-END:variables
+
 }
 
