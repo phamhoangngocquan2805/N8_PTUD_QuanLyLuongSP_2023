@@ -220,6 +220,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n &#x1ea3;nh"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChonAnhActionPerformed"/>
@@ -283,12 +284,12 @@
                                               </Group>
                                               <Component id="dateNgaySinh" min="-2" pref="203" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lblPhongBan" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -296,12 +297,10 @@
                                                   <Component id="lblLuongCB" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="cbxChucVu" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                      <Component id="cbxHSLuong" alignment="0" pref="128" max="32767" attributes="0"/>
-                                                      <Component id="cbxPhongBan" alignment="0" max="32767" attributes="0"/>
-                                                  </Group>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="cbbKinhNghiem" alignment="0" pref="128" max="32767" attributes="0"/>
+                                                  <Component id="cbbTayNghe" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="cbbTinhTrang" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -322,9 +321,9 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <Component id="jTextField1" min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="txtDiaChi" min="-2" pref="262" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                          <EmptySpace min="57" pref="57" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -367,11 +366,11 @@
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="cbxPhongBan" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbbTayNghe" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cbxHSLuong" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbbKinhNghiem" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cbxChucVu" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbbTinhTrang" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="lblPhongBan" min="-2" max="-2" attributes="0"/>
@@ -400,7 +399,7 @@
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDiaChi" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblDiaChi" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -439,7 +438,6 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Text Cursor"/>
                     </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 25]"/>
                     </Property>
@@ -461,6 +459,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtHoTenNV">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="0"/>
                     </Property>
@@ -597,6 +596,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtSDT">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="0"/>
                     </Property>
@@ -615,8 +615,9 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSDTActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="txtDiaChi">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="0"/>
                     </Property>
@@ -633,7 +634,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDiaChiActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblPhongBan">
@@ -647,15 +648,16 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbxPhongBan">
+                <Component class="javax.swing.JComboBox" name="cbbTayNghe">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="May"/>
-                        <StringItem index="1" value="C&#x1eaf;t"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="Kh&#xf4;ng"/>
+                        <StringItem index="1" value="May"/>
+                        <StringItem index="2" value="C&#x1eaf;t"/>
                       </StringArray>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -663,22 +665,21 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxPhongBanActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbbTayNgheActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbxChucVu">
+                <Component class="javax.swing.JComboBox" name="cbbTinhTrang">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="C&#xf2;n l&#xe0;m"/>
-                        <StringItem index="1" value="Ngh&#x1ec9; ph&#xe9;p"/>
-                        <StringItem index="2" value="Th&#xf4;i vi&#x1ec7;c"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="&#x110;ang l&#xe0;m vi&#x1ec7;c"/>
+                        <StringItem index="1" value="Th&#xf4;i vi&#x1ec7;c"/>
                       </StringArray>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -700,15 +701,24 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbxHSLuong">
+                <Component class="javax.swing.JComboBox" name="cbbKinhNghiem">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="1 n&#x103;m"/>
-                        <StringItem index="1" value="1,5 n&#x103;m"/>
+                      <StringArray count="11">
+                        <StringItem index="0" value="0 n&#x103;m"/>
+                        <StringItem index="1" value="d&#x1b0;&#x1edb;i 1 n&#x103;m"/>
+                        <StringItem index="2" value="1 n&#x103;m "/>
+                        <StringItem index="3" value="1.5 n&#x103;m"/>
+                        <StringItem index="4" value="2 n&#x103;m"/>
+                        <StringItem index="5" value="2.5 n&#x103;m"/>
+                        <StringItem index="6" value="3 n&#x103;m"/>
+                        <StringItem index="7" value="3.5 n&#x103;m"/>
+                        <StringItem index="8" value="4 n&#x103;m"/>
+                        <StringItem index="9" value="tr&#xea;n 4 n&#x103;m"/>
+                        <StringItem index="10" value=" "/>
                       </StringArray>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -826,6 +836,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtGhiChu">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="0"/>
                     </Property>
@@ -865,7 +876,7 @@
                           <EmptySpace pref="50" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jscrNhanVien" min="-2" pref="941" max="-2" attributes="0"/>
+                          <Component id="jscrCN" min="-2" pref="941" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -873,12 +884,12 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jPanel4" max="32767" attributes="0"/>
+                              <Component id="jPanel3" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jscrNhanVien" min="-2" pref="262" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                          <Component id="jscrCN" min="-2" pref="262" max="-2" attributes="0"/>
                           <EmptySpace pref="17" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -907,18 +918,18 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="btnBatDauCC" alignment="1" min="-2" pref="84" max="-2" attributes="0"/>
-                                  <Component id="btnBatDauCC1" alignment="1" min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Component id="btnLuu" alignment="1" min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Component id="btnThem" alignment="1" min="-2" pref="84" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace pref="19" max="32767" attributes="0"/>
-                                      <Component id="btnBatDauCC2" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <Component id="btnUpdate" min="-2" pref="90" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnBatDauCC3" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <Component id="btnNhapLai" min="-2" pref="90" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -930,13 +941,13 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnBatDauCC2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Component id="btnBatDauCC1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="btnUpdate" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="btnThem" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" pref="42" max="32767" attributes="0"/>
+                              <EmptySpace pref="13" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnBatDauCC3" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="btnBatDauCC" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="btnNhapLai" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="btnLuu" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -944,7 +955,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="btnBatDauCC1">
+                    <Component class="javax.swing.JButton" name="btnThem">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="66" green="66" red="ff" type="rgb"/>
@@ -955,10 +966,10 @@
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatDauCC1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnBatDauCC">
+                    <Component class="javax.swing.JButton" name="btnLuu">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="66" green="66" red="ff" type="rgb"/>
@@ -967,12 +978,13 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="L&#x1b0;u"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatDauCCActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLuuActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnBatDauCC3">
+                    <Component class="javax.swing.JButton" name="btnNhapLai">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="66" green="66" red="ff" type="rgb"/>
@@ -983,10 +995,10 @@
                         <Property name="text" type="java.lang.String" value="Nh&#x1ead;p l&#x1ea1;i"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatDauCC3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNhapLaiActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnBatDauCC2">
+                    <Component class="javax.swing.JButton" name="btnUpdate">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="66" green="66" red="ff" type="rgb"/>
@@ -997,7 +1009,7 @@
                         <Property name="text" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatDauCC2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -1025,48 +1037,47 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jComboBox4" min="-2" pref="130" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="jComboBox2" min="-2" pref="121" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="btnBatDauCC4" min="-2" pref="89" max="-2" attributes="0"/>
+                                  <Component id="cbbLocTayNghe" min="-2" pref="130" max="-2" attributes="0"/>
+                                  <Component id="btnReload" min="-2" pref="89" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jPanel5" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="cbbLocTinhTrang" min="-2" pref="121" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanel5" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox4" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                                              <Component id="cbbLocTayNghe" pref="41" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="cbbLocTinhTrang" pref="43" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnReload" min="-2" pref="43" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnBatDauCC4" min="-2" pref="43" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JComboBox" name="jComboBox2">
+                    <Component class="javax.swing.JComboBox" name="cbbLocTinhTrang">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="C&#xf2;n l&#xe0;m"/>
-                            <StringItem index="1" value="Ngh&#x1ec9; ph&#xe9;p"/>
-                            <StringItem index="2" value="th&#xf4;i vi&#x1ec7;c"/>
-                            <StringItem index="3" value=" "/>
+                          <StringArray count="3">
+                            <StringItem index="0" value="&#x110;ang l&#xe0;m vi&#x1ec7;c"/>
+                            <StringItem index="1" value="th&#xf4;i vi&#x1ec7;c"/>
+                            <StringItem index="2" value=" "/>
                           </StringArray>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1076,20 +1087,22 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbbLocTinhTrangActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox4">
+                    <Component class="javax.swing.JComboBox" name="cbbLocTayNghe">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="May"/>
-                            <StringItem index="1" value="C&#x1eaf;t"/>
-                            <StringItem index="2" value="&#x1ee7;i"/>
-                            <StringItem index="3" value="c&#x1eaf;t ch&#x1ec9;"/>
+                          <StringArray count="6">
+                            <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
+                            <StringItem index="1" value="kh&#xf4;ng"/>
+                            <StringItem index="2" value="May"/>
+                            <StringItem index="3" value="C&#x1eaf;t"/>
+                            <StringItem index="4" value="&#x1ee7;i"/>
+                            <StringItem index="5" value="c&#x1eaf;t ch&#x1ec9;"/>
                           </StringArray>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1099,7 +1112,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox4ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbbLocTayNgheActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1129,18 +1142,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtTimTheoMaNV1" min="-2" pref="180" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnTimKiem1" min="-2" pref="37" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="txtTimTheoMaNV2" min="-2" pref="180" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnTimKiem2" min="-2" pref="37" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="txtTimCN" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnTimKiem" min="-2" pref="37" max="-2" attributes="0"/>
                                   <EmptySpace pref="18" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1148,23 +1152,37 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtTimTheoMaNV1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnTimKiem1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtTimCN" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnTimKiem" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtTimTheoMaNV2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnTimKiem2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JButton" name="btnTimKiem1">
+                        <Component class="javax.swing.JTextField" name="txtTimCN">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Arial" size="12" style="0"/>
+                            </Property>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                            <Property name="alignmentY" type="float" value="1.0"/>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                <TitledBorder title="t&#xec;m theo m&#xe3;,h&#x1ecd; t&#xea;n, s&#x111;t"/>
+                              </Border>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[170, 35]"/>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTimCNActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnTimKiem">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="66" green="66" red="ff" type="rgb"/>
@@ -1180,73 +1198,12 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimKiem1ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtTimTheoMaNV1">
-                          <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Arial" size="12" style="0"/>
-                            </Property>
-                            <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="text" type="java.lang.String" value="M&#xe3; CN"/>
-                            <Property name="alignmentY" type="float" value="1.0"/>
-                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
-                                <BevelBorder bevelType="1"/>
-                              </Border>
-                            </Property>
-                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[170, 35]"/>
-                            </Property>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTimTheoMaNV1ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtTimTheoMaNV2">
-                          <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Arial" size="12" style="0"/>
-                            </Property>
-                            <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="text" type="java.lang.String" value="H&#x1ecd; t&#xea;n CN"/>
-                            <Property name="alignmentY" type="float" value="1.0"/>
-                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
-                                <BevelBorder bevelType="1"/>
-                              </Border>
-                            </Property>
-                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[170, 35]"/>
-                            </Property>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTimTheoMaNV2ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="btnTimKiem2">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="66" green="66" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Arial" size="14" style="1"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/image/search_35px.png"/>
-                            </Property>
-                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[100, 35]"/>
-                            </Property>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimKiem2ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimKiemActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="btnBatDauCC4">
+                    <Component class="javax.swing.JButton" name="btnReload">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="66" green="66" red="ff" type="rgb"/>
@@ -1257,12 +1214,12 @@
                         <Property name="text" type="java.lang.String" value="Reload"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatDauCC4ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReloadActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JScrollPane" name="jscrNhanVien">
+                <Container class="javax.swing.JScrollPane" name="jscrCN">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="d9" green="d9" red="d9" type="rgb"/>
@@ -1289,7 +1246,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tableNhanVien">
+                    <Component class="javax.swing.JTable" name="tableCN">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f2" green="f2" red="f2" type="rgb"/>
@@ -1393,6 +1350,9 @@
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableCNMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
