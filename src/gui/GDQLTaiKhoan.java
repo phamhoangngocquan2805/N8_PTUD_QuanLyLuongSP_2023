@@ -4,11 +4,18 @@
  */
 package gui;
 
+import dao.TaiKhoan_DAO;
+import entity.TaiKhoan;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author acer
  */
 public class GDQLTaiKhoan extends javax.swing.JPanel {
+    private DefaultTableModel modelTK;
+    private TaiKhoan_DAO taikhoanDao;
 
     /**
      * Creates new form GDQLTaiKhoan
@@ -303,7 +310,11 @@ public class GDQLTaiKhoan extends javax.swing.JPanel {
                 .addComponent(pQLTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    private void clearTable() {
+        while (tableTK.getRowCount() > 0) {
+            modelTK.removeRow(0);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -335,4 +346,5 @@ public class GDQLTaiKhoan extends javax.swing.JPanel {
     private javax.swing.JTextField txtTenTK;
     private javax.swing.JTextField txtTinhTrang;
     // End of variables declaration//GEN-END:variables
+
 }

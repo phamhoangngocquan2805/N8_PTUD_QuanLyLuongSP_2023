@@ -5,7 +5,9 @@
 package gui;
 
 import connectDB.ConnectDB;
+import dao.SanPham_DAO;
 import entity.NhanVienHanhChinh;
+import entity.SanPham;
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
@@ -26,7 +28,7 @@ import xuli.DanhMucBean;
  * @author acer
  */
 public class GDChinh extends javax.swing.JFrame {
-
+   
     /**
      * Creates new form GDChinh1
      */
@@ -800,5 +802,6 @@ public class GDChinh extends javax.swing.JFrame {
     private javax.swing.JMenuItem tinhLuongNVHC;
     private javax.swing.JMenuItem xemBangLuong;
     // End of variables declaration//GEN-END:variables
+    
 }
 
