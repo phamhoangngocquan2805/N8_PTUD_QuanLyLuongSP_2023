@@ -4,7 +4,7 @@
  */
 package entity;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 import java.util.Objects;
 
 /**
@@ -14,8 +14,8 @@ import java.util.Objects;
 public class HopDong {
     private String maHD;
     private String tenHD;
-    private LocalDateTime ngayKiHD;
-    private LocalDateTime ngayBanGiao;
+    private Date ngayKiHD;
+    private Date ngayBanGiao;
     private String ghiChu;
     private int trangThai;
     private NhanVienHanhChinh nv;
@@ -36,19 +36,19 @@ public class HopDong {
         this.tenHD = tenHD;
     }
 
-    public LocalDateTime getNgayKiHD() {
+    public Date getNgayKiHD() {
         return ngayKiHD;
     }
 
-    public void setNgayKiHD(LocalDateTime ngayKiHD) {
+    public void setNgayKiHD(Date ngayKiHD) {
         this.ngayKiHD = ngayKiHD;
     }
 
-    public LocalDateTime getNgayBanGiao() {
+    public Date getNgayBanGiao() {
         return ngayBanGiao;
     }
 
-    public void setNgayBanGiao(LocalDateTime ngayBanGiao) {
+    public void setNgayBanGiao(Date ngayBanGiao) {
         this.ngayBanGiao = ngayBanGiao;
     }
 
@@ -76,7 +76,7 @@ public class HopDong {
         this.nv = nv;
     }
 
-    public HopDong(String maHD, String tenHD, LocalDateTime ngayKiHD, LocalDateTime ngayBanGiao, String ghiChu, int trangThai, NhanVienHanhChinh nv) {
+    public HopDong(String maHD, String tenHD, Date ngayKiHD, Date ngayBanGiao, String ghiChu, int trangThai, NhanVienHanhChinh nv) {
         this.maHD = maHD;
         this.tenHD = tenHD;
         this.ngayKiHD = ngayKiHD;

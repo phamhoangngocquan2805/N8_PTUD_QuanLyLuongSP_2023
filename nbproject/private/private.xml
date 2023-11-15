@@ -3,21 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/dao/TaiKhoan_DAO.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/gui/GDQLCongDoan.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/entity/TaiKhoan.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/dao/CongNhan_DAO.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/gui/GDQLTaiKhoan.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/entity/SanPham.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/entity/BangChamCongCongNhan.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/entity/CongDoan.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/dao/BangChamCongCongNhan_DAO.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/connectDB/ConnectDB.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/gui/GDQLSanPham.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/dao/SanPham_DAO.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/gui/GDLogin.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/gui/GDChinh.java</file>
-            <file>file:/D:/Ky5/PTUD/workspace/N8_PTUD_QuanLyLuongSP_2023/src/dao/CongDoan_DAO.java</file>
+            <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/gui/GDLogin.java</file>
         </group>
     </open-files>
 </project-private>
