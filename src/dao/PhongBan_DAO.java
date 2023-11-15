@@ -79,42 +79,33 @@ public class PhongBan_DAO {
             }
             return null;
         }
-//            public boolean updateCongNhan(CongNhan cn)
-//	{
-//		ConnectDB.getInstance();
-//		Connection con = ConnectDB.getConnection();
-//		PreparedStatement stm = null;
-//		int n = 0;
-//		try {
-//			stm = con.prepareStatement("update CongNhan set tenCN = ?, phai = ?, ngaySinh = ?, soDT = ?, diaChi = ?, tinhTrang = ?, ngayVaoLam = ?, hinhAnh = ?, tayNghe = ?, kinhNghiem = ?, tienPhuCapTheoNgay = ?, tienChuuyenCan = ? where maCN = ?");
-//			stm.setString(13, cn.getMaCN());
-//			stm.setString(1, cn.getHoTen());
-//			stm.setBoolean(2, cn.isPhai());
-//                        stm.setString(3, cn.getNgaySinhString());
-//                        stm.setString(4, cn.getSoDT());
-//                        stm.setString(5, cn.getDiaChi());
-//                        stm.setBoolean(6, cn.isTinhTrang());
-//                        stm.setString(7, cn.getNgayVaoLamString());
-//                        stm.setBytes(8, cn.getHinhAnh());
-//                        stm.setString(9, cn.getTayNghe());
-//                        stm.setString(10, cn.getKinhNghiem());
-//                        stm.setFloat(11, (float )cn.getTienPhuCapTheoNgay());
-//                        stm.setFloat(12, (float)cn.getTienChuyenCan());
-//			n = stm.executeUpdate();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			// TODO: handle finally clause
-//			try {
-//				stm.close();
-//			} catch (SQLException e2) {
-//				// TODO: handle exception
-//				e2.printStackTrace();
-//			}
-//		}
-//		return n > 0;
-//	}
-//
-//        
+           
+        
+        /**
+	 * 
+	 * @param ten phòng ban được nhập
+	 * @return mã phòng ban
+	 */
+	
+	public String getMaPBTheoTenPB(String tenPB) {
+		String maPB ="";
+		ConnectDB.getInstance();
+		Connection con = ConnectDB.getConnection();
+		String sql = "select maPB from PhongBan where tenPB = N'"+tenPB +"'";
+		
+		try {
+			Statement stm = con.createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			while(rs.next()) {
+				
+				maPB = rs.getString(1);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return maPB;
+		
+	}
 }

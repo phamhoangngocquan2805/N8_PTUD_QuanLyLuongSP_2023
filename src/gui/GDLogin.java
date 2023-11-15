@@ -9,6 +9,7 @@ import dao.NhanVienHanhChinh_DAO;
 import dao.TaiKhoan_DAO;
 import entity.NhanVienHanhChinh;
 import entity.TaiKhoan;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -29,17 +30,22 @@ public class GDLogin extends javax.swing.JFrame {
     private static ArrayList<TaiKhoan> dstk;
     private static NhanVienHanhChinh nvLog;
     private static Boolean isValid = false;
+
     public GDLogin() {
         initComponents();
+        icon();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(3);
-        
+
         try {
             ConnectDB.getInstance().connect();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void icon() {
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/image/logo.png")));
     }
 
     /**
@@ -76,11 +82,9 @@ public class GDLogin extends javax.swing.JFrame {
         jButtonQuenMatKhau.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonQuenMatKhau.setText("Quên mật khẩu");
 
-        jTextFieldTenTK.setBackground(new java.awt.Color(255, 255, 255));
-        jTextFieldTenTK.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldTenTK.setText("admin");
 
-        jPasswordFieldMatKhau.setBackground(new java.awt.Color(255, 255, 255));
-        jPasswordFieldMatKhau.setForeground(new java.awt.Color(0, 0, 0));
+        jPasswordFieldMatKhau.setText("admin");
         jPasswordFieldMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldMatKhauActionPerformed(evt);
@@ -162,8 +166,7 @@ public class GDLogin extends javax.swing.JFrame {
         }
         if (isValid) {
             this.dispose();
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "sai tk hoac mk");
         }
     }//GEN-LAST:event_jButtonDangNhapActionPerformed
@@ -212,7 +215,7 @@ public class GDLogin extends javax.swing.JFrame {
     public NhanVienHanhChinh getCurrNV() {
         return nvLog;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDangNhap;
     private javax.swing.JButton jButtonQuenMatKhau;
