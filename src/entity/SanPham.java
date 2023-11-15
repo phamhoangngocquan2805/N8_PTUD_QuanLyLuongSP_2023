@@ -4,7 +4,9 @@
  */
 package entity;
 
+import dao.SanPham_DAO;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
@@ -13,8 +15,8 @@ import java.util.Objects;
 public class SanPham {
     private String maSP;
     private String tenSP;
-     private int soLuong;
-      private double donGia;
+    private int soLuong;
+    private double donGia;
     private String thongTin;
     private int soCongDoan;
     private String chatLieu;
@@ -26,7 +28,18 @@ public class SanPham {
     }
 
     public void setMaSP(String maSP) {
-        this.maSP = maSP;
+        SanPham_DAO sanphamDao = new SanPham_DAO();
+        HopDong hopDong = new HopDong();
+		int count = sanphamDao.getAllSanPham().size();
+		AtomicInteger ID_GENERATOR = new AtomicInteger(count);
+		int ma = ID_GENERATOR.incrementAndGet();
+		String convert = String.format("%2d", ma).replaceAll(" ", "0"); 
+		while(sanphamDao.getSanPhamTheoMa(hopDong.getMaHD()) != null) {
+			ma++;
+			convert = String.format("%2d", ma).replaceAll(" ", "0");
+		}
+		convert = String.format("%2d", ma).replaceAll(" ", "0");
+		this.maSP = hopDong.getMaHD() + convert;
     }
 
     public String getTenSP() {
@@ -34,7 +47,7 @@ public class SanPham {
     }
 
     public void setTenSP(String tenSP) {
-        this.tenSP = tenSP;
+        this.tenSP=tenSP;
     }
 
     public int getSoLuong() {
@@ -138,6 +151,5 @@ public class SanPham {
     public String toString() {
         return "SanPham{" + "maSP=" + maSP + ", tenSP=" + tenSP + ", soLuong=" + soLuong + ", donGia=" + donGia + ", thongTin=" + thongTin + ", soCongDoan=" + soCongDoan + ", chatLieu=" + chatLieu + ", donViTinh=" + donViTinh + ", hopDong=" + hopDong + '}';
     }
-   
-    
+ 
 }
