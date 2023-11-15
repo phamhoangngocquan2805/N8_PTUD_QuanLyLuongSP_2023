@@ -34,18 +34,19 @@ public class CongNhan_DAO {
 				String maCN = rs.getString(1);
 				String tenCN = rs.getString(2);
                                 Boolean phai = rs.getBoolean(3);
-                                LocalDateTime ngaySinh = rs.getTimestamp(4).toLocalDateTime();
+                                Date ngaySinh = rs.getDate(4);
                                 String soDT = rs.getString(5);
                                 String diaChi = rs.getString(6);
                                 Boolean tinhTrang = rs.getBoolean(7);
-                                LocalDateTime ngayVaoLam = rs.getTimestamp(8).toLocalDateTime();
+                                Date ngayVaoLam = rs.getDate(8);
                                 byte[] hinhAnh = rs.getBytes(9);
                                 String tayNghe = rs.getString(10);
                                 String kinhNghiem = rs.getString(11);
                                 double tienPhuCapTheoNgay = rs.getFloat(12);
                                 double tienChuyenCan = rs.getFloat(13);
+                                String ghiChu = rs.getString(14);
 				
-				CongNhan cn = new CongNhan(maCN, tenCN, true, ngaySinh, soDT, diaChi, true, ngayVaoLam, hinhAnh, tayNghe, kinhNghiem, tienPhuCapTheoNgay, tienChuyenCan);
+				CongNhan cn = new CongNhan(maCN, tenCN, phai, ngaySinh, soDT, diaChi, tinhTrang, ngayVaoLam, hinhAnh, tayNghe, kinhNghiem, tienPhuCapTheoNgay, tienChuyenCan,ghiChu);
 				dsCongNhan.add(cn);
 			}
 		} catch (SQLException e) {

@@ -106,7 +106,6 @@ public class GDPhanCong extends javax.swing.JPanel {
         comfirmDelete.setFocusTraversalPolicyProvider(true);
         comfirmDelete.setLocation(new java.awt.Point(540, 280));
         comfirmDelete.setModal(true);
-        comfirmDelete.setPreferredSize(new java.awt.Dimension(300, 200));
         comfirmDelete.setSize(new java.awt.Dimension(340, 250));
 
         lbttCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -729,10 +728,14 @@ public class GDPhanCong extends javax.swing.JPanel {
                     return;
                 LocalDate currentDate = LocalDate.now();
                 String maBangPCMoiNhat = phanCong_Dao.getBangPhanCongMoiNhat().getMaBangPC();
-                int bonSoCuoiMaBangPCMoiNhat = Integer.valueOf(maBangPCMoiNhat.substring(maBangPCMoiNhat.length() - 4))+1;
-                String ddddMa =  String.format("%04d", bonSoCuoiMaBangPCMoiNhat);
                 String nowMonth =  String.format("%02d", currentDate.getMonthValue());
                 String nowDay = String.format("%02d", currentDate.getDayOfMonth());
+                String ngayThangNamHTai = Integer.toString(currentDate.getYear()%100) + nowMonth + nowDay;
+                int bonSoCuoiMaBangPCMoiNhat= 1;
+                if(maBangPCMoiNhat.substring(0, 6).equals(ngayThangNamHTai)){
+                     bonSoCuoiMaBangPCMoiNhat= Integer.valueOf(maBangPCMoiNhat.substring(maBangPCMoiNhat.length() - 4)) + 1;
+                }
+                String ddddMa =  String.format("%04d", bonSoCuoiMaBangPCMoiNhat);
                 String maBangPCNew = Integer.toString(currentDate.getYear()%100)+nowMonth+nowDay+ddddMa;//Mã bảng Pc mới
                 BangPhanCong pcNew = new BangPhanCong(maBangPCNew, Integer.valueOf(txtSoLuong.getText().toString()), cd, congNhan_Dao.getCongNhanTheoMa(txtMaCN.getText()));
                  
@@ -798,7 +801,7 @@ public class GDPhanCong extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXuatFileExcelActionPerformed
 
     private void cbbCongDoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbCongDoanActionPerformed
-         modelCongDoan.setNumRows(0);
+        modelCongDoan.setNumRows(0);
         if (modelcbbCongDoan.getSelectedItem().toString().equals("Tất cả")){
             addListCD();
             return;
@@ -1049,9 +1052,7 @@ public class GDPhanCong extends javax.swing.JPanel {
     private CongNhan_DAO congNhan_Dao;
     private CongDoan_DAO congDoan_Dao;
     private SanPham_DAO sanPham_Dao;
-    private BangChamCongCongNhan_DAO bangCCCN_Dao;
     private ChiTietBangChamCong_DAO ctBangCC_Dao;
-    private SanPham_DAO sp_Dao;
     
     private DefaultTableModel modelDSCN;
     private DefaultTableModel modelPhanCong;
