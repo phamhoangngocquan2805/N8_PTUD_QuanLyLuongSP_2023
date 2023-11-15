@@ -1113,17 +1113,17 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             for (int i = 0; i < rows; i++) {
                 modelDSPC.setValueAt(true, i, 0);
             }
-            for (int i = 0; i < modelKTCC.getRowCount(); i++) {
-                modelKTCC.setValueAt(true, i, 0);
-            }
+//            for (int i = 0; i < modelKTCC.getRowCount(); i++) {
+//                modelKTCC.setValueAt(true, i, 0);
+//            }
             btnChonTatCN.setText("<html><center>Bỏ chọn<br>tất cả</center></html>");
         } else if (btnChonTatCN.getText().equals("<html><center>Bỏ chọn<br>tất cả</center></html>")) {
             for (int i = 0; i < rows; i++) {
                 modelDSPC.setValueAt(false, i, 0);
             }
-            for (int i = 0; i < modelKTCC.getRowCount(); i++) {
-                modelKTCC.setValueAt(false, i, 0);
-            }
+//            for (int i = 0; i < modelKTCC.getRowCount(); i++) {
+//                modelKTCC.setValueAt(false, i, 0);
+//            }
             btnChonTatCN.setText("<html><center>Chọn<br>tất cả</center></html>");
         }
     }//GEN-LAST:event_btnChonTatCNActionPerformed
