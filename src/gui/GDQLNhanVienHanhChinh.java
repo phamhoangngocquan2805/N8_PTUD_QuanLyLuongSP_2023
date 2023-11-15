@@ -536,6 +536,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel implements MouseLi
         jscrNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Danh sách nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 18))); // NOI18N
         jscrNhanVien.setAutoscrolls(true);
 
+        tableNhanVien.setAutoCreateRowSorter(true);
         tableNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -988,9 +989,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel implements MouseLi
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         Object o = evt.getSource();
         if (o.equals(btnLuu)) {
-            if (btnThem.getText().equals("Hủy")) {
-//                try {
-                String maNV = nvhcDAO.getMaNV();
+            try {
                 String hoTen = txtHoTenNV.getText();
                 boolean gioiTinh = radNam.isSelected();
                 String soDT = txtSDT.getText();
@@ -1016,64 +1015,38 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel implements MouseLi
                 int thangVaoLam = dateNgayVaoLam.getDate().getMonth();
                 int ngayVaoLam = dateNgayVaoLam.getDate().getDate();
 
-                if (nvhcDAO.validDataNhanVien(txtHoTenNV, txtSDT, txtDiaChi, txtEmail)) {
-                    if (namHienTai - namSinh >= 18) {
+                if (btnThem.getText().equals("Hủy")) {
+                    String maNV = nvhcDAO.getMaNV();
+                    if (nvhcDAO.validDataNhanVien(txtHoTenNV, txtSDT, txtDiaChi, txtEmail)) {
+                        if (namHienTai - namSinh >= 18) {
 //                            if (ngayVaoLam1.getTime() <= now.getTime()) {
-                        if (nvhcDAO.checkSdtNV(soDT) == false) {
-                            NhanVienHanhChinh nvhc = new NhanVienHanhChinh(maNV, hoTen, gioiTinh, new Date(namSinh, thangSinh, ngaySinh), soDT, diaChi, tTrang,
-                                    new Date(namVaoLam, thangVaoLam, ngayVaoLam), hinhAnh, heSoLuong, luongCoBan, chucVu, email, tienPhuCapTheoNgay, tienChuyenCan, ghiChu, phongBan);
-                            nvhcDAO.createNhanVien(nvhc);
-                            loadDSNhanVienLenUI();
-                            JOptionPane.showMessageDialog(this, "Thêm nhân viên hành chính thành công");
-                            nhapLai();
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Số điện thoại đã tồn tại \nVui lòng nhập lại", "Thông báo", JOptionPane.ERROR_MESSAGE);
-                            txtSDT.requestFocus();
-                            txtSDT.selectAll();
-                        }
+                            if (nvhcDAO.checkSdtNV(soDT) == false) {
+                                NhanVienHanhChinh nvhc = new NhanVienHanhChinh(maNV, hoTen, gioiTinh, new Date(namSinh, thangSinh, ngaySinh), soDT, diaChi, tTrang,
+                                        new Date(namVaoLam, thangVaoLam, ngayVaoLam), hinhAnh, heSoLuong, luongCoBan, chucVu, email, tienPhuCapTheoNgay, tienChuyenCan, ghiChu, phongBan);
+                                nvhcDAO.createNhanVien(nvhc);
+                                loadDSNhanVienLenUI();
+                                JOptionPane.showMessageDialog(this, "Thêm nhân viên hành chính thành công");
+                                nhapLai();
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Số điện thoại đã tồn tại \nVui lòng nhập lại", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                                txtSDT.requestFocus();
+                                txtSDT.selectAll();
+                            }
 //                            } else {
 //                                JOptionPane.showMessageDialog(this, "Ngày vào làm không hợp lệ\nNgày vào làm phải nhỏ hơn hoặc bằng ngày hiện tại.", "Thông báo", JOptionPane.ERROR_MESSAGE);
 //                                dateNgayVaoLam.requestFocus();
 //                            }
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Ngày sinh không hợp lệ\nNhân viên phải từ đủ 18 tuổi.", "Thông báo", JOptionPane.ERROR_MESSAGE);
-                        dateNgaySinh.requestFocus();
-                    }
-                }
-//                } catch (Exception e) {
-//                    JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin nhân viên", "Thông báo", JOptionPane.WARNING_MESSAGE);
-//                }
-            } else if (btnCapNhat.getText().equals("Hủy")) {
-                int thongBao = JOptionPane.showConfirmDialog(this, "Vui lòng nhấn Xác nhận để cập nhật thông tin nhân viên này.",
-                        "Thông báo xác nhận", JOptionPane.YES_NO_OPTION);
-                if (thongBao == JOptionPane.YES_OPTION) {
-                    try {
-                        String maNV = txtMaNV.getText();
-                        String hoTen = txtHoTenNV.getText();
-                        boolean gioiTinh = radNam.isSelected();
-                        String soDT = txtSDT.getText();
-                        String diaChi = txtDiaChi.getText();
-                        String tinhTrang = cbxTinhTrang.getSelectedItem().toString();
-                        boolean tTrang = Boolean.parseBoolean(tinhTrang);
-                        if (tinhTrang.equalsIgnoreCase("Đang làm việc")) {
-                            tTrang = true;
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Ngày sinh không hợp lệ\nNhân viên phải từ đủ 18 tuổi.", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                            dateNgaySinh.requestFocus();
                         }
-                        double heSoLuong = Double.parseDouble(cbxHSLuong.getSelectedItem().toString());
-                        String chucVu = cbxChucVu.getSelectedItem().toString();
-                        String email = txtEmail.getText();
-                        String ghiChu = txtGhiChu.getText();
-                        PhongBan phongBan = new PhongBan(phongBanDAO.getMaPBTheoTenPB(cbxPhongBan.getSelectedItem().toString()));
-//                        Date ngayVaoLam1 = (Date) dateNgaySinh.getDate();
-                        Date now = new Date(System.currentTimeMillis());
-                        int namHienTai = now.getYear();
-                        int namSinh = dateNgaySinh.getDate().getYear();
-                        int thangSinh = dateNgaySinh.getDate().getMonth();
-                        int ngaySinh = dateNgaySinh.getDate().getDate();
+                    }
 
-                        int namVaoLam = dateNgayVaoLam.getDate().getYear();
-                        int thangVaoLam = dateNgayVaoLam.getDate().getMonth();
-                        int ngayVaoLam = dateNgayVaoLam.getDate().getDate();
-
+                } else if (btnCapNhat.getText().equals("Hủy")) {
+                    int thongBao = JOptionPane.showConfirmDialog(this, "Vui lòng nhấn Xác nhận để cập nhật thông tin nhân viên này.",
+                            "Thông báo xác nhận", JOptionPane.YES_NO_OPTION);
+                    if (thongBao == JOptionPane.YES_OPTION) {
+                        String maNV = txtMaNV.getText();
                         if (nvhcDAO.validDataNhanVien(txtHoTenNV, txtSDT, txtDiaChi, txtEmail)) {
                             if (namHienTai - namSinh >= 18) {
 //                            if (ngayVaoLam1.getTime() <= now.getTime()) {
@@ -1098,10 +1071,10 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel implements MouseLi
                                 dateNgaySinh.requestFocus();
                             }
                         }
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin nhân viên", "Thông báo", JOptionPane.WARNING_MESSAGE);
                     }
                 }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin nhân viên", "Thông báo", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnLuuActionPerformed
