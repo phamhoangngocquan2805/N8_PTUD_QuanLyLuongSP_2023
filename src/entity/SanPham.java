@@ -4,7 +4,9 @@
  */
 package entity;
 
+import dao.SanPham_DAO;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
@@ -13,8 +15,8 @@ import java.util.Objects;
 public class SanPham {
     private String maSP;
     private String tenSP;
-     private int soLuong;
-      private double donGia;
+    private int soLuong;
+    private double donGia;
     private String thongTin;
     private int soCongDoan;
     private String chatLieu;
@@ -34,7 +36,7 @@ public class SanPham {
     }
 
     public void setTenSP(String tenSP) {
-        this.tenSP = tenSP;
+        this.tenSP=tenSP;
     }
 
     public int getSoLuong() {
@@ -138,6 +140,5 @@ public class SanPham {
     public String toString() {
         return "SanPham{" + "maSP=" + maSP + ", tenSP=" + tenSP + ", soLuong=" + soLuong + ", donGia=" + donGia + ", thongTin=" + thongTin + ", soCongDoan=" + soCongDoan + ", chatLieu=" + chatLieu + ", donViTinh=" + donViTinh + ", hopDong=" + hopDong + '}';
     }
-   
-    
+ 
 }

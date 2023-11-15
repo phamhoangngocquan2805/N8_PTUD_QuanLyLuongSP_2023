@@ -119,8 +119,16 @@
                       <Component id="lblTimKiemMa" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtTimKiemMa" min="-2" pref="181" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                      <Component id="btnReload" min="-2" pref="119" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                              <Component id="btnReload" min="-2" pref="119" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnTim" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -139,7 +147,10 @@
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTimKiemMa" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtTimKiemMa" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtTimKiemMa" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnTim" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="pDanhSachSP" min="-2" max="-2" attributes="0"/>
@@ -207,6 +218,7 @@
                             <Column editable="true" title="H&#x1ee3;p &#x111;&#x1ed3;ng" type="java.lang.Object"/>
                           </Table>
                         </Property>
+                        <Property name="autoResizeMode" type="int" value="0"/>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -267,6 +279,9 @@
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtableSanPhamMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -305,40 +320,40 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="lblChatLieu" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                          <Component id="cbbChatLieu" max="32767" attributes="0"/>
+                                          <Component id="txtChatLieu" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="lblMaSP" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="txtMaSP" min="-2" pref="192" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="lblMaSP" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="txtMaSP" min="-2" pref="192" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="lblTenSP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblSoLuong" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblDonVT" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="lblTenSP" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="lblSoLuong" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="lblDonVT" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="txtDonVT" max="32767" attributes="0"/>
-                                                          <Component id="txtSoLuong" max="32767" attributes="0"/>
-                                                          <Component id="txtTenSP" max="32767" attributes="0"/>
-                                                          <Component id="txtDonGia" max="32767" attributes="0"/>
-                                                      </Group>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="txtDonVT" max="32767" attributes="0"/>
+                                                      <Component id="txtSoLuong" max="32767" attributes="0"/>
+                                                      <Component id="txtTenSP" max="32767" attributes="0"/>
+                                                      <Component id="txtDonGia" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <Component id="lblDonGia" min="-2" max="-2" attributes="0"/>
                                               <Component id="lblThongTin" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="0" pref="44" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblChatLieu1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                          <Component id="txtSoCD1" max="32767" attributes="0"/>
+                                          <Component id="lblHD" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="46" max="32767" attributes="0"/>
+                                          <Component id="txtMaHD" min="-2" pref="124" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jButtonChonHD" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -350,7 +365,7 @@
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnCapNhat" max="32767" attributes="0"/>
+                                      <Component id="btnCapNhat" pref="111" max="32767" attributes="0"/>
                                       <Component id="btnNhapLai" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -404,12 +419,13 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblChatLieu" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="cbbChatLieu" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="txtChatLieu" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblChatLieu1" alignment="3" pref="32" max="32767" attributes="0"/>
-                              <Component id="txtSoCD1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHD" alignment="3" pref="32" max="32767" attributes="0"/>
+                              <Component id="txtMaHD" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonChonHD" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -607,22 +623,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbbChatLieu">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblChatLieu1">
+                <Component class="javax.swing.JLabel" name="lblHD">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="1"/>
@@ -637,7 +638,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSoCD1">
+                <Component class="javax.swing.JTextField" name="txtMaHD">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -646,7 +647,7 @@
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSoCD1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMaHDActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnThem">
@@ -700,7 +701,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea1">
+                    <Component class="javax.swing.JTextArea" name="txtThongTin">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
@@ -708,6 +709,16 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JTextField" name="txtChatLieu">
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonChonHD">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="14" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n HD"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JLabel" name="lblTimKiemMa">
@@ -732,6 +743,11 @@
                   <Font name="Arial" size="18" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Reload"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnTim">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="T&#xec;m"/>
               </Properties>
             </Component>
           </SubComponents>
