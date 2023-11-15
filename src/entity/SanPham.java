@@ -28,7 +28,18 @@ public class SanPham {
     }
 
     public void setMaSP(String maSP) {
-        this.maSP = maSP;
+        SanPham_DAO sanphamDao = new SanPham_DAO();
+        HopDong hopDong = new HopDong();
+		int count = sanphamDao.getAllSanPham().size();
+		AtomicInteger ID_GENERATOR = new AtomicInteger(count);
+		int ma = ID_GENERATOR.incrementAndGet();
+		String convert = String.format("%2d", ma).replaceAll(" ", "0"); 
+		while(sanphamDao.getSanPhamTheoMa(hopDong.getMaHD()) != null) {
+			ma++;
+			convert = String.format("%2d", ma).replaceAll(" ", "0");
+		}
+		convert = String.format("%2d", ma).replaceAll(" ", "0");
+		this.maSP = hopDong.getMaHD() + convert;
     }
 
     public String getTenSP() {

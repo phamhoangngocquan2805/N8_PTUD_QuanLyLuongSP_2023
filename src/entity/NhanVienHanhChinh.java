@@ -6,17 +6,18 @@ package entity;
 
 import java.util.Objects;
 import java.time.LocalDateTime;
+import java.sql.Date;
 
 public class NhanVienHanhChinh
 {
     private String maNV;
     private String hoTen;
     private boolean phai;
-    private LocalDateTime ngaySinh;
+    private Date ngaySinh;
     private String soDT;
     private String diaChi;
     private boolean tinhTrang;
-    private LocalDateTime ngayVaoLam;
+    private Date ngayVaoLam;
     private String hinhAnh;
     private double heSoLuong;
     private double luongCoBan;
@@ -51,11 +52,11 @@ public class NhanVienHanhChinh
         this.phai = phai;
     }
     
-    public LocalDateTime getNgaySinh() {
+    public Date getNgaySinh() {
         return this.ngaySinh;
     }
     
-    public void setNgaySinh(final LocalDateTime ngaySinh) {
+    public void setNgaySinh(final Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
     
@@ -83,11 +84,11 @@ public class NhanVienHanhChinh
         this.tinhTrang = tinhTrang;
     }
     
-    public LocalDateTime getNgayVaoLam() {
+    public Date getNgayVaoLam() {
         return this.ngayVaoLam;
     }
     
-    public void setNgayVaoLam(final LocalDateTime ngayVaoLam) {
+    public void setNgayVaoLam(final Date ngayVaoLam) {
         this.ngayVaoLam = ngayVaoLam;
     }
     
@@ -163,7 +164,7 @@ public class NhanVienHanhChinh
         this.phongBan = phongBan;
     }
     
-    public NhanVienHanhChinh(final String maNV, final String hoTen, final boolean phai, final LocalDateTime ngaySinh, final String soDT, final String diaChi, final boolean tinhTrang, final LocalDateTime ngayVaoLam, final String hinhAnh, final double heSoLuong, final double luongCoBan, final String chucVu, final String email, final double tienPhuCapTheoNgay, final double tienChuyenCan, final String ghiChu, final PhongBan phongBan) {
+    public NhanVienHanhChinh(final String maNV, final String hoTen, final boolean phai, final Date ngaySinh, final String soDT, final String diaChi, final boolean tinhTrang, final Date ngayVaoLam, final String hinhAnh, final double heSoLuong, final double luongCoBan, final String chucVu, final String email, final double tienPhuCapTheoNgay, final double tienChuyenCan, final String ghiChu, final PhongBan phongBan) {
         this.maNV = maNV;
         this.hoTen = hoTen;
         this.phai = phai;

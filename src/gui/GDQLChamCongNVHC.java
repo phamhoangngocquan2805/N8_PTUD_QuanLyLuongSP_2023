@@ -4,17 +4,40 @@
  */
 package gui;
 
+
+import dao.BangChamCongNhanVien_DAO;
+import dao.NhanVienHanhChinh_DAO;
+import entity.BangChamCongNhanVien;
+import entity.NhanVienHanhChinh;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author acer
+ * @author Ngọc Quân
  */
 public class GDQLChamCongNVHC extends javax.swing.JPanel {
+
+    private NhanVienHanhChinh_DAO nvhc_DAO;
+    private BangChamCongNhanVien_DAO bcc_DAO;
+    private DefaultTableModel modelDSNhanVien;
+    private DefaultTableModel modelDSChamCong;
 
     /**
      * Creates new form GDQLChamCongNVHC
      */
     public GDQLChamCongNVHC() {
         initComponents();
+
+        String[] header_NhanVien = {"STT", "Chọn", "Mã nhân viên", "Tên nhânviên", "Phòng ban", "Chức vụ"};
+        modelDSNhanVien = new DefaultTableModel(header_NhanVien, 0);
+        tableDSNhanVien.setModel(modelDSNhanVien);
+        
+        String [] header_ChamCong = {"STT", "Mã nhân viên", "Tên nhân viên", "Ngày chấm", "Giờ vào", "Giờ ra", "Ca làm việc"};
+        modelDSChamCong = new DefaultTableModel(header_ChamCong, 0);
+        tableChamCong.setModel(modelDSChamCong);
+        
+        loadDSNhanVienLenUI();
+        loadDSChamCongNVLenUI();
     }
 
     /**
@@ -177,14 +200,14 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
         tableDSNhanVien.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 0, 0), new java.awt.Color(153, 153, 153)));
         tableDSNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null,  new Boolean(false), null, null, null, null},
+                {null,  new Boolean(false), null, null, null, null},
+                {null,  new Boolean(false), null, null, null, null},
+                {null,  new Boolean(false), null, null, null, null},
+                {null,  new Boolean(false), null, null, null, null},
+                {null,  new Boolean(false), null, null, null, null},
                 {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
+                {null,  new Boolean(false), null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
@@ -197,7 +220,7 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
                 java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, true, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -435,4 +458,45 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
     private javax.swing.JTable tableChamCong;
     private javax.swing.JTable tableDSNhanVien;
     // End of variables declaration//GEN-END:variables
+
+    private void clearTableNhanVien() {
+        while (tableDSNhanVien.getRowCount() > 0) {
+            modelDSNhanVien.removeRow(0);
+        }
+    }
+    
+    private void clearTableCC() {
+        while (tableChamCong.getRowCount() > 0) {
+            modelDSChamCong.removeRow(0);
+        }
+    }
+    
+
+//    load danh sách nhân viên còn làm lên UI
+    private void loadDSNhanVienLenUI() {
+        clearTableNhanVien();
+        int stt = 1;
+        nvhc_DAO = new NhanVienHanhChinh_DAO();
+        for (NhanVienHanhChinh nv : nvhc_DAO.getNhanVienByTinhTrang(true)) {
+            modelDSNhanVien.addRow(new Object[] {
+                stt, Boolean.class, nv.getMaNV(), nv.getHoTen(), nv.getPhongBan().getTenPB(), nv.getChucVu()
+            });
+            stt++;
+        }
+        
+    }
+    
+//    load danh sách chấm công lên UI
+    private void loadDSChamCongNVLenUI() {
+        clearTableCC();
+        int stt = 1;
+        bcc_DAO = new BangChamCongNhanVien_DAO();
+        for (BangChamCongNhanVien bcc : bcc_DAO.getAllBangChamCongNhanVien()) {
+            modelDSChamCong.addRow(new Object[] {
+                stt, bcc.getNv().getMaNV(), bcc.getNv().getHoTen(), bcc.getNgayChamCong(), bcc.getGioVao(), bcc.getGioRa(), bcc.getCaLamViec()
+            });
+            stt++;
+        }
+        
+    }
 }
