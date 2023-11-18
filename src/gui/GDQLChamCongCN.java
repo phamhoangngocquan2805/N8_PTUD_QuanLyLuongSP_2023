@@ -1032,12 +1032,12 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                                 if (Integer.valueOf(modelKTCC.getValueAt(row, 7).toString()) > 0) {
                                     if (Integer.valueOf(modelKTCC.getValueAt(row, 7).toString()) > Integer.valueOf(modelKTCC.getValueAt(row, 4).toString())) {
                                         lbThongBao.setText("Số lượng HT lớn hơn số lượng còn.");
-                                        tableDanhSachPC.editCellAt(row, 7);
+//                                        tableDanhSachPC.editCellAt(row, 7);
                                         tableDanhSachPC.changeSelection(row, 7, false, false);
                                     }
                                 } else {
                                     lbThongBao.setText("Số lượng HT không hợp lệ.");
-                                    tableDanhSachPC.editCellAt(row, 7);
+//                                    tableDanhSachPC.editCellAt(row, 7);
                                     tableDanhSachPC.changeSelection(row, 7, false, false);
                                 }
                             }
@@ -1441,7 +1441,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
 
         if (stt == 1) {
             lbThongBao.setText("Chưa bắt đầu chấm công trong ngày.");
-//            addListPC();
+            addListPC();
             return false;
         }
         return true;
@@ -1476,23 +1476,23 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
 
         TableColumnModel columnModel = tableChamCong.getColumnModel();
 
-        // Ẩn cột ở vị trí cột thứ 10 (Mã PC)
-        int columnIndexToHide = 10;
-        TableColumn column = columnModel.getColumn(columnIndexToHide);
-        column.setMinWidth(0);
-        column.setMaxWidth(0);
-        column.setWidth(0);
-        column.setPreferredWidth(0);
-        column.setResizable(false);
-
-        // Ẩn cột ở vị trí cột thứ 11 (Mã CC)
-        int columnIndexToHide9 = 11;
-        TableColumn column9 = columnModel.getColumn(columnIndexToHide9);
-        column9.setMinWidth(0);
-        column9.setMaxWidth(0);
-        column9.setWidth(0);
-        column9.setPreferredWidth(0);
-        column9.setResizable(false);
+//        // Ẩn cột ở vị trí cột thứ 10 (Mã PC)
+//        int columnIndexToHide = 10;
+//        TableColumn column = columnModel.getColumn(columnIndexToHide);
+//        column.setMinWidth(0);
+//        column.setMaxWidth(0);
+//        column.setWidth(0);
+//        column.setPreferredWidth(0);
+//        column.setResizable(false);
+//
+//        // Ẩn cột ở vị trí cột thứ 11 (Mã CC)
+//        int columnIndexToHide9 = 11;
+//        TableColumn column9 = columnModel.getColumn(columnIndexToHide9);
+//        column9.setMinWidth(0);
+//        column9.setMaxWidth(0);
+//        column9.setWidth(0);
+//        column9.setPreferredWidth(0);
+//        column9.setResizable(false);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatDauCC;

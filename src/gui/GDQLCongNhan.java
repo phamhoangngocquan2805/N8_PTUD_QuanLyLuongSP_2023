@@ -896,7 +896,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
     }//GEN-LAST:event_txtGhiChuActionPerformed
 
     private void btnBatDauCC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatDauCC1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnBatDauCC1ActionPerformed
 
     private void btnBatDauCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatDauCCActionPerformed
