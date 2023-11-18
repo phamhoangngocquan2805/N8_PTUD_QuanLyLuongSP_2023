@@ -6,6 +6,7 @@ package entity;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.sql.Date;
 
 /**
  *
@@ -15,17 +16,23 @@ public class CongNhan {
     private String maCN;
     private String hoTen;
     private boolean phai;
-    private LocalDateTime ngaySinh;
+    private Date ngaySinh;
     private String soDT;
     private String diaChi;
     private boolean tinhTrang;
-    private LocalDateTime ngayVaoLam;
+    private Date ngayVaoLam;
     private byte[] hinhAnh;
     private String tayNghe;
     private String kinhNghiem;
     private double tienPhuCapTheoNgay;
     private double tienChuyenCan;
-
+    private String ghiChu;
+    public String getGhiChu(){
+        return ghiChu;
+    }
+    public void setGhiChu(String ghiChu){
+        this.ghiChu = ghiChu;
+    }
     public String getMaCN() {
         return maCN;
     }
@@ -50,11 +57,11 @@ public class CongNhan {
         this.phai = phai;
     }
 
-    public LocalDateTime getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(LocalDateTime ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
@@ -82,11 +89,11 @@ public class CongNhan {
         this.tinhTrang = tinhTrang;
     }
 
-    public LocalDateTime getNgayVaoLam() {
+    public Date getNgayVaoLam() {
         return ngayVaoLam;
     }
 
-    public void setNgayVaoLam(LocalDateTime ngayVaoLam) {
+    public void setNgayVaoLam(Date ngayVaoLam) {
         this.ngayVaoLam = ngayVaoLam;
     }
 
@@ -129,8 +136,13 @@ public class CongNhan {
     public void setTienChuyenCan(double tienChuyenCan) {
         this.tienChuyenCan = tienChuyenCan;
     }
-
-    public CongNhan(String maCN, String hoTen, boolean phai, LocalDateTime ngaySinh, String soDT, String diaChi, boolean tinhTrang, LocalDateTime ngayVaoLam, byte[] hinhAnh, String tayNghe, String kinhNghiem, double tienPhuCapTheoNgay, double tienChuyenCan) {
+    public boolean getPhai(){
+        return phai;
+    }
+    public boolean getTinhTrang(){
+        return tinhTrang;
+    }
+    public CongNhan(String maCN, String hoTen, boolean phai, Date ngaySinh, String soDT, String diaChi, boolean tinhTrang, Date ngayVaoLam, byte[] hinhAnh, String tayNghe, String kinhNghiem, double tienPhuCapTheoNgay, double tienChuyenCan,String ghiChu) {
         this.maCN = maCN;
         this.hoTen = hoTen;
         this.phai = phai;
@@ -144,6 +156,7 @@ public class CongNhan {
         this.kinhNghiem = kinhNghiem;
         this.tienPhuCapTheoNgay = tienPhuCapTheoNgay;
         this.tienChuyenCan = tienChuyenCan;
+        this.ghiChu = ghiChu;
     }
 
     public CongNhan(String maCN) {
@@ -153,7 +166,7 @@ public class CongNhan {
     public CongNhan() {
     }
 
-    public CongNhan(String maCN, String hoTen, boolean phai, LocalDateTime ngaySinh, String soDT, String diaChi, boolean tinhTrang, LocalDateTime ngayVaoLam, double tienPhuCapTheoNgay, double tienChuyenCan) {
+    public CongNhan(String maCN, String hoTen, boolean phai, Date ngaySinh, String soDT, String diaChi, boolean tinhTrang, Date ngayVaoLam, double tienPhuCapTheoNgay, double tienChuyenCan) {
         this.maCN = maCN;
         this.hoTen = hoTen;
         this.phai = phai;
