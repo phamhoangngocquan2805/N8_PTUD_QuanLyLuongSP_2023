@@ -45,8 +45,9 @@ public class CongNhan_DAO {
                 double tienPhuCapTheoNgay = rs.getFloat(12);
                 double tienChuyenCan = rs.getFloat(13);
                 String ghiChu = rs.getString(14);
+//                String ghiChu = rs.getString(15);
 
-                CongNhan cn = new CongNhan(maCN, tenCN, true, ngaySinh, soDT, diaChi, true, ngayVaoLam, hinhAnh, tayNghe, kinhNghiem, tienPhuCapTheoNgay, tienChuyenCan, ghiChu);
+                CongNhan cn = new CongNhan(maCN, tenCN, true, ngaySinh, soDT, diaChi, true, ngayVaoLam, hinhAnh, tayNghe, kinhNghiem, tienPhuCapTheoNgay, tienChuyenCan);
                 dsCongNhan.add(cn);
             }
         } catch (SQLException e) {
