@@ -17,6 +17,7 @@ import entity.NhanVienHanhChinh;
 import entity.PhongBan;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -503,7 +504,7 @@ public class NhanVienHanhChinh_DAO {
     }
 
     // kiểm tra dữ liệu nhập vào của nhân viên
-    public boolean validDataNhanVien(JTextField txtHoTen, JTextField txtSDT, JTextField txtDiaChi, JTextField txtEmail) {
+    public boolean validDataNhanVien(JTextField txtHoTen, JTextField txtSDT, JTextField txtDiaChi, JTextField txtEmail, JComboBox cbxPhongBan, JComboBox cbxChucVu) {
         String hoTen = txtHoTen.getText().trim();
         String soDT = txtSDT.getText().trim();
         String diaChi = txtDiaChi.getText().trim();
