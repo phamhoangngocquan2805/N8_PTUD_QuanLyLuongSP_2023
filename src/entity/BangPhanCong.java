@@ -15,7 +15,7 @@ public class BangPhanCong {
     private int soLuong;
     private CongDoan congDoan;
     private CongNhan congNhan;
-    
+
     public String getMaBangPC() {
         return maBangPC;
     }
