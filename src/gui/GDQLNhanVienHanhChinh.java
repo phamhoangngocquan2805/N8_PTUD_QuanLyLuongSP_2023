@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Ngọc Quân
+ * @author Ngọc Quân dev
  */
 public class GDQLNhanVienHanhChinh extends javax.swing.JPanel implements MouseListener {
 
