@@ -6,19 +6,20 @@ package entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.sql.Date;
 import java.util.Objects;
 
 /**
  *
- * @author vuhai
+ * @author tho
  */
 public class CongDoan {
     private String maCD;
     private String tenCD;
     private int soLuong;
     private double donGia;
-    private LocalDateTime ngayBatDau;
-    private LocalDateTime ngayKetThuc;
+    private Date ngayBatDau;
+    private  Date ngayKetThuc;
     private String tenCDTruoc;
     private int trangThai;
     private SanPham sanPham;
@@ -55,19 +56,19 @@ public class CongDoan {
         this.donGia = donGia;
     }
 
-    public LocalDateTime getNgayBatDau() {
+    public Date getNgayBatDau() {
         return ngayBatDau;
     }
 
-    public void setNgayBatDau(LocalDateTime ngayBatDau) {
+    public void setNgayBatDau(Date ngayBatDau) {
         this.ngayBatDau = ngayBatDau;
     }
 
-    public LocalDateTime getNgayKetThuc() {
+    public Date getNgayKetThuc() {
         return ngayKetThuc;
     }
 
-    public void setNgayKetThuc(LocalDateTime ngayKetThuc) {
+    public void setNgayKetThuc(Date ngayKetThuc) {
         this.ngayKetThuc = ngayKetThuc;
     }
 
@@ -95,7 +96,7 @@ public class CongDoan {
         this.sanPham = sanPham;
     }
 
-    public CongDoan(String maCD, String tenCD, int soLuong, double donGia, LocalDateTime ngayBatDau, LocalDateTime ngayKetThuc, String tenCDTruoc, int trangThai, SanPham sanPham) {
+    public CongDoan(String maCD, String tenCD, int soLuong, double donGia, Date ngayBatDau, Date ngayKetThuc, String tenCDTruoc, int trangThai, SanPham sanPham) {
         this.maCD = maCD;
         this.tenCD = tenCD;
         this.soLuong = soLuong;

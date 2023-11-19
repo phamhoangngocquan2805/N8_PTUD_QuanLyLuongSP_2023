@@ -61,8 +61,8 @@ public class BangChamCongCongNhan_DAO {
 		try {
 			stm = con.prepareStatement("insert into BangChamCongCongNhan values(?, ?, ?, ?, ?, ?)");
 			stm.setString(1, bcc.getMaBangChamCong());
-                        stm.setString(2, bcc.getGioVaoString());
-                        stm.setString(3, bcc.getGioRaString());
+                        stm.setString(2, bcc.getGioVao().toString());
+                        stm.setString(3, bcc.getGioRa().toString());
                         stm.setString(4, bcc.getNgayChamCongString());
                         stm.setString(5, bcc.getCaLamViec());
                         stm.setString(6, bcc.getCn().getMaCN());
@@ -88,7 +88,7 @@ public class BangChamCongCongNhan_DAO {
 		PreparedStatement stm = null;
 		int n = 0;
 		try {
-			stm = con.prepareStatement("update BangChamCongCongNhan set gioVao = ?, gioRa = ?, ngayChamCong = ?, caLamViec = ? where maBangChamCong = ?");
+			stm = con.prepareStatement("update BangChamCongCongNhan set gioVao = ?, gioRa = ?, ngayChamCong = ?, caLamViec = ?,maCN = ? where maBangChamCong = ?");
 			stm.setString(6, bcc.getMaBangChamCong());
                         stm.setString(1, bcc.getGioVaoString());
                         stm.setString(2, bcc.getGioRaString());
@@ -121,4 +121,34 @@ public class BangChamCongCongNhan_DAO {
             }
             return null;
         }
+        
+        public BangChamCongCongNhan getBangChamCongMoiNhat()
+	{
+		BangChamCongCongNhan bcc = new BangChamCongCongNhan();
+		try {
+			ConnectDB.getInstance();
+			Connection con = ConnectDB.getConnection();
+			String sql = "SELECT TOP 1 * FROM BangChamCongCongNhan ORDER BY maBangChamCong DESC";
+			Statement stm = con.createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			while(rs.next())
+			{
+				String maBangCC = rs.getString(1);
+                                LocalTime gioVao = rs.getTime(2).toLocalTime();
+                                LocalTime gioRa = rs.getTime(3).toLocalTime();
+                                LocalDateTime ngayChamCong = rs.getTimestamp(4).toLocalDateTime();
+                                String caLamViec = rs.getString(5);
+                                CongNhan_DAO cndao = new CongNhan_DAO();
+                                CongNhan cn = cndao.getCongNhanTheoMa(rs.getString(6));
+
+				bcc = new BangChamCongCongNhan(maBangCC, gioVao, gioRa, ngayChamCong, caLamViec, cn);
+
+				
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return bcc;
+	}
 }
