@@ -4,10 +4,8 @@
  */
 package entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 /**
@@ -110,24 +108,18 @@ public class BangChamCongCongNhan {
 
     @Override
     public String toString() {
-        return "BangChamCongCongNhan{" + "maBangChamCong=" + maBangChamCong + ", gioVao=" + gioVao + ", gioRa=" + gioRa + ", ngayChamCong=" + ngayChamCong + ", caLamViec=" + caLamViec + ", cn="  + '}';
+        return "BangChamCongCongNhan{" + "maBangChamCong=" + maBangChamCong + ", gioVao=" + gioVao + ", gioRa=" + gioRa + ", ngayChamCong=" + ngayChamCong + ", caLamViec=" + caLamViec + ", cn=" + cn + '}';
     }
     public String get10char(String s) {
         return s.substring(0, 10);
     }
      public String getNgayChamCongString() {
-         LocalDate currentDate = this.ngayChamCong.toLocalDate();
-        // Format ngày tháng năm bằng DateTimeFormatter
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        String formattedDateNgayCC = currentDate.format(formatter);
-        return formattedDateNgayCC;
+        return get10char(this.ngayChamCong.toString());
     }
     public String getGioVaoString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        return this.gioVao.format(formatter);
+        return get10char(this.gioVao.toString());
     }
     public String getGioRaString() {
-       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        return this.gioRa.format(formatter);
+        return get10char(this.gioRa.toString());
     }
 }

@@ -6,7 +6,6 @@ package main;
 
 
 import gui.GDChinh;
-import gui.GDLogin;
 import java.sql.SQLException;
 
 /**
