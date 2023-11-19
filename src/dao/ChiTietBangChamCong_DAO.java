@@ -60,9 +60,9 @@ public class ChiTietBangChamCong_DAO {
 		int n = 0;
 		try {
 			stm = con.prepareStatement("insert into ChiTietBangChamCong values(?, ?, ?)");
-                        stm.setInt(1, bcc.getSoLuong());
-                        stm.setString(2, bcc.getBangPC().getMaBangPC());
-                        stm.setString(3, bcc.getBangCC().getMaBangChamCong());
+                        stm.setInt(2, bcc.getSoLuong());
+                        stm.setString(3, bcc.getBangPC().getMaBangPC());
+                        stm.setString(4, bcc.getBangCC().getMaBangChamCong());
 			n = stm.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -115,29 +115,4 @@ public class ChiTietBangChamCong_DAO {
             }
             return null;
         }
-        public boolean xoaCTCC(String maPC, String maCC)
-	{
-		ConnectDB.getInstance();
-		Connection con = ConnectDB.getConnection();
-		PreparedStatement stm = null;
-		int n = 0;
-		try {
-			stm = con.prepareStatement("delete ChiTietBangChamCong where maBangPC = ? and maBangChamCong = ?");
-			stm.setString(1, maPC);
-                        stm.setString(2, maCC);
-			n = stm.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			// TODO: handle finally clause
-			try {
-				stm.close();
-			} catch (SQLException e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
-		}
-		return n > 0;
-	}
 }

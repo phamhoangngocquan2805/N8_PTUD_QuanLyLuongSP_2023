@@ -86,7 +86,7 @@ public class BangPhanCong_DAO {
 		PreparedStatement stm = null;
 		int n = 0;
 		try {
-			stm = con.prepareStatement("update BangPhanCong set soLuong = ?, maCD = ?, maCN = ? where maBangPC = ?");
+			stm = con.prepareStatement("update BangPhanCong set soLuong = ?, maCD = ?, maCN = ? where maBangPhanCong = ?");
 			stm.setString(4, bpc.getMaBangPC());
                         stm.setInt(1, bpc.getSoLuong());
                         stm.setString(2, bpc.getCongDoan().getMaCD());
@@ -117,57 +117,4 @@ public class BangPhanCong_DAO {
             }
             return null;
         }
-        
-        public BangPhanCong getBangPhanCongMoiNhat()
-	{
-		BangPhanCong bpc = new BangPhanCong();
-		try {
-			ConnectDB.getInstance();
-			Connection con = ConnectDB.getConnection();
-			String sql = "SELECT TOP 1 * FROM BangPhanCong ORDER BY maBangPC DESC;";
-			Statement stm = con.createStatement();
-			ResultSet rs = stm.executeQuery(sql);
-			while(rs.next())
-			{
-				String maBangPhanCong = rs.getString(1);
-                                int soLuong = rs.getInt(2);
-                                
-                                CongDoan_DAO cddao = new CongDoan_DAO();
-                                CongDoan cd = cddao.getCongDoanTheoMa(rs.getString(3));
-                                
-                                CongNhan_DAO cndao = new CongNhan_DAO();
-                                CongNhan cn = cndao.getCongNhanTheoMa(rs.getString(4));
-
-				bpc = new BangPhanCong(maBangPhanCong, soLuong, cd, cn);
-			}
-		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		return bpc;
-	}
-        public boolean xoaBangPhanCong(String maBangPC)
-	{
-		ConnectDB.getInstance();
-		Connection con = ConnectDB.getConnection();
-		PreparedStatement stm = null;
-		int n = 0;
-		try {
-			stm = con.prepareStatement("delete BangPhanCong where maBangPC = ?");
-			stm.setString(1, maBangPC);
-			n = stm.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			// TODO: handle finally clause
-			try {
-				stm.close();
-			} catch (SQLException e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
-		}
-		return n > 0;
-	}
 }
