@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Ngọc Quân dev
+ * @author Ngọc Quân
  */
 public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
 

@@ -47,7 +47,7 @@ public class CongNhan_DAO {
                 String ghiChu = rs.getString(14);
 //                String ghiChu = rs.getString(15);
 
-                CongNhan cn = new CongNhan(maCN, tenCN, true, ngaySinh, soDT, diaChi, true, ngayVaoLam, hinhAnh, tayNghe, kinhNghiem, tienPhuCapTheoNgay, tienChuyenCan);
+                CongNhan cn = new CongNhan(maCN, tenCN, true, ngaySinh, soDT, diaChi, true, ngayVaoLam, hinhAnh, tayNghe, kinhNghiem, tienPhuCapTheoNgay, tienChuyenCan, ghiChu);
                 dsCongNhan.add(cn);
             }
         } catch (SQLException e) {
