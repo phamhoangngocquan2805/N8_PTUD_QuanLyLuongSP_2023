@@ -9,8 +9,6 @@ import dao.PhongBan_DAO;
 import entity.NhanVienHanhChinh;
 import entity.PhongBan;
 import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -23,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Ngọc Quân dev
+ * @author Ngọc Quân
  */
 public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
 
@@ -39,7 +37,6 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
      * Creates new form GDQLNhanVienHanhChinh
      */
     public GDQLNhanVienHanhChinh() {
-
         phongBanDAO = new PhongBan_DAO();
         nvhcDAO = new NhanVienHanhChinh_DAO();
         dfTien = new DecimalFormat();
@@ -50,6 +47,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
         tableNhanVien.setModel(modelNhanVien);
         loadDSNhanVienLenUI();
         loadDSPhongBanLenUI();
+
     }
 
     /**
@@ -963,6 +961,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
                     cbxChucVu.setEnabled(true);
                     cbxHSLuong.setEnabled(true);
                     txtGhiChu.setEditable(true);
+                    txtTienChuyenCan.setEditable(true);
 
                     txtHoTenNV.requestFocus();
                     btnCapNhat.setText("Hủy");
@@ -1061,6 +1060,68 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnLuuActionPerformed
 
+    private void cbxChucVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxChucVuActionPerformed
+        Object o = evt.getSource();
+        if (o.equals(cbxChucVu)) {
+            try {
+                String chucVu = cbxChucVu.getSelectedItem().toString();
+                switch (chucVu) {
+                    case "Quản đốc":
+                        cbxHSLuong.removeAllItems();
+                        cbxHSLuong.addItem("4.0");
+                        cbxHSLuong.addItem("4.1");
+                        cbxHSLuong.addItem("4.2");
+                        cbxHSLuong.addItem("4.3");
+                        cbxHSLuong.addItem("4.4");
+                        cbxHSLuong.addItem("4.5");
+                        txtTienPhuCapTheoNgay.setText(dfTien.format(300000));
+                        txtTienChuyenCan.setText(dfTien.format(1000000));
+                        break;
+                    case "Trưởng phòng nhân sự":
+                        cbxHSLuong.removeAllItems();
+                        cbxHSLuong.addItem("3.0");
+                        cbxHSLuong.addItem("3.1");
+                        cbxHSLuong.addItem("3.2");
+                        cbxHSLuong.addItem("3.3");
+                        cbxHSLuong.addItem("3.4");
+                        txtTienPhuCapTheoNgay.setText(dfTien.format(200000));
+                        txtTienChuyenCan.setText(dfTien.format(700000));
+                        break;
+                    case "Trưởng phòng kế toán":
+                        cbxHSLuong.removeAllItems();
+                        cbxHSLuong.addItem("3.5");
+                        cbxHSLuong.addItem("3.6");
+                        cbxHSLuong.addItem("3.7");
+                        cbxHSLuong.addItem("3.8");
+                        cbxHSLuong.addItem("3.9");
+                        txtTienPhuCapTheoNgay.setText(dfTien.format(200000));
+                        txtTienChuyenCan.setText(dfTien.format(700000));
+                        break;
+                    case "Nhân viên":
+                        cbxHSLuong.removeAllItems();
+                        cbxHSLuong.addItem("2.2");
+                        cbxHSLuong.addItem("2.3");
+                        cbxHSLuong.addItem("2.4");
+                        cbxHSLuong.addItem("2.5");
+                        cbxHSLuong.addItem("2.6");
+                        cbxHSLuong.addItem("2.7");
+                        cbxHSLuong.addItem("2.8");
+                        txtTienPhuCapTheoNgay.setText(dfTien.format(80000));
+                        txtTienChuyenCan.setText(dfTien.format(500000));
+                        break;
+                    default:
+                        cbxHSLuong.removeAllItems();
+                        cbxHSLuong.addItem("");
+                        txtTienPhuCapTheoNgay.setText("");
+                        txtTienChuyenCan.setText("");
+                        break;
+                }
+            } catch (Exception e) {
+            }
+
+        }
+    }//GEN-LAST:event_cbxChucVuActionPerformed
+
     private void cbxHSLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxHSLuongActionPerformed
         Object o = evt.getSource();
         if (o.equals(cbxHSLuong)) {
@@ -1131,70 +1192,12 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
         fillDuLieuVaoTextField();
     }//GEN-LAST:event_tableNhanVienMouseClicked
 
-    private void cbxChucVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxChucVuActionPerformed
-        Object o = evt.getSource();
-        if (o.equals(cbxChucVu)) {
-            try {
-                String chucVu = cbxChucVu.getSelectedItem().toString();
-                switch (chucVu) {
-                    case "Quản đốc":
-                        cbxHSLuong.removeAllItems();
-                        cbxHSLuong.addItem("4.0");
-                        cbxHSLuong.addItem("4.1");
-                        cbxHSLuong.addItem("4.2");
-                        cbxHSLuong.addItem("4.3");
-                        cbxHSLuong.addItem("4.4");
-                        cbxHSLuong.addItem("4.5");
-                        txtTienPhuCapTheoNgay.setText(dfTien.format(300000));
-                        txtTienChuyenCan.setText(dfTien.format(1000000));
-                        break;
-                    case "Trưởng phòng nhân sự":
-                        cbxHSLuong.removeAllItems();
-                        cbxHSLuong.addItem("3.0");
-                        cbxHSLuong.addItem("3.1");
-                        cbxHSLuong.addItem("3.2");
-                        cbxHSLuong.addItem("3.3");
-                        cbxHSLuong.addItem("3.4");
-                        txtTienPhuCapTheoNgay.setText(dfTien.format(200000));
-                        txtTienChuyenCan.setText(dfTien.format(700000));
-                        break;
-                    case "Trưởng phòng kế toán":
-                        cbxHSLuong.removeAllItems();
-                        cbxHSLuong.addItem("3.5");
-                        cbxHSLuong.addItem("3.6");
-                        cbxHSLuong.addItem("3.7");
-                        cbxHSLuong.addItem("3.8");
-                        cbxHSLuong.addItem("3.9");
-                        txtTienPhuCapTheoNgay.setText(dfTien.format(200000));
-                        txtTienChuyenCan.setText(dfTien.format(700000));
-                        break;
-                    case "Nhân viên":
-                        cbxHSLuong.removeAllItems();
-                        cbxHSLuong.addItem("2.2");
-                        cbxHSLuong.addItem("2.3");
-                        cbxHSLuong.addItem("2.4");
-                        cbxHSLuong.addItem("2.5");
-                        cbxHSLuong.addItem("2.6");
-                        cbxHSLuong.addItem("2.7");
-                        cbxHSLuong.addItem("2.8");
-                        txtTienPhuCapTheoNgay.setText(dfTien.format(80000));
-                        txtTienChuyenCan.setText(dfTien.format(500000));
-                        break;
-                    default:
-                        cbxHSLuong.removeAllItems();
-                        cbxHSLuong.addItem("");
-                        txtTienPhuCapTheoNgay.setText("");
-                        txtTienChuyenCan.setText("");
-                        break;
-                }
-            } catch (Exception e) {
-            }
-
-        }
-    }//GEN-LAST:event_cbxChucVuActionPerformed
+    private void txtTimTheoTTNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimTheoTTNVActionPerformed
+        btnTimKiem.doClick();
+    }//GEN-LAST:event_txtTimTheoTTNVActionPerformed
 
     private void cbxPhongBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPhongBanActionPerformed
-        //        String phongBan = cbxPhongBan.getSelectedItem().toString();
+//        String phongBan = cbxPhongBan.getSelectedItem().toString();
 //        if (phongBan.equalsIgnoreCase("phòng nhân sự")) {
 //            cbxChucVu.removeAllItems();
 //            cbxChucVu.addItem("Chọn chức vụ");
@@ -1217,9 +1220,6 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
 //        }
     }//GEN-LAST:event_cbxPhongBanActionPerformed
 
-    private void txtTimTheoTTNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimTheoTTNVActionPerformed
-        btnTimKiem.doClick();
-    }//GEN-LAST:event_txtTimTheoTTNVActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
@@ -1283,33 +1283,33 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
     private javax.swing.JTextField txtTimTheoTTNV;
     // End of variables declaration//GEN-END:variables
 
-    //    đổ dữ liệu vào textfield khi chọn trong table
+//    đổ dữ liệu vào textfield khi chọn trong table
     private void fillDuLieuVaoTextField() {
-        int row = tableNhanVien.getSelectedRow();
-        txtMaNV.setText(modelNhanVien.getValueAt(row, 1).toString());
-        txtHoTenNV.setText(modelNhanVien.getValueAt(row, 2).toString());
-        String gioiTinh = modelNhanVien.getValueAt(row, 3).toString();
-        if (gioiTinh.equals("Nam")) {
-            radNam.setSelected(true);
-        } else {
-            radNu.setSelected(true);
-        }
-        dateNgaySinh.setDate((Date) modelNhanVien.getValueAt(row, 4));
-        txtSDT.setText(modelNhanVien.getValueAt(row, 5).toString());
-        txtDiaChi.setText(modelNhanVien.getValueAt(row, 6).toString());
-        cbxTinhTrang.setSelectedItem(modelNhanVien.getValueAt(row, 7).toString());
-        dateNgayVaoLam.setDate((Date) modelNhanVien.getValueAt(row, 8));
-        cbxHSLuong.setSelectedItem(modelNhanVien.getValueAt(row, 9).toString());
-        txtLuongCB.setText(modelNhanVien.getValueAt(row, 10).toString());
-        cbxChucVu.setSelectedItem(modelNhanVien.getValueAt(row, 11).toString());
-        txtEmail.setText(modelNhanVien.getValueAt(row, 12).toString());
-        txtTienPhuCapTheoNgay.setText(modelNhanVien.getValueAt(row, 13).toString());
-        txtTienChuyenCan.setText(modelNhanVien.getValueAt(row, 14).toString());
-        cbxPhongBan.setSelectedItem(modelNhanVien.getValueAt(row, 15).toString());
-        txtGhiChu.setText(modelNhanVien.getValueAt(row, 16).toString());
-        for (NhanVienHanhChinh nvhc : nvhcDAO.getNhanVienByMaNV(modelNhanVien.getValueAt(row, 1).toString())) {
-            lblHinhNV.setIcon(new ImageIcon(getClass().getResource(nvhc.getHinhAnh())));
-        }
+            int row = tableNhanVien.getSelectedRow();
+            txtMaNV.setText(modelNhanVien.getValueAt(row, 1).toString());
+            txtHoTenNV.setText(modelNhanVien.getValueAt(row, 2).toString());
+            String gioiTinh = modelNhanVien.getValueAt(row, 3).toString();
+            if (gioiTinh.equals("Nam")) {
+                radNam.setSelected(true);
+            } else {
+                radNu.setSelected(true);
+            }
+            dateNgaySinh.setDate((Date) modelNhanVien.getValueAt(row, 4));
+            txtSDT.setText(modelNhanVien.getValueAt(row, 5).toString());
+            txtDiaChi.setText(modelNhanVien.getValueAt(row, 6).toString());
+            cbxTinhTrang.setSelectedItem(modelNhanVien.getValueAt(row, 7).toString());
+            dateNgayVaoLam.setDate((Date) modelNhanVien.getValueAt(row, 8));
+            cbxHSLuong.setSelectedItem(modelNhanVien.getValueAt(row, 9).toString());
+            txtLuongCB.setText(modelNhanVien.getValueAt(row, 10).toString());
+            cbxChucVu.setSelectedItem(modelNhanVien.getValueAt(row, 11).toString());
+            txtEmail.setText(modelNhanVien.getValueAt(row, 12).toString());
+            txtTienPhuCapTheoNgay.setText(modelNhanVien.getValueAt(row, 13).toString());
+            txtTienChuyenCan.setText(modelNhanVien.getValueAt(row, 14).toString());
+            cbxPhongBan.setSelectedItem(modelNhanVien.getValueAt(row, 15).toString());
+            txtGhiChu.setText(modelNhanVien.getValueAt(row, 16).toString());
+            for (NhanVienHanhChinh nvhc : nvhcDAO.getNhanVienByMaNV(modelNhanVien.getValueAt(row, 1).toString())) {
+                lblHinhNV.setIcon(new ImageIcon(getClass().getResource(nvhc.getHinhAnh())));
+            }
     }
 
 //    khóa textField sau khi thêm hoặc cập nhật thông tin
@@ -1365,7 +1365,6 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
 
 //    load tên phòng ban vào cbxPhongBan
     private void loadDSPhongBanLenUI() {
-        phongBanDAO = new PhongBan_DAO();
         ArrayList<PhongBan> dsPhongBan = phongBanDAO.getAllPhongBan();
         cbxPhongBan.addItem("Chọn phòng ban");
         for (PhongBan phongBan : dsPhongBan) {
@@ -1376,7 +1375,6 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
 //    load danh sách tất cả nhân viên lên tableNhanVien
     private void loadDSNhanVienLenUI() {
         clearTable();
-        nvhcDAO = new NhanVienHanhChinh_DAO();
         int stt = 1;
         for (NhanVienHanhChinh nvhc : nvhcDAO.getNhanVienByTinhTrang(true)) {
             String gioiTinh = "Nữ";

@@ -5,8 +5,8 @@
 package entity;
 
 import java.time.LocalDateTime;
-import java.sql.Date;
 import java.util.Objects;
+import java.sql.Date;
 
 /**
  *
@@ -26,7 +26,13 @@ public class CongNhan {
     private String kinhNghiem;
     private double tienPhuCapTheoNgay;
     private double tienChuyenCan;
-
+    private String ghiChu;
+    public String getGhiChu(){
+        return ghiChu;
+    }
+    public void setGhiChu(String ghiChu){
+        this.ghiChu = ghiChu;
+    }
     public String getMaCN() {
         return maCN;
     }
@@ -130,8 +136,13 @@ public class CongNhan {
     public void setTienChuyenCan(double tienChuyenCan) {
         this.tienChuyenCan = tienChuyenCan;
     }
-
-    public CongNhan(String maCN, String hoTen, boolean phai, Date ngaySinh, String soDT, String diaChi, boolean tinhTrang, Date ngayVaoLam, byte[] hinhAnh, String tayNghe, String kinhNghiem, double tienPhuCapTheoNgay, double tienChuyenCan) {
+    public boolean getPhai(){
+        return phai;
+    }
+    public boolean getTinhTrang(){
+        return tinhTrang;
+    }
+    public CongNhan(String maCN, String hoTen, boolean phai, Date ngaySinh, String soDT, String diaChi, boolean tinhTrang, Date ngayVaoLam, byte[] hinhAnh, String tayNghe, String kinhNghiem, double tienPhuCapTheoNgay, double tienChuyenCan,String ghiChu) {
         this.maCN = maCN;
         this.hoTen = hoTen;
         this.phai = phai;
@@ -145,6 +156,7 @@ public class CongNhan {
         this.kinhNghiem = kinhNghiem;
         this.tienPhuCapTheoNgay = tienPhuCapTheoNgay;
         this.tienChuyenCan = tienChuyenCan;
+        this.ghiChu = ghiChu;
     }
 
     public CongNhan(String maCN) {
@@ -154,7 +166,18 @@ public class CongNhan {
     public CongNhan() {
     }
 
- 
+    public CongNhan(String maCN, String hoTen, boolean phai, Date ngaySinh, String soDT, String diaChi, boolean tinhTrang, Date ngayVaoLam, double tienPhuCapTheoNgay, double tienChuyenCan) {
+        this.maCN = maCN;
+        this.hoTen = hoTen;
+        this.phai = phai;
+        this.ngaySinh = ngaySinh;
+        this.soDT = soDT;
+        this.diaChi = diaChi;
+        this.tinhTrang = tinhTrang;
+        this.ngayVaoLam = ngayVaoLam;
+        this.tienPhuCapTheoNgay = tienPhuCapTheoNgay;
+        this.tienChuyenCan = tienChuyenCan;
+    }
     
     
     @Override
