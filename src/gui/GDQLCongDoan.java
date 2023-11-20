@@ -784,7 +784,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                     } catch (SQLException ex) {
                         Logger.getLogger(GDQLCongDoan.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
+
                     btnThem.setEnabled(false);
                     btnXoa.setText("Hủy");
                 }
@@ -799,7 +799,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
     private void btnNhapLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapLaiActionPerformed
         // TODO add your handling code here:
         nhapLai();
-        
+
     }//GEN-LAST:event_btnNhapLaiActionPerformed
 
     //    làm mới các trường thông tin nhân viên
@@ -810,15 +810,15 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         cbbTenCDT.setSelectedItem("Chọn TCDT");
         cbbTrangThai.setSelectedItem("Chọn trạng thái ");
         txtTenCD.requestFocus();
-        cbbMaSP.setSelectedIndex(0);
-        txtTenSP.setText("");
-        txtSoLuong.setText("");
-        txtDonGia.setText("");
-        txtChatLieu.setText("");
-        txtSoCD.setText("");
-        txtThongTinSP.setText("");
-        txtDVT.setText("");
-        txtMaHD.setText("");
+//        cbbMaSP.setSelectedIndex(0);
+//        txtTenSP.setText("");
+//        txtSoLuong.setText("");
+//        txtDonGia.setText("");
+//        txtChatLieu.setText("");
+//        txtSoCD.setText("");
+//        txtThongTinSP.setText("");
+//        txtDVT.setText("");
+//        txtMaHD.setText("");
     }
 
     private void clearTable() {
@@ -830,7 +830,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
 
     private void tableDSCDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDSCDMouseClicked
         // TODO add your handling code here:
-        
+
         int row = tableDSCD.getSelectedRow();
         txtMaCD.setText(modelCD.getValueAt(row, 1).toString());
         txtTenCD.setText(modelCD.getValueAt(row, 2).toString());
@@ -840,10 +840,10 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         ngayKT.setDate((Date) modelCD.getValueAt(row, 6));
         cbbTenCDT.setSelectedItem(modelCD.getValueAt(row, 7).toString());
         cbbTrangThai.setSelectedItem(modelCD.getValueAt(row, 8).toString());
-        
-        String maSP = modelCD.getValueAt(row, 1).toString().substring(0,8);
-        SanPham sp = sanphamDao.getSanPhamTheoMa(maSP);
-        loadTextFielSanPham(sp);
+
+//        String maSP = modelCD.getValueAt(row, 1).toString().substring(0,8);
+//        SanPham sp = sanphamDao.getSanPhamTheoMa(maSP);
+//        loadTextFielSanPham(sp);
     }//GEN-LAST:event_tableDSCDMouseClicked
 
     private void cbbMaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbMaSPActionPerformed
@@ -887,16 +887,16 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         Object o = evt.getSource();
         if (o.equals(btnThem)) {
             if (btnThem.getText().equals("Thêm")) {
-                maCD();
+
                 nhapLai();
                 txtTenCD.setEditable(true);
                 txtSLCD.setEditable(true);
                 txtDonGiaCD.setEditable(true);
                 cbbTenCDT.setEnabled(true);
                 cbbTrangThai.setEnabled(true);
-                btnCapNhat.setText("Hủy");
+                btnThem.setText("Hủy");
                 btnLuu.setEnabled(true);
-                btnThem.setEnabled(false);
+                btnCapNhat.setEnabled(false);
             } else {
                 nhapLai();
                 txtTenCD.setEditable(true);
@@ -904,9 +904,9 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                 txtDonGiaCD.setEditable(true);
                 cbbTenCDT.setEnabled(true);
                 cbbTrangThai.setEnabled(true);
-                btnCapNhat.setText("Cập nhật");
+                btnThem.setText("Thêm");
                 btnLuu.setEnabled(true);
-                btnThem.setEnabled(false);
+                btnCapNhat.setEnabled(false);
             }
         }
     }//GEN-LAST:event_btnThemActionPerformed
@@ -932,11 +932,13 @@ public class GDQLCongDoan extends javax.swing.JPanel {
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here:
         Object o = evt.getSource();
-        if (btnThem.getText().equalsIgnoreCase("Thêm")) {
-            addCongDoan();
-        } else if (btnCapNhat.getText().equalsIgnoreCase("Hủy")) {
-            updateCongDoan();
-        } 
+        if (o.equals(btnLuu)) {
+            if (btnThem.getText().equalsIgnoreCase("Hủy")) {
+                addCongDoan();
+            } else if (btnCapNhat.getText().equalsIgnoreCase("Hủy")) {
+                updateCongDoan();
+            }
+        }
 
 
     }//GEN-LAST:event_btnLuuActionPerformed
@@ -959,7 +961,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
     public void addCongDoan() {
         String maCD = txtMaCD.getText().trim();
         String tenCD = txtTenCD.getText().trim();
-        int soLuongCD = Integer.parseInt(txtSoLuong.getText());
+        int soLuongCD = Integer.parseInt(txtSLCD.getText());
         double donGiaCD = Double.parseDouble(txtDonGiaCD.getText());
         Date ngayBD = new Date(this.ngayBD.getDate().getYear(), this.ngayBD.getDate().getMonth(), this.ngayBD.getDate().getDay());
         Date ngayKT = new Date(this.ngayKT.getDate().getYear(), this.ngayKT.getDate().getMonth(), this.ngayKT.getDate().getDay());
@@ -1007,7 +1009,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         }
 
         CongDoan congdoan = congdoanDao.getCongDoanTheoMa(maCD);
-        SanPham sp = sanphamDao.getSanPhamTheoMa(modelCD.getValueAt(tableDSCD.getSelectedRow(), 1).toString().substring(0,8).trim());
+        SanPham sp = sanphamDao.getSanPhamTheoMa(modelCD.getValueAt(tableDSCD.getSelectedRow(), 1).toString().substring(0, 8).trim());
         CongDoan cd = new CongDoan(maCD, tenCD, soLuongCD, donGiaCD, ngayBD, ngayKT, tenCDT, trangThai, sp);
 
         if (congdoanDao.updateCongDoan(cd)) {
@@ -1024,11 +1026,9 @@ public class GDQLCongDoan extends javax.swing.JPanel {
 
     }
 
-
     private void deleteCongDoan() throws SQLException {
         String maCD = txtMaCD.getText().trim();
         CongDoan congdoan = congdoanDao.getCongDoanTheoMa(maCD);
-
         if (congdoan != null) {
 
             if (congdoanDao.xoaCongDoan(maCD)) {
@@ -1139,16 +1139,16 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         }
         cbbMaSP.setModel(modelcbbSP);
     }
-    
-    private void loadTextFielSanPham(SanPham sp){
+
+    private void loadTextFielSanPham(SanPham sp) {
         txtTenSP.setText(sp.getTenSP());
-        txtSoLuong.setText(sp.getSoLuong()+"");
-        txtDonGia.setText(sp.getDonGia()+"");
+        txtSoLuong.setText(sp.getSoLuong() + "");
+        txtDonGia.setText(sp.getDonGia() + "");
         txtChatLieu.setText(sp.getChatLieu());
         txtDVT.setText(sp.getDonViTinh());
-        txtSoCD.setText(sp.getSoCongDoan()+"");
+        txtSoCD.setText(sp.getSoCongDoan() + "");
         txtMaHD.setText(sp.getHopDong().getMaHD());
-        cbbMaSP.setSelectedItem(sp.getMaSP()+" - "+sp.getTenSP());
+        cbbMaSP.setSelectedItem(sp.getMaSP() + " - " + sp.getTenSP());
     }
 
 }
