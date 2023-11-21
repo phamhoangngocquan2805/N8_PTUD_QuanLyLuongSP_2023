@@ -486,37 +486,12 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
         tableDanhSachPC.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 0, 0), new java.awt.Color(153, 153, 153)));
         tableDanhSachPC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Chọn", "STT", "Tên công nhân", "Mã công nhân", "Tay nghề", "Công đoạn", "Sản phẩm"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tableDanhSachPC.setGridColor(new java.awt.Color(153, 153, 153));
         tableDanhSachPC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -582,7 +557,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
 
         btnBatDauCC.setBackground(new java.awt.Color(255, 102, 102));
         btnBatDauCC.setForeground(new java.awt.Color(255, 255, 255));
-        btnBatDauCC.setText("<html><center>Bắt đầu<br>chấm công</center></html>");
+        btnBatDauCC.setText("Điểm danh");
         btnBatDauCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBatDauCCActionPerformed(evt);
@@ -591,7 +566,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
 
         btnKetThucCC.setBackground(new java.awt.Color(255, 102, 102));
         btnKetThucCC.setForeground(new java.awt.Color(255, 255, 255));
-        btnKetThucCC.setText("<html><center>Kết thúc<br>chấm công</center></html>");
+        btnKetThucCC.setText("Chấm công");
         btnKetThucCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKetThucCCActionPerformed(evt);
@@ -627,22 +602,22 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(dateChamCong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnBatDauCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBatDauCC)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnKetThucCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnKetThucCC)))
                 .addContainerGap())
         );
         pnXuLyLayout.setVerticalGroup(
             pnXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnXuLyLayout.createSequentialGroup()
                 .addGroup(pnXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnBatDauCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnKetThucCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(dateChamCong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnChonTatCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnChonTatCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnKetThucCC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                        .addComponent(btnBatDauCC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbThongBao, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -668,7 +643,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
         pnTraCuuCCLayout.setHorizontalGroup(
             pnTraCuuCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTraCuuCCLayout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(dateBatDauXemCong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(dateKetThucXemCong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -698,7 +673,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
 
         btnUpdateSPHT.setBackground(new java.awt.Color(255, 102, 102));
         btnUpdateSPHT.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdateSPHT.setText("<html><center>Cập nhật<br>Sản phẩm HT</center></html>");
+        btnUpdateSPHT.setText("<html><center>Cập nhật<br>Số lượng HT</center></html>");
         btnUpdateSPHT.setToolTipText("");
         btnUpdateSPHT.setActionCommand("");
         btnUpdateSPHT.addActionListener(new java.awt.event.ActionListener() {
@@ -750,7 +725,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(scrollCC)
                             .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addComponent(pnTraCuuCC, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+                                .addComponent(pnTraCuuCC, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(pnChinhSuaCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(6, 6, 6))
@@ -926,52 +901,54 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
     private void btnBatDauCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatDauCCActionPerformed
         lbThongBao.setText("");
         int temp = 0;
-        if (btnBatDauCC.getText().equals("<html><center>Hủy kết thúc<br>chấm công</center></html>")) {
-            btnBatDauCC.setText("<html><center>Bắt đầu<br>chấm công</center></html>");
-            btnKetThucCC.setText("<html><center>Kết thúc<br>chấm công</center></html>");
+        if (btnBatDauCC.getText().equals("<html><center>Hủy<br>chấm công</center></html>")) {
+            btnBatDauCC.setText("Điểm danh");
+            btnKetThucCC.setText("Chấm công");
             listKTCC.clear();
             addListPC();
             return;
-        }
-        Date selectedDate = dateChamCong.getDate();
-        // Phân tích giá trị thành ngày, tháng, năm
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(selectedDate);
+        } else {
+            Date selectedDate = dateChamCong.getDate();
+            // Phân tích giá trị thành ngày, tháng, năm
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(selectedDate);
 
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int month = calendar.get(Calendar.MONTH) + 1; // Tháng bắt đầu từ 0
-        int year = calendar.get(Calendar.YEAR);
-        String nowMonth = String.format("%02d", month);
-        String nowDay = String.format("%02d", day);
-        LocalDateTime localDateTime = convertToLocalDateTime(dateChamCong.getDate());
-        int rows = modelDSPC.getRowCount();
-        for (int i = 0; i < rows; i++) {
-            if (Boolean.valueOf((boolean) modelDSPC.getValueAt(i, 0))) {
-                String maBangCCMoiNhat = bangCCCN_Dao.getBangChamCongMoiNhat().getMaBangChamCong();
-                String ngayThangNamHTai = Integer.toString(year % 100) + nowMonth + nowDay;
-                int bonSoCuoiMaBangPCMoiNhat = 1;
-                if (maBangCCMoiNhat.substring(0, 6).equals(ngayThangNamHTai)) {
-                    bonSoCuoiMaBangPCMoiNhat = Integer.valueOf(maBangCCMoiNhat.substring(maBangCCMoiNhat.length() - 4)) + 1;
-                }
-                String ddddMa = String.format("%04d", bonSoCuoiMaBangPCMoiNhat);
-                String maBangPCNew = ngayThangNamHTai + ddddMa;
-                BangChamCongCongNhan ccCN = new BangChamCongCongNhan(maBangPCNew, LocalTime.now(), LocalTime.of(0, 0, 0), localDateTime, null, congNhan_Dao.getCongNhanTheoMa(modelDSPC.getValueAt(i, 2).toString()));
-                ChiTietBangChamCong ctCC = new ChiTietBangChamCong(0, phanCong_Dao.getBangPhanCongTheoMa(modelDSPC.getValueAt(i, 9).toString()), ccCN);
-                temp = 1;
-                if (bangCCCN_Dao.createBangChamCongCongNhan(ccCN)) {
-                    if (ctBangCC_Dao.createChiTietBangChamCong(ctCC)) {
-                        lbThongBao.setText("Đã ghi nhận thời gian bắt đầu chấm công");
-                        addListChamCong();
-                    } else {
-                        lbThongBao.setText("tạo CT Chấm công thất bại");
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int month = calendar.get(Calendar.MONTH) + 1; // Tháng bắt đầu từ 0
+            int year = calendar.get(Calendar.YEAR);
+            String nowMonth = String.format("%02d", month);
+            String nowDay = String.format("%02d", day);
+            LocalDateTime localDateTime = convertToLocalDateTime(dateChamCong.getDate());
+            int rows = modelDSPC.getRowCount();
+            for (int i = 0; i < rows; i++) {
+                if (Boolean.valueOf((boolean) modelDSPC.getValueAt(i, 0))) {
+                    String maBangCCMoiNhat = bangCCCN_Dao.getBangChamCongMoiNhat().getMaBangChamCong();
+                    String ngayThangNamHTai = Integer.toString(year % 100) + nowMonth + nowDay;
+                    int bonSoCuoiMaBangPCMoiNhat = 1;
+                    if (maBangCCMoiNhat.substring(0, 6).equals(ngayThangNamHTai)) {
+                        bonSoCuoiMaBangPCMoiNhat = Integer.valueOf(maBangCCMoiNhat.substring(maBangCCMoiNhat.length() - 4)) + 1;
                     }
-                } else {
-                    lbThongBao.setText("Chấm công thất bại");
+                    String ddddMa = String.format("%04d", bonSoCuoiMaBangPCMoiNhat);
+                    String maBangPCNew = ngayThangNamHTai + ddddMa;
+                    BangChamCongCongNhan ccCN = new BangChamCongCongNhan(maBangPCNew, LocalTime.now(), LocalTime.of(0, 0, 0), localDateTime, null, congNhan_Dao.getCongNhanTheoMa(modelDSPC.getValueAt(i, 2).toString()));
+                    ChiTietBangChamCong ctCC = new ChiTietBangChamCong(0, phanCong_Dao.getBangPhanCongTheoMa(modelDSPC.getValueAt(i, 9).toString()), ccCN);
+                    temp = 1;
+                    if (bangCCCN_Dao.createBangChamCongCongNhan(ccCN)) {
+                        if (ctBangCC_Dao.createChiTietBangChamCong(ctCC)) {
+                            lbThongBao.setText("Đã ghi nhận công nhân có mặt");
+                            modelDSPC.removeRow(i);
+                            addListChamCong();
+                        } else {
+                            lbThongBao.setText("tạo CT Chấm công thất bại");
+                        }
+                    } else {
+                        lbThongBao.setText("Chấm công thất bại");
+                    }
                 }
             }
-        }
-        if (temp == 0) {
-            lbThongBao.setText("chưa chọn công nhân!");
+            if (temp == 0) {
+                lbThongBao.setText("chưa chọn công nhân!");
+            }
         }
     }//GEN-LAST:event_btnBatDauCCActionPerformed
     private static LocalDateTime convertToLocalDateTime(Date date) {
@@ -989,10 +966,10 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
     }
     private void btnKetThucCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKetThucCCActionPerformed
         lbThongBao.setText("");
-        if (btnKetThucCC.getText().equals("<html><center>Kết thúc<br>chấm công</center></html>")) {
+        if (btnKetThucCC.getText().equals("Chấm công")) {
             if (addListKTCC()) {
-                btnKetThucCC.setText("<html><center>Lưu kết thúc<br>chấm công</center></html>");
-                btnBatDauCC.setText("<html><center>Hủy kết thúc<br>chấm công</center></html>");
+                btnKetThucCC.setText("<html><center>Lưu<br>chấm công</center></html>");
+                btnBatDauCC.setText("<html><center>Hủy<br>chấm công</center></html>");
                 // Lấy TableColumnModel của JTable
                 TableColumnModel columnModel = tableDanhSachPC.getColumnModel();
 
@@ -1013,10 +990,12 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                 column9.setWidth(0);
                 column9.setPreferredWidth(0);
                 column9.setResizable(false);
+                
                 modelKTCC.addTableModelListener(new TableModelListener() {
                     @Override
                     public void tableChanged(TableModelEvent e) {
                         if (e.getType() == TableModelEvent.UPDATE) {
+                            boolean isUpdating = false;
                             int row = e.getFirstRow();
                             int column = e.getColumn();
                             if (column == 10 || column == 11 || column == 12) {
@@ -1029,39 +1008,55 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                                     }
                                 }
                             } else {
-                                if (Integer.valueOf(modelKTCC.getValueAt(row, 7).toString()) > 0) {
-                                    if (Integer.valueOf(modelKTCC.getValueAt(row, 7).toString()) > Integer.valueOf(modelKTCC.getValueAt(row, 4).toString())) {
-                                        lbThongBao.setText("Số lượng HT lớn hơn số lượng còn.");
-                                        tableDanhSachPC.editCellAt(row, 7);
-                                        tableDanhSachPC.changeSelection(row, 7, false, false);
+                                if (column == 7) {
+                                    if (Integer.parseInt(modelKTCC.getValueAt(row, 7).toString()) > 0) {
+                                        if (Integer.parseInt(modelKTCC.getValueAt(row, 7).toString()) > Integer.parseInt(modelKTCC.getValueAt(row, 4).toString())) {
+                                            lbThongBao.setText("Số lượng HT lớn hơn số lượng còn.");
+                                            if (!isUpdating) {
+                                                tableDanhSachPC.editCellAt(row, 7);
+                                                tableDanhSachPC.changeSelection(row, 7, false, false);
+                                                isUpdating = true;
+                                            }
+                                        }
+                                    } else {
+                                        if (!isUpdating) {
+                                            lbThongBao.setText("Số lượng HT không hợp lệ.");
+                                            tableDanhSachPC.editCellAt(row, 7);
+                                            tableDanhSachPC.changeSelection(row, 7, false, false);
+                                            isUpdating = true;
+                                        }
                                     }
-                                } else {
-                                    lbThongBao.setText("Số lượng HT không hợp lệ.");
-                                    tableDanhSachPC.editCellAt(row, 7);
-                                    tableDanhSachPC.changeSelection(row, 7, false, false);
                                 }
                             }
-
+                            isUpdating = false;
                         }
                     }
 
                 }
                 );
             }
-        } else if (btnKetThucCC.getText().equals("<html><center>Lưu kết thúc<br>chấm công</center></html>")) {
-
+        } else if (btnKetThucCC.getText().equals("<html><center>Lưu<br>chấm công</center></html>")) {
+            Boolean testCCTC = false;
             int rows = modelKTCC.getRowCount();
             for (int i = 0; i < rows; i++) {
+                Boolean TC = false;
                 if (Boolean.valueOf((boolean) modelKTCC.getValueAt(i, 0))) {
-                    System.out.println(modelKTCC.getValueAt(i, 9).toString());
+                    BangChamCongCongNhan ccCNTC = new BangChamCongCongNhan();
                     BangChamCongCongNhan ccCN = bangCCCN_Dao.getBangChamCongCongNhanTheoMa(modelKTCC.getValueAt(i, 9).toString());
                     ccCN.setGioRa(LocalTime.now());
                     if (Boolean.valueOf((boolean) modelKTCC.getValueAt(i, 10))) {
-                        ccCN.setCaLamViec("ca 3");
+                        ccCNTC = new BangChamCongCongNhan(getMaCCNew(), ccCN.getGioVao(), ccCN.getGioRa(), ccCN.getNgayChamCong(), null, ccCN.getCn());
+                        ccCNTC.setCaLamViec("ca 3");;
+                        TC = true;
                     } else if (Boolean.valueOf((boolean) modelKTCC.getValueAt(i, 11))) {
-                        ccCN.setCaLamViec("ca CN");
+                        ccCNTC = new BangChamCongCongNhan(getMaCCNew(), ccCN.getGioVao(), ccCN.getGioRa(), ccCN.getNgayChamCong(), null, ccCN.getCn());
+                        ccCNTC.setCaLamViec("ca CN");
+                        TC = true;
+
                     } else if (Boolean.valueOf((boolean) modelKTCC.getValueAt(i, 12))) {
-                        ccCN.setCaLamViec("ca lễ");
+                        ccCNTC = new BangChamCongCongNhan(getMaCCNew(), ccCN.getGioVao(), ccCN.getGioRa(), ccCN.getNgayChamCong(), null, ccCN.getCn());
+                        ccCNTC.setCaLamViec("ca lễ");
+                        TC = true;
                     } else {
                         LocalTime startTime1 = LocalTime.of(6, 30);
                         LocalTime endTime1 = LocalTime.of(12, 30);
@@ -1075,55 +1070,91 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                             ccCN.setCaLamViec("ca 1, ca 2");
                         }
                     }
-                    bangCCCN_Dao.updateBangChamCongCongNhan(ccCN);
-                    ChiTietBangChamCong ctcc = new ChiTietBangChamCong(Integer.valueOf(modelKTCC.getValueAt(i, 7).toString()), phanCong_Dao.getBangPhanCongTheoMa(modelKTCC.getValueAt(i, 8).toString()), ccCN);
-                    listKTCC.add(ctcc);
-
+                    if (TC) {
+                        bangCCCN_Dao.createBangChamCongCongNhan(ccCNTC);
+                        ChiTietBangChamCong ctcc = new ChiTietBangChamCong(Integer.valueOf(modelKTCC.getValueAt(i, 7).toString()), phanCong_Dao.getBangPhanCongTheoMa(modelKTCC.getValueAt(i, 8).toString()), ccCNTC);
+                        ctBangCC_Dao.createChiTietBangChamCong(ctcc);
+                        testCCTC = true;
+                    } else if (!TC) {
+                        bangCCCN_Dao.updateBangChamCongCongNhan(ccCN);
+                        ChiTietBangChamCong ctcc = new ChiTietBangChamCong(Integer.valueOf(modelKTCC.getValueAt(i, 7).toString()), phanCong_Dao.getBangPhanCongTheoMa(modelKTCC.getValueAt(i, 8).toString()), ccCN);
+                        listKTCC.add(ctcc);
+                    }
                 }
             }
             int test = 0;
             if (listKTCC.size() == 0) {
-                lbThongBao.setText("Chưa chọn công nhân!");
-                return;
+                if (!testCCTC) {
+                    lbThongBao.setText("Chưa chọn công nhân!");
+                    return;
+                } else {
+                    test = 1;
+                }
             }
             for (ChiTietBangChamCong s : listKTCC) {
                 if (ctBangCC_Dao.updateChiTietBangChamCong(s)) {
                     test = 1;
                 } else {
-                    test = 0;
+                    JOptionPane.showMessageDialog(null, "chấm công bảng chấm công: " + s.getBangCC().getMaBangChamCong() + "thất bại");
                 }
             }
             if (test == 1) {
-                btnKetThucCC.setText("<html><center>Kết thúc<br>chấm công</center></html>");
-                lbThongBao.setText("Kết thúc chấm công thành công");
-                btnBatDauCC.setText("<html><center>Bắt đầu<br>chấm công</center></html>");
+                btnKetThucCC.setText("Chấm công");
+                lbThongBao.setText("chấm công thành công");
+                btnBatDauCC.setText("Điểm danh");
                 addListChamCong();
                 addListPC();
-            }
-            if (test == 0) {
-
             }
         }
 
     }//GEN-LAST:event_btnKetThucCCActionPerformed
+    private String getMaCCNew() {
+        Date selectedDate = dateChamCong.getDate();
+        // Phân tích giá trị thành ngày, tháng, năm
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(selectedDate);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH) + 1; // Tháng bắt đầu từ 0
+        int year = calendar.get(Calendar.YEAR);
+        String nowMonth = String.format("%02d", month);
+        String nowDay = String.format("%02d", day);
+        LocalDateTime localDateTime = convertToLocalDateTime(dateChamCong.getDate());
 
+        String maBangCCMoiNhat = bangCCCN_Dao.getBangChamCongMoiNhat().getMaBangChamCong();
+        String ngayThangNamHTai = Integer.toString(year % 100) + nowMonth + nowDay;
+        int bonSoCuoiMaBangPCMoiNhat = 1;
+        if (maBangCCMoiNhat.substring(0, 6).equals(ngayThangNamHTai)) {
+            bonSoCuoiMaBangPCMoiNhat = Integer.valueOf(maBangCCMoiNhat.substring(maBangCCMoiNhat.length() - 4)) + 1;
+        }
+        String ddddMa = String.format("%04d", bonSoCuoiMaBangPCMoiNhat);
+        String maBangPCNew = ngayThangNamHTai + ddddMa;
+        return maBangPCNew;
+    }
     private void btnChonTatCNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonTatCNActionPerformed
         int rows = modelDSPC.getRowCount();
         if (btnChonTatCN.getText().equals("<html><center>Chọn<br>tất cả</center></html>")) {
-            for (int i = 0; i < rows; i++) {
-                modelDSPC.setValueAt(true, i, 0);
+            if (testModelTBPC != 0) {
+                for (int i = 0; i < rows; i++) {
+                    modelDSPC.setValueAt(true, i, 0);
+                }
+            } else {
+                for (int i = 0; i < modelKTCC.getRowCount(); i++) {
+                    modelKTCC.setValueAt(true, i, 0);
+                }
             }
-//            for (int i = 0; i < modelKTCC.getRowCount(); i++) {
-//                modelKTCC.setValueAt(true, i, 0);
-//            }
+
             btnChonTatCN.setText("<html><center>Bỏ chọn<br>tất cả</center></html>");
         } else if (btnChonTatCN.getText().equals("<html><center>Bỏ chọn<br>tất cả</center></html>")) {
-            for (int i = 0; i < rows; i++) {
-                modelDSPC.setValueAt(false, i, 0);
+            if (testModelTBPC != 0) {
+                for (int i = 0; i < rows; i++) {
+                    modelDSPC.setValueAt(false, i, 0);
+                }
+            } else {
+                for (int i = 0; i < modelKTCC.getRowCount(); i++) {
+                    modelKTCC.setValueAt(false, i, 0);
+
+                }
             }
-//            for (int i = 0; i < modelKTCC.getRowCount(); i++) {
-//                modelKTCC.setValueAt(false, i, 0);
-//            }
             btnChonTatCN.setText("<html><center>Chọn<br>tất cả</center></html>");
         }
     }//GEN-LAST:event_btnChonTatCNActionPerformed
@@ -1181,10 +1212,10 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             int dialogResult = JOptionPane.showConfirmDialog(null, "Chắc chắn xóa chấm công của " + modelDSCC.getValueAt(tableChamCong.getSelectedRow(), 2).toString(), "Xác nhận", JOptionPane.YES_NO_OPTION);
             if (dialogResult == JOptionPane.YES_OPTION) {
                 if (ctBangCC_Dao.xoaCTCC(modelDSCC.getValueAt(tableChamCong.getSelectedRow(), 10).toString(), modelDSCC.getValueAt(tableChamCong.getSelectedRow(), 11).toString())) {
-                    JOptionPane.showMessageDialog(null,"Xóa thành công!");
+                    JOptionPane.showMessageDialog(null, "Xóa thành công!");
                     addListChamCong();
                 } else {
-                    JOptionPane.showMessageDialog(null,"Xóa thất bại");
+                    JOptionPane.showMessageDialog(null, "Xóa thất bại");
                 }
             }
         }
@@ -1255,23 +1286,23 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
     private void btnUpdateSPHTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateSPHTActionPerformed
         if (tableChamCong.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Vui lòng chọn phân công cần update");
-        } else{
+        } else {
             ChiTietBangChamCong ctcc = new ChiTietBangChamCong(spinUpdateSPHT.getValue(), phanCong_Dao.getBangPhanCongTheoMa(modelDSCC.getValueAt(tableChamCong.getSelectedRow(), 10).toString()), bangCCCN_Dao.getBangChamCongCongNhanTheoMa(modelDSCC.getValueAt(tableChamCong.getSelectedRow(), 11).toString()));
-            if(ctBangCC_Dao.updateChiTietBangChamCong(ctcc)){
+            if (ctBangCC_Dao.updateChiTietBangChamCong(ctcc)) {
                 JOptionPane.showMessageDialog(null, "update thành công");
                 addListChamCong();
-            }
-            else 
+            } else {
                 JOptionPane.showMessageDialog(null, "update thất bại");
-        } 
+            }
+        }
     }//GEN-LAST:event_btnUpdateSPHTActionPerformed
 
     private void tableChamCongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableChamCongMouseClicked
 //        private void tableCongNhanMouseClicked(java.awt.event.MouseEvent evt) {
-       int slHT = Integer.valueOf(modelDSCC.getValueAt(tableChamCong.getSelectedRow(), 9).toString());
-       spinUpdateSPHT.setValue(slHT);
+        int slHT = Integer.valueOf(modelDSCC.getValueAt(tableChamCong.getSelectedRow(), 9).toString());
+        spinUpdateSPHT.setValue(slHT);
 //    }
-     
+
     }//GEN-LAST:event_tableChamCongMouseClicked
 
     private void tableDanhSachPCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDanhSachPCMouseEntered
@@ -1316,7 +1347,8 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
 
     private void addListPC() {
         testModelTBPC = 1;
-        modelDSPC = new DefaultTableModel() {
+        modelDSPC = new DefaultTableModel()
+        {
             public Class<?> getColumnClass(int column) {
                 switch (column) {
                     case 0:
@@ -1352,7 +1384,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
         modelDSPC.addColumn("Công đoạn");
         modelDSPC.addColumn("SL phân công");
         modelDSPC.addColumn("Sản phẩm");
-        modelDSPC.addColumn("SL chưa HT");
+        modelDSPC.addColumn("SL còn");
         modelDSPC.addColumn("Mã phân công");
         tableDanhSachPC.setModel(modelDSPC);
         tableDanhSachPC.getColumnModel().getColumn(0).setPreferredWidth(5);
@@ -1361,8 +1393,10 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
         tableDanhSachPC.getColumnModel().getColumn(8).setPreferredWidth(40);
         int stt = 1;
         for (BangPhanCong s : phanCong_Dao.getAllBangPhanCong()) {
-            modelDSPC.addRow(new Object[]{false, Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongNhan().getTayNghe(), s.getCongDoan().getTenCD(), Integer.toString(s.getSoLuong()), s.getCongDoan().getSanPham().getTenSP(), Integer.toString(s.getSoLuong() - getSLHT(s.getMaBangPC())), s.getMaBangPC()});
-            stt++;
+            if (s.getSoLuong() - getSLHT(s.getMaBangPC()) != 0) {
+                modelDSPC.addRow(new Object[]{false, Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongNhan().getTayNghe(), s.getCongDoan().getTenCD(), Integer.toString(s.getSoLuong()), s.getCongDoan().getSanPham().getTenSP(), Integer.toString(s.getSoLuong() - getSLHT(s.getMaBangPC())), s.getMaBangPC()});
+                stt++;
+            }
         }
     }
 
@@ -1425,15 +1459,20 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
         tableDanhSachPC.getColumnModel().getColumn(12).setPreferredWidth(5);
 
         int stt = 1;
-        LocalDate currentDate = LocalDateTime.now().toLocalDate();
+        Date selectedDate = dateChamCong.getDate();
+        LocalDate localDateCC = selectedDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         // Format ngày tháng năm bằng DateTimeFormatter
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        String formattedDateNow = currentDate.format(formatter);
+        String formattedDateNow = localDateCC.format(formatter);
 
         for (ChiTietBangChamCong s : ctBangCC_Dao.getAllChiTietBangChamCong()) {
             if (s.getBangCC().getNgayChamCongString().equals(formattedDateNow)) {
-                if (s.getSoLuong() == 0) {
-                    modelKTCC.addRow(new Object[]{true, Integer.toString(stt), s.getBangCC().getCn().getMaCN(), s.getBangCC().getCn().getHoTen(), s.getBangPC().getSoLuong() - getSLHT(s.getBangPC().getMaBangPC()), s.getBangPC().getCongDoan().getSanPham().getTenSP(), s.getBangPC().getCongDoan().getTenCD(), s.getSoLuong(), s.getBangPC().getMaBangPC(), s.getBangCC().getMaBangChamCong(), false, false, false});
+                if (s.getBangPC().getSoLuong() - getSLHT(s.getBangPC().getMaBangPC()) != 0 && s.getBangCC().getNgayChamCongString().equals(formattedDateNow)) {
+                    Boolean chon = true;
+                    if (s.getSoLuong() != 0) {
+                        chon = false;
+                    }
+                    modelKTCC.addRow(new Object[]{chon, Integer.toString(stt), s.getBangCC().getCn().getMaCN(), s.getBangCC().getCn().getHoTen(), s.getBangPC().getSoLuong() - getSLHT(s.getBangPC().getMaBangPC()), s.getBangPC().getCongDoan().getSanPham().getTenSP(), s.getBangPC().getCongDoan().getTenCD(), s.getSoLuong(), s.getBangPC().getMaBangPC(), s.getBangCC().getMaBangChamCong(), false, false, false});
                     stt++;
                 }
             }
@@ -1458,17 +1497,23 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
     }
 
     private void addListChamCong() {
-        String[] row1 = {"STT", "Mã công nhân", "Tên công nhân", "Ngày chấm", "Giờ vào", "Giờ ra", "Sản phẩm HT", "Công đoạn HT", "Ca làm", "Số lượng HT", "maPC", "maCC"};
+        String[] row1 = {"STT", "Mã công nhân", "Tên công nhân", "Ngày chấm", "Giờ vào", "Giờ ra", "Sản phẩm HT", "Công đoạn HT", "Ca làm", "Số lượng HT", "maPC", "maCC", "SL còn"};
         modelDSCC = new DefaultTableModel(row1, 0);
         tableChamCong.setModel(modelDSCC);
         tableChamCong.getColumnModel().getColumn(0).setPreferredWidth(10);
         int stt = 1;
         CongNhan cn;
+        LocalDate currentDate = LocalDateTime.now().toLocalDate();
+        // Format ngày tháng năm bằng DateTimeFormatter
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        String formattedDateNow = currentDate.format(formatter);
         for (ChiTietBangChamCong s : ctBangCC_Dao.getAllChiTietBangChamCong()) {
-            cn = s.getBangPC().getCongNhan();
-            String[] row = {Integer.toString(stt), cn.getMaCN(), cn.getHoTen(), s.getBangCC().getNgayChamCongString(), s.getBangCC().getGioVaoString(), s.getBangCC().getGioRaString(), s.getBangPC().getCongDoan().getSanPham().getTenSP(), s.getBangPC().getCongDoan().getTenCD(), s.getBangCC().getCaLamViec(), Integer.toString(s.getSoLuong()), s.getBangPC().getMaBangPC(), s.getBangCC().getMaBangChamCong()};
-            modelDSCC.addRow(row);
-            stt++;
+            if (s.getBangCC().getNgayChamCongString().equals(formattedDateNow)) {
+                cn = s.getBangPC().getCongNhan();
+                String[] row = {Integer.toString(stt), cn.getMaCN(), cn.getHoTen(), s.getBangCC().getNgayChamCongString(), s.getBangCC().getGioVaoString(), s.getBangCC().getGioRaString(), s.getBangPC().getCongDoan().getSanPham().getTenSP(), s.getBangPC().getCongDoan().getTenCD(), s.getBangCC().getCaLamViec(), Integer.toString(s.getSoLuong()), s.getBangPC().getMaBangPC(), s.getBangCC().getMaBangChamCong(), Integer.toString(s.getBangPC().getSoLuong() - getSLHT(s.getBangPC().getMaBangPC()))};
+                modelDSCC.addRow(row);
+                stt++;
+            }
         }
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);

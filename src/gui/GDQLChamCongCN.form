@@ -606,7 +606,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="scrollCC" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="pnTraCuuCC" pref="527" max="32767" attributes="0"/>
+                                      <Component id="pnTraCuuCC" pref="532" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="pnChinhSuaCC" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -731,54 +731,10 @@
                       </Border>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="7" rowCount="11">
-                        <Column editable="false" title="Ch&#x1ecd;n" type="java.lang.Boolean"/>
-                        <Column editable="false" title="STT" type="java.lang.Object"/>
-                        <Column editable="false" title="T&#xea;n c&#xf4;ng nh&#xe2;n" type="java.lang.Object"/>
-                        <Column editable="false" title="M&#xe3; c&#xf4;ng nh&#xe2;n" type="java.lang.Object"/>
-                        <Column editable="false" title="Tay ngh&#x1ec1;" type="java.lang.Object"/>
-                        <Column editable="false" title="C&#xf4;ng &#x111;o&#x1ea1;n" type="java.lang.Object"/>
-                        <Column editable="false" title="S&#x1ea3;n ph&#x1ea9;m" type="java.lang.Object"/>
-                      </Table>
+                      <Table columnCount="0" rowCount="0"/>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                      <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                      </TableColumnModel>
+                      <TableColumnModel selectionModel="0"/>
                     </Property>
                     <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="99" red="99" type="rgb"/>
@@ -948,15 +904,15 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="btnBatDauCC" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnKetThucCC" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Component id="dateChamCong" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="btnChonTatCN" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="btnKetThucCC" alignment="0" pref="38" max="32767" attributes="0"/>
+                                  <Component id="btnBatDauCC" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lbThongBao" min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="lbThongBao" pref="12" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -971,7 +927,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;B&#x1eaf;t &#x111;&#x1ea7;u&lt;br&gt;ch&#x1ea5;m c&#xf4;ng&lt;/center&gt;&lt;/html&gt;"/>
+                    <Property name="text" type="java.lang.String" value="&#x110;i&#x1ec3;m danh"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatDauCCActionPerformed"/>
@@ -985,7 +941,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;K&#x1ebf;t th&#xfa;c&lt;br&gt;ch&#x1ea5;m c&#xf4;ng&lt;/center&gt;&lt;/html&gt;"/>
+                    <Property name="text" type="java.lang.String" value="Ch&#x1ea5;m c&#xf4;ng"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKetThucCCActionPerformed"/>
@@ -1059,7 +1015,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                          <EmptySpace pref="32" max="32767" attributes="0"/>
                           <Component id="dateBatDauXemCong" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="dateKetThucXemCong" min="-2" max="-2" attributes="0"/>
@@ -1198,7 +1154,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;C&#x1ead;p nh&#x1ead;t&lt;br&gt;S&#x1ea3;n ph&#x1ea9;m HT&lt;/center&gt;&lt;/html&gt;"/>
+                    <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;C&#x1ead;p nh&#x1ead;t&lt;br&gt;S&#x1ed1; l&#x1b0;&#x1ee3;ng HT&lt;/center&gt;&lt;/html&gt;"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="actionCommand" type="java.lang.String" value=""/>
                   </Properties>

@@ -285,7 +285,8 @@ public class GDQLCongNhan extends javax.swing.JPanel {
         lblPhongBan.setPreferredSize(new java.awt.Dimension(90, 25));
 
         cbbTayNghe.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        cbbTayNghe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Không", "May", "Cắt" }));
+        cbbTayNghe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "May vắt sổ", "Cắt vải", "Đóng gói", "May móc xích kép", "May móc xích đơn", "Là ủi" }));
+        cbbTayNghe.setEnabled(false);
         cbbTayNghe.setPreferredSize(new java.awt.Dimension(118, 25));
         cbbTayNghe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,6 +296,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
 
         cbbTinhTrang.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbbTinhTrang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang làm việc", "Thôi việc" }));
+        cbbTinhTrang.setEnabled(false);
         cbbTinhTrang.setPreferredSize(new java.awt.Dimension(118, 25));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -302,7 +304,8 @@ public class GDQLCongNhan extends javax.swing.JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(90, 25));
 
         cbbKinhNghiem.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        cbbKinhNghiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 năm", "dưới 1 năm", "1 năm ", "1.5 năm", "2 năm", "2.5 năm", "3 năm", "3.5 năm", "4 năm", "trên 4 năm", " " }));
+        cbbKinhNghiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 năm", "Dưới 1 năm", "1 năm ", "1.5 năm", "2 năm", "2.5 năm", "3 năm", "3.5 năm", "4 năm", "Trên 4 năm", " " }));
+        cbbKinhNghiem.setEnabled(false);
         cbbKinhNghiem.setPreferredSize(new java.awt.Dimension(118, 25));
 
         lblLuongCB.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -564,7 +567,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
             }
         });
 
-        cbbLocTayNghe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "không", "May", "Cắt", "ủi", "cắt chỉ" }));
+        cbbLocTayNghe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Không", "May vắt sổ", "Cắt vải", "Đóng gói", "May móc xích kép", "May móc xích đơn", "Là ủi" }));
         cbbLocTayNghe.setBorder(javax.swing.BorderFactory.createTitledBorder("Tay nghề"));
         cbbLocTayNghe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -906,7 +909,8 @@ public class GDQLCongNhan extends javax.swing.JPanel {
             txtTienPhuCapTheoNgay.setEditable(true);
             txtTienChuyenCan.setEditable(true);
             txtGhiChu.setEditable(true);
-
+            txtGhiChu.setText("không");
+            
             txtHoTenNV.requestFocus();
             btnThem.setText("Hủy");
             btnLuu.setEnabled(true);
