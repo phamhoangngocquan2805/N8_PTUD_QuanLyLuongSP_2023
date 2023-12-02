@@ -167,8 +167,7 @@ public class GDLogin extends javax.swing.JFrame {
         if (isValid) {
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Có thể tên tài khoản hoặc mật khẩu bạn nhập không đúng\nVui lòng kiểm tra lại", 
-                    "Thông báo sai tên tài khoản hoặc mật khẩu", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "sai tk hoac mk");
         }
     }//GEN-LAST:event_jButtonDangNhapActionPerformed
 

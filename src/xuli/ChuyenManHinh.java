@@ -141,63 +141,11 @@ public class ChuyenManHinh implements BienMacDinh{
                 break;
                 
                 case "QLChamCong": {
-                    pNoiDung =  new AbstractColorChooserPanel() {
-                        @Override
-                        public void updateChooser() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-
-                        @Override
-                        protected void buildChooser() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-
-                        @Override
-                        public String getDisplayName() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-
-                        @Override
-                        public Icon getSmallDisplayIcon() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-
-                        @Override
-                        public Icon getLargeDisplayIcon() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-                    };
+                    pNoiDung = null;
                 }
-                break;
                 case "QLLuong": {
-                    pNoiDung = new AbstractColorChooserPanel() {
-                        @Override
-                        public void updateChooser() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-
-                        @Override
-                        protected void buildChooser() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-
-                        @Override
-                        public String getDisplayName() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-
-                        @Override
-                        public Icon getSmallDisplayIcon() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-
-                        @Override
-                        public Icon getLargeDisplayIcon() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-                    };
+                    pNoiDung = null;
                 }
-                break;
                 
                 case "QLTaiKhoan": {
                     pNoiDung = new GDQLTaiKhoan();
