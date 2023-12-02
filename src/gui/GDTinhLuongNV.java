@@ -1020,7 +1020,7 @@ public class GDTinhLuongNV extends javax.swing.JPanel {
             bangLuong = new BangLuongNhanVien(maBangLuong, LocalDateTime.now(), soNgayLam, soNgayNghi, tienUng, nv);
             bangLuong.setLuongTangCa(soGioTangCaNgayThuong, 1.5);
             bangLuong.setLuongTangCa(soGioTangCaNgayNghi, 2);
-//            JOptionPane.showMessageDialog(null, bangLuong.toString());
+            JOptionPane.showMessageDialog(null, bangLuong.toString());
         }
         return bangLuong;
     }

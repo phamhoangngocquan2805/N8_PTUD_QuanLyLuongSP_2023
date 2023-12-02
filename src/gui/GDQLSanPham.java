@@ -177,11 +177,6 @@ public class GDQLSanPham extends javax.swing.JPanel {
                 jtableSanPhamMouseClicked(evt);
             }
         });
-        jtableSanPham.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtableSanPhamKeyReleased(evt);
-            }
-        });
         jScrollPaneSanPham.setViewportView(jtableSanPham);
 
         javax.swing.GroupLayout pDanhSachSPLayout = new javax.swing.GroupLayout(pDanhSachSP);
@@ -206,6 +201,7 @@ public class GDQLSanPham extends javax.swing.JPanel {
 
         txtMaSP.setEditable(false);
         txtMaSP.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtMaSP.setForeground(new java.awt.Color(0, 0, 0));
         txtMaSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaSPActionPerformed(evt);
@@ -218,6 +214,7 @@ public class GDQLSanPham extends javax.swing.JPanel {
 
         txtTenSP.setEditable(false);
         txtTenSP.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtTenSP.setForeground(new java.awt.Color(0, 0, 0));
         txtTenSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTenSPActionPerformed(evt);
@@ -230,6 +227,7 @@ public class GDQLSanPham extends javax.swing.JPanel {
 
         txtSoLuong.setEditable(false);
         txtSoLuong.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtSoLuong.setForeground(new java.awt.Color(0, 0, 0));
         txtSoLuong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSoLuongActionPerformed(evt);
@@ -242,6 +240,7 @@ public class GDQLSanPham extends javax.swing.JPanel {
 
         txtDonVT.setEditable(false);
         txtDonVT.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtDonVT.setForeground(new java.awt.Color(0, 0, 0));
         txtDonVT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDonVTActionPerformed(evt);
@@ -254,6 +253,7 @@ public class GDQLSanPham extends javax.swing.JPanel {
 
         txtDonGia.setEditable(false);
         txtDonGia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtDonGia.setForeground(new java.awt.Color(0, 0, 0));
         txtDonGia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDonGiaActionPerformed(evt);
@@ -270,6 +270,7 @@ public class GDQLSanPham extends javax.swing.JPanel {
 
         txtSoCD.setEditable(false);
         txtSoCD.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtSoCD.setForeground(new java.awt.Color(0, 0, 0));
         txtSoCD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSoCDActionPerformed(evt);
@@ -286,6 +287,7 @@ public class GDQLSanPham extends javax.swing.JPanel {
 
         txtMaHD.setEditable(false);
         txtMaHD.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtMaHD.setForeground(new java.awt.Color(0, 0, 0));
         txtMaHD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaHDActionPerformed(evt);
@@ -326,6 +328,7 @@ public class GDQLSanPham extends javax.swing.JPanel {
 
         txtChatLieu.setEditable(false);
         txtChatLieu.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtChatLieu.setForeground(new java.awt.Color(0, 0, 0));
         txtChatLieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtChatLieuActionPerformed(evt);
@@ -334,6 +337,7 @@ public class GDQLSanPham extends javax.swing.JPanel {
 
         txtThongTin.setEditable(false);
         txtThongTin.setColumns(20);
+        txtThongTin.setForeground(new java.awt.Color(0, 0, 0));
         txtThongTin.setRows(5);
         jScrollPane1.setViewportView(txtThongTin);
 
@@ -441,7 +445,7 @@ public class GDQLSanPham extends javax.swing.JPanel {
                     .addComponent(txtChatLieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pChiTietSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMaHD, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(lblMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, 32, Short.MAX_VALUE)
                     .addComponent(txtMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonChonHD))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -713,11 +717,6 @@ public class GDQLSanPham extends javax.swing.JPanel {
             clearTextField();
         }
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
-
-    private void jtableSanPhamKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableSanPhamKeyReleased
-        int row = jtableSanPham.getSelectedRow();
-        resetTextField(row);
-    }//GEN-LAST:event_jtableSanPhamKeyReleased
 
     private void loadDanhSachSanPham() {
         sanpham_DAO = new SanPham_DAO();

@@ -52,6 +52,7 @@ public class GDQLHopDong extends javax.swing.JPanel {
         btnTimKiem = new javax.swing.JButton();
         pLocTheo = new javax.swing.JPanel();
         cbxLocTheoTT = new javax.swing.JComboBox<>();
+        pReload = new javax.swing.JPanel();
         btnReload = new javax.swing.JButton();
         jscrHopDong = new javax.swing.JScrollPane();
         tableHopDong = new javax.swing.JTable();
@@ -160,7 +161,7 @@ public class GDQLHopDong extends javax.swing.JPanel {
         pLocTheo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Lọc theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         cbxLocTheoTT.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cbxLocTheoTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chưa bàn giao", "Đã bàn giao" }));
+        cbxLocTheoTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chưa bàn giao", "Đã bàn giao", "Đã hủy" }));
         cbxLocTheoTT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Trạng thái", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         cbxLocTheoTT.setPreferredSize(new java.awt.Dimension(118, 45));
         cbxLocTheoTT.addActionListener(new java.awt.event.ActionListener() {
@@ -190,6 +191,19 @@ public class GDQLHopDong extends javax.swing.JPanel {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
+        pReload.setBackground(new java.awt.Color(217, 217, 217));
+
+        javax.swing.GroupLayout pReloadLayout = new javax.swing.GroupLayout(pReload);
+        pReload.setLayout(pReloadLayout);
+        pReloadLayout.setHorizontalGroup(
+            pReloadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 112, Short.MAX_VALUE)
+        );
+        pReloadLayout.setVerticalGroup(
+            pReloadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 67, Short.MAX_VALUE)
+        );
+
         btnReload.setBackground(new java.awt.Color(191, 95, 95));
         btnReload.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnReload.setText("Tải lại");
@@ -206,7 +220,7 @@ public class GDQLHopDong extends javax.swing.JPanel {
         pTimKiemLayout.setHorizontalGroup(
             pTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTimKiemLayout.createSequentialGroup()
-                .addContainerGap(247, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pLocTheo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(btnReload, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,6 +229,11 @@ public class GDQLHopDong extends javax.swing.JPanel {
                 .addGroup(pTimKiemLayout.createSequentialGroup()
                     .addComponent(pTimKiemHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 350, Short.MAX_VALUE)))
+            .addGroup(pTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pTimKiemLayout.createSequentialGroup()
+                    .addGap(239, 239, 239)
+                    .addComponent(pReload, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(239, Short.MAX_VALUE)))
         );
         pTimKiemLayout.setVerticalGroup(
             pTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,6 +246,11 @@ public class GDQLHopDong extends javax.swing.JPanel {
                 .addGroup(pTimKiemLayout.createSequentialGroup()
                     .addComponent(pTimKiemHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 13, Short.MAX_VALUE)))
+            .addGroup(pTimKiemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pTimKiemLayout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(pReload, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(11, Short.MAX_VALUE)))
         );
 
         jscrHopDong.setBackground(new java.awt.Color(217, 217, 217));
@@ -302,7 +326,7 @@ public class GDQLHopDong extends javax.swing.JPanel {
         chooserNgayBG.setPreferredSize(new java.awt.Dimension(200, 25));
 
         cbxTrangThai.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cbxTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chưa bàn giao", "Đã bàn giao" }));
+        cbxTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn trạng thái hợp đồng", "Chưa bàn giao", "Đã bàn giao", "Đã hủy" }));
         cbxTrangThai.setEnabled(false);
         cbxTrangThai.setPreferredSize(new java.awt.Dimension(200, 25));
 
@@ -468,7 +492,7 @@ public class GDQLHopDong extends javax.swing.JPanel {
                 .addGroup(pChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNhapLai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 43, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pNoiDungLayout = new javax.swing.GroupLayout(pNoiDung);
@@ -489,15 +513,15 @@ public class GDQLHopDong extends javax.swing.JPanel {
             pNoiDungLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(pNoiDungLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(pNoiDungLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pNoiDungLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pNoiDungLayout.createSequentialGroup()
                         .addComponent(pThongTinHopDong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pNoiDungLayout.createSequentialGroup()
                         .addComponent(pTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jscrHopDong, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jscrHopDong, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout pQLHopDongLayout = new javax.swing.GroupLayout(pQLHopDong);
@@ -556,13 +580,17 @@ public class GDQLHopDong extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void cbxLocTheoTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLocTheoTTActionPerformed
-        loadDSHopDongTheoTrangThai();
+        Object o = evt.getSource();
+        if (o.equals(cbxLocTheoTT)) {
+            
+        }
     }//GEN-LAST:event_cbxLocTheoTTActionPerformed
 
     private void btnReloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReloadActionPerformed
-        cbxLocTheoTT.setSelectedItem("Chưa bàn giao");
-        txtTimTheoTTHD.setText("");
-        loadDSHopDongLenUI();
+        Object o = evt.getSource();
+        if (o.equals(btnReload)) {
+            loadDSHopDongLenUI();
+        }
     }//GEN-LAST:event_btnReloadActionPerformed
 
     private void tableHopDongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHopDongMouseClicked
@@ -641,11 +669,13 @@ public class GDQLHopDong extends javax.swing.JPanel {
         if (o.equals(btnLuu)) {
             try {
                 String tenHD = txtTenHD.getText();
-                int trangThai=0;
+                int trangThai;
                 if (cbxTrangThai.getSelectedItem().toString().equalsIgnoreCase("Chưa bàn giao")) {
                     trangThai = 1;
                 } else if (cbxTrangThai.getSelectedItem().toString().equalsIgnoreCase("Đã bàn giao")) {
                     trangThai = 2;
+                } else {
+                    trangThai = 3;
                 }
                 String ghiChu = txtGhiChu.getText();
                 NhanVienHanhChinh nv = new NhanVienHanhChinh(new NhanVienHanhChinh_DAO().getMaNVTheoTenNV(new GDLogin().getCurrNV().getHoTen()));
@@ -713,6 +743,7 @@ public class GDQLHopDong extends javax.swing.JPanel {
     private javax.swing.JPanel pLocTheo;
     private javax.swing.JPanel pNoiDung;
     private javax.swing.JPanel pQLHopDong;
+    private javax.swing.JPanel pReload;
     private javax.swing.JPanel pThongTinHopDong;
     private javax.swing.JPanel pTimKiem;
     private javax.swing.JPanel pTimKiemHD;
@@ -745,10 +776,12 @@ public class GDQLHopDong extends javax.swing.JPanel {
         clearTable();
         hd_DAO = new HopDong_DAO();
         int stt = 1;
-        for (HopDong hd : hd_DAO.getHopDongByTrangThai(1)) {
+        for (HopDong hd : hd_DAO.getAllHopDong()) {
             String trangThai = "Chưa bàn giao";
             if (hd.getTrangThai() == 2) {
                 trangThai = "Đã bàn giao";
+            } else if (hd.getTrangThai() == 3) {
+                trangThai = "Đã hủy";
             }
             modelHopDong.addRow(new Object[]{
                 stt, hd.getMaHD(), hd.getTenHD(), hd.getNgayKiHD(), hd.getNgayBanGiao(), trangThai, hd.getGhiChu(), hd.getNv().getHoTen()
@@ -757,7 +790,7 @@ public class GDQLHopDong extends javax.swing.JPanel {
         }
 
     }
-
+    
 //    load danh sách hợp đồng theo mã hợp đồng
     private void loadDSHopDongTheoMaHD() {
         clearTable();
@@ -775,7 +808,7 @@ public class GDQLHopDong extends javax.swing.JPanel {
             stt++;
         }
     }
-
+    
     //    load danh sách hợp đồng theo mã hợp đồng
     private void loadDSHopDongTheoTenHD() {
         clearTable();
@@ -784,31 +817,11 @@ public class GDQLHopDong extends javax.swing.JPanel {
             String trangThai = "Chưa bàn giao";
             if (hd.getTrangThai() == 2) {
                 trangThai = "Đã bàn giao";
+            } else if (hd.getTrangThai() == 3) {
+                trangThai = "Đã hủy";
             }
             modelHopDong.addRow(new Object[]{
                 stt, hd.getMaHD(), hd.getTenHD(), hd.getNgayKiHD(), hd.getNgayBanGiao(), trangThai, hd.getGhiChu(), hd.getNv().getHoTen()
-            });
-            stt++;
-        }
-    }
-
-    // load danh sách hợp đồng theo trạng thái
-    private void loadDSHopDongTheoTrangThai() {
-        clearTable();
-        int stt = 1;
-        int trangThai;
-        if (cbxLocTheoTT.getSelectedItem().toString().equalsIgnoreCase("Chưa bàn giao")) {
-            trangThai = 1;
-        } else {
-            trangThai = 2;
-        }
-        for (HopDong hd : hd_DAO.getHopDongByTrangThai(trangThai)) {
-            String tt = "Chưa bàn giao";
-            if (hd.getTrangThai() == 2) {
-                tt = "Đã bàn giao";
-            }
-            modelHopDong.addRow(new Object[]{
-                stt, hd.getMaHD(), hd.getTenHD(), hd.getNgayKiHD(), hd.getNgayBanGiao(), tt, hd.getGhiChu(), hd.getNv().getHoTen()
             });
             stt++;
         }
