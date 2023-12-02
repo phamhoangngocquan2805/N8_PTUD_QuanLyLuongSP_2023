@@ -47,6 +47,8 @@ public class BangLuongNhanVien {
 
     public void setSoNgayLam(int soNgayLam) {
         this.soNgayLam = soNgayLam;
+        setTienPhuCap();
+        setTienChuyenCan();
     }
 
     public int getSoNgayNghi() {

@@ -103,7 +103,7 @@ public class BangLuongCongNhan_DAO {
         PreparedStatement stm = null;
         int n = 0;
         try {
-            stm = con.prepareStatement("update BangLuongCongNhan set ngayTinhLuong  = ?, soNgayLam  = ?, soNgayNghi  = ?, luongChinh  = ?, luongTangCa  = ?, tienUng  = ?, tienPhuCapTheoThang = ?, tienChuyenCanTheoThang  = ?, baoHiemXaHoi = ?, thucLanh = ?, maNV = ? where maBangLuong  = ?");
+            stm = con.prepareStatement("update BangLuongCongNhan set ngayTinhLuong  = ?, soNgayLam  = ?, soNgayNghi  = ?, luongSP  = ?, luongTangCa  = ?, tienUng  = ?, tienPhuCapTheoThang = ?, tienChuyenCanTheoThang  = ?, baoHiemXaHoi = ?, thucLanh = ?, maCN = ? where maBangLuong  = ?");
             stm.setString(12, bl.getMaBangLuong());
             stm.setString(1, bl.getNgayTinhLuongString());
             stm.setInt(2, bl.getSoNgayLam());
