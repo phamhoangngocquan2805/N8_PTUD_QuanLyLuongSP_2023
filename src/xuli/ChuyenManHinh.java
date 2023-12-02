@@ -4,6 +4,7 @@
  */
 package xuli;
 
+import entity.NhanVienHanhChinh;
 import gui.GDBaoCaoThongKe;
 import gui.GDChinh;
 import gui.GDPhanCong;
@@ -22,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.colorchooser.AbstractColorChooserPanel;
 import others.BienMacDinh;
@@ -35,15 +37,18 @@ import static others.BienMacDinh.mauTrang;
  *
  * @author acer
  */
-public class ChuyenManHinh implements BienMacDinh{
+public class ChuyenManHinh implements BienMacDinh {
+
     public static JPanel pChinh;
     private String danhMucDangChon = "";
     private List<DanhMucBean> listDanhMucBean = null;
+    private NhanVienHanhChinh nvLog;
 
-    public ChuyenManHinh(JPanel pChinh) {
+    public ChuyenManHinh(JPanel pChinh, NhanVienHanhChinh nvLog) {
         this.pChinh = pChinh;
+        this.nvLog = nvLog;
     }
-    
+
     public void setManHinhNoiDung(JPanel pDanhMucDangChon, JLabel lblDanhMucDangChon) throws SQLException {
         danhMucDangChon = "TrangChu";
         pDanhMucDangChon.setBackground(mauDanhMucDangChon);
@@ -57,7 +62,7 @@ public class ChuyenManHinh implements BienMacDinh{
         pChinh.validate();
         pChinh.repaint();
     }
-    
+
     public void setSuKienClickDanhMuc(List<DanhMucBean> listDanhMucBean) {
         this.listDanhMucBean = listDanhMucBean;
         for (DanhMucBean item : listDanhMucBean) {
@@ -85,11 +90,11 @@ public class ChuyenManHinh implements BienMacDinh{
         public void mouseClicked(MouseEvent e) {
             danhMucDangChon = loaiDanhMuc;
             switch (loaiDanhMuc) {
-                case "TrangChu":  {
+                case "TrangChu": {
                     pNoiDung = new GDTongQuan();
                 }
                 break;
-                
+
                 case "QLNhanSu": {
                     pNoiDung = new AbstractColorChooserPanel() {
                         @Override
@@ -119,29 +124,37 @@ public class ChuyenManHinh implements BienMacDinh{
                     };
                 }
                 break;
-                
-                case "QLHopDong":  {
-                    pNoiDung = new GDQLHopDong();
+
+                case "QLHopDong": {
+                    if (nvLog.getPhongBan().getMaPB().equals("233")) {
+                        pNoiDung = new GDQLHopDong();
+                    }
                 }
                 break;
-                
+
                 case "QLSanPham": {
-                    pNoiDung = new GDQLSanPham();
+                    if (nvLog.getPhongBan().getMaPB().equals("233")) {
+                        pNoiDung = new GDQLSanPham();
+                    }
                 }
                 break;
-                
-                case "QLCongDoan" : {
-                    pNoiDung = new GDQLCongDoan();
+
+                case "QLCongDoan": {
+                    if (nvLog.getPhongBan().getMaPB().equals("233")) {
+                        pNoiDung = new GDQLCongDoan();
+                    }
                 }
                 break;
-                
+
                 case "PhanCong": {
-                    pNoiDung = new GDPhanCong();
+                    if (nvLog.getPhongBan().getMaPB().equals("233")) {
+                        pNoiDung = new GDPhanCong();
+                    }
                 }
                 break;
-                
+
                 case "QLChamCong": {
-                    pNoiDung =  new AbstractColorChooserPanel() {
+                    pNoiDung = new AbstractColorChooserPanel() {
                         @Override
                         public void updateChooser() {
                             throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -198,36 +211,42 @@ public class ChuyenManHinh implements BienMacDinh{
                     };
                 }
                 break;
-                
+
                 case "QLTaiKhoan": {
-                    pNoiDung = new GDQLTaiKhoan();
+                    if (nvLog.getPhongBan().getMaPB().equals("231")) {
+                        pNoiDung = new GDQLTaiKhoan();
+                    }
                 }
                 break;
-                
+
                 case "BaoCaoThongKe": {
-                    pNoiDung = new GDBaoCaoThongKe();
+                    if (nvLog.getPhongBan().getMaPB().equals("232")) {
+                        pNoiDung = new GDBaoCaoThongKe();
+                    }
                 }
                 break;
-                
+
                 default:
                     break;
             }
-             pChinh.removeAll();
-            pChinh.setLayout(new BorderLayout());
-            pChinh.add(pNoiDung);
-            pChinh.validate();
-            pChinh.repaint();
-            thayDoiBackGroundKhiClick(loaiDanhMuc);
+            if (pNoiDung != null) {
+                pChinh.removeAll();
+                pChinh.setLayout(new BorderLayout());
+                pChinh.add(pNoiDung);
+                pChinh.validate();
+                pChinh.repaint();
+                thayDoiBackGroundKhiClick(loaiDanhMuc);
+            }
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-           
+
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            
+
         }
 
         @Override

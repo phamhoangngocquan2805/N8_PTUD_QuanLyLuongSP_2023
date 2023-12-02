@@ -32,7 +32,7 @@ public class GDChinh extends javax.swing.JFrame {
      */
     private GDLogin gdlogin;
     private NhanVienHanhChinh nvLog;
-    
+
     public GDChinh() throws SQLException {
 
         icon();
@@ -57,7 +57,7 @@ public class GDChinh extends javax.swing.JFrame {
             public void windowClosed(WindowEvent e) {
                 nvLog = gdlogin.getCurrNV();
                 setVisible(true);
-                ChuyenManHinh dieuKhien = new ChuyenManHinh(pNoiDung);
+                ChuyenManHinh dieuKhien = new ChuyenManHinh(pNoiDung, nvLog);
                 try {
                     dieuKhien.setManHinhNoiDung(pHome, lblHome);
                 } catch (SQLException ex) {
@@ -77,9 +77,9 @@ public class GDChinh extends javax.swing.JFrame {
                 listDanhMucBean.add(new DanhMucBean("QLTaiKhoan", pQLTaiKhoan, lblQLTaiKhoan));
 
                 dieuKhien.setSuKienClickDanhMuc(listDanhMucBean);
-                
+
                 String tl = LocalDateTime.now().toString();
-                jLabel12.setText("Ngày " + tl.substring(8,10) +  " tháng " + tl.substring(5,7) + " năm " + tl.substring(0, 4));
+                jLabel12.setText("Ngày " + tl.substring(8, 10) + " tháng " + tl.substring(5, 7) + " năm " + tl.substring(0, 4));
 //                JOptionPane.showMessageDialog(null, nvLog.toString());
                 jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource(nvLog.getHinhAnh())));
                 jLabel14.setText(nvLog.getHoTen());
@@ -106,7 +106,6 @@ public class GDChinh extends javax.swing.JFrame {
             }
         });
 
-        
     }
 
     public void icon() {
@@ -683,50 +682,102 @@ public class GDChinh extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void congNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_congNhanActionPerformed
-        pNoiDung = new GDQLCongNhan();
-        reFresh();
+        if (nvLog.getPhongBan().getMaPB().equals("231")) {
+//            System.out.println("gui.GDChinh.congNhanActionPerformed()");
+            pNoiDung = new GDQLCongNhan();
+            pChinh.removeAll();
+            pChinh.setLayout(new BorderLayout());
+            pChinh.add(pNoiDung);
+            pChinh.validate();
+            pChinh.repaint();
+        }
     }//GEN-LAST:event_congNhanActionPerformed
 
     private void nhanVienHanhChinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nhanVienHanhChinhActionPerformed
-        pNoiDung = new GDQLNhanVienHanhChinh();
-        reFresh();
+        if (nvLog.getPhongBan().getMaPB().equals("231")) {
+//            System.out.println("gui.GDChinh.nhanVienHanhChinhActionPerformed()");
+            pNoiDung = new GDQLNhanVienHanhChinh();
+            pChinh.removeAll();
+            pChinh.setLayout(new BorderLayout());
+            pChinh.add(pNoiDung);
+            pChinh.validate();
+            pChinh.repaint();
+        }
     }//GEN-LAST:event_nhanVienHanhChinhActionPerformed
 
     private void lblQLNhanSuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQLNhanSuMouseClicked
+//        System.out.println("gui.GDChinh.lblQLNhanSuMouseClicked()");
         menuNhanSu.show(pHome, evt.getX(), evt.getY());
     }//GEN-LAST:event_lblQLNhanSuMouseClicked
 
     private void lblQLChamCongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQLChamCongMouseClicked
+//        System.out.println("gui.GDChinh.lblQLChamCongMouseClicked()");
         menuChamCong.show(pQLChamCong, evt.getX(), evt.getY());
     }//GEN-LAST:event_lblQLChamCongMouseClicked
 
     private void lblQLLuongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQLLuongMouseClicked
+//        System.out.println("gui.GDChinh.lblQLLuongMouseClicked()");
         menuLuong.show(pQLLuong, evt.getX(), evt.getY());
     }//GEN-LAST:event_lblQLLuongMouseClicked
 
     private void chamCongNVHCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chamCongNVHCActionPerformed
+        if (nvLog.getPhongBan().getMaPB().equals("231")) {
+//            System.out.println("gui.GDChinh.chamCongNVHCActionPerformed()");
         pNoiDung = new GDQLChamCongNVHC();
-        reFresh();
+        pChinh.removeAll();
+        pChinh.setLayout(new BorderLayout());
+        pChinh.add(pNoiDung);
+        pChinh.validate();
+        pChinh.repaint();
+        }
     }//GEN-LAST:event_chamCongNVHCActionPerformed
 
     private void chamCongCongNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chamCongCongNhanActionPerformed
+        if (nvLog.getPhongBan().getMaPB().equals("233")) {
+//            System.out.println("gui.GDChinh.chamCongCongNhanActionPerformed()");
         pNoiDung = new GDQLChamCongCN();
-        reFresh();
+        pChinh.removeAll();
+        pChinh.setLayout(new BorderLayout());
+        pChinh.add(pNoiDung);
+        pChinh.validate();
+        pChinh.repaint();
+        }
     }//GEN-LAST:event_chamCongCongNhanActionPerformed
 
     private void tinhLuongNVHCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tinhLuongNVHCActionPerformed
-       pNoiDung = new GDTinhLuongNV();
-        reFresh();
+        if (nvLog.getPhongBan().getMaPB().equals("232")) {
+//            System.out.println("gui.GDChinh.tinhLuongNVHCActionPerformed()");
+        pNoiDung = new GDTinhLuongNV();
+        pChinh.removeAll();
+        pChinh.setLayout(new BorderLayout());
+        pChinh.add(pNoiDung);
+        pChinh.validate();
+        pChinh.repaint();
+        }
     }//GEN-LAST:event_tinhLuongNVHCActionPerformed
 
     private void tinhLuongCongNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tinhLuongCongNhanActionPerformed
+        if (nvLog.getPhongBan().getMaPB().equals("232")) {
+//            System.out.println("gui.GDChinh.tinhLuongCongNhanActionPerformed()");
         pNoiDung = new GDTinhLuongCN();
-        reFresh();
+        pChinh.removeAll();
+        pChinh.setLayout(new BorderLayout());
+        pChinh.add(pNoiDung);
+        pChinh.validate();
+        pChinh.repaint();
+        }
     }//GEN-LAST:event_tinhLuongCongNhanActionPerformed
 
     private void xemBangLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xemBangLuongActionPerformed
+        if (nvLog.getPhongBan().getMaPB().equals("232")) {
+//            System.out.println("gui.GDChinh.xemBangLuongActionPerformed()");
         pNoiDung = new GDXemBangLuong();
-        reFresh();
+        pChinh.removeAll();
+        pChinh.setLayout(new BorderLayout());
+        pChinh.add(pNoiDung);
+        pChinh.validate();
+        pChinh.repaint();
+        }
     }//GEN-LAST:event_xemBangLuongActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -775,12 +826,4 @@ public class GDChinh extends javax.swing.JFrame {
     private javax.swing.JMenuItem xemBangLuong;
     // End of variables declaration//GEN-END:variables
 
-    private void reFresh() {
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
-    }
 }
-

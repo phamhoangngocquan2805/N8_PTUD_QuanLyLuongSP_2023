@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,12 +46,13 @@ public class BangLuongNhanVien_DAO {
                 NhanVienHanhChinh_DAO nvdao = new NhanVienHanhChinh_DAO();
                 NhanVienHanhChinh nv = nvdao.getNhanVienTheoMa(rs.getString(12));
                 BangLuongNhanVien bl = new BangLuongNhanVien();
+                bl.setNv(nv);
                 bl.setMaBangLuong(maBangLuong);
                 bl.setNgayTinhLuong(ngayTinhLuong);
                 bl.setSoNgayLam(soNgayLam);
                 bl.setSoNgayNghi(soNgayNghi);
                 bl.setTienUng(tienUng);
-                bl.setNv(nv);
+                
                 bl.setLuongFromDB(luongChinh, luongTangCa, tienChuyenCan, tienPhuCap);
                 dsBL.add(bl);
             }
@@ -105,7 +107,7 @@ public class BangLuongNhanVien_DAO {
         int n = 0;
         try {
             stm = con.prepareStatement("update BangLuongNhanVien set ngayTinhLuong  = ?, soNgayLam  = ?, soNgayNghi  = ?, luongChinh  = ?, luongTangCa  = ?, tienUng  = ?, tienPhuCapTheoThang = ?, tienChuyenCanTheoThang  = ?, baoHiemXaHoi = ?, thucLanh = ?, maNV = ? where maBangLuong  = ?");
-            stm.setString(12, bl.getMaBangLuong());
+            
             stm.setString(1, bl.getNgayTinhLuongString());
             stm.setInt(2, bl.getSoNgayLam());
             stm.setInt(3, bl.getSoNgayNghi());
@@ -117,7 +119,9 @@ public class BangLuongNhanVien_DAO {
             stm.setDouble(9, bl.getBaoHiemXaHoi());
             stm.setDouble(10, bl.getThucLanh());
             stm.setString(11, bl.getNv().getMaNV());
+            stm.setString(12, bl.getMaBangLuong());
             n = stm.executeUpdate();
+//            JOptionPane.showMessageDialog(null, n + " update");
         } catch (SQLException e) {
             e.printStackTrace();
             try {

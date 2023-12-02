@@ -63,7 +63,7 @@ public class BangLuongCongNhan {
     }
 
     public void setLuongSanPham(ArrayList<BangPhanCong> dsbangPhanCong, ArrayList<ChiTietBangChamCong> dsChiTietBangChamCong) {
-        this.luongSanPham = 0;
+//        this.luongSanPham = 0;
         for(ChiTietBangChamCong chiTiet: dsChiTietBangChamCong)
         {
             for(BangPhanCong bangPhanCong: dsbangPhanCong)
@@ -79,16 +79,17 @@ public class BangLuongCongNhan {
         return luongTangCa;
     }
 
-    public void setLuongTangCa(ArrayList<BangPhanCong> dsbangPhanCong, ArrayList<ChiTietBangChamCong> dsChiTietBangChamCong) {
-        this.luongTangCa = 0;
+    public void setLuongTangCa(ArrayList<BangPhanCong> dsbangPhanCong, ArrayList<ChiTietBangChamCong> dsChiTietBangChamCong, double heSo) {
+        
         for(ChiTietBangChamCong chiTiet: dsChiTietBangChamCong)
         {
             for(BangPhanCong bangPhanCong: dsbangPhanCong)
             {
                 if(chiTiet.getBangPC().getMaBangPC().equalsIgnoreCase(bangPhanCong.getMaBangPC()))
-                    this.luongTangCa+= chiTiet.getSoLuong() * bangPhanCong.getCongDoan().getDonGia();
+                    this.luongTangCa+= chiTiet.getSoLuong() * (bangPhanCong.getCongDoan().getDonGia() *heSo);
             }
         }
+//        setBaoHiemXaHoi();
         setThucLanh();
     }
 
@@ -150,6 +151,7 @@ public class BangLuongCongNhan {
         this.soNgayNghi = soNgayNghi;
         this.tienUng = tienUng;
         this.congNhan = congNhan;
+        this.luongSanPham = 0;
         this.luongTangCa = 0;
         setTienPhuCap();
         setTienChuyenCan();
