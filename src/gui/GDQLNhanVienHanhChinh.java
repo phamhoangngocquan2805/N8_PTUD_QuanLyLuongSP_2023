@@ -13,6 +13,9 @@ import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -29,6 +32,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
     private NhanVienHanhChinh_DAO nvhcDAO;
     private DefaultTableModel modelNhanVien;
     private DecimalFormat dfTien;
+    private Format dateFormat;
     private double luongCoBan;
     private double mucLuongCoSo = 1800000;
     private String hinhAnh = "";
@@ -40,6 +44,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
         phongBanDAO = new PhongBan_DAO();
         nvhcDAO = new NhanVienHanhChinh_DAO();
         dfTien = new DecimalFormat();
+        dateFormat = new SimpleDateFormat("dd-MM-yyyy"); 
         initComponents();
 
         String[] header_NhanVien = {"STT", "Mã nhân viên", "Họ tên", "Giới tính", "Ngày sinh", "Số điện thoại", "Địa chỉ", "Tình trạng", "Ngày vào làm", "Hệ số lương", "Lương cơ bản", "Chức vụ", "Email", "Tiền phụ cấp ngày", "Tiền chuyên cần", "Phòng ban", "Ghi chú"};
@@ -255,7 +260,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
         dateNgaySinh.setBackground(new java.awt.Color(255, 255, 255));
         dateNgaySinh.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         dateNgaySinh.setAlignmentY(1.0F);
-        dateNgaySinh.setDateFormatString("yyyy-MM-dd");
+        dateNgaySinh.setDateFormatString("dd-MM-yyyy");
         dateNgaySinh.setEnabled(false);
         dateNgaySinh.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         dateNgaySinh.setPreferredSize(new java.awt.Dimension(170, 25));
@@ -268,7 +273,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
         dateNgayVaoLam.setBackground(new java.awt.Color(255, 255, 255));
         dateNgayVaoLam.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         dateNgayVaoLam.setAlignmentY(1.0F);
-        dateNgayVaoLam.setDateFormatString("yyyy-MM-dd");
+        dateNgayVaoLam.setDateFormatString("dd-MM-yyyy");
         dateNgayVaoLam.setEnabled(false);
         dateNgayVaoLam.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         dateNgayVaoLam.setPreferredSize(new java.awt.Dimension(170, 25));
@@ -1294,11 +1299,9 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
             } else {
                 radNu.setSelected(true);
             }
-            dateNgaySinh.setDate((Date) modelNhanVien.getValueAt(row, 4));
             txtSDT.setText(modelNhanVien.getValueAt(row, 5).toString());
             txtDiaChi.setText(modelNhanVien.getValueAt(row, 6).toString());
             cbxTinhTrang.setSelectedItem(modelNhanVien.getValueAt(row, 7).toString());
-            dateNgayVaoLam.setDate((Date) modelNhanVien.getValueAt(row, 8));
             cbxHSLuong.setSelectedItem(modelNhanVien.getValueAt(row, 9).toString());
             txtLuongCB.setText(modelNhanVien.getValueAt(row, 10).toString());
             cbxChucVu.setSelectedItem(modelNhanVien.getValueAt(row, 11).toString());
@@ -1309,6 +1312,8 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
             txtGhiChu.setText(modelNhanVien.getValueAt(row, 16).toString());
             for (NhanVienHanhChinh nvhc : nvhcDAO.getNhanVienByMaNV(modelNhanVien.getValueAt(row, 1).toString())) {
                 lblHinhNV.setIcon(new ImageIcon(getClass().getResource(nvhc.getHinhAnh())));
+                dateNgaySinh.setDate(nvhc.getNgaySinh());
+                dateNgayVaoLam.setDate(nvhc.getNgayVaoLam());
             }
     }
 
@@ -1386,7 +1391,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
                 tinhTrang = "Đang làm việc";
             }
             modelNhanVien.addRow(new Object[]{
-                stt, nvhc.getMaNV(), nvhc.getHoTen(), gioiTinh, nvhc.getNgaySinh(), nvhc.getSoDT(), nvhc.getDiaChi(), tinhTrang, nvhc.getNgayVaoLam(), nvhc.getHeSoLuong(),
+                stt, nvhc.getMaNV(), nvhc.getHoTen(), gioiTinh, dateFormat.format(nvhc.getNgaySinh()), nvhc.getSoDT(), nvhc.getDiaChi(), tinhTrang, dateFormat.format(nvhc.getNgayVaoLam()), nvhc.getHeSoLuong(),
                 dfTien.format(nvhc.getLuongCoBan()), nvhc.getChucVu(), nvhc.getEmail(), dfTien.format(nvhc.getTienPhuCapTheoNgay()), dfTien.format(nvhc.getTienChuyenCan()), nvhc.getPhongBan().getTenPB(), nvhc.getGhiChu()
             });
             stt++;
@@ -1413,7 +1418,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
             }
 
             modelNhanVien.addRow(new Object[]{
-                stt, nvhc.getMaNV(), nvhc.getHoTen(), gioiTinh, nvhc.getNgaySinh(), nvhc.getSoDT(), nvhc.getDiaChi(), tinhTrang, nvhc.getNgayVaoLam(), nvhc.getHeSoLuong(),
+                stt, nvhc.getMaNV(), nvhc.getHoTen(), gioiTinh, dateFormat.format(nvhc.getNgaySinh()), nvhc.getSoDT(), nvhc.getDiaChi(), tinhTrang, dateFormat.format(nvhc.getNgayVaoLam()), nvhc.getHeSoLuong(),
                 dfTien.format(nvhc.getLuongCoBan()), nvhc.getChucVu(), nvhc.getEmail(), dfTien.format(nvhc.getTienPhuCapTheoNgay()), dfTien.format(nvhc.getTienChuyenCan()), nvhc.getPhongBan().getTenPB(), nvhc.getGhiChu()
             });
             stt++;
@@ -1425,7 +1430,6 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
         clearTable();
         int stt = 1;
         String tenPB = cbxLocTheoPB.getSelectedItem().toString();
-        String chucVu = cbxLocTheoCV.getSelectedItem().toString();
         boolean tTrang = Boolean.parseBoolean(cbxLocTheoTT.getSelectedItem().toString());
         if (cbxLocTheoTT.getSelectedItem().toString().equalsIgnoreCase("Đang làm việc")) {
             tTrang = true;
@@ -1441,7 +1445,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
             }
 
             modelNhanVien.addRow(new Object[]{
-                stt, nvhc.getMaNV(), nvhc.getHoTen(), gioiTinh, nvhc.getNgaySinh(), nvhc.getSoDT(), nvhc.getDiaChi(), tinhTrang, nvhc.getNgayVaoLam(), nvhc.getHeSoLuong(),
+                stt, nvhc.getMaNV(), nvhc.getHoTen(), gioiTinh, dateFormat.format(nvhc.getNgaySinh()), nvhc.getSoDT(), nvhc.getDiaChi(), tinhTrang, dateFormat.format(nvhc.getNgayVaoLam()), nvhc.getHeSoLuong(),
                 dfTien.format(nvhc.getLuongCoBan()), nvhc.getChucVu(), nvhc.getEmail(), dfTien.format(nvhc.getTienPhuCapTheoNgay()), dfTien.format(nvhc.getTienChuyenCan()), nvhc.getPhongBan().getTenPB(), nvhc.getGhiChu()
             });
             stt++;
@@ -1464,7 +1468,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
             }
 
             modelNhanVien.addRow(new Object[]{
-                stt, nvhc.getMaNV(), nvhc.getHoTen(), gioiTinh, nvhc.getNgaySinh(), nvhc.getSoDT(), nvhc.getDiaChi(), tinhTrang, nvhc.getNgayVaoLam(), nvhc.getHeSoLuong(),
+                stt, nvhc.getMaNV(), nvhc.getHoTen(), gioiTinh, dateFormat.format(nvhc.getNgaySinh()), nvhc.getSoDT(), nvhc.getDiaChi(), tinhTrang, dateFormat.format(nvhc.getNgayVaoLam()), nvhc.getHeSoLuong(),
                 dfTien.format(nvhc.getLuongCoBan()), nvhc.getChucVu(), nvhc.getEmail(), dfTien.format(nvhc.getTienPhuCapTheoNgay()), dfTien.format(nvhc.getTienChuyenCan()), nvhc.getPhongBan().getTenPB(), nvhc.getGhiChu()
             });
             stt++;
@@ -1487,7 +1491,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
             }
 
             modelNhanVien.addRow(new Object[]{
-                stt, nvhc.getMaNV(), nvhc.getHoTen(), gioiTinh, nvhc.getNgaySinh(), nvhc.getSoDT(), nvhc.getDiaChi(), tinhTrang, nvhc.getNgayVaoLam(), nvhc.getHeSoLuong(),
+                stt, nvhc.getMaNV(), nvhc.getHoTen(), gioiTinh, dateFormat.format(nvhc.getNgaySinh()), nvhc.getSoDT(), nvhc.getDiaChi(), tinhTrang, dateFormat.format(nvhc.getNgayVaoLam()), nvhc.getHeSoLuong(),
                 dfTien.format(nvhc.getLuongCoBan()), nvhc.getChucVu(), nvhc.getEmail(), dfTien.format(nvhc.getTienPhuCapTheoNgay()), dfTien.format(nvhc.getTienChuyenCan()), nvhc.getPhongBan().getTenPB(), nvhc.getGhiChu()
             });
             stt++;
@@ -1513,7 +1517,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
             }
 
             modelNhanVien.addRow(new Object[]{
-                stt, nvhc.getMaNV(), nvhc.getHoTen(), gioiTinh, nvhc.getNgaySinh(), nvhc.getSoDT(), nvhc.getDiaChi(), tinhTrang, nvhc.getNgayVaoLam(), nvhc.getHeSoLuong(),
+                stt, nvhc.getMaNV(), nvhc.getHoTen(), gioiTinh, dateFormat.format(nvhc.getNgaySinh()), nvhc.getSoDT(), nvhc.getDiaChi(), tinhTrang, dateFormat.format(nvhc.getNgayVaoLam()), nvhc.getHeSoLuong(),
                 dfTien.format(nvhc.getLuongCoBan()), nvhc.getChucVu(), nvhc.getEmail(), dfTien.format(nvhc.getTienPhuCapTheoNgay()), dfTien.format(nvhc.getTienChuyenCan()), nvhc.getPhongBan().getTenPB(), nvhc.getGhiChu()
             });
             stt++;

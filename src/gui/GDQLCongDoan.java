@@ -1125,7 +1125,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                 trangThai = "Đã thực hiện";
             }
             modelCD.addRow(new Object[]{
-                stt, cd.getMaCD(), cd.getTenCD() + "-" + "(" + cd.getSanPham().getTenSP() + ")", cd.getSoLuong(), cd.getDonGia(), cd.getNgayBatDau(), cd.getNgayKetThuc(), cd.getTenCDTruoc(), trangThai
+                stt, cd.getMaCD(), cd.getTenCD(), cd.getSoLuong(), cd.getDonGia(), cd.getNgayBatDau(), cd.getNgayKetThuc(), cd.getTenCDTruoc(), trangThai
             });
             stt++;
         }
