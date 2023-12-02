@@ -4,6 +4,66 @@
  */
 package gui;
 
+import dao.BangChamCongCongNhan_DAO;
+import dao.BangLuongCongNhan_DAO;
+import dao.BangLuongNhanVien_DAO;
+import dao.BangPhanCong_DAO;
+import dao.ChiTietBangChamCong_DAO;
+import dao.HopDong_DAO;
+import dao.SanPham_DAO;
+import entity.BangChamCongCongNhan;
+import entity.BangLuongCongNhan;
+import entity.BangLuongNhanVien;
+import entity.BangPhanCong;
+import entity.ChiTietBangChamCong;
+import entity.CongNhan;
+import entity.HopDong;
+import entity.SanPham;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.NumberFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFFont;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.GroupedStackedBarRenderer;
+import org.jfree.data.KeyToGroupMap;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 /**
  *
  * @author acer
@@ -15,6 +75,24 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
      */
     public GDBaoCaoThongKe() {
         initComponents();
+        dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); //format ngày
+        bangLuongNhanVien_DAO = new BangLuongNhanVien_DAO();
+        bangLuongCongNhan_DAO = new BangLuongCongNhan_DAO();
+        chiTietBangChamCong_DAO = new ChiTietBangChamCong_DAO();
+        bangChamCongCongNhan_DAO = new BangChamCongCongNhan_DAO();
+        chiTietBangChamCong_DAO = new ChiTietBangChamCong_DAO();
+        hopDong_DAO = new HopDong_DAO();
+        sanPham_DAO = new SanPham_DAO();
+        bangPhanCong_DAO = new BangPhanCong_DAO();
+        dsTopCongNhan = new HashMap<String, Integer>();
+        chiTietSLCN = new ArrayList<Object[]>();
+        jComboBoxTKeTLNam.setSelectedIndex(0);
+        jComboBoxTKeTLKy.setSelectedIndex(0);
+        loadComponentTabelCN();
+        jButtonTKeTL.doClick();
+        jButtonThongKeSL.doClick();
+
+//        System.out.println("gui.GDBaoCaoThongKe.<init>()" + jPanel4.getPreferredSize());
     }
 
     /**
@@ -32,19 +110,24 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         pTongQuan = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jButton5 = new javax.swing.JButton();
+        jLabelTKeTLNam = new javax.swing.JLabel();
+        jComboBoxTKeTLNam = new javax.swing.JComboBox<>();
+        jLabelTKeTLKy = new javax.swing.JLabel();
+        jComboBoxTKeTLKy = new javax.swing.JComboBox<>();
+        jButtonTKeTL = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jButtonXuatExcelBangLuong = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableTopCN = new javax.swing.JTable();
+        jLabelTKeSLNam = new javax.swing.JLabel();
+        jComboBoxTKeSLNam = new javax.swing.JComboBox<>();
+        jLabelTKeSLKy = new javax.swing.JLabel();
+        jComboBoxTKeSLKy = new javax.swing.JComboBox<>();
+        jButtonThongKeSL = new javax.swing.JButton();
+        jButtonXuatExcelSanLuong = new javax.swing.JButton();
 
         pBaoCaoThongKe.setPreferredSize(new java.awt.Dimension(958, 735));
 
@@ -72,29 +155,46 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(217, 217, 217));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Năm:");
+        jLabelTKeTLNam.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabelTKeTLNam.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelTKeTLNam.setText("Năm:");
 
-        jComboBox4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023" }));
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Thống kê theo:");
-
-        jComboBox5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quý I", "Quý II", "Quý III", "Quý IV", "Năm" }));
-
-        jButton5.setBackground(new java.awt.Color(153, 76, 76));
-        jButton5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Thống kê");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxTKeTLNam.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jComboBoxTKeTLNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023" }));
+        jComboBoxTKeTLNam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jComboBoxTKeTLNamActionPerformed(evt);
             }
         });
+
+        jLabelTKeTLKy.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabelTKeTLKy.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelTKeTLKy.setText("Chọn kỳ báo cáo:");
+
+        jComboBoxTKeTLKy.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jComboBoxTKeTLKy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cả năm", "Quý I", "Quý II", "Quý III", "Quý IV", "Tháng 01", "Tháng 02", "Tháng 03", "Tháng 04", "Tháng 05", "Tháng 06", "Tháng 07", "Tháng 08", "Tháng 09", "Tháng 10", "Tháng 11", "Tháng 12" }));
+        jComboBoxTKeTLKy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxTKeTLKyActionPerformed(evt);
+            }
+        });
+
+        jButtonTKeTL.setBackground(new java.awt.Color(153, 76, 76));
+        jButtonTKeTL.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonTKeTL.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonTKeTL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chart-simple-solid.png"))); // NOI18N
+        jButtonTKeTL.setMnemonic('B');
+        jButtonTKeTL.setText("Thống kê");
+        jButtonTKeTL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTKeTLActionPerformed(evt);
+            }
+        });
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(null);
+        jPanel4.setMaximumSize(new java.awt.Dimension(946, 523));
+        jPanel4.setMinimumSize(new java.awt.Dimension(946, 523));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -104,8 +204,20 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 553, Short.MAX_VALUE)
+            .addGap(0, 523, Short.MAX_VALUE)
         );
+
+        jButtonXuatExcelBangLuong.setBackground(new java.awt.Color(153, 76, 76));
+        jButtonXuatExcelBangLuong.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonXuatExcelBangLuong.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonXuatExcelBangLuong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/file-regular.png"))); // NOI18N
+        jButtonXuatExcelBangLuong.setMnemonic('L');
+        jButtonXuatExcelBangLuong.setText("Xuất file Excel");
+        jButtonXuatExcelBangLuong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonXuatExcelBangLuongActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -113,108 +225,189 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel4)
+                .addComponent(jLabelTKeTLNam)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxTKeTLNam, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(jLabel5)
+                .addComponent(jLabelTKeTLKy)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxTKeTLKy, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jButton5)
-                .addContainerGap(390, Short.MAX_VALUE))
+                .addComponent(jButtonTKeTL)
+                .addGap(26, 26, 26)
+                .addComponent(jButtonXuatExcelBangLuong)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 942, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jButton5))
+                    .addComponent(jComboBoxTKeTLNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTKeTLNam)
+                    .addComponent(jComboBoxTKeTLKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTKeTLKy)
+                    .addComponent(jButtonTKeTL)
+                    .addComponent(jButtonXuatExcelBangLuong))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
-        jTabbedPane1.addTab("Thống kê sản lượng", jPanel1);
+        jTabbedPane1.addTab("Thống kê tiền lương", jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(217, 217, 217));
+        jPanel5.setBackground(new java.awt.Color(217, 217, 217));
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023" }));
+        jPanel6.setMaximumSize(new java.awt.Dimension(707, 517));
+        jPanel6.setMinimumSize(new java.awt.Dimension(707, 517));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Năm:");
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 707, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
-        jButton4.setBackground(new java.awt.Color(153, 76, 76));
-        jButton4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Thống kê");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Top công nhân theo sản lượng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        jTableTopCN.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Công nhân", "Số lượng sản phẩm"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableTopCN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableTopCNMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTableTopCN);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+        );
+
+        jLabelTKeSLNam.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabelTKeSLNam.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelTKeSLNam.setText("Năm:");
+
+        jComboBoxTKeSLNam.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jComboBoxTKeSLNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023" }));
+        jComboBoxTKeSLNam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jComboBoxTKeSLNamActionPerformed(evt);
             }
         });
 
-        jComboBox2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quý I", "Quý II", "Quý III", "Quý IV", "Năm" }));
+        jLabelTKeSLKy.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabelTKeSLKy.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelTKeSLKy.setText("Chọn kỳ báo cáo:");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Thống kê theo:");
+        jComboBoxTKeSLKy.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jComboBoxTKeSLKy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cả năm", "Quý I", "Quý II", "Quý III", "Quý IV", "Tháng 01", "Tháng 02", "Tháng 03", "Tháng 04", "Tháng 05", "Tháng 06", "Tháng 07", "Tháng 08", "Tháng 09", "Tháng 10", "Tháng 11", "Tháng 12" }));
+        jComboBoxTKeSLKy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxTKeSLKyActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 553, Short.MAX_VALUE)
-        );
+        jButtonThongKeSL.setBackground(new java.awt.Color(153, 76, 76));
+        jButtonThongKeSL.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonThongKeSL.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonThongKeSL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chart-simple-solid.png"))); // NOI18N
+        jButtonThongKeSL.setMnemonic('S');
+        jButtonThongKeSL.setText("Thống kê");
+        jButtonThongKeSL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonThongKeSLActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jButton4)
-                .addContainerGap(390, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jButtonXuatExcelSanLuong.setBackground(new java.awt.Color(153, 76, 76));
+        jButtonXuatExcelSanLuong.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonXuatExcelSanLuong.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonXuatExcelSanLuong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/file-regular.png"))); // NOI18N
+        jButtonXuatExcelSanLuong.setMnemonic('E');
+        jButtonXuatExcelSanLuong.setText("Xuất file Excel");
+        jButtonXuatExcelSanLuong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonXuatExcelSanLuongActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabelTKeSLNam)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBoxTKeSLNam, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jLabelTKeSLKy)
                 .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jComboBoxTKeSLKy, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jButtonThongKeSL)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonXuatExcelSanLuong)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxTKeSLNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTKeSLNam)
+                    .addComponent(jLabelTKeSLKy)
+                    .addComponent(jComboBoxTKeSLKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonThongKeSL)
+                    .addComponent(jButtonXuatExcelSanLuong))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(216, 216, 216))
         );
 
-        jTabbedPane1.addTab("Thống kê tiền lương", jPanel2);
+        jTabbedPane1.addTab("Thống kê sản lượng", jPanel5);
 
         javax.swing.GroupLayout pTongQuanLayout = new javax.swing.GroupLayout(pTongQuan);
         pTongQuan.setLayout(pTongQuanLayout);
@@ -250,9 +443,9 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 958, Short.MAX_VALUE)
+            .addGap(0, 960, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pBaoCaoThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pBaoCaoThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,34 +455,595 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonTKeTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTKeTLActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        createBarChartLuong();
+    }//GEN-LAST:event_jButtonTKeTLActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jComboBoxTKeTLNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTKeTLNamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        nam = jComboBoxTKeTLNam.getSelectedItem().toString();
+    }//GEN-LAST:event_jComboBoxTKeTLNamActionPerformed
 
+    private void jComboBoxTKeTLKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTKeTLKyActionPerformed
+        // TODO add your handling code here:
+        ky = jComboBoxTKeTLKy.getSelectedItem().toString().trim();
+//        JOptionPane.showMessageDialog(null, ky);
+        if (ky.equals("Cả năm")) {
+            thangs = new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
+        } else if (ky.equals("Quý I")) {
+            thangs = new String[]{"01", "02", "03"};
+        } else if (ky.equals("Quý II")) {
+            thangs = new String[]{"04", "05", "06"};
+        } else if (ky.equals("Quý III")) {
+            thangs = new String[]{"07", "08", "09"};
+        } else if (ky.equals("Quý IV")) {
+            thangs = new String[]{"10", "11", "12"};
+        } else {
+            thangs = new String[]{ky.substring(6, 8)};
+        }
+    }//GEN-LAST:event_jComboBoxTKeTLKyActionPerformed
+
+    private void jComboBoxTKeSLNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTKeSLNamActionPerformed
+        // TODO add your handling code here:
+        nam = jComboBoxTKeSLNam.getSelectedItem().toString();
+    }//GEN-LAST:event_jComboBoxTKeSLNamActionPerformed
+
+    private void jComboBoxTKeSLKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTKeSLKyActionPerformed
+        // TODO add your handling code here:
+        ky = jComboBoxTKeSLKy.getSelectedItem().toString().trim();
+//        JOptionPane.showMessageDialog(null, ky);
+        if (ky.equals("Cả năm")) {
+            thangs = new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
+        } else if (ky.equals("Quý I")) {
+            thangs = new String[]{"01", "02", "03"};
+        } else if (ky.equals("Quý II")) {
+            thangs = new String[]{"04", "05", "06"};
+        } else if (ky.equals("Quý III")) {
+            thangs = new String[]{"07", "08", "09"};
+        } else if (ky.equals("Quý IV")) {
+            thangs = new String[]{"10", "11", "12"};
+        } else {
+            thangs = new String[]{ky.substring(6, 8)};
+        }
+    }//GEN-LAST:event_jComboBoxTKeSLKyActionPerformed
+
+    private void jButtonThongKeSLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThongKeSLActionPerformed
+        // TODO add your handling code here:
+        createBarChartSanLuong();
+    }//GEN-LAST:event_jButtonThongKeSLActionPerformed
+
+    private void jTableTopCNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTopCNMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            int row = jTableTopCN.getSelectedRow();
+            String maCN = modelCN.getValueAt(row, 0).toString();
+            ArrayList<Object[]> ds = new ArrayList<Object[]>();
+            for (Object[] obj : chiTietSLCN) {
+                if (obj[0].toString().equals(maCN)) {
+                    ds.add(obj);
+                }
+            }
+            JDialog dialog = new JDialog();
+            dialog.setTitle("Chi tiết sản phẩm hoàn thành của công nhân");
+            dialog.setSize(600, 300);
+            dialog.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/image/logo.png")));
+            // Tạo JTable
+            String[] columnNames = {"Mã chấm công", "Ngày chấm", "Sản phẩm", "Công đoạn", "Số lượng"};
+            DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+            JTable table = new JTable(tableModel);
+
+            // Thêm dữ liệu từ dsChiTietChamCong vào JTable
+            for (Object[] obj : ds) {
+                ChiTietBangChamCong chiTiet = ((ChiTietBangChamCong) obj[1]);
+                Object[] rowData = {chiTiet.getBangCC().getMaBangChamCong(), chiTiet.getBangCC().getNgayChamCongString(), chiTiet.getBangPC().getCongDoan().getSanPham().getTenSP(), chiTiet.getBangPC().getCongDoan().getTenCD(), chiTiet.getSoLuong()
+                };
+                tableModel.addRow(rowData);
+            }
+            // Thêm JTable vào JDialog
+            JScrollPane scrollPane = new JScrollPane(table);
+            dialog.add(scrollPane);
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
+        }
+    }//GEN-LAST:event_jTableTopCNMouseClicked
+
+    private void jButtonXuatExcelBangLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXuatExcelBangLuongActionPerformed
+        // TODO add your handling code here:
+        try {
+            String fileName = "Báo cáo thống kê ";
+            XSSFWorkbook wordkbook = new XSSFWorkbook();
+            ArrayList<BangLuongNhanVien> dsBangLuongNV = bangLuongNhanVien_DAO.getAllBangLuongNhanVien();
+            ArrayList<BangLuongCongNhan> dsBangLuongCN = bangLuongCongNhan_DAO.getAllBangLuongCongNhan();
+            Locale vietNam = new Locale("vi", "VN");
+            NumberFormat numberFormat = NumberFormat.getInstance(vietNam);
+            numberFormat.setMaximumFractionDigits(0); //Format tiền vnd
+            for (String m : thangs) {
+                int count = 0;
+                XSSFSheet sheet = wordkbook.createSheet("Tháng " + m);
+                XSSFRow row = null;
+                Cell cell = null;
+                XSSFFont font = wordkbook.createFont();
+                font.setFontHeightInPoints((short) 14); // Set the font size
+
+                // Create a cell style with center alignment and the bigger font
+                XSSFCellStyle style = wordkbook.createCellStyle();
+                style.setAlignment(HorizontalAlignment.CENTER);
+                style.setFont(font); // Apply the font to the style
+
+                // Create the company name row and merge cells
+                row = sheet.createRow(count);
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue("Danh sách bảng lương nhân viên tháng " + m);
+                cell.setCellStyle(style); // Apply the style to the cell
+                sheet.addMergedRegion(new CellRangeAddress(count, count, 0, 12)); // Merge cells from column 0 to 12
+                count+=2;
+                row = sheet.createRow(count++);
+                sheet.setColumnWidth(0, 3 * 256);
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue("STT");
+
+                sheet.setColumnWidth(1, 20 * 256);
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue("Tên nhân viên");
+
+                sheet.setColumnWidth(2, 15 * 256);
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue("Ngày tính lương");
+
+                sheet.setColumnWidth(3, 15 * 256);
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue("Số ngày làm");
+
+                sheet.setColumnWidth(4, 15 * 256);
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue("Số ngày nghỉ");
+
+                sheet.setColumnWidth(5, 12 * 256);
+                cell = row.createCell(5, CellType.STRING);
+                cell.setCellValue("Lương chính");
+
+                sheet.setColumnWidth(6, 13 * 256);
+                cell = row.createCell(6, CellType.STRING);
+                cell.setCellValue("Lương tăng ca");
+
+                sheet.setColumnWidth(7, 12 * 256);
+                cell = row.createCell(7, CellType.STRING);
+                cell.setCellValue("Tiền ứng");
+
+                sheet.setColumnWidth(8, 12 * 256);
+                cell = row.createCell(8, CellType.STRING);
+                cell.setCellValue("Tiền phụ cấp");
+
+                sheet.setColumnWidth(9, 15 * 256);
+                cell = row.createCell(9, CellType.STRING);
+                cell.setCellValue("Tiền chuyên cần");
+
+                sheet.setColumnWidth(10, 15 * 256);
+                cell = row.createCell(10, CellType.STRING);
+                cell.setCellValue("Bảo hiểm xã hội");
+
+                sheet.setColumnWidth(11, 12 * 256);
+                cell = row.createCell(11, CellType.STRING);
+                cell.setCellValue("Thực lãnh");
+
+                sheet.setColumnWidth(12, 8 * 256);
+                cell = row.createCell(12, CellType.STRING);
+                cell.setCellValue("Ghi chú");
+                int stt = 1;
+                for (BangLuongNhanVien bangLuong : dsBangLuongNV) {
+                    //Vị trí trong arr thangs
+                    System.out.println(bangLuong.getMaBangLuong().subSequence(2, 4) + "-" + m);
+                    if (bangLuong.getMaBangLuong().substring(2, 4).equals(m)) {
+                        Object[] arr = {bangLuong.getMaBangLuong(),
+                            bangLuong.getNv().getHoTen(),
+                            bangLuong.getNgayTinhLuong().format(dateTimeFormatter),
+                            bangLuong.getSoNgayLam(),
+                            bangLuong.getSoNgayNghi(),
+                            numberFormat.format(bangLuong.getLuongChinh()) + " ₫",
+                            numberFormat.format(bangLuong.getLuongTangCa()) + " ₫",
+                            numberFormat.format(bangLuong.getTienUng()) + " ₫",
+                            numberFormat.format(bangLuong.getTienPhuCap()) + " ₫",
+                            numberFormat.format(bangLuong.getTienChuyenCan()) + " ₫",
+                            numberFormat.format(bangLuong.getBaoHiemXaHoi()) + " ₫",
+                            numberFormat.format(bangLuong.getThucLanh()) + " ₫"};
+                        row = sheet.createRow(count++);
+                        cell = row.createCell(0, CellType.NUMERIC);
+                        cell.setCellValue(stt + 1);
+
+                        cell = row.createCell(1, CellType.STRING);
+                        cell.setCellValue(arr[0].toString());
+
+                        cell = row.createCell(2, CellType.STRING);
+                        cell.setCellValue(arr[1].toString());
+
+                        cell = row.createCell(3, CellType.STRING);
+                        cell.setCellValue(arr[2].toString());
+
+                        cell = row.createCell(4, CellType.STRING);
+                        cell.setCellValue(arr[3].toString());
+
+                        cell = row.createCell(5, CellType.STRING);
+                        cell.setCellValue(arr[4].toString());
+
+                        cell = row.createCell(6, CellType.STRING);
+                        cell.setCellValue(arr[5].toString());
+
+                        cell = row.createCell(7, CellType.STRING);
+                        cell.setCellValue(arr[6].toString());
+
+                        cell = row.createCell(8, CellType.STRING);
+                        cell.setCellValue(arr[7].toString());
+
+                        cell = row.createCell(9, CellType.STRING);
+                        cell.setCellValue(arr[8].toString());
+
+                        cell = row.createCell(10, CellType.STRING);
+                        cell.setCellValue(arr[9].toString());
+
+                        cell = row.createCell(11, CellType.STRING);
+                        cell.setCellValue(arr[10].toString());
+                    }
+                }
+                row = sheet.createRow(count++);
+                // Create the company name row and merge cells
+                row = sheet.createRow(count);
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue("Danh sách bảng lương công nhân tháng " + m);
+                cell.setCellStyle(style); // Apply the style to the cell
+                sheet.addMergedRegion(new CellRangeAddress(count, count, 0, 12)); // Merge cells from column 0 to 12
+                count+=2;
+                row = sheet.createRow(count++);
+                sheet.setColumnWidth(0, 3 * 256);
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue("STT");
+
+                sheet.setColumnWidth(1, 20 * 256);
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue("Tên công nhân");
+
+                sheet.setColumnWidth(2, 15 * 256);
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue("Ngày tính lương");
+
+                sheet.setColumnWidth(3, 15 * 256);
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue("Số ngày làm");
+
+                sheet.setColumnWidth(4, 15 * 256);
+                cell = row.createCell(4, CellType.STRING);
+                cell.setCellValue("Số ngày nghỉ");
+
+                sheet.setColumnWidth(5, 14 * 256);
+                cell = row.createCell(5, CellType.STRING);
+                cell.setCellValue("Lương sản phẩm");
+
+                sheet.setColumnWidth(6, 13 * 256);
+                cell = row.createCell(6, CellType.STRING);
+                cell.setCellValue("Lương tăng ca");
+
+                sheet.setColumnWidth(7, 12 * 256);
+                cell = row.createCell(7, CellType.STRING);
+                cell.setCellValue("Tiền ứng");
+
+                sheet.setColumnWidth(8, 12 * 256);
+                cell = row.createCell(8, CellType.STRING);
+                cell.setCellValue("Tiền phụ cấp");
+
+                sheet.setColumnWidth(9, 15 * 256);
+                cell = row.createCell(9, CellType.STRING);
+                cell.setCellValue("Tiền chuyên cần");
+
+                sheet.setColumnWidth(10, 15 * 256);
+                cell = row.createCell(10, CellType.STRING);
+                cell.setCellValue("Bảo hiểm xã hội");
+
+                sheet.setColumnWidth(11, 12 * 256);
+                cell = row.createCell(11, CellType.STRING);
+                cell.setCellValue("Thực lãnh");
+
+                sheet.setColumnWidth(12, 8 * 256);
+                cell = row.createCell(12, CellType.STRING);
+                cell.setCellValue("Ghi chú");
+
+                for (BangLuongCongNhan bangLuong : dsBangLuongCN) {
+                    //Vị trí trong arr thangs
+                    if (bangLuong.getMaBangLuong().substring(2, 4).equals(m)) {
+                        Object[] arr = {bangLuong.getMaBangLuong(),
+                            bangLuong.getCongNhan().getHoTen(),
+                            bangLuong.getNgayTinhLuong().format(dateTimeFormatter),
+                            bangLuong.getSoNgayLam(),
+                            bangLuong.getSoNgayNghi(),
+                            numberFormat.format(bangLuong.getLuongSanPham()) + " ₫",
+                            numberFormat.format(bangLuong.getLuongTangCa()) + " ₫",
+                            numberFormat.format(bangLuong.getTienUng()) + " ₫",
+                            numberFormat.format(bangLuong.getTienPhuCap()) + " ₫",
+                            numberFormat.format(bangLuong.getTienChuyenCan()) + " ₫",
+                            numberFormat.format(bangLuong.getBaoHiemXaHoi()) + " ₫",
+                            numberFormat.format(bangLuong.getThucLanh()) + " ₫"};
+                        row = sheet.createRow(count++);
+                        cell = row.createCell(0, CellType.NUMERIC);
+                        cell.setCellValue(stt + 1);
+
+                        cell = row.createCell(1, CellType.STRING);
+                        cell.setCellValue(arr[0].toString());
+
+                        cell = row.createCell(2, CellType.STRING);
+                        cell.setCellValue(arr[1].toString());
+
+                        cell = row.createCell(3, CellType.STRING);
+                        cell.setCellValue(arr[2].toString());
+
+                        cell = row.createCell(4, CellType.STRING);
+                        cell.setCellValue(arr[3].toString());
+
+                        cell = row.createCell(5, CellType.STRING);
+                        cell.setCellValue(arr[4].toString());
+
+                        cell = row.createCell(6, CellType.STRING);
+                        cell.setCellValue(arr[5].toString());
+
+                        cell = row.createCell(7, CellType.STRING);
+                        cell.setCellValue(arr[6].toString());
+
+                        cell = row.createCell(8, CellType.STRING);
+                        cell.setCellValue(arr[7].toString());
+
+                        cell = row.createCell(9, CellType.STRING);
+                        cell.setCellValue(arr[8].toString());
+
+                        cell = row.createCell(10, CellType.STRING);
+                        cell.setCellValue(arr[9].toString());
+
+                        cell = row.createCell(11, CellType.STRING);
+                        cell.setCellValue(arr[10].toString());
+                    }
+                }
+            }
+            File f = new File("D://" + fileName + ".xlsx");
+            try {
+                FileOutputStream fis = new FileOutputStream(f);
+                wordkbook.write(fis);
+                fis.close();
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            JOptionPane.showMessageDialog(this, "In thàng công");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Lõi mở file");
+        }
+    }//GEN-LAST:event_jButtonXuatExcelBangLuongActionPerformed
+
+    private void jButtonXuatExcelSanLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXuatExcelSanLuongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonXuatExcelSanLuongActionPerformed
+
+    //Đổi string qua int
+    public int stringToInt(String s) {
+        int foo;
+        try {
+            foo = Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            foo = 0;
+        }
+        return foo;
+    }
+
+    public void createBarChartLuong() {
+        // Create sample data
+        ArrayList<BangLuongNhanVien> dsBangLuongNV = bangLuongNhanVien_DAO.getAllBangLuongNhanVien();
+        ArrayList<BangLuongCongNhan> dsBangLuongCN = bangLuongCongNhan_DAO.getAllBangLuongCongNhan();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (BangLuongNhanVien bangLuong : dsBangLuongNV) {
+            //Vị trí trong arr thangs
+            int m = checkBangLuongNV(bangLuong);
+            if (m != -1) {
+                dataset.addValue(bangLuong.getThucLanh(), "Lương NV", "Tháng " + thangs[m]);
+            }
+        }
+
+        for (BangLuongCongNhan bangLuong : dsBangLuongCN) {
+            //Vị trí trong arr thangs
+            int m = checkBangLuongCN(bangLuong);
+            if (m != -1) {
+                dataset.addValue(bangLuong.getThucLanh(), "Lương CN", "Tháng " + thangs[m]);
+            }
+        }
+
+        // Create chart
+        JFreeChart chart = ChartFactory.createBarChart(
+                "Thống kê tiền lương công ty TNHH May mặc Thịnh Vượng", // Chart title
+                "Tháng", // Domain axis label
+                "Tiền lương", // Range axis label
+                dataset, // Data
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false
+        );
+        CategoryPlot plot = chart.getCategoryPlot();
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setMaximumSize(jPanel4.getPreferredSize());
+        jPanel4.removeAll();
+        jPanel4.setLayout(new java.awt.BorderLayout());
+        jPanel4.add(chartPanel, BorderLayout.CENTER);
+        jPanel4.validate();
+        jPanel4.setPreferredSize(new Dimension(946, 523));
+
+//        System.out.println("gui.GDBaoCaoThongKe.<init>()" + jPanel4.getPreferredSize());
+    }
+
+    public void createBarChartSanLuong() {
+        // Create sample data
+        ArrayList<ChiTietBangChamCong> dsChiTietChamCong = chiTietBangChamCong_DAO.getAllChiTietBangChamCong();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (BangChamCongCongNhan bcc : bangChamCongCongNhan_DAO.getAllBangChamCongCongNhan()) {
+            //Kiểm tra xem bảng chấm công có thuộc tháng và năm ko
+            int m = checkBangChamCong(bcc);
+            if (m != -1) {
+                for (int i = 0; i < dsChiTietChamCong.size(); i++) {
+                    ChiTietBangChamCong ct = dsChiTietChamCong.get(i);
+                    if (ct.getBangCC().getMaBangChamCong().equals(bcc.getMaBangChamCong())) {
+                        //Thêm dữ liệu vào chart
+                        String maCN = bcc.getCn().getMaCN();
+                        Object[] obj = {maCN, ct};
+                        chiTietSLCN.add(obj);
+                        dsTopCongNhan.put(maCN, dsTopCongNhan.getOrDefault(maCN, 0) + ct.getSoLuong());
+                        dataset.addValue(ct.getSoLuong(), "Sản lượng", "Tháng " + thangs[m]);
+                        dsChiTietChamCong.remove(ct);
+                        i--;
+                    }
+
+                }
+            }
+        }
+
+        // Create chart
+        JFreeChart chart = ChartFactory.createBarChart(
+                "Thống kê sản luọng công ty TNHH May mặc Thịnh Vượng", // Chart title
+                "Tháng", // Domain axis label
+                "Sản lượng", // Range axis label
+                dataset // Data
+        );
+        CategoryPlot plot = chart.getCategoryPlot();
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setMaximumSize(jPanel6.getPreferredSize());
+        jPanel6.removeAll();
+        jPanel6.setLayout(new java.awt.BorderLayout());
+        jPanel6.add(chartPanel, BorderLayout.CENTER);
+        jPanel6.validate();
+        jPanel6.setPreferredSize(new Dimension(707, 517));
+        resertTableCN(dsTopCongNhan);
+    }
+
+    public void loadComponentTabelCN() {
+        modelCN = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // all cells false
+                return false;
+            }
+        };
+        modelCN.addColumn("Công nhân");
+        modelCN.addColumn("Tổng sản phẩm");
+        jTableTopCN.setModel(modelCN);
+    }
+
+    public void resertTableCN(Map<String, Integer> dsTopCongNhan) {
+        modelCN.setRowCount(0);
+        Map<String, Integer> sortedMap = new TreeMap<>(new Comparator<String>() {
+            @Override
+            public int compare(String key1, String key2) {
+                int valueCompare = dsTopCongNhan.get(key2).compareTo(dsTopCongNhan.get(key1));
+                return valueCompare != 0 ? valueCompare : key1.compareTo(key2);
+            }
+        });
+        sortedMap.putAll(dsTopCongNhan);
+        for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
+
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.println(key + "-" + value);
+            Object[] obj = {key, value};
+            modelCN.addRow(obj);
+        }
+    }
+
+    public int checkBangLuongNV(BangLuongNhanVien bangLuongNV) {
+        if (bangLuongNV.getMaBangLuong().substring(0, 2).equals(nam.substring(2, 4))) {
+            for (int i = 0; i < thangs.length; i++) {
+                if (bangLuongNV.getMaBangLuong().substring(2, 4).equals(thangs[i])) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        return -1;
+    }
+
+    public int checkBangLuongCN(BangLuongCongNhan bangLuongCN) {
+//        JOptionPane.showMessageDialog(null, bangLuongNV.getMaBangLuong().substring(0, 2) + "\n" + nam.substring(2, 4));
+        if (bangLuongCN.getMaBangLuong().substring(0, 2).equals(nam.substring(2, 4))) {
+            for (int i = 0; i < thangs.length; i++) {
+//                JOptionPane.showMessageDialog(null,bangLuongNV.getMaBangLuong().substring(2, 4) + "\n" + thangs[i]);
+                if (bangLuongCN.getMaBangLuong().substring(2, 4).equals(thangs[i])) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        return -1;
+    }
+
+    public void checkBangPhanCong(ChiTietBangChamCong chiTietBangChamCong, Map<String, Integer> dsTopCongNhan) {
+        for (BangPhanCong bangPhanCong : bangPhanCong_DAO.getAllBangPhanCong()) {
+            if (chiTietBangChamCong.getBangPC().getMaBangPC().equals(bangPhanCong.getMaBangPC())) {
+                String maCN = bangPhanCong.getCongNhan().getMaCN();
+                dsTopCongNhan.put(maCN, dsTopCongNhan.get(maCN) + chiTietBangChamCong.getSoLuong());
+            }
+        }
+    }
+
+    public int checkBangChamCong(BangChamCongCongNhan bcc) {
+        //Lọc ra các bảng chấm công thuộc các tháng và năm trên cbb
+        String y = (bcc.getNgayChamCongString().substring(2, 4));
+        String m = (bcc.getNgayChamCongString().substring(5, 7));
+        if (y.equals(nam.substring(2, 4))) {
+            for (int i = 0; i < thangs.length; i++) {
+                if (m.equals(thangs[i])) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        return -1;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButtonTKeTL;
+    private javax.swing.JButton jButtonThongKeSL;
+    private javax.swing.JButton jButtonXuatExcelBangLuong;
+    private javax.swing.JButton jButtonXuatExcelSanLuong;
+    private javax.swing.JComboBox<String> jComboBoxTKeSLKy;
+    private javax.swing.JComboBox<String> jComboBoxTKeSLNam;
+    private javax.swing.JComboBox<String> jComboBoxTKeTLKy;
+    private javax.swing.JComboBox<String> jComboBoxTKeTLNam;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabelTKeSLKy;
+    private javax.swing.JLabel jLabelTKeSLNam;
+    private javax.swing.JLabel jLabelTKeTLKy;
+    private javax.swing.JLabel jLabelTKeTLNam;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTableTopCN;
     private javax.swing.JPanel pBaoCaoThongKe;
     private javax.swing.JPanel pTittle;
     private javax.swing.JPanel pTongQuan;
     // End of variables declaration//GEN-END:variables
+    private BangLuongNhanVien_DAO bangLuongNhanVien_DAO;
+    private BangLuongCongNhan_DAO bangLuongCongNhan_DAO;
+    private ChiTietBangChamCong_DAO chiTietBangChamCong_DAO;
+    private BangChamCongCongNhan_DAO bangChamCongCongNhan_DAO;
+    private BangPhanCong_DAO bangPhanCong_DAO;
+    private HopDong_DAO hopDong_DAO;
+    private SanPham_DAO sanPham_DAO;
+    private ArrayList<HopDong> dsHopDong;
+    private ArrayList<SanPham> dsSanPham;
+    private Map<String, Integer> dsTopCongNhan;
+    private ArrayList<Object[]> chiTietSLCN;
+    private DefaultTableModel modelCN;
+    private String ky;
+    private String nam;
+    private String[] thangs;
+    private DateTimeFormatter dateTimeFormatter;
 }

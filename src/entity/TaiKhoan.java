@@ -6,69 +6,51 @@ package entity;
 
 import java.util.Objects;
 
-public class TaiKhoan
-{
-    private String maTK;
+public class TaiKhoan {
+    
+    private NhanVienHanhChinh nv;
     private String tenTK;
     private String matKhau;
-    private String quyenHan;
-    private NhanVienHanhChinh nv;
     
-    public String getMaTK() {
-        return this.maTK;
-    }
-    
-    public void setMaTK(final String maTK) {
-        this.maTK = maTK;
-    }
-    
+
     public String getTenTK() {
         return this.tenTK;
     }
-    
-    public void setTenTK(final String tenTK) {
+
+    public void setTenTK(String tenTK) {
         this.tenTK = tenTK;
     }
-    
+
     public String getMatKhau() {
         return this.matKhau;
     }
-    
-    public void setMatKhau(final String matKhau) {
+
+    public void setMatKhau(String matKhau) {
         this.matKhau = matKhau;
     }
-    
-    public String getQuyenHan() {
-        return this.quyenHan;
-    }
-    
-    public void setQuyenHan(final String quyenHan) {
-        this.quyenHan = quyenHan;
-    }
-    
+
+
     public NhanVienHanhChinh getNv() {
         return this.nv;
     }
-    
-    public void setNv(final NhanVienHanhChinh nv) {
+
+    public void setNv( NhanVienHanhChinh nv) {
         this.nv = nv;
     }
-    
-    public TaiKhoan(final String maTK, final String tenTK, final String matKhau, final String quyenHan, final NhanVienHanhChinh nv) {
-        this.maTK = maTK;
-        this.tenTK = tenTK;
-        this.matKhau = matKhau;
-        this.quyenHan = quyenHan;
+
+    public TaiKhoan( NhanVienHanhChinh nv, String tenTK, String matKhau ) {
         this.nv = nv;
+        this.tenTK = tenTK;
+        this.matKhau = matKhau;     
     }
     
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 11 * hash + Objects.hashCode(this.maTK);
+        hash = 11 * hash + Objects.hashCode(this.nv);
         return hash;
     }
-    
+
     @Override
     public boolean equals(final Object obj) {
         if (this == obj) {
@@ -80,14 +62,13 @@ public class TaiKhoan
         if (this.getClass() != obj.getClass()) {
             return false;
         }
-        final TaiKhoan other = (TaiKhoan)obj;
-        return Objects.equals(this.maTK, other.maTK);
+        final TaiKhoan other = (TaiKhoan) obj;
+        return Objects.equals(this.nv, other.nv);
     }
 
     @Override
     public String toString() {
-        return "TaiKhoan{" + "maTK=" + maTK + ", tenTK=" + tenTK + ", matKhau=" + matKhau + ", quyenHan=" + quyenHan + ", nv=" + nv + '}';
+        return "TaiKhoan{" + " tenTK=" + tenTK + ", matKhau=" + matKhau + ",  nv=" + nv + '}';
     }
-    
-    
+
 }
