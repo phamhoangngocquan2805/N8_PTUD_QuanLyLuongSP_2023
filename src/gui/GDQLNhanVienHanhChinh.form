@@ -593,7 +593,7 @@
                       </Border>
                     </Property>
                     <Property name="alignmentY" type="float" value="1.0"/>
-                    <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                    <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="enabled" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="0"/>
@@ -628,7 +628,7 @@
                       </Border>
                     </Property>
                     <Property name="alignmentY" type="float" value="1.0"/>
-                    <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                    <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="enabled" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="14" style="0"/>
