@@ -57,7 +57,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
         pTongQuan = new javax.swing.JPanel();
         pImage = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lbHinhCN = new javax.swing.JLabel();
         btnChonAnh = new javax.swing.JButton();
         pThongTin = new javax.swing.JPanel();
         lblMaNV = new javax.swing.JLabel();
@@ -132,18 +132,18 @@ public class GDQLCongNhan extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(191, 95, 95));
         jPanel1.setPreferredSize(new java.awt.Dimension(153, 153));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/hinhnhanvien153px.png"))); // NOI18N
+        lbHinhCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbHinhCN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/hinhnhanvien153px.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+            .addComponent(lbHinhCN, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbHinhCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         btnChonAnh.setBackground(new java.awt.Color(255, 102, 102));
@@ -806,7 +806,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
             File ftenAnh = fileChooser.getSelectedFile();
             String duongdanAnh = ftenAnh.getAbsolutePath();
             hinhAnh = duongdanAnh.substring(76).replace('\\', '/');
-            jLabel2.setIcon(resizeImage(duongdanAnh));
+            lbHinhCN.setIcon(resizeImage(duongdanAnh));
             System.out.println(hinhAnh);
 
         }
@@ -814,7 +814,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
     private ImageIcon resizeImage(String imagePath) {
         ImageIcon myImage = new ImageIcon(imagePath);
         Image img = myImage.getImage();
-        Image newImg = img.getScaledInstance(jLabel2.getWidth(), jLabel2.getHeight(), Image.SCALE_SMOOTH);
+        Image newImg = img.getScaledInstance(lbHinhCN.getWidth(), lbHinhCN.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(newImg);
         return image;
     }
@@ -894,6 +894,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         if (btnThem.getText().equals("Thêm")) {
+            nhapLai();
             txtMaNV.setText(cn_DAO.getMaCN());
             txtHoTenNV.setEditable(true);
             radNam.setEnabled(true);
@@ -910,7 +911,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
             txtTienChuyenCan.setEditable(true);
             txtGhiChu.setEditable(true);
             txtGhiChu.setText("không");
-            
+
             txtHoTenNV.requestFocus();
             btnThem.setText("Hủy");
             btnLuu.setEnabled(true);
@@ -1184,8 +1185,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
                 modelCN.addRow(new Object[]{stt, s.getMaCN(), s.getHoTen(), phai, s.getNgaySinh(), s.getSoDT(), s.getDiaChi(), s.getTayNghe(), s.getKinhNghiem(), tinhTrang, s.getNgayVaoLam(), Double.toString(s.getTienPhuCapTheoNgay()), Double.toString(s.getTienChuyenCan()), s.getGhiChu()});
                 stt++;
                 break;
-            }
-            else if (s.getHoTen().equals(txtTimCN.getText())) {
+            } else if (s.getHoTen().equals(txtTimCN.getText())) {
                 String phai = "Nam";
                 String tinhTrang = "Thôi việc";
                 if (!s.getPhai()) {
@@ -1196,8 +1196,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
                 }
                 modelCN.addRow(new Object[]{stt, s.getMaCN(), s.getHoTen(), phai, s.getNgaySinh(), s.getSoDT(), s.getDiaChi(), s.getTayNghe(), s.getKinhNghiem(), tinhTrang, s.getNgayVaoLam(), Double.toString(s.getTienPhuCapTheoNgay()), Double.toString(s.getTienChuyenCan()), s.getGhiChu()});
                 stt++;
-            }
-            else if(s.getSoDT().equals(txtTimCN.getText())){
+            } else if (s.getSoDT().equals(txtTimCN.getText())) {
                 String phai = "Nam";
                 String tinhTrang = "Thôi việc";
                 if (!s.getPhai()) {
@@ -1239,6 +1238,9 @@ public class GDQLCongNhan extends javax.swing.JPanel {
         txtTienPhuCapTheoNgay.setText(modelCN.getValueAt(row, 11).toString());
         txtTienChuyenCan.setText(modelCN.getValueAt(row, 12).toString());
         txtGhiChu.setText(modelCN.getValueAt(row, 13).toString());
+
+        CongNhan cn = cn_DAO.getCongNhanTheoMa(txtMaNV.getText());
+        lbHinhCN.setIcon(new ImageIcon(getClass().getResource(cn.getHinhAnh())));
     }//GEN-LAST:event_tableCNMouseClicked
 
 
@@ -1258,13 +1260,13 @@ public class GDQLCongNhan extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser dateNgaySinh;
     private com.toedter.calendar.JDateChooser dateNgayVaoLam;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jscrCN;
+    private javax.swing.JLabel lbHinhCN;
     private javax.swing.JLabel lblDiaChi;
     private javax.swing.JLabel lblGhiChu;
     private javax.swing.JLabel lblHoTenNV;
