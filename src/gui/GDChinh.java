@@ -79,7 +79,7 @@ public class GDChinh extends javax.swing.JFrame {
                 dieuKhien.setSuKienClickDanhMuc(listDanhMucBean);
                 
                 String tl = LocalDateTime.now().toString();
-                jLabel12.setText("Ngày " + tl.substring(9,10) +  " tháng " + tl.substring(5,7) + " năm " + tl.substring(0, 4));
+                jLabel12.setText("Ngày " + tl.substring(8,10) +  " tháng " + tl.substring(5,7) + " năm " + tl.substring(0, 4));
 //                JOptionPane.showMessageDialog(null, nvLog.toString());
                 jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource(nvLog.getHinhAnh())));
                 jLabel14.setText(nvLog.getHoTen());
@@ -684,20 +684,12 @@ public class GDChinh extends javax.swing.JFrame {
 
     private void congNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_congNhanActionPerformed
         pNoiDung = new GDQLCongNhan();
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
+        reFresh();
     }//GEN-LAST:event_congNhanActionPerformed
 
     private void nhanVienHanhChinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nhanVienHanhChinhActionPerformed
         pNoiDung = new GDQLNhanVienHanhChinh();
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
+        reFresh();
     }//GEN-LAST:event_nhanVienHanhChinhActionPerformed
 
     private void lblQLNhanSuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQLNhanSuMouseClicked
@@ -714,47 +706,27 @@ public class GDChinh extends javax.swing.JFrame {
 
     private void chamCongNVHCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chamCongNVHCActionPerformed
         pNoiDung = new GDQLChamCongNVHC();
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
+        reFresh();
     }//GEN-LAST:event_chamCongNVHCActionPerformed
 
     private void chamCongCongNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chamCongCongNhanActionPerformed
         pNoiDung = new GDQLChamCongCN();
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
+        reFresh();
     }//GEN-LAST:event_chamCongCongNhanActionPerformed
 
     private void tinhLuongNVHCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tinhLuongNVHCActionPerformed
        pNoiDung = new GDTinhLuongNV();
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
+        reFresh();
     }//GEN-LAST:event_tinhLuongNVHCActionPerformed
 
     private void tinhLuongCongNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tinhLuongCongNhanActionPerformed
         pNoiDung = new GDTinhLuongCN();
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
+        reFresh();
     }//GEN-LAST:event_tinhLuongCongNhanActionPerformed
 
     private void xemBangLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xemBangLuongActionPerformed
         pNoiDung = new GDXemBangLuong();
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
+        reFresh();
     }//GEN-LAST:event_xemBangLuongActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -803,5 +775,12 @@ public class GDChinh extends javax.swing.JFrame {
     private javax.swing.JMenuItem xemBangLuong;
     // End of variables declaration//GEN-END:variables
 
+    private void reFresh() {
+        pChinh.removeAll();
+        pChinh.setLayout(new BorderLayout());
+        pChinh.add(pNoiDung);
+        pChinh.validate();
+        pChinh.repaint();
+    }
 }
 

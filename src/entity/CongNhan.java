@@ -21,7 +21,7 @@ public class CongNhan {
     private String diaChi;
     private boolean tinhTrang;
     private Date ngayVaoLam;
-    private String hinhAnh;
+    private byte[] hinhAnh;
     private String tayNghe;
     private String kinhNghiem;
     private double tienPhuCapTheoNgay;
@@ -97,11 +97,11 @@ public class CongNhan {
         this.ngayVaoLam = ngayVaoLam;
     }
 
-    public String getHinhAnh() {
+    public byte[] getHinhAnh() {
         return hinhAnh;
     }
 
-    public void setHinhAnh(String hinhAnh) {
+    public void setHinhAnh(byte[] hinhAnh) {
         this.hinhAnh = hinhAnh;
     }
 
@@ -142,7 +142,7 @@ public class CongNhan {
     public boolean getTinhTrang(){
         return tinhTrang;
     }
-    public CongNhan(String maCN, String hoTen, boolean phai, Date ngaySinh, String soDT, String diaChi, boolean tinhTrang, Date ngayVaoLam, String hinhAnh, String tayNghe, String kinhNghiem, double tienPhuCapTheoNgay, double tienChuyenCan,String ghiChu) {
+    public CongNhan(String maCN, String hoTen, boolean phai, Date ngaySinh, String soDT, String diaChi, boolean tinhTrang, Date ngayVaoLam, byte[] hinhAnh, String tayNghe, String kinhNghiem, double tienPhuCapTheoNgay, double tienChuyenCan,String ghiChu) {
         this.maCN = maCN;
         this.hoTen = hoTen;
         this.phai = phai;
@@ -166,7 +166,7 @@ public class CongNhan {
     public CongNhan() {
     }
 
-    public CongNhan(String maCN, String hoTen, boolean phai, Date ngaySinh, String soDT, String diaChi, boolean tinhTrang, Date ngayVaoLam, double tienPhuCapTheoNgay, double tienChuyenCan, String ghiChu) {
+    public CongNhan(String maCN, String hoTen, boolean phai, Date ngaySinh, String soDT, String diaChi, boolean tinhTrang, Date ngayVaoLam, double tienPhuCapTheoNgay, double tienChuyenCan) {
         this.maCN = maCN;
         this.hoTen = hoTen;
         this.phai = phai;
@@ -177,7 +177,6 @@ public class CongNhan {
         this.ngayVaoLam = ngayVaoLam;
         this.tienPhuCapTheoNgay = tienPhuCapTheoNgay;
         this.tienChuyenCan = tienChuyenCan;
-        this.ghiChu = ghiChu;
     }
     
     
