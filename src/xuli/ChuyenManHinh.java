@@ -14,6 +14,7 @@ import gui.GDQLNhanVienHanhChinh;
 import gui.GDQLSanPham;
 import gui.GDQLTaiKhoan;
 import gui.GDTongQuan;
+import gui.GDTroGiup;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -222,6 +224,23 @@ public class ChuyenManHinh implements BienMacDinh {
                 case "BaoCaoThongKe": {
                     if (nvLog.getPhongBan().getMaPB().equals("232")) {
                         pNoiDung = new GDBaoCaoThongKe();
+                    }
+                }
+                break;
+                
+                case "TroGiup": {
+                    pNoiDung = new GDTroGiup();
+                }
+                break;
+
+                case "DangXuat": {
+                    ImageIcon icon = new ImageIcon("/image/logo.png");
+                    // Các lựa chọn
+                    Object[] options = {"Yes", "No"};
+                    // Hiển thị JOptionPane với biểu tượng
+                    int result = JOptionPane.showOptionDialog(null, "Bạn có muốn tiếp tục không?", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options, options[0]);
+                    if (result == JOptionPane.NO_OPTION) {
+                        System.exit(0);
                     }
                 }
                 break;
