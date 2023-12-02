@@ -117,6 +117,9 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         jButtonTKeTL = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jButtonXuatExcelBangLuong = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -182,7 +185,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         jButtonTKeTL.setBackground(new java.awt.Color(153, 76, 76));
         jButtonTKeTL.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonTKeTL.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonTKeTL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chart-simple-solid.png"))); // NOI18N
+        jButtonTKeTL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/iconthongke.png"))); // NOI18N
         jButtonTKeTL.setMnemonic('B');
         jButtonTKeTL.setText("Thống kê");
         jButtonTKeTL.addActionListener(new java.awt.event.ActionListener() {
@@ -204,7 +207,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 523, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jButtonXuatExcelBangLuong.setBackground(new java.awt.Color(153, 76, 76));
@@ -218,6 +221,28 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                 jButtonXuatExcelBangLuongActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 207, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 148, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -236,10 +261,17 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                 .addComponent(jButtonTKeTL)
                 .addGap(26, 26, 26)
                 .addComponent(jButtonXuatExcelBangLuong)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(189, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 942, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -253,9 +285,15 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                     .addComponent(jLabelTKeTLKy)
                     .addComponent(jButtonTKeTL)
                     .addComponent(jButtonXuatExcelBangLuong))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTabbedPane2)))
         );
 
         jTabbedPane1.addTab("Thống kê tiền lương", jPanel1);
@@ -343,7 +381,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         jButtonThongKeSL.setBackground(new java.awt.Color(153, 76, 76));
         jButtonThongKeSL.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonThongKeSL.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonThongKeSL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/chart-simple-solid.png"))); // NOI18N
+        jButtonThongKeSL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/iconthongke.png"))); // NOI18N
         jButtonThongKeSL.setMnemonic('S');
         jButtonThongKeSL.setText("Thống kê");
         jButtonThongKeSL.addActionListener(new java.awt.event.ActionListener() {
@@ -1019,12 +1057,15 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelTKeTLKy;
     private javax.swing.JLabel jLabelTKeTLNam;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTableTopCN;
     private javax.swing.JPanel pBaoCaoThongKe;
     private javax.swing.JPanel pTittle;
