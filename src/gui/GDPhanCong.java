@@ -17,12 +17,9 @@ import entity.CongDoan;
 import entity.CongNhan;
 import entity.SanPham;
 import java.awt.Color;
-import java.awt.event.KeyEvent;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
@@ -34,20 +31,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GDPhanCong extends javax.swing.JPanel {
 
-    private BangPhanCong_DAO phanCong_Dao;
-    private CongNhan_DAO congNhan_Dao;
-    private CongDoan_DAO congDoan_Dao;
-    private SanPham_DAO sanPham_Dao;
-    private ChiTietBangChamCong_DAO ctBangCC_Dao;
-
-    private Boolean processEvent = true;
-
-    private DefaultTableModel modelDSCN;
-    private DefaultTableModel modelPhanCong;
-    private DefaultTableModel modelCongDoan;
-    private DefaultComboBoxModel<String> modelcbbCongDoan;
-    private DefaultComboBoxModel<String> modelcbbSanPham2;
-
     /**
      * Creates new form GDPhanCong
      */
@@ -56,14 +39,16 @@ public class GDPhanCong extends javax.swing.JPanel {
         congDoan_Dao = new CongDoan_DAO();
         congNhan_Dao = new CongNhan_DAO();
         sanPham_Dao = new SanPham_DAO();
+        try {
+            connectDB.ConnectDB.getInstance().connect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         initComponents();
-        addCBB();
+        addListCN();
+        addListCD();
         addListPhanCong();
-        String CongDoan = modelcbbCongDoan.getElementAt(1);
-        int indexCD = CongDoan.indexOf("-");
-        addListCN(CongDoan.substring(0, indexCD));
-        addListCD(CongDoan.substring(0, indexCD));
-        cbbTimTheoSP.setSelectedIndex(1);
+        addCBB();
     }
 
     /**
@@ -111,11 +96,10 @@ public class GDPhanCong extends javax.swing.JPanel {
         tableDSPhanCong = new javax.swing.JTable();
         cbbTimTheoSP = new javax.swing.JComboBox<>();
         panelLocTheo = new javax.swing.JPanel();
+        cbbTimSP = new javax.swing.JComboBox<>();
         cbbCongDoan = new javax.swing.JComboBox<>();
         cbbTayNghe = new javax.swing.JComboBox<>();
-        jPanel3 = new javax.swing.JPanel();
-        btnXemPC = new javax.swing.JButton();
-        dateCBD = new com.toedter.calendar.JDateChooser();
+        btnXuatFileExcel = new javax.swing.JButton();
 
         comfirmDelete.setTitle("Xác nhận xóa");
         comfirmDelete.setAlwaysOnTop(true);
@@ -258,7 +242,7 @@ public class GDPhanCong extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã CN", "Họ tên"
+
             }
         ));
         tableCongNhan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -470,20 +454,12 @@ public class GDPhanCong extends javax.swing.JPanel {
                 tableDSPhanCongMouseClicked(evt);
             }
         });
-        tableDSPhanCong.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tableDSPhanCongKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                tableDSPhanCongKeyReleased(evt);
-            }
-        });
         scrollDSPhanCong.setViewportView(tableDSPhanCong);
 
         cbbTimTheoSP.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cbbTimTheoSP.setForeground(new java.awt.Color(59, 58, 58));
         cbbTimTheoSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sản phẩm", " " }));
-        cbbTimTheoSP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lọc theo sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
+        cbbTimTheoSP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "tìm theo sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         cbbTimTheoSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbTimTheoSPActionPerformed(evt);
@@ -492,6 +468,15 @@ public class GDPhanCong extends javax.swing.JPanel {
 
         panelLocTheo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, new java.awt.Color(255, 255, 255), null, new java.awt.Color(204, 204, 255)), "Lọc theo:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
+        cbbTimSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "May", "Cắt", "ủi", "cắt chỉ" }));
+        cbbTimSP.setBorder(javax.swing.BorderFactory.createTitledBorder("Sản phẩm"));
+        cbbTimSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbTimSPActionPerformed(evt);
+            }
+        });
+
+        cbbCongDoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên CD-Tên SP" }));
         cbbCongDoan.setBorder(javax.swing.BorderFactory.createTitledBorder("Công đoạn"));
         cbbCongDoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -499,7 +484,6 @@ public class GDPhanCong extends javax.swing.JPanel {
             }
         });
 
-        cbbTayNghe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cắt vải", "May vắt sổ", "Đóng gói", "May móc xích kép", "May móc xích đơn", "Là ủi" }));
         cbbTayNghe.setBorder(javax.swing.BorderFactory.createTitledBorder("Tay nghề"));
         cbbTayNghe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -512,45 +496,31 @@ public class GDPhanCong extends javax.swing.JPanel {
         panelLocTheoLayout.setHorizontalGroup(
             panelLocTheoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLocTheoLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(cbbTayNghe, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(cbbCongDoan, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(158, 158, 158)
-                .addComponent(cbbTayNghe, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(cbbTimSP, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelLocTheoLayout.setVerticalGroup(
             panelLocTheoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLocTheoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(cbbTayNghe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(cbbCongDoan)
-                .addComponent(cbbTayNghe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(cbbTimSP))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, new java.awt.Color(153, 153, 153)), "Lọc theo ngày bắt đầu"));
-
-        btnXemPC.setBackground(new java.awt.Color(255, 102, 102));
-        btnXemPC.setForeground(new java.awt.Color(255, 255, 255));
-        btnXemPC.setText("Xem PC");
-        btnXemPC.addActionListener(new java.awt.event.ActionListener() {
+        btnXuatFileExcel.setBackground(new java.awt.Color(255, 102, 102));
+        btnXuatFileExcel.setForeground(new java.awt.Color(255, 255, 255));
+        btnXuatFileExcel.setActionCommand("Xya");
+        btnXuatFileExcel.setLabel("<html><center>Xuất file<br>excel</center></html>");
+        btnXuatFileExcel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXemPCActionPerformed(evt);
+                btnXuatFileExcelActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(dateCBD, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(btnXemPC, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnXemPC, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-            .addComponent(dateCBD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout pTongQuanLayout = new javax.swing.GroupLayout(pTongQuan);
         pTongQuan.setLayout(pTongQuanLayout);
@@ -559,27 +529,26 @@ public class GDPhanCong extends javax.swing.JPanel {
             .addGroup(pTongQuanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTongQuanLayout.createSequentialGroup()
-                        .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pTongQuanLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(cbbTimTheoSP, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pTongQuanLayout.createSequentialGroup()
-                                .addComponent(scrollDSCN, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(scrollCD, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(panelLocTheo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
+                    .addGroup(pTongQuanLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTongQuanLayout.createSequentialGroup()
-                                .addComponent(panelThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTongQuanLayout.createSequentialGroup()
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(73, 73, 73))))
+                            .addComponent(panelLocTheo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pTongQuanLayout.createSequentialGroup()
+                                .addComponent(scrollCD, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(scrollDSCN, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))
                     .addGroup(pTongQuanLayout.createSequentialGroup()
                         .addComponent(scrollDSPhanCong, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTongQuanLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnXuatFileExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cbbTimTheoSP, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70))
         );
         pTongQuanLayout.setVerticalGroup(
             pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -595,11 +564,11 @@ public class GDPhanCong extends javax.swing.JPanel {
                     .addComponent(panelThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbbTimTheoSP))
+                    .addComponent(cbbTimTheoSP, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(btnXuatFileExcel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollDSPhanCong, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addComponent(scrollDSPhanCong, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pPhanCongLayout = new javax.swing.GroupLayout(pPhanCong);
@@ -658,11 +627,12 @@ public class GDPhanCong extends javax.swing.JPanel {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         lbThongBao.setText("");
-        if (tableDSPhanCong.getSelectedRow() == -1) {
+        if (tableDSPhanCong.getSelectedRow()==-1){
             lbThongBao.setText("Vui lòng chọn phân công cần xoá");
-        } else {
-            lbttCN.setText(txtHoTenCN.getText() + "-" + txtMaCN.getText());
-            lbXacNhanXoa.setText("<html>Bạn có chắc muốn xóa công đoạn<br><font color='red'>" + txtTenCD.getText() + "</font> - <font color='red'>" + txtMaCD.getText() + " hong?" + "</font></html>");
+        }
+        else{
+            lbttCN.setText(txtHoTenCN.getText()+"-"+txtMaCN.getText());
+            lbXacNhanXoa.setText("<html>Bạn có chắc muốn xóa công đoạn<br><font color='red'>" + txtTenCD.getText() + "</font> - <font color='red'>" + txtMaCD.getText()+" hong?"+ "</font></html>");
             comfirmDelete.setVisible(true);
         }
     }//GEN-LAST:event_btnXoaActionPerformed
@@ -677,189 +647,207 @@ public class GDPhanCong extends javax.swing.JPanel {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         lbThongBao.setText("");
-        if (tableDSPhanCong.getSelectedRow() == -1)
+        if(tableDSPhanCong.getSelectedRow()==-1)
             lbThongBao.setText("Vui lòng chọn phân công cần sửa");
-        else {
+        else{
             lbThongBao.setText("");
             try {
                 double number = Double.parseDouble(txtSoLuong.getText());
-            } catch (NumberFormatException ex) {
-                lbThongBao.setText("Số lượng không hợp lệ");
-                return;
+                }
+                catch (NumberFormatException ex) {
+                   lbThongBao.setText("Số lượng không hợp lệ");
+                   return;
             }
             BangPhanCong bangPC = phanCong_Dao.getAllBangPhanCong().get(tableDSPhanCong.getSelectedRow());
-            if (bangPC.getCongNhan().getMaCN().equalsIgnoreCase(txtMaCN.getText())
-                    && bangPC.getCongNhan().getHoTen().equalsIgnoreCase(txtHoTenCN.getText())
-                    && bangPC.getCongDoan().getMaCD().equalsIgnoreCase(txtMaCD.getText())
-                    && bangPC.getCongDoan().getTenCD().equalsIgnoreCase(txtTenCD.getText())
-                    && bangPC.getSoLuong() == (Integer.valueOf(txtSoLuong.getText()))) //kiểm tra có sự thay đổi dữ liệu để update không
-            {
+            if(bangPC.getCongNhan().getMaCN().equalsIgnoreCase(txtMaCN.getText())&&
+                bangPC.getCongNhan().getHoTen().equalsIgnoreCase(txtHoTenCN.getText())&&
+                bangPC.getCongDoan().getMaCD().equalsIgnoreCase(txtMaCD.getText())&&
+                bangPC.getCongDoan().getTenCD().equalsIgnoreCase(txtTenCD.getText())&&
+               bangPC.getSoLuong() == (Integer.valueOf(txtSoLuong.getText()))
+                    ) //kiểm tra có sự thay đổi dữ liệu để update không
                 lbThongBao.setText("Vui lòng chỉnh sửa thông tin cần update");
-            } else {
-                if (Integer.valueOf(txtSoLuong.getText()) > bangPC.getSoLuong() - getSLConTrongCD(bangPC.getMaBangPC())) {
+            else{
+                 if(Integer.valueOf(txtSoLuong.getText().toString())> Integer.valueOf(tableCongDoan.getValueAt(tableCongDoan.getSelectedRow(), 2).toString())){
                     lbThongBao.setText("Số lượng lớn hơn số lượng còn");// kiểm tra số lượng nhập có lớn hơn số lượng còn không
                     return;
-                }
-                if (!checkSLHTCDTruoc(congDoan_Dao.getCongDoanTheoMa(txtMaCD.getText()))) {
+                 }
+                if(!checkSLHTCDTruoc(congDoan_Dao.getCongDoanTheoMa(txtMaCD.getText())))
                     return;
-                }
-//                if()
                 bangPC.setCongDoan(congDoan_Dao.getCongDoanTheoMa(txtMaCD.getText()));
                 bangPC.setCongNhan(congNhan_Dao.getCongNhanTheoMa(txtMaCN.getText()));
                 bangPC.setSoLuong(Integer.valueOf(txtSoLuong.getText()));
-                if (phanCong_Dao.updateBangPhanCong(bangPC)) {
+                if(phanCong_Dao.updateBangPhanCong(bangPC)){
                     lbThongBao.setText("Update thành công");
-                    addListPhanCong();
-                    cbbSK();
                     xoaTrang();
-                } else {
-                    lbThongBao.setText("Update thất bại");
+                    modelPhanCong.setNumRows(0);
+                    addListPhanCong();
+                    modelCongDoan.setNumRows(0);
+                    addListCD();
                 }
+                else
+                    lbThongBao.setText("Update thất bại");
             }
         }
     }//GEN-LAST:event_btnSuaActionPerformed
-//    private boolean checkCongDoanTheoTayNghe(){
-//        
-//    }
+
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         lbThongBao.setText("");
-        if (txtHoTenCN.getText().equals("")) {
+        if (txtHoTenCN.getText().equals("")){
             lbThongBao.setText("Chưa chọn công nhân");
             return;
         }
-        if (txtMaCD.getText().equals("")) {
+        if(txtMaCD.getText().equals("")){
             lbThongBao.setText("Chưa chọn công đoạn");
             return;
         }
-        if (txtSoLuong.getText().equals("")) {
+        if(txtSoLuong.getText().equals("")){
             lbThongBao.setText("Nhập số lượng phân công");
             txtSoLuong.requestFocus();
             return;
         }
-        try {
+         try {
             double number = Double.parseDouble(txtSoLuong.getText());
-        } catch (NumberFormatException ex) {
+            }
+         catch (NumberFormatException ex) {
             lbThongBao.setText("Số lượng không hợp lệ");
             return;
         }
         lbThongBao.setText("");
         CongDoan cd = congDoan_Dao.getCongDoanTheoMa(txtMaCD.getText());
-        if (cd != null) {
-            if (Integer.valueOf(txtSoLuong.getText().toString()) > Integer.valueOf(tableCongDoan.getValueAt(tableCongDoan.getSelectedRow(), 2).toString())) {
+        if(cd != null){
+             if(Integer.valueOf(txtSoLuong.getText().toString())> Integer.valueOf(tableCongDoan.getValueAt(tableCongDoan.getSelectedRow(), 2).toString())){
                 lbThongBao.setText("Số lượng lớn hơn số lượng còn");
                 return;
-            } else {
-                if (Integer.valueOf(txtSoLuong.getText()) == 0) {
+             }
+             else{
+                 if(Integer.valueOf(txtSoLuong.getText())==0){
                     lbThongBao.setText("Số lượng không hợp lệ");
                     return;
-                }
-                if (!checkSLHTCDTruoc(cd)) {
+                 }
+                if(!checkSLHTCDTruoc(cd))
                     return;
-                }
-                BangPhanCong pcTemp = phanCong_Dao.getBangPhanCongTheoMaCNMaCD(txtMaCN.getText(), txtMaCD.getText());
-                if (pcTemp.getMaBangPC() != null) {
-                    pcTemp.setSoLuong(pcTemp.getSoLuong() + Integer.parseInt(txtSoLuong.getText()));
-                    if (phanCong_Dao.updateBangPhanCong(pcTemp)) {
-                        lbThongBao.setText("Thêm số lượng thành công!");
-                        addListPhanCong();
-                        cbbSK();
-                        xoaTrang();
-                        return;
-                    } else {
-                        lbThongBao.setText("Phân công Thất bại!");
-                        return;
-                    }
-                }
                 LocalDate currentDate = LocalDate.now();
                 String maBangPCMoiNhat = phanCong_Dao.getBangPhanCongMoiNhat().getMaBangPC();
-                String nowMonth = String.format("%02d", currentDate.getMonthValue());
+                String nowMonth =  String.format("%02d", currentDate.getMonthValue());
                 String nowDay = String.format("%02d", currentDate.getDayOfMonth());
-                String ngayThangNamHTai = Integer.toString(currentDate.getYear() % 100) + nowMonth + nowDay;
-                int bonSoCuoiMaBangPCMoiNhat = 1;
-                if (maBangPCMoiNhat.substring(0, 6).equals(ngayThangNamHTai)) {
-                    bonSoCuoiMaBangPCMoiNhat = Integer.valueOf(maBangPCMoiNhat.substring(maBangPCMoiNhat.length() - 4)) + 1;
+                String ngayThangNamHTai = Integer.toString(currentDate.getYear()%100) + nowMonth + nowDay;
+                int bonSoCuoiMaBangPCMoiNhat= 1;
+                if(maBangPCMoiNhat.substring(0, 6).equals(ngayThangNamHTai)){
+                     bonSoCuoiMaBangPCMoiNhat= Integer.valueOf(maBangPCMoiNhat.substring(maBangPCMoiNhat.length() - 4)) + 1;
                 }
-                String ddddMa = String.format("%04d", bonSoCuoiMaBangPCMoiNhat);
-                String maBangPCNew = Integer.toString(currentDate.getYear() % 100) + nowMonth + nowDay + ddddMa;//Mã bảng Pc mới
+                String ddddMa =  String.format("%04d", bonSoCuoiMaBangPCMoiNhat);
+                String maBangPCNew = Integer.toString(currentDate.getYear()%100)+nowMonth+nowDay+ddddMa;//Mã bảng Pc mới
                 BangPhanCong pcNew = new BangPhanCong(maBangPCNew, Integer.valueOf(txtSoLuong.getText().toString()), cd, congNhan_Dao.getCongNhanTheoMa(txtMaCN.getText()));
-
-                if (phanCong_Dao.createBangPhanCong(pcNew)) {
+                 
+                if (phanCong_Dao.createBangPhanCong(pcNew)){
                     lbThongBao.setText("phân công thành công");
                     modelPhanCong.setNumRows(0);
                     addListPhanCong();
-                    cbbSK();
+                    modelCongDoan.setNumRows(0);
+                    addListCD();
                     xoaTrang();
-                } else {
-                    lbThongBao.setText("Thất bại");
                 }
+                else 
+                    lbThongBao.setText("Thất bại");
             }
         }
     }//GEN-LAST:event_btnXacNhanActionPerformed
 
-    private void cbbTayNgheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTayNgheActionPerformed
-        if (processEvent) {
-            modelDSCN.setNumRows(0);
-            for (CongNhan s : congNhan_Dao.getAllCongNhan()) {
-                if (s.getTinhTrang()) {
-                    if (s.getTayNghe().equalsIgnoreCase(cbbTayNghe.getSelectedItem().toString())) {
-                        String[] row = {s.getMaCN(), s.getHoTen()};
-                        modelDSCN.addRow(row);
-                    }
+    private void cbbTimSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTimSPActionPerformed
+        modelCongDoan.setNumRows(0);
+        String tenCD = modelcbbSanPham.getSelectedItem().toString();
+        if (tenCD.equals("Tất cả")){
+            addListCD();
+            return;
+        }
+        int test;
+        for (CongDoan s:congDoan_Dao.getAllCongDoan()){
+            test = 0;
+            int viTri = tenCD.indexOf('-');
+            if(tenCD.substring(viTri+1).equals(s.getSanPham().getTenSP())){//lấy giá trị từ dấu - tới hết tức là tên sản phẩm
+            for (BangPhanCong pc: phanCong_Dao.getAllBangPhanCong()){
+                if (pc.getCongDoan().getMaCD().equalsIgnoreCase(s.getMaCD()))
+                {
+                    String [] row = {s.getMaCD(),s.getTenCD()+"-"+"("+s.getSanPham().getTenSP()+")", Integer.toString(s.getSoLuong()-pc.getSoLuong()),s.getTenCDTruoc()};
+                    modelCongDoan.addRow(row);
+                    test = 1;
                 }
             }
-            processEvent = false;
-            cbbCongDoan.setSelectedIndex(0);
-            processEvent = true;
-            addListCD("");
+            if (test == 0){
+                 String [] row = {s.getMaCD(),s.getTenCD()+"-"+"("+s.getSanPham().getTenSP()+")", Integer.toString(s.getSoLuong())};
+                 modelCongDoan.addRow(row);
+            }  
+            }
+        } 
+    }//GEN-LAST:event_cbbTimSPActionPerformed
+
+    private void cbbTayNgheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTayNgheActionPerformed
+        modelDSCN.setNumRows(0);
+        if (modelcbbTayNghe.getSelectedItem().toString().equals("Tất cả")){
+            addListCN();
+            return;
+        }
+           
+        for(CongNhan s: congNhan_Dao.getAllCongNhan()){
+            if(s.getTayNghe().equalsIgnoreCase(modelcbbTayNghe.getSelectedItem().toString())){
+                String [] row = {s.getMaCN(), s.getHoTen()};
+                modelDSCN.addRow(row);
+            }
         }
     }//GEN-LAST:event_cbbTayNgheActionPerformed
 
-    private void cbbCongDoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbCongDoanActionPerformed
-        if (processEvent)
-            cbbSK();
-    }//GEN-LAST:event_cbbCongDoanActionPerformed
-    private void cbbSK() {
-        modelCongDoan.setNumRows(0);
-        for (CongDoan s : congDoan_Dao.getAllCongDoan()) {
-            String cdSP = s.getTenCD() + "-" + "(" + s.getSanPham().getTenSP() + ")";
-            if (cbbCongDoan.getSelectedItem().toString().equals(cdSP)) {
-                String[] row = {s.getMaCD(), cdSP, Integer.toString(s.getSoLuong() - getSLConTrongCD(s.getMaCD()))};
-                modelCongDoan.addRow(row);
-            }
-        }
-        String CongDoan = cbbCongDoan.getSelectedItem().toString();
-        int indexCD = CongDoan.indexOf("-");
-        String tenCD = CongDoan.substring(0, indexCD);
-        addListCN(tenCD);
-        processEvent = false;
-        cbbTayNghe.setSelectedItem(tenCD);
-        processEvent = true;
-    }
+    private void btnXuatFileExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatFileExcelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnXuatFileExcelActionPerformed
 
-    private int getSLConTrongCD(String maCD) {
-        int slPC = 0;
-        for (BangPhanCong pc : phanCong_Dao.getAllBangPhanCong()) {
-            if (pc.getCongDoan().getMaCD().equalsIgnoreCase(maCD)) {
-                slPC += pc.getSoLuong();
-            }
+    private void cbbCongDoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbCongDoanActionPerformed
+        modelCongDoan.setNumRows(0);
+        if (modelcbbCongDoan.getSelectedItem().toString().equals("Tất cả")){
+            addListCD();
+            return;
         }
-        return slPC;
-    }
+        int test;
+        for (CongDoan s:congDoan_Dao.getAllCongDoan()){
+            test = 0;
+            String cdSP = s.getTenCD()+"-"+"("+s.getSanPham().getTenSP()+")";
+            if(modelcbbCongDoan.getSelectedItem().toString().equals(cdSP)){
+
+            for (BangPhanCong pc: phanCong_Dao.getAllBangPhanCong()){
+                if (pc.getCongDoan().getMaCD().equalsIgnoreCase(s.getMaCD()))
+                {
+                    String [] row = {s.getMaCD(),s.getTenCD()+"-"+"("+s.getSanPham().getTenSP()+")", Integer.toString(s.getSoLuong()-pc.getSoLuong()),s.getTenCDTruoc()};
+                    modelCongDoan.addRow(row);
+                    test = 1;
+                }
+            }
+            if (test == 0){
+                 String [] row = {s.getMaCD(),s.getTenCD()+"-"+"("+s.getSanPham().getTenSP()+")", Integer.toString(s.getSoLuong())};
+                 modelCongDoan.addRow(row);
+            }  
+            }
+        }   
+    }//GEN-LAST:event_cbbCongDoanActionPerformed
+
     private void cbbTimTheoSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTimTheoSPActionPerformed
         modelPhanCong.setNumRows(0);
-        if (modelcbbSanPham2.getSelectedItem().toString().equals("Tất cả")) {
+        if (modelcbbSanPham2.getSelectedItem().toString().equals("Tất cả")){
             addListPhanCong();
             return;
         }
         int stt = 0;
-        for (BangPhanCong s : phanCong_Dao.getAllBangPhanCong()) {
-            if (modelcbbSanPham2.getSelectedItem().toString().equals(s.getCongDoan().getSanPham().getTenSP())) {
-                String[] row = {Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongDoan().getMaCD(), s.getCongDoan().getTenCD(), s.getCongDoan().getSanPham().getTenSP(), s.getCongDoan().getNgayBatDauString(), Integer.toString(s.getSoLuong())};
-                modelPhanCong.addRow(row);
-                stt++;
-            }
+        for (BangPhanCong s: phanCong_Dao.getAllBangPhanCong()){
+           if (modelcbbSanPham2.getSelectedItem().toString().equals(s.getCongDoan().getSanPham().getTenSP())){
+           String [] row = {Integer.toString(stt),s.getCongNhan().getMaCN(),s.getCongNhan().getHoTen(),s.getCongDoan().getTenCD(),s.getCongDoan().getSanPham().getTenSP(),s.getCongDoan().getNgayBatDauString(),Integer.toString(s.getSoLuong())};
+           modelPhanCong.addRow(row);
+           stt++;
+           }
         }
     }//GEN-LAST:event_cbbTimTheoSPActionPerformed
+
+    private void tableCongNhanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCongNhanMouseClicked
+    txtMaCN.setText(tableCongNhan.getValueAt(tableCongNhan.getSelectedRow(), 0).toString());
+    txtHoTenCN.setText(tableCongNhan.getValueAt(tableCongNhan.getSelectedRow(), 1).toString());
+    }//GEN-LAST:event_tableCongNhanMouseClicked
 
     private void tableCongDoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCongDoanMouseClicked
         txtMaCD.setText(tableCongDoan.getValueAt(tableCongDoan.getSelectedRow(), 0).toString());
@@ -867,226 +855,151 @@ public class GDPhanCong extends javax.swing.JPanel {
     }//GEN-LAST:event_tableCongDoanMouseClicked
 
     private void tableDSPhanCongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDSPhanCongMouseClicked
-        tableCongDoan.clearSelection();
-        tableCongNhan.clearSelection();
         String maCN = tableDSPhanCong.getValueAt(tableDSPhanCong.getSelectedRow(), 1).toString();
         txtMaCN.setText(maCN);
-        for (int row = 0; row < modelDSCN.getRowCount(); row++) {
-            if (modelDSCN.getValueAt(row, 0).equals(maCN)) {
+        for (int row =0; row<modelDSCN.getRowCount(); row++){
+            if (modelDSCN.getValueAt(row, 0).equals(maCN)){
                 tableCongNhan.setRowSelectionInterval(row, row);
                 break;
             }
         }
-
         txtHoTenCN.setText(tableDSPhanCong.getValueAt(tableDSPhanCong.getSelectedRow(), 2).toString());
-        CongDoan cn = congDoan_Dao.getCongDoanTheoMa(tableDSPhanCong.getValueAt(tableDSPhanCong.getSelectedRow(), 3).toString());
-        String maCD = cn.getMaCD();
+        String maCD = phanCong_Dao.getAllBangPhanCong().get(tableDSPhanCong.getSelectedRow()).getCongDoan().getMaCD();
         txtMaCD.setText(maCD);
-        for (int row = 0; row < modelCongDoan.getRowCount(); row++) {
-            if (modelCongDoan.getValueAt(row, 0).equals(maCD)) {
+        for (int row =0; row<modelCongDoan.getRowCount(); row++){
+            if (modelCongDoan.getValueAt(row, 0).equals(maCD)){
                 tableCongDoan.setRowSelectionInterval(row, row);
                 break;
             }
         }
-        txtTenCD.setText(cn.getTenCD());
-        txtSoLuong.setText(tableDSPhanCong.getValueAt(tableDSPhanCong.getSelectedRow(), 7).toString());
+        txtTenCD.setText(tableDSPhanCong.getValueAt(tableDSPhanCong.getSelectedRow(), 3).toString());
+        txtSoLuong.setText(tableDSPhanCong.getValueAt(tableDSPhanCong.getSelectedRow(), 6).toString());
     }//GEN-LAST:event_tableDSPhanCongMouseClicked
 
     private void btnHuyXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyXoaActionPerformed
-        comfirmDelete.setVisible(false);
+        comfirmDelete.setVisible(true);
     }//GEN-LAST:event_btnHuyXoaActionPerformed
 
     private void btnXacNhanXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanXoaActionPerformed
-        boolean xoaPC = false;
-        if (phanCong_Dao.xoaBangPhanCong(phanCong_Dao.getAllBangPhanCong().get(tableDSPhanCong.getSelectedRow()).getMaBangPC())) {
+        if(phanCong_Dao.xoaBangPhanCong(phanCong_Dao.getAllBangPhanCong().get(tableDSPhanCong.getSelectedRow()).getMaBangPC())){
             comfirmDelete.setVisible(false);
             lbThongBao.setText("Xóa thành công!");
             addListPhanCong();
-            cbbSK();
-            addListCN(cbbTayNghe.getSelectedItem().toString());
+            addListCD();
             xoaTrang();
-        } else {
+        }
+        else{
             comfirmDelete.setVisible(false);
-            lbThongBao.setText("Phân công này đã được thực hiện!");
+            lbThongBao.setText("Xóa thất bại");
             xoaTrang();
         }
     }//GEN-LAST:event_btnXacNhanXoaActionPerformed
-
-    private void tableCongNhanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCongNhanMouseClicked
-        txtMaCN.setText(tableCongNhan.getValueAt(tableCongNhan.getSelectedRow(), 0).toString());
-        txtHoTenCN.setText(tableCongNhan.getValueAt(tableCongNhan.getSelectedRow(), 1).toString());
-    }//GEN-LAST:event_tableCongNhanMouseClicked
-
-    private void tableDSPhanCongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableDSPhanCongKeyPressed
-
-    }//GEN-LAST:event_tableDSPhanCongKeyPressed
-
-    private void tableDSPhanCongKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableDSPhanCongKeyReleased
-        int keyCode = evt.getKeyCode();
-        tableCongDoan.clearSelection();
-        tableCongNhan.clearSelection();
-        if (keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN) {
-            // Xử lý khi mũi tên lên hoặc mũi tên xuống được nhấn
-            String maCN = tableDSPhanCong.getValueAt(tableDSPhanCong.getSelectedRow(), 1).toString();
-            txtMaCN.setText(maCN);
-            for (int row = 0; row < modelDSCN.getRowCount(); row++) {
-                if (modelDSCN.getValueAt(row, 0).equals(maCN)) {
-                    tableCongNhan.setRowSelectionInterval(row, row);
-                    break;
-                }
-            }
-            txtHoTenCN.setText(tableDSPhanCong.getValueAt(tableDSPhanCong.getSelectedRow(), 2).toString());
-            CongDoan cn = congDoan_Dao.getCongDoanTheoMa(tableDSPhanCong.getValueAt(tableDSPhanCong.getSelectedRow(), 3).toString());
-            String maCD = cn.getMaCD();
-            txtMaCD.setText(maCD);
-            for (int row = 0; row < modelCongDoan.getRowCount(); row++) {
-                if (modelCongDoan.getValueAt(row, 0).equals(maCD)) {
-                    tableCongDoan.setRowSelectionInterval(row, row);
-                    break;
-                }
-            }
-            txtTenCD.setText(cn.getTenCD());
-            txtSoLuong.setText(tableDSPhanCong.getValueAt(tableDSPhanCong.getSelectedRow(), 7).toString());
-        }
-    }//GEN-LAST:event_tableDSPhanCongKeyReleased
-
-    private void btnXemPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemPCActionPerformed
-        Date dateLocBD = dateCBD.getDate();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String dateReal = dateFormat.format(dateLocBD);
-
-        String[] row1 = {"STT", "Mã CN", "Họ tên", "Mã công đoạn", "Công đoạn", "Sản phẩm", "Ngày bắt đầu", "Số lượng"};
-        modelPhanCong = new DefaultTableModel(row1, 0);
-        tableDSPhanCong.setModel(modelPhanCong);
-        ArrayList<BangPhanCong> listPhanCong = phanCong_Dao.getAllBangPhanCong();
-        tableDSPhanCong.getColumnModel().getColumn(0).setPreferredWidth(10);
-        int stt = 0;
-        if (cbbTimTheoSP.getSelectedIndex() == 0) {
-            for (BangPhanCong s : listPhanCong) {
-                if (s.getCongDoan().getNgayBatDauString().equals(dateReal)) {
-                    String[] row = {Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongDoan().getMaCD(), s.getCongDoan().getTenCD(), s.getCongDoan().getSanPham().getTenSP(), s.getCongDoan().getNgayBatDauString(), Integer.toString(s.getSoLuong())};
-                    modelPhanCong.addRow(row);
-                    stt++;
-                }
-            }
-        } else {
-            for (BangPhanCong s : listPhanCong) {
-                if (s.getCongDoan().getSanPham().getTenSP().equals(cbbTimTheoSP.getSelectedItem().toString())) {
-                    if (s.getCongDoan().getNgayBatDauString().equals(dateReal)) {
-                        String[] row = {Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongDoan().getMaCD(), s.getCongDoan().getTenCD(), s.getCongDoan().getSanPham().getTenSP(), s.getCongDoan().getNgayBatDauString(), Integer.toString(s.getSoLuong())};
-                        modelPhanCong.addRow(row);
-                        stt++;
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_btnXemPCActionPerformed
-    private void addListCN(String tayNghe) {
-        String[] row1 = {"Mã CN", "Họ tên"};
+    private void addListCN(){
+        String [] row1 = {"Mã CN", "Họ tên"};
         modelDSCN = new DefaultTableModel(row1, 0);
         tableCongNhan.setModel(modelDSCN);
         ArrayList<CongNhan> listCN = congNhan_Dao.getAllCongNhan();
-        for (CongNhan s : listCN) {
-            if (s.getTinhTrang()) {
-                if (s.getTayNghe().equals(tayNghe)) {
-                    String[] row = {s.getMaCN(), s.getHoTen()};
-                    modelDSCN.addRow(row);
-                }
-            }
+        for (CongNhan s:listCN){
+           String [] row = {s.getMaCN(), s.getHoTen()};
+           modelDSCN.addRow(row);
         }
     }
-
-    private void addListCD(String tenCD) {
-
-        String[] row1 = {"Mã CĐ", "Tên CĐ", "SL còn", "CĐ trước"};
+    private void addListCD(){
+        
+        String [] row1 = {"Mã CĐ", "Tên CĐ", "SL còn","CĐ trước"};
         modelCongDoan = new DefaultTableModel(row1, 0);
         tableCongDoan.setModel(modelCongDoan);
         ArrayList<CongDoan> listCD = congDoan_Dao.getAllCongDoan();
-        tableCongDoan.getColumnModel().getColumn(2).setPreferredWidth(40);
-        tableCongDoan.getColumnModel().getColumn(1).setPreferredWidth(120);
-        if (tenCD.equals("")) {
-            for (CongDoan s : listCD) {
-                if (s.getTenCD().equals(cbbTayNghe.getSelectedItem().toString())) {
-                    String[] row = {s.getMaCD(), s.getTenCD() + "-" + "(" + s.getSanPham().getTenSP() + ")", Integer.toString(s.getSoLuong() - getSLConTrongCD(s.getMaCD())), s.getTenCDTruoc()};
-                    modelCongDoan.addRow(row);
+         tableCongDoan.getColumnModel().getColumn(2).setPreferredWidth(40);
+         tableCongDoan.getColumnModel().getColumn(1).setPreferredWidth(120);
+        for (CongDoan s:listCD){
+            int slCon = s.getSoLuong();
+            for (BangPhanCong pc: phanCong_Dao.getAllBangPhanCong()){
+                if (pc.getCongDoan().getMaCD().equalsIgnoreCase(s.getMaCD()))
+                {
+                    slCon-=pc.getSoLuong();
                 }
-            }
-        } else {
-            for (CongDoan s : listCD) {
-                if (s.getTenCD().equals(tenCD)) {
-                    String[] row = {s.getMaCD(), s.getTenCD() + "-" + "(" + s.getSanPham().getTenSP() + ")", Integer.toString(s.getSoLuong() - getSLConTrongCD(s.getMaCD())), s.getTenCDTruoc()};
-                    modelCongDoan.addRow(row);
-                }
-            }
+            } 
+            String [] row = {s.getMaCD(),s.getTenCD()+"-"+"("+s.getSanPham().getTenSP()+")", Integer.toString(slCon),s.getTenCDTruoc()};
+            modelCongDoan.addRow(row);
         }
     }
-
-    private void addListPhanCong() {
-
-        String[] row1 = {"STT", "Mã CN", "Họ tên", "Mã công đoạn", "Công đoạn", "Sản phẩm", "Ngày bắt đầu", "Số lượng"};
+    private void addListPhanCong(){
+        
+        String [] row1 = {"STT", "Mã CN", "Họ tên","Công đoạn","Sản phẩm", "Ngày bắt đầu", "Số lượng"};
         modelPhanCong = new DefaultTableModel(row1, 0);
         tableDSPhanCong.setModel(modelPhanCong);
         ArrayList<BangPhanCong> listPhanCong = phanCong_Dao.getAllBangPhanCong();
-        tableDSPhanCong.getColumnModel().getColumn(0).setPreferredWidth(10);
         int stt = 0;
-        for (BangPhanCong s : listPhanCong) {
-            String[] row = {Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongDoan().getMaCD(), s.getCongDoan().getTenCD(), s.getCongDoan().getSanPham().getTenSP(), s.getCongDoan().getNgayBatDauString(), Integer.toString(s.getSoLuong())};
-            modelPhanCong.addRow(row);
-            stt++;
+        for (BangPhanCong s:listPhanCong){
+           String [] row = {Integer.toString(stt),s.getCongNhan().getMaCN(),s.getCongNhan().getHoTen(),s.getCongDoan().getTenCD(),s.getCongDoan().getSanPham().getTenSP(),s.getCongDoan().getNgayBatDauString(),Integer.toString(s.getSoLuong())};
+           modelPhanCong.addRow(row);
+           stt++;
         }
     }
-
     //add dữ liệu vào Các CBB tìm kiếm
-    private void addCBB() {
-
+    private void addCBB(){
+        modelcbbTayNghe = new DefaultComboBoxModel<String>();
+        modelcbbTayNghe.addElement("Tất cả");
+        for (CongNhan s: congNhan_Dao.getAllCongNhan()){
+            modelcbbTayNghe.addElement(""+s.getTayNghe());
+        }
+        cbbTayNghe.setModel(modelcbbTayNghe);
+        
         modelcbbCongDoan = new DefaultComboBoxModel<String>();
-        modelcbbCongDoan.addElement("");
-        for (CongDoan s : congDoan_Dao.getAllCongDoan()) {
-            modelcbbCongDoan.addElement("" + s.getTenCD() + "-(" + s.getSanPham().getTenSP() + ")");
+        modelcbbCongDoan.addElement("Tất cả");
+        for (CongDoan s: congDoan_Dao.getAllCongDoan()){
+            modelcbbCongDoan.addElement(""+s.getTenCD()+"-("+s.getSanPham().getTenSP()+")");
         }
         cbbCongDoan.setModel(modelcbbCongDoan);
-//        cbbCongDoan.setSelectedItem(1);
-
+        
+        modelcbbSanPham = new DefaultComboBoxModel<String>();
+        modelcbbSanPham.addElement("Tất cả");
+        for (SanPham s: sanPham_Dao.getAllSanPham()){
+            modelcbbSanPham.addElement(""+s.getTenSP());
+        }
+        cbbTimSP.setModel(modelcbbSanPham);
+        
         modelcbbSanPham2 = new DefaultComboBoxModel<String>();
         modelcbbSanPham2.addElement("Tất cả");
-        for (SanPham s : sanPham_Dao.getAllSanPham()) {
-            modelcbbSanPham2.addElement("" + s.getTenSP());
+        for (SanPham s: sanPham_Dao.getAllSanPham()){
+            modelcbbSanPham2.addElement(""+s.getTenSP());
         }
         cbbTimTheoSP.setModel(modelcbbSanPham2);
     }
-
-    private boolean checkSLHTCDTruoc(CongDoan cd) {
-        ctBangCC_Dao = new ChiTietBangChamCong_DAO();
-        int slCDTruoc = 0;
-        int check = 0;
-        String maSP = cd.getMaCD().substring(0, 8);//lấy mã sp
-        for (CongDoan s : congDoan_Dao.getAllCongDoanTheoMaSP(maSP)) {
-            if (cd.getTenCDTruoc().equalsIgnoreCase(s.getTenCD())) {
-                for (ChiTietBangChamCong ct : ctBangCC_Dao.getAllChiTietBangChamCong()) {
-                    if (ct.getBangPC().getCongDoan().getMaCD().equalsIgnoreCase(s.getMaCD())) {
-                        slCDTruoc += ct.getSoLuong();//lấy số lượng công đoạn trước đã được hoàn thành
-                        check = 1;
+    private boolean checkSLHTCDTruoc(CongDoan cd){
+         ctBangCC_Dao = new ChiTietBangChamCong_DAO();
+                int slCDTruoc=0;
+                int check = 0;
+                String maSP = cd.getMaCD().substring(0, 8);//lấy mã sp
+                for(CongDoan s: congDoan_Dao.getAllCongDoanTheoMaSP(maSP)){ 
+                    if(cd.getTenCDTruoc().equalsIgnoreCase(s.getTenCD())){
+                        for(ChiTietBangChamCong ct: ctBangCC_Dao.getAllChiTietBangChamCong()){
+                            if (ct.getBangPC().getCongDoan().getMaCD().equalsIgnoreCase(s.getMaCD())){
+                                slCDTruoc+= ct.getSoLuong();//lấy số lượng công đoạn trước đã được hoàn thành
+                                check = 1;
+                            }
+                        }
                     }
                 }
-            }
-        }
-        if (!cd.getTenCDTruoc().equals("")) {
-            if (slCDTruoc < Integer.valueOf(txtSoLuong.getText())) {
-                lbThongBao.setText("Công đoạn trước mới chỉ hoàn thành " + Integer.toString(slCDTruoc) + " sản phẩm");
-                return false;
-            }
-        }
-        return true;
+                if(!cd.getTenCDTruoc().equals("")){
+                   if(slCDTruoc<Integer.valueOf(txtSoLuong.getText())){
+                    lbThongBao.setText("Công đoạn trước mới chỉ hoàn thành "+ Integer.toString(slCDTruoc)+" sản phẩm");
+                    return false;
+                    }
+                }
+                return true;
     }
-
-    private void xoaTrang() {
+    private void xoaTrang(){
         tableCongDoan.clearSelection();
         tableCongNhan.clearSelection();
         tableDSPhanCong.clearSelection();
-
-//        cbbCongDoan.setSelectedIndex(0);
-//        cbbTayNghe.setSelectedIndex(0);
-//        cbbTimTheoSP.setSelectedIndex(0);
+        
+        cbbCongDoan.setSelectedIndex(0);
+        cbbTayNghe.setSelectedIndex(0);
+        cbbTimSP.setSelectedIndex(0);
+        cbbTimTheoSP.setSelectedIndex(0);
+        
         txtHoTenCN.setText("");
         txtMaCD.setText("");
         txtMaCN.setText("");
@@ -1099,13 +1012,13 @@ public class GDPhanCong extends javax.swing.JPanel {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnXacNhan;
     private javax.swing.JButton btnXacNhanXoa;
-    private javax.swing.JButton btnXemPC;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnXuatFileExcel;
     private javax.swing.JComboBox<String> cbbCongDoan;
     private javax.swing.JComboBox<String> cbbTayNghe;
+    private javax.swing.JComboBox<String> cbbTimSP;
     private javax.swing.JComboBox<String> cbbTimTheoSP;
     private javax.swing.JDialog comfirmDelete;
-    private com.toedter.calendar.JDateChooser dateCBD;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -1114,7 +1027,6 @@ public class GDPhanCong extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbThongBao;
     private javax.swing.JLabel lbXacNhanXoa;
     private javax.swing.JLabel lbttCN;
@@ -1136,5 +1048,17 @@ public class GDPhanCong extends javax.swing.JPanel {
     private javax.swing.JTextField txtSoLuong;
     private javax.swing.JTextField txtTenCD;
     // End of variables declaration//GEN-END:variables
-
+    private BangPhanCong_DAO phanCong_Dao;
+    private CongNhan_DAO congNhan_Dao;
+    private CongDoan_DAO congDoan_Dao;
+    private SanPham_DAO sanPham_Dao;
+    private ChiTietBangChamCong_DAO ctBangCC_Dao;
+    
+    private DefaultTableModel modelDSCN;
+    private DefaultTableModel modelPhanCong;
+    private DefaultTableModel modelCongDoan;
+    private DefaultComboBoxModel<String> modelcbbTayNghe;
+    private DefaultComboBoxModel<String> modelcbbCongDoan;
+    private DefaultComboBoxModel<String> modelcbbSanPham;
+    private DefaultComboBoxModel<String> modelcbbSanPham2;
 }

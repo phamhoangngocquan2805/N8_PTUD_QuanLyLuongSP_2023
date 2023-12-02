@@ -511,60 +511,55 @@ public class NhanVienHanhChinh_DAO {
         String email = txtEmail.getText().trim();
         
         if (cbxPhongBan.getSelectedItem().toString().equals("Chọn phòng ban")) {
-            JOptionPane.showMessageDialog(null, "Vui lòng chọn phòng ban!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn phòng ban!!!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             cbxPhongBan.requestFocus();
             return false;
         }
-        
         if (cbxPhongBan.getSelectedItem().toString().equals("Chọn chức vụ")) {
-            JOptionPane.showMessageDialog(null, "Vui lòng chọn chức vụ!", "Thông báo", JOptionPane.WARNING_MESSAGE);
-            cbxChucVu.requestFocus();
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn chức vụ!!!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            cbxPhongBan.requestFocus();
             return false;
         }
-        
         if (!(hoTen.length()>0)) {
-            JOptionPane.showMessageDialog(null, "Họ tên không được để trống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Họ tên không được để trống!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             txtHoTen.requestFocus();
             return false;
         }
-        
         if (!(soDT.length()>0)) {
-            JOptionPane.showMessageDialog(null, "Số điện thoại không được để trống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Số điện thoại không được để trống!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             txtSDT.requestFocus();
             return false;
         }
-        
         if (!(diaChi.length()>0)) {
-            JOptionPane.showMessageDialog(null, "Địa chỉ không được để trống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Địa chỉ không được để trống!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             txtDiaChi.requestFocus();
             return false;
         }
-        
         if (!(email.length()>0)) {
-            JOptionPane.showMessageDialog(null, "Email không được để trống!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Email không được để trống!", "Thông báo", JOptionPane.WARNING_MESSAGE);
             txtEmail.requestFocus();
             return false;
         }
-        
-        if (!(hoTen.matches("^([ A-Za-za-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*(\\s?))+$"))) {
+
+        if (!hoTen.matches("^([ A-Za-za-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*(\\s?))+$")) {
             JOptionPane.showMessageDialog(null, "Họ tên không hợp lệ \nVui lòng nhập họ tên theo mẫu: Lê Văn A", "Thông báo", JOptionPane.ERROR_MESSAGE);
             txtHoTen.requestFocus();
             return false;
         }
 
-        if (!(soDT.matches("^(03|08|09|07|05)[0-9]{8}$"))) {
+        if (!soDT.matches("^(03|08|09|07|05)[0-9]{8}$")) {
             JOptionPane.showMessageDialog(null, "Số điện thoại không hợp lệ \nSDT gồm 10 chữ số, bắt đầu bằng 2 chữ số: 03, 08, 07, 09, 05", "Thông báo", JOptionPane.ERROR_MESSAGE);
             txtSDT.requestFocus();
             return false;
         }
 
-        if (!(diaChi.matches("^([ A-Za-z0-9,\\/.a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*(\\s?))+$"))) {
+        if (!diaChi.matches("^([ A-Za-z0-9,\\/.a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*(\\s?))+$")) {
             JOptionPane.showMessageDialog(null, "Địa chỉ không hợp lệ \nVui lòng nhập địa chỉ theo mẫu: 1428 Huỳnh Tấn Phát, Phú Mỹ, Quận 7", "Thông báo", JOptionPane.ERROR_MESSAGE);
             txtDiaChi.requestFocus();
             return false;
         }
 
-        if (!(email.matches("^[a-zA-Z0-9_.]+@[a-z]{3,15}(\\.com)$"))) {
+        if (!email.matches("^[a-zA-Z0-9_.]+@[a-z]{3,15}(\\.com)$")) {
             JOptionPane.showMessageDialog(null, "Email không hợp lệ \nVui lòng nhập email theo mẫu: nguyenvana123@example.com", "Thông báo", JOptionPane.ERROR_MESSAGE);
             txtSDT.requestFocus();
             return false;
