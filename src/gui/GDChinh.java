@@ -255,7 +255,7 @@ public class GDChinh extends javax.swing.JFrame {
 
         pNhanVien.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(204, 204, 204));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Ngày tháng năm");
@@ -745,7 +745,6 @@ public class GDChinh extends javax.swing.JFrame {
 
     private void nhanVienHanhChinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nhanVienHanhChinhActionPerformed
         if (nvLog.getPhongBan().getMaPB().equals("231")) {
-//            System.out.println("gui.GDChinh.nhanVienHanhChinhActionPerformed()");
             pNoiDung = new GDQLNhanVienHanhChinh();
             pChinh.removeAll();
             pChinh.setLayout(new BorderLayout());
@@ -757,76 +756,80 @@ public class GDChinh extends javax.swing.JFrame {
 
     private void lblQLNhanSuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQLNhanSuMouseClicked
 //        System.out.println("gui.GDChinh.lblQLNhanSuMouseClicked()");
-        menuNhanSu.show(pHome, evt.getX(), evt.getY());
+        if (nvLog.getPhongBan().getMaPB().equals("231"))
+            menuNhanSu.show(pHome, evt.getX(), evt.getY());
     }//GEN-LAST:event_lblQLNhanSuMouseClicked
 
     private void lblQLChamCongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQLChamCongMouseClicked
 //        System.out.println("gui.GDChinh.lblQLChamCongMouseClicked()");
-        menuChamCong.show(pQLChamCong, evt.getX(), evt.getY());
+        if (nvLog.getPhongBan().getMaPB().equals("231")
+                || nvLog.getPhongBan().getMaPB().equals("233"))
+            menuChamCong.show(pQLChamCong, evt.getX(), evt.getY());
     }//GEN-LAST:event_lblQLChamCongMouseClicked
 
     private void lblQLLuongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQLLuongMouseClicked
 //        System.out.println("gui.GDChinh.lblQLLuongMouseClicked()");
-        menuLuong.show(pQLLuong, evt.getX(), evt.getY());
+        if (nvLog.getPhongBan().getMaPB().equals("232"))
+            menuLuong.show(pQLLuong, evt.getX(), evt.getY());
     }//GEN-LAST:event_lblQLLuongMouseClicked
 
     private void chamCongNVHCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chamCongNVHCActionPerformed
         if (nvLog.getPhongBan().getMaPB().equals("231")) {
 //            System.out.println("gui.GDChinh.chamCongNVHCActionPerformed()");
-        pNoiDung = new GDQLChamCongNVHC();
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
+            pNoiDung = new GDQLChamCongNVHC();
+            pChinh.removeAll();
+            pChinh.setLayout(new BorderLayout());
+            pChinh.add(pNoiDung);
+            pChinh.validate();
+            pChinh.repaint();
         }
     }//GEN-LAST:event_chamCongNVHCActionPerformed
 
     private void chamCongCongNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chamCongCongNhanActionPerformed
         if (nvLog.getPhongBan().getMaPB().equals("233")) {
 //            System.out.println("gui.GDChinh.chamCongCongNhanActionPerformed()");
-        pNoiDung = new GDQLChamCongCN();
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
+            pNoiDung = new GDQLChamCongCN();
+            pChinh.removeAll();
+            pChinh.setLayout(new BorderLayout());
+            pChinh.add(pNoiDung);
+            pChinh.validate();
+            pChinh.repaint();
         }
     }//GEN-LAST:event_chamCongCongNhanActionPerformed
 
     private void tinhLuongNVHCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tinhLuongNVHCActionPerformed
         if (nvLog.getPhongBan().getMaPB().equals("232")) {
 //            System.out.println("gui.GDChinh.tinhLuongNVHCActionPerformed()");
-        pNoiDung = new GDTinhLuongNV();
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
+            pNoiDung = new GDTinhLuongNV();
+            pChinh.removeAll();
+            pChinh.setLayout(new BorderLayout());
+            pChinh.add(pNoiDung);
+            pChinh.validate();
+            pChinh.repaint();
         }
     }//GEN-LAST:event_tinhLuongNVHCActionPerformed
 
     private void tinhLuongCongNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tinhLuongCongNhanActionPerformed
         if (nvLog.getPhongBan().getMaPB().equals("232")) {
 //            System.out.println("gui.GDChinh.tinhLuongCongNhanActionPerformed()");
-        pNoiDung = new GDTinhLuongCN();
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
+            pNoiDung = new GDTinhLuongCN();
+            pChinh.removeAll();
+            pChinh.setLayout(new BorderLayout());
+            pChinh.add(pNoiDung);
+            pChinh.validate();
+            pChinh.repaint();
         }
     }//GEN-LAST:event_tinhLuongCongNhanActionPerformed
 
     private void xemBangLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xemBangLuongActionPerformed
         if (nvLog.getPhongBan().getMaPB().equals("232")) {
 //            System.out.println("gui.GDChinh.xemBangLuongActionPerformed()");
-        pNoiDung = new GDXemBangLuong();
-        pChinh.removeAll();
-        pChinh.setLayout(new BorderLayout());
-        pChinh.add(pNoiDung);
-        pChinh.validate();
-        pChinh.repaint();
+            pNoiDung = new GDXemBangLuong();
+            pChinh.removeAll();
+            pChinh.setLayout(new BorderLayout());
+            pChinh.add(pNoiDung);
+            pChinh.validate();
+            pChinh.repaint();
         }
     }//GEN-LAST:event_xemBangLuongActionPerformed
 
