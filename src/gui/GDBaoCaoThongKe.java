@@ -307,13 +307,13 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         jTableTongLuongCTy.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTableTongLuongCTy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Tháng", "Tổng lương", "Tổng chi BHXH"
             }
         ));
         jTableTongLuongCTy.setRowHeight(26);
@@ -339,7 +339,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                 .addContainerGap(189, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 480, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -782,7 +782,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                     //Vị trí trong arr thangs
 //                    System.out.println(bangLuong.getMaBangLuong().subSequence(2, 4) + "-" + m);
                     if (bangLuong.getMaBangLuong().substring(2, 4).equals(m)) {
-                        Object[] arr = {bangLuong.getMaBangLuong(),
+                        Object[] arr = {
                             bangLuong.getNv().getHoTen(),
                             bangLuong.getNgayTinhLuong().format(dateTimeFormatter),
                             bangLuong.getSoNgayLam(),
@@ -896,7 +896,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                 for (BangLuongCongNhan bangLuong : dsBangLuongCN) {
                     //Vị trí trong arr thangs
                     if (bangLuong.getMaBangLuong().substring(2, 4).equals(m)) {
-                        Object[] arr = {bangLuong.getMaBangLuong(),
+                        Object[] arr = {
                             bangLuong.getCongNhan().getHoTen(),
                             bangLuong.getNgayTinhLuong().format(dateTimeFormatter),
                             bangLuong.getSoNgayLam(),
@@ -1137,6 +1137,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         Locale vietNam = new Locale("vi", "VN");
         NumberFormat numberFormat = NumberFormat.getInstance(vietNam);
         numberFormat.setMaximumFractionDigits(0); //Format tiền vnd
+        modelBangLuong.setRowCount(0);
         for (int i = 0; i < dsChiTietTKeTL.length; i++) {
             Object[] arr = {thangs[i],
                 numberFormat.format(dsChiTietTKeTL[i]) + " ₫",

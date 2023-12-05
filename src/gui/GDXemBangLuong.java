@@ -4,12 +4,18 @@
  */
 package gui;
 
+import dao.BangChamCongCongNhan_DAO;
 import dao.BangChamCongNhanVien_DAO;
 import dao.BangLuongCongNhan_DAO;
 import dao.BangLuongNhanVien_DAO;
+import dao.ChiTietBangChamCong_DAO;
+import dao.CongNhan_DAO;
 import dao.NhanVienHanhChinh_DAO;
+import entity.BangChamCongCongNhan;
 import entity.BangLuongCongNhan;
 import entity.BangLuongNhanVien;
+import entity.ChiTietBangChamCong;
+import entity.CongNhan;
 import entity.NhanVienHanhChinh;
 import java.awt.Toolkit;
 import java.io.File;
@@ -52,11 +58,16 @@ public class GDXemBangLuong extends javax.swing.JPanel {
         jComboBoxNamNV.setSelectedItem(LocalDate.now().getYear());
         jComboBoxThangNV.setSelectedItem(LocalDate.now().getMonthValue());
         dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); //format ngày
+        congNhan_DAO = new CongNhan_DAO();
+        chamCongCongNhan_DAO = new BangChamCongCongNhan_DAO();
+        chiTietBangChamCong_DAO = new ChiTietBangChamCong_DAO();
+        dsBCC = chamCongCongNhan_DAO.getAllBangChamCongCongNhan();
+        dsCT = chiTietBangChamCong_DAO.getAllChiTietBangChamCong();
         loadComponentsTableBangLuongNV();
         loadComponentsTableBangLuongCN();
         resetTableBangLuongNV();
         resetTableBangLuongCN();
-        
+
 //        System.out.println("gui.GDXemBangLuong.<init>()" + LocalDate.now().getMonthValue() + LocalDate.now().getYear());
     }
 
@@ -860,7 +871,9 @@ public class GDXemBangLuong extends javax.swing.JPanel {
         if (evt.getClickCount() == 2) {
             PrintReviewNV printReviewNV = new PrintReviewNV();
             int i = jTableBangLuongNV.getSelectedRow();
-            Object[] obj = {modelBangLuongNV.getValueAt(i, 1),
+            Object[] obj = {
+                modelBangLuongNV.getValueAt(i, 0),
+                modelBangLuongNV.getValueAt(i, 1),
                 modelBangLuongNV.getValueAt(i, 2),
                 modelBangLuongNV.getValueAt(i, 3),
                 modelBangLuongNV.getValueAt(i, 4),
@@ -887,18 +900,46 @@ public class GDXemBangLuong extends javax.swing.JPanel {
         if (evt.getClickCount() == 2) {
             PrintReviewCN printReviewCN = new PrintReviewCN();
             int i = jTableBangLuongCN.getSelectedRow();
-            Object[] obj = {modelBangLuongNV.getValueAt(i, 1),
-                modelBangLuongNV.getValueAt(i, 2),
-                modelBangLuongNV.getValueAt(i, 3),
-                modelBangLuongNV.getValueAt(i, 4),
-                modelBangLuongNV.getValueAt(i, 5),
-                modelBangLuongNV.getValueAt(i, 6),
-                modelBangLuongNV.getValueAt(i, 7),
-                modelBangLuongNV.getValueAt(i, 8),
-                modelBangLuongNV.getValueAt(i, 9),
-                modelBangLuongNV.getValueAt(i, 10),
-                modelBangLuongNV.getValueAt(i, 11),};
-            printReviewCN.setGiaTri(obj);
+            Object[] obj = {
+                modelBangLuongCN.getValueAt(i, 0),
+                modelBangLuongCN.getValueAt(i, 1),
+                modelBangLuongCN.getValueAt(i, 2),
+                modelBangLuongCN.getValueAt(i, 3),
+                modelBangLuongCN.getValueAt(i, 4),
+                modelBangLuongCN.getValueAt(i, 5),
+                modelBangLuongCN.getValueAt(i, 6),
+                modelBangLuongCN.getValueAt(i, 7),
+                modelBangLuongCN.getValueAt(i, 8),
+                modelBangLuongCN.getValueAt(i, 9),
+                modelBangLuongCN.getValueAt(i, 10),
+                modelBangLuongCN.getValueAt(i, 11),};
+            ArrayList<BangChamCongCongNhan> dsBCCCN = new ArrayList<BangChamCongCongNhan>();
+            ArrayList<ChiTietBangChamCong> dsChiTietChamCong = new ArrayList<ChiTietBangChamCong>();
+            ArrayList<Object[]> dsCT = new ArrayList<>();
+//            int rows = jTableBangChamCong.getRowCount();
+            String maCN = modelBangLuongCN.getValueAt(jTableBangLuongCN.getSelectedRow(), 0).toString().trim().substring(4);
+            CongNhan cn = congNhan_DAO.getCongNhanTheoMa(maCN);
+            String month = modelBangLuongCN.getValueAt(i, 0).toString().substring(2, 4);
+            String year = modelBangLuongCN.getValueAt(i, 0).toString().substring(0, 2);
+            //Lấy ra danh sách bảng chấm công tháng đó của nhân viên được chọn trên table
+            for (BangChamCongCongNhan bcc : dsBCC) {
+                if (bcc.getCn().getMaCN().equalsIgnoreCase(cn.getMaCN())
+                        && bcc.getNgayChamCongString().substring(5, 7).equals(month)
+                        && bcc.getNgayChamCongString().substring(2, 4).equals(year)) {
+                    dsBCCCN.add(bcc);
+                }
+            }
+
+            for (BangChamCongCongNhan bcc : dsBCCCN) {
+                for (ChiTietBangChamCong chiTiet : this.dsCT) {
+                    if (chiTiet.getBangCC().getMaBangChamCong().equalsIgnoreCase(bcc.getMaBangChamCong())) {
+                        Object[] rowData = {chiTiet.getBangCC().getMaBangChamCong(), chiTiet.getBangCC().getNgayChamCongString(), chiTiet.getBangPC().getCongDoan().getSanPham().getTenSP(), chiTiet.getBangPC().getCongDoan().getTenCD(), chiTiet.getSoLuong()
+                        };
+                        dsCT.add(rowData);
+                    }
+                }
+            }
+            printReviewCN.setGiaTri(obj, dsCT);
             JDialog dialog = new JDialog();
             dialog.setTitle("Print review");
             dialog.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/image/logo.png")));
@@ -987,7 +1028,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
             "Tiền chuyên cần",
             "Bảo hiểm xã hội",
             "Thực lãnh"};
-        modelBangLuongNV = new DefaultTableModel(headers, 0){
+        modelBangLuongNV = new DefaultTableModel(headers, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 // all cells false
@@ -1004,7 +1045,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
             }
         });
     }
-    
+
     void loadComponentsTableBangLuongCN() {
         String[] headers = {
             "Mã bảng lương",
@@ -1019,7 +1060,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
             "Tiền chuyên cần",
             "Bảo hiểm xã hội",
             "Thực lãnh"};
-        modelBangLuongCN = new DefaultTableModel(headers, 0){
+        modelBangLuongCN = new DefaultTableModel(headers, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
                 // all cells false
@@ -1062,9 +1103,8 @@ public class GDXemBangLuong extends javax.swing.JPanel {
             modelBangLuongNV.addRow(arr);
         }
     }
-    
-    void resetTableBangLuongNVTheoDS(ArrayList<BangLuongNhanVien> ds)
-    {
+
+    void resetTableBangLuongNVTheoDS(ArrayList<BangLuongNhanVien> ds) {
         modelBangLuongNV.setRowCount(0);
         Locale vietNam = new Locale("vi", "VN");
         NumberFormat numberFormat = NumberFormat.getInstance(vietNam);
@@ -1087,9 +1127,8 @@ public class GDXemBangLuong extends javax.swing.JPanel {
             modelBangLuongNV.addRow(arr);
         }
     }
-    
-    void resetTableBangLuongCNTheoDS(ArrayList<BangLuongCongNhan> ds)
-    {
+
+    void resetTableBangLuongCNTheoDS(ArrayList<BangLuongCongNhan> ds) {
         modelBangLuongCN.setRowCount(0);
         Locale vietNam = new Locale("vi", "VN");
         NumberFormat numberFormat = NumberFormat.getInstance(vietNam);
@@ -1112,7 +1151,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
             modelBangLuongCN.addRow(arr);
         }
     }
-    
+
     void resetTableBangLuongCN() {
         modelBangLuongCN.setRowCount(0);
         bangLuongCongNhan_DAO = new BangLuongCongNhan_DAO();
@@ -1177,4 +1216,9 @@ public class GDXemBangLuong extends javax.swing.JPanel {
     private DefaultTableModel modelBangLuongNV;
     private DefaultTableModel modelBangLuongCN;
     private DateTimeFormatter dateTimeFormatter;
+    private CongNhan_DAO congNhan_DAO;
+    private BangChamCongCongNhan_DAO chamCongCongNhan_DAO;
+    private ChiTietBangChamCong_DAO chiTietBangChamCong_DAO;
+    private ArrayList<BangChamCongCongNhan> dsBCC;
+    private ArrayList<ChiTietBangChamCong> dsCT;
 }

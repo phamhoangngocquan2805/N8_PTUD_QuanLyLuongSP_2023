@@ -47,10 +47,12 @@ public class ChuyenManHinh implements BienMacDinh {
     private List<DanhMucBean> listDanhMucBean = null;
     private NhanVienHanhChinh nvLog;
     private ArrayList<String> phanQuyenManHinh;
+    public ArrayList<JPanel> ds;
 
-    public ChuyenManHinh(JPanel pChinh, NhanVienHanhChinh nvLog) {
+    public ChuyenManHinh(JPanel pChinh, NhanVienHanhChinh nvLog, ArrayList<JPanel> ds) {
         this.pChinh = pChinh;
         this.nvLog = nvLog;
+        this.ds = ds;
         phanQuyenManHinh = new ArrayList<>();
         if (nvLog.getPhongBan().getMaPB().equals("231")) {
             phanQuyenManHinh.add("TrangChu");
@@ -335,6 +337,7 @@ public class ChuyenManHinh implements BienMacDinh {
         }
 
         private void thayDoiBackGroundKhiClick(String loaiDangChon) {
+            int check = 0;
             for (DanhMucBean item : listDanhMucBean) {
                 if (item.getLoaiDanhMuc().equalsIgnoreCase(loaiDangChon)) {
                     item.getPanel().setBackground(mauDanhMucDangChon);
@@ -342,9 +345,16 @@ public class ChuyenManHinh implements BienMacDinh {
                     item.getLbl().setForeground(mauTrang);
                     item.getLbl().setBorder(null);
                 } else {
-                    item.getPanel().setBackground(mauNenMenu);
-                    item.getLbl().setBackground(mauNenMenu);
-                    item.getLbl().setForeground(mauTrang);
+                    for (JPanel panel : ds) {
+                        if (panel == item.getPanel()) {
+                            check = 1;
+                        }
+                    }
+                    if (check != 1) {
+                        item.getPanel().setBackground(mauNenMenu);
+                        item.getLbl().setBackground(mauNenMenu);
+                        item.getLbl().setForeground(mauTrang);
+                    }
 //                    item.getLbl().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, mauBorderBottomMenu));
                 }
             }

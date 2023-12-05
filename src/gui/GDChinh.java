@@ -7,6 +7,7 @@ package gui;
 import connectDB.ConnectDB;
 import entity.NhanVienHanhChinh;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import xuli.ChuyenManHinh;
 import static xuli.ChuyenManHinh.pChinh;
 import xuli.DanhMucBean;
@@ -32,6 +34,7 @@ public class GDChinh extends javax.swing.JFrame {
      */
     private GDLogin gdlogin;
     private NhanVienHanhChinh nvLog;
+    private ArrayList<JPanel> dsMenu;
 
     public GDChinh() throws SQLException {
 
@@ -56,8 +59,9 @@ public class GDChinh extends javax.swing.JFrame {
             @Override
             public void windowClosed(WindowEvent e) {
                 nvLog = gdlogin.getCurrNV();
+                setMauMenu();
                 setVisible(true);
-                ChuyenManHinh dieuKhien = new ChuyenManHinh(pNoiDung, nvLog);
+                ChuyenManHinh dieuKhien = new ChuyenManHinh(pNoiDung, nvLog, dsMenu);
                 try {
                     dieuKhien.setManHinhNoiDung(pHome, lblHome);
                 } catch (SQLException ex) {
@@ -81,9 +85,9 @@ public class GDChinh extends javax.swing.JFrame {
 
                 String tl = LocalDateTime.now().toString();
                 jLabel12.setText("Ngày " + tl.substring(8, 10) + " tháng " + tl.substring(5, 7) + " năm " + tl.substring(0, 4));
-//                JOptionPane.showMessageDialog(null, nvLog.toString());
                 jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource(nvLog.getHinhAnh())));
                 jLabel14.setText(nvLog.getHoTen());
+                
             }
 
             @Override
@@ -106,7 +110,7 @@ public class GDChinh extends javax.swing.JFrame {
 //                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
-
+        
     }
 
     public void icon() {
@@ -833,6 +837,55 @@ public class GDChinh extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_xemBangLuongActionPerformed
 
+    private void setMauMenu() {
+        List<DanhMucBean> listDanhMucBean = new ArrayList<>();
+        listDanhMucBean.add(new DanhMucBean("TrangChu", pHome, lblHome));
+        listDanhMucBean.add(new DanhMucBean("QLNhanSu", pQLNhanSu, lblQLNhanSu));
+        listDanhMucBean.add(new DanhMucBean("QLHopDong", pQLHopDong, lblQLHopDong));
+        listDanhMucBean.add(new DanhMucBean("QLSanPham", pQLSanPham, lblQLSanPham));
+        listDanhMucBean.add(new DanhMucBean("QLCongDoan", pQLCongDoan, lblQLCongDoan));
+        listDanhMucBean.add(new DanhMucBean("PhanCong", pPhanCong, lblPhanCong));
+        listDanhMucBean.add(new DanhMucBean("QLChamCong", pQLChamCong, lblQLChamCong));
+        listDanhMucBean.add(new DanhMucBean("QLLuong", pQLLuong, lblQLLuong));
+        listDanhMucBean.add(new DanhMucBean("BaoCaoThongKe", pBaoCao, lblBaoCao));
+        listDanhMucBean.add(new DanhMucBean("QLTaiKhoan", pQLTaiKhoan, lblQLTaiKhoan));
+        listDanhMucBean.add(new DanhMucBean("TroGiup", pTroGiup, jLabelTroGiup));
+        listDanhMucBean.add(new DanhMucBean("DangXuat", pDangXuat, jLabel11));
+        dsMenu = new ArrayList<>();
+        if(nvLog.getPhongBan().getMaPB().equals("231"))
+        {
+            dsMenu.add(pQLHopDong);
+            dsMenu.add(pQLSanPham);
+            dsMenu.add(pQLCongDoan);
+            dsMenu.add(pPhanCong);
+            dsMenu.add(pQLLuong);
+            dsMenu.add(pBaoCao);
+            if(nvLog.getChucVu().equals("Nhân viên"))
+                dsMenu.add(pQLTaiKhoan);
+        }
+        else if(nvLog.getPhongBan().getMaPB().equals("232"))
+        {
+            dsMenu.add(pQLNhanSu);
+            dsMenu.add(pQLHopDong);
+            dsMenu.add(pQLSanPham);
+            dsMenu.add(pQLCongDoan);
+            dsMenu.add(pPhanCong);
+            dsMenu.add(pQLChamCong);
+            dsMenu.add(pQLTaiKhoan);
+        }
+        else if(nvLog.getPhongBan().getMaPB().equals("233"))
+        {
+            dsMenu.add(pQLNhanSu);
+            dsMenu.add(pQLLuong);
+            dsMenu.add(pBaoCao);
+            dsMenu.add(pQLTaiKhoan);
+        }
+        for(JPanel panel: dsMenu)
+        {
+//            System.out.println(panel.toString());
+            panel.setBackground(new Color(194, 182, 160));
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem chamCongCongNhan;
     private javax.swing.JMenuItem chamCongNVHC;
