@@ -18,7 +18,9 @@ import java.util.ArrayList;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 /**
@@ -211,6 +213,15 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
         });
         tableDSNhanVien.setGridColor(new java.awt.Color(153, 153, 153));
         tableDSNhanVien.setRowHeight(22);
+        tableDSNhanVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tableDSNhanVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tableDSNhanVien.setShowGrid(false);
+        tableDSNhanVien.setShowHorizontalLines(true);
+        tableDSNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableDSNhanVienMouseClicked(evt);
+            }
+        });
         jscrDSNhanVien.setViewportView(tableDSNhanVien);
         if (tableDSNhanVien.getColumnModel().getColumnCount() > 0) {
             tableDSNhanVien.getColumnModel().getColumn(5).setPreferredWidth(50);
@@ -430,7 +441,9 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
         int thang = dateNgayCC.getDate().getMonth();
         int ngay = dateNgayCC.getDate().getDate();
         LocalDateTime ngayChamCong = convertToLocalDateTime(new Date(nam, thang, ngay));
-        String caLamViec = "";
+        LocalTime gioVao;
+        LocalTime gioRa;
+//        String caLamViec = "";
         
 //        if (new SimpleDateFormat("yyyy-MM-dd").format(ngayChamCong).equals(new SimpleDateFormat("yyyy-MM-dd").format(LocalDateTime.now())) ) {
             for (int i = 0; i < modelDSNhanVien.getRowCount(); i++) {
@@ -443,22 +456,22 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
                     }
 
                     String maCC = now + String.format("%04d", maCCTuTang);
-//                    if (modelDSNhanVien.getValueAt(i, 7).toString().equals("Ca 1, Ca 2")) {
-//                        gioVao = LocalTime.of(7, 0, 0);
-//                        gioRa = LocalTime.of(17, 0, 0);
-//                    } else if (modelDSNhanVien.getValueAt(i, 7).toString().equals("Ca 1")) {
-//                        gioVao = LocalTime.of(7, 0, 0);
-//                        gioRa = LocalTime.of(11, 30, 0);
-//                    } else {
-//                        gioVao = LocalTime.of(13, 0, 0);
-//                        gioRa = LocalTime.of(16, 30, 0);
-//                    }
-//                    if (modelDSNhanVien.getValueAt(i, 8).toString().equals("Không")) {
-//                        caLamViec = modelDSNhanVien.getValueAt(i, 7).toString();
-//                    } else {
-//                        caLamViec = modelDSNhanVien.getValueAt(i, 7).toString() + ", " + modelDSNhanVien.getValueAt(i, 8).toString();
-//                    }
-                    BangChamCongNhanVien bcc = new BangChamCongNhanVien(maCC, LocalTime.now(), LocalTime.of(0,0,0), ngayChamCong, caLamViec, nvhc_DAO.getNhanVienTheoMa(modelDSNhanVien.getValueAt(i, 1).toString()));
+                    switch (modelDSNhanVien.getValueAt(i, 7).toString()) {
+                        case "Ca 1, Ca 2":
+                            gioVao = LocalTime.of(7, 0, 0);
+                            gioRa = LocalTime.of(17, 0, 0);
+                            break;
+                        case "Ca 1":
+                            gioVao = LocalTime.of(7, 0, 0);
+                            gioRa = LocalTime.of(11, 30, 0);
+                            break;
+                        default:
+                            gioVao = LocalTime.of(13, 0, 0);
+                            gioRa = LocalTime.of(16, 30, 0);
+                            break;
+                    }
+                    
+                    BangChamCongNhanVien bcc = new BangChamCongNhanVien(maCC, gioVao, gioRa, ngayChamCong, modelDSNhanVien.getValueAt(i, 7).toString(), nvhc_DAO.getNhanVienTheoMa(modelDSNhanVien.getValueAt(i, 1).toString()));
                     bcc_DAO.createBangChamCongNhanVien(bcc);
                 }
             }
@@ -491,7 +504,8 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
         LocalDateTime ngayChamCong = convertToLocalDateTime(new Date(nam, thang, ngay));
         String maCC = "";
         LocalTime gioVao = null;
-        String caLamViec;
+        LocalTime gioRa = null;
+        String caLamViec = null;
         
         for (int i = 0; i < modelDSNhanVien.getRowCount(); i++) {
                 if (Boolean.valueOf((boolean) modelDSNhanVien.getValueAt(i, 5))) {
@@ -499,23 +513,30 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
                     for (BangChamCongNhanVien bcc : dsBCC) {
                         maCC = bcc.getMaBangChamCong();
                         gioVao = bcc.getGioVao();
+                        gioRa = bcc.getGioRa();
+                        caLamViec = bcc.getCaLamViec();
                     }
-//                    if (modelDSNhanVien.getValueAt(i, 7).toString().equals("Ca 1, Ca 2")) {
-//                        gioVao = LocalTime.of(7, 0, 0);
-//                        gioRa = LocalTime.of(17, 0, 0);
-//                    } else if (modelDSNhanVien.getValueAt(i, 7).toString().equals("Ca 1")) {
-//                        gioVao = LocalTime.of(7, 0, 0);
-//                        gioRa = LocalTime.of(11, 30, 0);
-//                    } else {
-//                        gioVao = LocalTime.of(13, 0, 0);
-//                        gioRa = LocalTime.of(16, 30, 0);
-//                    }
-                    if (modelDSNhanVien.getValueAt(i, 8).toString().equals("Không")) {
-                        caLamViec = modelDSNhanVien.getValueAt(i, 7).toString();
-                    } else {
-                        caLamViec = modelDSNhanVien.getValueAt(i, 7).toString() + ", " + modelDSNhanVien.getValueAt(i, 8).toString();
+                    switch (modelDSNhanVien.getValueAt(i, 8).toString()) {
+                        case "1 giờ":
+                            gioRa = LocalTime.of(18,0,0);
+                            caLamViec = caLamViec + ", Ca 3";
+                            break;
+                        case "2 giờ":
+                            gioRa = LocalTime.of(19,0,0);
+                            caLamViec = caLamViec + ", Ca 3";
+                            break;
+                        case "3 giờ":
+                            gioRa = LocalTime.of(20,0,0);
+                            caLamViec = caLamViec + ", Ca 3";
+                            break; 
+                        case "4 giờ":
+                            gioRa = LocalTime.of(21,0,0);
+                            caLamViec = caLamViec + ", Ca 3";
+                            break;
+                        default:
+                            break;
                     }
-                    BangChamCongNhanVien bcc = new BangChamCongNhanVien(maCC, gioVao, LocalTime.now(), ngayChamCong, caLamViec, nvhc_DAO.getNhanVienTheoMa(modelDSNhanVien.getValueAt(i, 1).toString()));
+                    BangChamCongNhanVien bcc = new BangChamCongNhanVien(maCC, gioVao, gioRa, ngayChamCong, caLamViec, nvhc_DAO.getNhanVienTheoMa(modelDSNhanVien.getValueAt(i, 1).toString()));
                     bcc_DAO.updateBangChamCongNhanVien(bcc);
                 }
             }
@@ -583,6 +604,26 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_btnXoaCCActionPerformed
+
+    private void tableDSNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDSNhanVienMouseClicked
+        int r = tableDSNhanVien.getSelectedRow();
+        boolean coMat = (boolean) modelDSNhanVien.getValueAt(r, 5);
+        JComboBox cbxTangCa = new JComboBox();
+        if (coMat) {
+           modelDSNhanVien.setValueAt(false, r, 6);
+           modelDSNhanVien.setValueAt("Ca 1, Ca 2", r, 7);
+        } else {
+            modelDSNhanVien.setValueAt("", r, 7);
+            TableCellRenderer render = (TableCellRenderer) new DefaultCellEditor(cbxTangCa);
+            tableDSNhanVien.getColumnModel().getColumn(8).setCellRenderer(render);
+            tableDSNhanVien.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(cbxTangCa) {
+                @Override
+                public boolean isCellEditable(java.util.EventObject e) {
+                    return false;
+                }
+            });
+        }
+    }//GEN-LAST:event_tableDSNhanVienMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -672,6 +713,7 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
         tableDSNhanVien.getColumnModel().getColumn(8).setPreferredWidth(40);
         TableColumn columnCaLamViec = tableDSNhanVien.getColumnModel().getColumn(7);
         JComboBox cbxCaLamViec = new JComboBox();
+        cbxCaLamViec.addItem("");
         cbxCaLamViec.addItem("Ca 1, Ca 2");
         cbxCaLamViec.addItem("Ca 1");
         cbxCaLamViec.addItem("Ca 2");
@@ -679,9 +721,10 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
         TableColumn columnTangCa = tableDSNhanVien.getColumnModel().getColumn(8);
         JComboBox cbxTangCa = new JComboBox();
         cbxTangCa.addItem("Không");
-        cbxTangCa.addItem("Ca 3");
-        cbxTangCa.addItem("Ca CN");
-        cbxTangCa.addItem("Ngày lễ");
+        cbxTangCa.addItem("1 giờ");
+        cbxTangCa.addItem("2 giờ");
+        cbxTangCa.addItem("3 giờ");
+        cbxTangCa.addItem("4 giờ");
         columnTangCa.setCellEditor(new DefaultCellEditor(cbxTangCa));
     }
 
