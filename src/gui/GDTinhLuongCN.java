@@ -935,7 +935,9 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
         if (evt.getClickCount() == 2) {
             PrintReviewCN printReviewCN = new PrintReviewCN();
             int i = jTableBangLuong.getSelectedRow();
-            Object[] obj = {modelBangLuong.getValueAt(i, 1),
+            Object[] obj = {
+                modelBangLuong.getValueAt(i, 0),
+                modelBangLuong.getValueAt(i, 1),
                 modelBangLuong.getValueAt(i, 2),
                 modelBangLuong.getValueAt(i, 3),
                 modelBangLuong.getValueAt(i, 4),
@@ -946,7 +948,23 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
                 modelBangLuong.getValueAt(i, 9),
                 modelBangLuong.getValueAt(i, 10),
                 modelBangLuong.getValueAt(i, 11),};
-            printReviewCN.setGiaTri(obj);
+            ArrayList<ChiTietBangChamCong> dsChiTietChamCong = new ArrayList<ChiTietBangChamCong>();
+            ArrayList<Object[]> dsCT = new ArrayList<>();
+            int rows = jTableBangChamCong.getRowCount();
+            for (int j = 0; j < rows; j++) {
+                String maBCC = modelBangChamCong.getValueAt(j, 0).toString();
+                for (ChiTietBangChamCong chiTiet : dsAllCTChamCong) {
+                    if (chiTiet.getBangCC().getMaBangChamCong().equalsIgnoreCase(maBCC)) {
+                        dsChiTietChamCong.add(chiTiet);
+                    }
+                }
+            }
+            for (ChiTietBangChamCong chiTiet : dsChiTietChamCong) {
+                Object[] rowData = {chiTiet.getBangCC().getMaBangChamCong(), chiTiet.getBangCC().getNgayChamCongString(), chiTiet.getBangPC().getCongDoan().getSanPham().getTenSP(), chiTiet.getBangPC().getCongDoan().getTenCD(), chiTiet.getSoLuong()
+                };
+                dsCT.add(rowData);
+            }
+            printReviewCN.setGiaTri(obj, dsCT);
             JDialog dialog = new JDialog();
             dialog.setTitle("Print review");
             dialog.getContentPane().add(printReviewCN);
@@ -1312,21 +1330,21 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
         // TODO add your handling code here:
         JDialog dialog = new JDialog();
         ArrayList<ChiTietBangChamCong> dsChiTietChamCong = new ArrayList<ChiTietBangChamCong>();
-        int rows = jTableBangChamCong.getRowCount();
-        for (int i = 0; i < rows; i++) {
-            String maBCC = modelBangChamCong.getValueAt(i, 0).toString();
+//        int rows = jTableBangChamCong.getRowCount();
+//        for (int i = 0; i < rows; i++) {
+            String maBCC = modelBangChamCong.getValueAt(jTableBangChamCong.getSelectedRow(), 0).toString();
             for (ChiTietBangChamCong chiTiet : dsAllCTChamCong) {
                 if (chiTiet.getBangCC().getMaBangChamCong().equalsIgnoreCase(maBCC)) {
                     dsChiTietChamCong.add(chiTiet);
                 }
             }
-        }
+//        }
         dialog.setTitle("Danh sách chi tiết chấm công");
         dialog.setSize(600, 300);
         dialog.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/image/logo.png")));
 
         // Tạo JTable
-        String[] columnNames = {"Mã chấm công","Ngày chấm", "Sản phẩm", "Công đoạn", "Số lượng"};
+        String[] columnNames = {"Mã chấm công", "Ngày chấm", "Sản phẩm", "Công đoạn", "Số lượng"};
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
         JTable table = new JTable(tableModel);
 
@@ -1614,6 +1632,9 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
 
     //Tìm bảng lương theo mã của nhân viên 
     public BangLuongCongNhan timBangLuongTheoMaCNThangNam(int m, int n, String maCN) {
+        if (m == 1 && n == 23) {
+            return null;
+        }
         for (BangLuongCongNhan bl : dsAllBangLuong) {
             if (bl.getCongNhan().getMaCN().equalsIgnoreCase(maCN)
                     && bl.getMaBangLuong().substring(0, 2).equalsIgnoreCase(n + "")
@@ -1621,9 +1642,6 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
                 return bl;
             }
         }
-//        if (m == 1 && n == 23) {
-//            return null;
-//        }
         if (m > 1) {
             return timBangLuongTheoMaCNThangNam(m - 1, n, maCN);
         } else {

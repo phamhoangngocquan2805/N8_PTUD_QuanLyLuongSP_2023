@@ -28,6 +28,10 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -452,34 +456,61 @@ public class PrintReviewNV extends javax.swing.JPanel {
     private void jButtonPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPDFActionPerformed
         // TODO add your handling code here:
         jButtonPDF.setVisible(false);
-        // Create a new PDF document
-        Document document = new Document();
-        try {
-            String fileName = "Bảng lương tháng " + obj[1].toString().substring(5, 7) + "-" + obj[0].toString();
-            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("D:\\" + fileName + ".pdf"));
-            document.open();
-            document.setPageSize(PageSize.A4);
-
-            // Create a template and a Graphics2D object
-            PdfContentByte contentByte = writer.getDirectContent();
-            PdfTemplate template = contentByte.createTemplate(500, 500);
-            Graphics2D g2 = template.createGraphics(800, 500);
-            jLabelTieuDe.setText("Cong ty TNHH May mac Thinh Vuong");
-            jLabelPhietTT.setText("Phieu thanh toan luong thang");
-            jLabelBHXH.setText("Bao hiem xa hoi:");
-            jLabelLuongChinh.setText("Luong chinh");
+//        // Create a new PDF document
+//        Document document = new Document();
+//        try {
+//            String fileName = "Bảng lương tháng " + obj[1].toString().substring(5, 7) + "-" + obj[0].toString();
+//            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("D:\\" + fileName + ".pdf"));
+//            document.open();
+//            document.setPageSize(PageSize.A4);
+//
+//            // Create a template and a Graphics2D object
+//            PdfContentByte contentByte = writer.getDirectContent();
+//            PdfTemplate template = contentByte.createTemplate(500, 500);
+//            Graphics2D g2 = template.createGraphics(800, 500);
+//            jLabelTieuDe.setText("Cong ty TNHH May mac Thinh Vuong");
+//            jLabelPhietTT.setText("Phieu thanh toan luong thang");
+//            jLabelBHXH.setText("Bao hiem xa hoi:");
+//            jLabelLuongChinh.setText("Luong chinh");
+//            
+//            // Print the JPanel and its contents to the PDF
+//            PrintReviewNV.this.print(g2);
+//
+//            // Cleanup
+//            g2.dispose();
+//            contentByte.addTemplate(template, 30, 300);
+//            document.close();
+//        } catch (Exception e) {
+//        }
+//        // Show the button again
+        PrinterJob job = PrinterJob.getPrinterJob();
+        job.setPrintable(new Printable(){
+            @Override
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                if(pageIndex >0 )
+                {
+                    return Printable.NO_SUCH_PAGE;
+                }
+                Graphics2D graphics2D = (Graphics2D)graphics;
+                graphics2D.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+                graphics2D.scale(0.8, 0.8);
+                PrintReviewNV.this.print(graphics2D);
+                return Printable.PAGE_EXISTS;
+            }
             
-            // Print the JPanel and its contents to the PDF
-            PrintReviewNV.this.print(g2);
-
-            // Cleanup
-            g2.dispose();
-            contentByte.addTemplate(template, 30, 300);
-            document.close();
-        } catch (Exception e) {
+        });
+        boolean check = job.printDialog();
+        if(check)
+        {
+            try {
+                job.print();
+            } catch (PrinterException e) {
+                JOptionPane.showMessageDialog(null, "Có lỗi xảy ra");
+            }
         }
-        // Show the button again
         jButtonPDF.setVisible(true);
+        
     }//GEN-LAST:event_jButtonPDFActionPerformed
 
     private void jTextFieldThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldThangActionPerformed
@@ -506,18 +537,18 @@ public class PrintReviewNV extends javax.swing.JPanel {
         jTextFieldTL.setEditable(false);
 //        jTextField.setEditable(false);
 
-        jTextFieldThang.setText(obj[1].toString().substring(3, 5));
-        jTextFieldNgay.setText(obj[1].toString());
-        jTextFieldTen.setText(obj[0].toString());
-        jTextFieldSNL.setText(obj[2].toString());
-        jTextFieldSNN.setText(obj[3].toString());
-        jTextFieldLC.setText(obj[4].toString());
-        jTextFieldLTC.setText(obj[5].toString());
-        jTextFieldTPC.setText(obj[6].toString());
-        jTextFieldTCC.setText(obj[7].toString());
-        jTextFieldTU.setText(obj[8].toString());
-        jTextFieldBHXH.setText(obj[9].toString());
-        jTextFieldTL.setText(obj[10].toString());
+        jTextFieldThang.setText(obj[0].toString().substring(2, 4));
+        jTextFieldNgay.setText(obj[2].toString());
+        jTextFieldTen.setText(obj[1].toString());
+        jTextFieldSNL.setText(obj[3].toString());
+        jTextFieldSNN.setText(obj[4].toString());
+        jTextFieldLC.setText(obj[5].toString());
+        jTextFieldLTC.setText(obj[6].toString());
+        jTextFieldTPC.setText(obj[7].toString());
+        jTextFieldTCC.setText(obj[8].toString());
+        jTextFieldTU.setText(obj[9].toString());
+        jTextFieldBHXH.setText(obj[10].toString());
+        jTextFieldTL.setText(obj[11].toString());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonPDF;
