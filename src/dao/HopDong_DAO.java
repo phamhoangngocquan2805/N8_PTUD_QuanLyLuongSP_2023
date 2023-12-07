@@ -5,10 +5,12 @@
 package dao;
 
 import connectDB.ConnectDB;
+import static connectDB.ConnectDB.getConnection;
 import entity.HopDong;
 import entity.HopDong;
 import entity.NhanVienHanhChinh;
 import entity.PhongBan;
+import entity.SanPham;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -130,7 +132,7 @@ public class HopDong_DAO {
         }
         return maHD;
     }
-    
+
     // return hợp đồng theo mã hợp đồng
     public ArrayList<HopDong> getHopDongByMaHD(String maHD) {
         ArrayList<HopDong> hopDong = new ArrayList<HopDong>();
@@ -159,7 +161,6 @@ public class HopDong_DAO {
         }
         return hopDong;
     }
-
 
 //    lấy danh sách hợp đồng từ tên hợp đồng
     public ArrayList<HopDong> getHopDongByTenHD(String info) {
@@ -227,5 +228,33 @@ public class HopDong_DAO {
         }
         return true;
     }
+
+    //    lấy hợp đồng theo trạng thái
+    public ArrayList<HopDong> getHopDongByTrangThai(int trangThai) {
+        ArrayList<HopDong> hopDong = new ArrayList<HopDong>();
+        ConnectDB.getInstance();
+        Connection con = ConnectDB.getConnection();
+        String sql = "select * from HopDong where trangThai =" + trangThai;
+        try {
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                HopDong hd = new HopDong();
+                hd.setMaHD(rs.getString(1));
+                hd.setTenHD(rs.getString(2));
+                hd.setNgayKiHD(rs.getDate(3));
+                hd.setNgayBanGiao(rs.getDate(4));
+                hd.setGhiChu(rs.getString(5));
+                hd.setTrangThai(rs.getInt(6));
+                hd.setNv(new NhanVienHanhChinh_DAO().getNhanVienTheoMa(rs.getString(7)));
+                hopDong.add(hd);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return hopDong;
+    }
+
+   
 
 }
