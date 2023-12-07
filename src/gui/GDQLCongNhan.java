@@ -7,6 +7,7 @@ package gui;
 import dao.CongNhan_DAO;
 import entity.CongNhan;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.sql.Date;
 import java.text.DecimalFormat;
@@ -307,6 +308,11 @@ public class GDQLCongNhan extends javax.swing.JPanel {
         cbbKinhNghiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0 năm", "Dưới 1 năm", "1 năm ", "1.5 năm", "2 năm", "2.5 năm", "3 năm", "3.5 năm", "4 năm", "Trên 4 năm", " " }));
         cbbKinhNghiem.setEnabled(false);
         cbbKinhNghiem.setPreferredSize(new java.awt.Dimension(118, 25));
+        cbbKinhNghiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbKinhNghiemActionPerformed(evt);
+            }
+        });
 
         lblLuongCB.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         lblLuongCB.setText("Tình trạng:");
@@ -699,6 +705,11 @@ public class GDQLCongNhan extends javax.swing.JPanel {
                 tableCNMouseClicked(evt);
             }
         });
+        tableCN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tableCNKeyReleased(evt);
+            }
+        });
         jscrCN.setViewportView(tableCN);
         if (tableCN.getColumnModel().getColumnCount() > 0) {
             tableCN.getColumnModel().getColumn(0).setPreferredWidth(40);
@@ -954,11 +965,13 @@ public class GDQLCongNhan extends javax.swing.JPanel {
             if (tinhTrang.equalsIgnoreCase("Đang làm việc")) {
                 tTrang = true;
             }
+            String kinhNghiem = cbbKinhNghiem.getSelectedItem().toString();
+            
             double phuCap = Double.parseDouble(txtTienPhuCapTheoNgay.getText().toString());
             double chuyenCan = Double.parseDouble(txtTienChuyenCan.getText().toString());
 
             String tayNghe = cbbTayNghe.getSelectedItem().toString();
-            String kinhNghiem = cbbKinhNghiem.getSelectedItem().toString();
+            
             String ghiChu = txtGhiChu.getText();
             Date now = new Date(System.currentTimeMillis());
             int namHienTai = now.getYear();
@@ -1242,6 +1255,41 @@ public class GDQLCongNhan extends javax.swing.JPanel {
         CongNhan cn = cn_DAO.getCongNhanTheoMa(txtMaNV.getText());
         lbHinhCN.setIcon(new ImageIcon(getClass().getResource(cn.getHinhAnh())));
     }//GEN-LAST:event_tableCNMouseClicked
+
+    private void tableCNKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableCNKeyReleased
+        int keyCode = evt.getKeyCode();
+        if (keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN) {
+            int row = tableCN.getSelectedRow();
+            txtMaNV.setText(modelCN.getValueAt(row, 1).toString());
+            txtHoTenNV.setText(modelCN.getValueAt(row, 2).toString());
+            if (modelCN.getValueAt(row, 3).toString().equals("Nam")) {
+                radNam.setSelected(true);
+            } else {
+                radNu.setSelected(true);
+            }
+            dateNgaySinh.setDate((Date) modelCN.getValueAt(row, 4));
+            txtSDT.setText(modelCN.getValueAt(row, 5).toString());
+            txtDiaChi.setText(modelCN.getValueAt(row, 6).toString());
+            cbbTayNghe.setSelectedItem(modelCN.getValueAt(row, 7).toString());
+            cbbKinhNghiem.setSelectedIndex(2);
+            cbbKinhNghiem.setSelectedItem(modelCN.getValueAt(row, 8).toString());
+            cbbTinhTrang.setSelectedItem(modelCN.getValueAt(row, 9).toString());
+            dateNgayVaoLam.setDate((Date) modelCN.getValueAt(row, 10));
+            txtTienPhuCapTheoNgay.setText(modelCN.getValueAt(row, 11).toString());
+            txtTienChuyenCan.setText(modelCN.getValueAt(row, 12).toString());
+            txtGhiChu.setText(modelCN.getValueAt(row, 13).toString());
+
+            CongNhan cn = cn_DAO.getCongNhanTheoMa(txtMaNV.getText());
+            lbHinhCN.setIcon(new ImageIcon(getClass().getResource(cn.getHinhAnh())));
+        }
+    }//GEN-LAST:event_tableCNKeyReleased
+
+    private void cbbKinhNghiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbKinhNghiemActionPerformed
+        int phuCapInt = 2000+cbbKinhNghiem.getSelectedIndex()*5000;
+        txtTienPhuCapTheoNgay.setText(Integer.toString(phuCapInt));
+        int chuyenCanInt = 200000+ cbbKinhNghiem.getSelectedIndex()*100000;
+        txtTienChuyenCan.setText(Integer.toString(chuyenCanInt));
+    }//GEN-LAST:event_cbbKinhNghiemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
