@@ -5,10 +5,12 @@
 package dao;
 
 import connectDB.ConnectDB;
+import static connectDB.ConnectDB.getConnection;
 import entity.HopDong;
 import entity.HopDong;
 import entity.NhanVienHanhChinh;
 import entity.PhongBan;
+import entity.SanPham;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -253,4 +255,5 @@ public class HopDong_DAO {
         return true;
     }
 
+    
 }

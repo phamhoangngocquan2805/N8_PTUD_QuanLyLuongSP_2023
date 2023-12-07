@@ -1262,7 +1262,9 @@ public class GDTinhLuongNV extends javax.swing.JPanel {
         if (evt.getClickCount() == 2) {
             PrintReviewNV printReviewNV = new PrintReviewNV();
             int i = jTableBangLuong.getSelectedRow();
-            Object[] obj = {modelBangLuong.getValueAt(i, 1),
+            Object[] obj = {
+                modelBangLuong.getValueAt(i, 0),
+                modelBangLuong.getValueAt(i, 1),
                 modelBangLuong.getValueAt(i, 2),
                 modelBangLuong.getValueAt(i, 3),
                 modelBangLuong.getValueAt(i, 4),

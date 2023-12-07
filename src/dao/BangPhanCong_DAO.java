@@ -121,7 +121,7 @@ public class BangPhanCong_DAO {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
             String sql = "select * from BangPhanCong\n"
-                    + "where maCD ="+maCD+" and maCN = "+maCN;
+                    + "where maCD =" + maCD + " and maCN = " + maCN;
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
@@ -184,5 +184,26 @@ public class BangPhanCong_DAO {
             }
         }
         return n > 0;
+    }
+
+    public int getTongSLHT(String maPC) {
+        int bpc = 0;
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select sum(soLuongHT)\n"
+                    + "from ChiTietBangChamCong\n"
+                    + "where maBangPC = " + maPC;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                bpc = rs.getInt(1);
+                
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return bpc;
     }
 }
