@@ -95,6 +95,7 @@ public class CongDoan {
     public void setSanPham(SanPham sanPham) {
         this.sanPham = sanPham;
     }
+    
 
     public CongDoan(String maCD, String tenCD, int soLuong, double donGia, Date ngayBatDau, Date ngayKetThuc, String tenCDTruoc, int trangThai, SanPham sanPham) {
         this.maCD = maCD;
@@ -151,6 +152,10 @@ public class CongDoan {
     }
     public String getNgayKetThucString() {
         return get10char(this.ngayKetThuc.toString());
+    }
+
+    public boolean isEmpty() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

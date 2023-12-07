@@ -397,14 +397,14 @@ public class GDLogin extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldTenTK.setText("admin");
+        jTextFieldTenTK.setText("thinh");
         jTextFieldTenTK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTenTKActionPerformed(evt);
             }
         });
 
-        jPasswordFieldMatKhau.setText("admin");
+        jPasswordFieldMatKhau.setText("thinh");
         jPasswordFieldMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPasswordFieldMatKhauMousePressed(evt);

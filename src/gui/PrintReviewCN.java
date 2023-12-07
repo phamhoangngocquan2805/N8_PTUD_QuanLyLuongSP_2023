@@ -25,6 +25,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
 import com.itextpdf.text.pdf.PdfTemplate;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import java.util.ArrayList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 //import com.itextpdf.text.Font;
 
 /**
@@ -75,6 +83,9 @@ public class PrintReviewCN extends javax.swing.JPanel {
         jButtonPDF = new javax.swing.JButton();
         jTextFieldThang = new javax.swing.JTextField();
         jTextFieldNgay = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabelLuongTangCa1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -259,72 +270,95 @@ public class PrintReviewCN extends javax.swing.JPanel {
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabelLuongTangCa1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelLuongTangCa1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelLuongTangCa1.setText("Thông tin chấm công:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jLabelPhietTT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldThang, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelTieuDe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(151, 151, 151))
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelTenNV)
-                            .addComponent(jLabelSoNgayLam))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldTen, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jTextFieldSNL, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabelLuongTangCa1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelLuongChinh)
-                            .addComponent(jLabelLuongTangCa)
-                            .addComponent(jLabelSoNgayNghi))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldSNN, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldLTC, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldLC, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelTienChuyenCan, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelTienUng, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelBHXH, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelThucLanh, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextFieldTL)
-                            .addComponent(jTextFieldTCC)
-                            .addComponent(jTextFieldBHXH)
-                            .addComponent(jTextFieldTU, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldTPC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabelTienPhuCap))
-                .addGap(66, 66, 66))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelNgay)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(51, 51, 51))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelTenNV)
+                                    .addComponent(jLabelSoNgayLam))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldTen, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jTextFieldSNL, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(104, 104, 104)
-                                .addComponent(jLabelPhietTT)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelLuongChinh)
+                                    .addComponent(jLabelLuongTangCa)
+                                    .addComponent(jLabelSoNgayNghi))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldSNN, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldLTC, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldLC, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelTienPhuCap)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelTienChuyenCan, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelTienUng, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelBHXH, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelThucLanh, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldThang, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabelTieuDe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(151, 151, 151))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextFieldTL)
+                                    .addComponent(jTextFieldTCC)
+                                    .addComponent(jTextFieldBHXH)
+                                    .addComponent(jTextFieldTU, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldTPC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(66, 66, 66))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButtonPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabelNgay)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(51, 51, 51))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,9 +415,13 @@ public class PrintReviewCN extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelThucLanh)
                             .addComponent(jTextFieldTL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(22, 22, 22)
+                .addComponent(jLabelLuongTangCa1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonPDF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -431,34 +469,62 @@ public class PrintReviewCN extends javax.swing.JPanel {
         // TODO add your handling code here:
         jButtonPDF.setVisible(false);
         // Create a new PDF document
-        Document document = new Document();
-        try {
-            String fileName = "Bảng lương tháng " + obj[1].toString().substring(5, 7) + "-" + obj[0].toString();
-            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("D:\\" + fileName + ".pdf"));
-            document.open();
-            document.setPageSize(PageSize.A4);
+//        Document document = new Document();
+//        try {
+//            String fileName = "Bảng lương tháng " + obj[1].toString().substring(5, 7) + "-" + obj[0].toString();
+//            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("D:\\" + fileName + ".pdf"));
 //            document.open();
-
-            // Create a template and a Graphics2D object
-            PdfContentByte contentByte = writer.getDirectContent();
-            PdfTemplate template = contentByte.createTemplate(500, 500);
-            Graphics2D g2 = template.createGraphics(500, 500);
-//            File fontFile = new File("libs/vuArial.ttf");
-//            BaseFont bf = BaseFont.createFont(fontFile.getAbsolutePath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-////            Font font = new ;
-            java.awt.Font font = new java.awt.Font("Arial", java.awt.Font.PLAIN, 12);
-            g2.setFont(font);
-
-            // Print the JPanel and its contents to the PDF
-            PrintReviewCN.this.print(g2);
-
-            // Cleanup
-            g2.dispose();
-            contentByte.addTemplate(template, 30, 300);
-            document.close();
-        } catch (Exception e) {
-        }
+//            document.setPageSize(PageSize.A4);
+////            document.open();
+//
+//            // Create a template and a Graphics2D object
+//            PdfContentByte contentByte = writer.getDirectContent();
+//            PdfTemplate template = contentByte.createTemplate(500, 500);
+//            Graphics2D g2 = template.createGraphics(500, 500);
+////            File fontFile = new File("libs/vuArial.ttf");
+////            BaseFont bf = BaseFont.createFont(fontFile.getAbsolutePath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+//////            Font font = new ;
+//            java.awt.Font font = new java.awt.Font("Arial", java.awt.Font.PLAIN, 12);
+//            g2.setFont(font);
+//
+//            // Print the JPanel and its contents to the PDF
+//            PrintReviewCN.this.print(g2);
+//
+//            // Cleanup
+//            g2.dispose();
+//            contentByte.addTemplate(template, 30, 300);
+//            document.close();
+//        } catch (Exception e) {
+//        }
         // Show the button again
+        PrinterJob job = PrinterJob.getPrinterJob();
+        job.setPrintable(new Printable() {
+            @Override
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+//                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                if (pageIndex > 0) {
+                    return Printable.NO_SUCH_PAGE;
+                }
+                Graphics2D graphics2D = (Graphics2D) graphics;
+                graphics2D.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+                graphics2D.scale(0.8, 0.8);
+//                double scaleX = pageFormat.getImageableWidth() / PrintReviewCN.this.getWidth();
+//                double scaleY = pageFormat.getImageableHeight() / PrintReviewCN.this.getHeight();
+//                graphics2D.scale(scaleX, scaleY);
+//                jTable1.print(graphics2D);
+                PrintReviewCN.this.print(graphics2D);
+                return Printable.PAGE_EXISTS;
+            }
+
+        });
+        boolean check = job.printDialog();
+        if (check) {
+            try {
+                job.print();
+            } catch (PrinterException e) {
+                JOptionPane.showMessageDialog(null, "Có lỗi xảy ra");
+            }
+        }
         jButtonPDF.setVisible(true);
     }//GEN-LAST:event_jButtonPDFActionPerformed
 
@@ -470,7 +536,7 @@ public class PrintReviewCN extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNgayActionPerformed
 
-    public void setGiaTri(Object[] obj) {
+    public void setGiaTri(Object[] obj, ArrayList<Object[]> dsCT) {
         this.obj = obj;
         jTextFieldThang.setEditable(false);
         jTextFieldNgay.setEditable(false);
@@ -485,25 +551,46 @@ public class PrintReviewCN extends javax.swing.JPanel {
         jTextFieldBHXH.setEditable(false);
         jTextFieldTL.setEditable(false);
 //        jTextField.setEditable(false);
-        
-        jTextFieldThang.setText(obj[1].toString().substring(3, 5));
-        jTextFieldNgay.setText(obj[1].toString());
-        jTextFieldTen.setText(obj[0].toString());
-        jTextFieldSNL.setText(obj[2].toString());
-        jTextFieldSNN.setText(obj[3].toString());
-        jTextFieldLC.setText(obj[4].toString());
-        jTextFieldLTC.setText(obj[5].toString());
-        jTextFieldTPC.setText(obj[6].toString());
-        jTextFieldTCC.setText(obj[7].toString());
-        jTextFieldTU.setText(obj[8].toString());
-        jTextFieldBHXH.setText(obj[9].toString());
-        jTextFieldTL.setText(obj[10].toString());
+
+        jTextFieldThang.setText(obj[0].toString().substring(2,4));
+        jTextFieldNgay.setText(obj[2].toString());
+        jTextFieldTen.setText(obj[1].toString());
+        jTextFieldSNL.setText(obj[3].toString());
+        jTextFieldSNN.setText(obj[4].toString());
+        jTextFieldLC.setText(obj[5].toString());
+        jTextFieldLTC.setText(obj[6].toString());
+        jTextFieldTPC.setText(obj[7].toString());
+        jTextFieldTCC.setText(obj[8].toString());
+        jTextFieldTU.setText(obj[9].toString());
+        jTextFieldBHXH.setText(obj[10].toString());
+        jTextFieldTL.setText(obj[11].toString());
+        String[] columnNames = {"Mã chấm công", "Ngày chấm", "Sản phẩm", "Công đoạn", "Số lượng"};
+        modelCT = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // all cells false
+                return false;
+            }
+        };
+        jTable1.setModel(modelCT);
+        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    int selectedRow = jTable1.getSelectedRow();
+                }
+            }
+        });
+        for (Object[] o : dsCT) {
+            modelCT.addRow(o);
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonPDF;
     private javax.swing.JLabel jLabelBHXH;
     private javax.swing.JLabel jLabelLuongChinh;
     private javax.swing.JLabel jLabelLuongTangCa;
+    private javax.swing.JLabel jLabelLuongTangCa1;
     private javax.swing.JLabel jLabelNgay;
     private javax.swing.JLabel jLabelPhietTT;
     private javax.swing.JLabel jLabelSoNgayLam;
@@ -514,6 +601,8 @@ public class PrintReviewCN extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelTienPhuCap;
     private javax.swing.JLabel jLabelTienUng;
     private javax.swing.JLabel jLabelTieuDe;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFieldBHXH;
     private javax.swing.JTextField jTextFieldLC;
     private javax.swing.JTextField jTextFieldLTC;
@@ -528,4 +617,5 @@ public class PrintReviewCN extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldThang;
     // End of variables declaration//GEN-END:variables
     private Object[] obj;
+    private DefaultTableModel modelCT;
 }

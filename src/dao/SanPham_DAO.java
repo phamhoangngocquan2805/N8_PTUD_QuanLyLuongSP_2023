@@ -5,6 +5,7 @@
 package dao;
 
 import connectDB.ConnectDB;
+import entity.CongDoan;
 import entity.HopDong;
 import entity.SanPham;
 import entity.NhanVienHanhChinh;
@@ -39,9 +40,9 @@ public class SanPham_DAO {
                 int soCongDoan = rs.getInt(6);
                 String chatLieu = rs.getString(7);
                 String donViTinh = rs.getString(8);
+                //String tinhTrang = rs.getString(9);
                 HopDong_DAO hddao = new HopDong_DAO();
                 HopDong hd = hddao.getHopDongTheoMa(rs.getString(9));
-
                 SanPham sp = new SanPham(maSP, tenSP, soLuong, donGia, thongTin, soCongDoan, chatLieu, donViTinh, hd);
                 dsSanPham.add(sp);
             }
@@ -91,7 +92,7 @@ public class SanPham_DAO {
         int n = 0;
         try {
             stm = con.prepareStatement("update SanPham set tenSP = ?, soLuong = ?, donGia = ?, thongTin = ?, soCongDoan = ?, chatLieu = ?, donViTinh = ?, maHD = ? where maSP = ?");
-            stm.setString(9, sp.getMaSP());
+            stm.setString(10, sp.getMaSP());
             stm.setString(1, sp.getTenSP());
             stm.setInt(2, sp.getSoLuong());
             stm.setFloat(3, (float) sp.getDonGia());
@@ -99,7 +100,8 @@ public class SanPham_DAO {
             stm.setInt(5, sp.getSoCongDoan());
             stm.setString(6, sp.getChatLieu());
             stm.setString(7, sp.getDonViTinh());
-            stm.setString(8, sp.getHopDong().getMaHD());
+            stm.setString(8, sp.getDonViTinh());
+            stm.setString(9, sp.getHopDong().getMaHD());
             n = stm.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -145,6 +147,7 @@ public class SanPham_DAO {
                 int soCongDoan = rs.getInt(6);
                 String chatLieu = rs.getString(7);
                 String donViTinh = rs.getString(8);
+                //String tinhTrang = rs.getString(9);
                 HopDong_DAO hddao = new HopDong_DAO();
                 HopDong hd = hddao.getHopDongTheoMa(rs.getString(9));
 
@@ -157,5 +160,34 @@ public class SanPham_DAO {
         }
         return sanpham;
     }
-    
+
+    public ArrayList<SanPham> getSanPhamTheoMaHD(String maHD) {
+        ArrayList<SanPham> sanpham = new ArrayList<>();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from SanPham where maHD = ?";
+            PreparedStatement preStmt = con.prepareStatement(sql);
+            preStmt.setString(1, maHD);
+            ResultSet rs = preStmt.executeQuery();
+            while (rs.next()) {
+                String maSP = rs.getString(1);
+                String tenSP = rs.getString(2);
+                int soLuong = rs.getInt(3);
+                double donGia = rs.getFloat(4);
+                String thongTin = rs.getString(5);
+                int soCongDoan = rs.getInt(6);
+                String chatLieu = rs.getString(7);
+                String donViTinh = rs.getString(8);
+
+                SanPham sp = new SanPham(maSP, tenSP, soLuong, donGia, thongTin, soCongDoan, chatLieu, donViTinh, null);
+                // Lưu ý rằng ta để giá trị `null` cho `HopDong` tạm thời vì ta không có thông tin `HopDong` trong bảng SanPham.
+                sanpham.add(sp);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sanpham;
+    }
+
 }

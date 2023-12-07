@@ -4,13 +4,17 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/gui/GDQLNhanVienHanhChinh.java</file>
-            <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/dao/HopDong_DAO.java</file>
             <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/dao/NhanVienHanhChinh_DAO.java</file>
+            <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/dao/ChiTietBangChamCong_DAO.java</file>
+            <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/gui/GDQLChamCongNVHC.java</file>
+            <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/gui/GDPhanCong.java</file>
             <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/gui/GDQLChamCongCN.java</file>
-            <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/gui/GDQLHopDong.java</file>
-            <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/gui/GDQLCongNhan.java</file>
+            <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/entity/BangChamCongCongNhan.java</file>
+            <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/gui/GDLogin.java</file>
+            <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/dao/BangPhanCong_DAO.java</file>
             <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/gui/GDQLCongDoan.java</file>
             <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/entity/HopDong.java</file>
+            <file>file:/D:/HK1_20232024_NAM4/PTUD/08_QuanLyLuongSanPham_v2/08_QuanLyLuongSanPham/src/dao/BangChamCongCongNhan_DAO.java</file>
         </group>
     </open-files>
 </project-private>
