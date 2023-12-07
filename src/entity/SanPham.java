@@ -5,6 +5,7 @@
 package entity;
 
 import dao.SanPham_DAO;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -22,6 +23,7 @@ public class SanPham {
     private String chatLieu;
     private String donViTinh;
     private HopDong hopDong;
+    
 
     public String getMaSP() {
         return maSP;
@@ -85,7 +87,7 @@ public class SanPham {
 
     public void setDonViTinh(String donViTinh) {
         this.donViTinh = donViTinh;
-    }
+    }   
 
     public HopDong getHopDong() {
         return hopDong;
@@ -106,6 +108,8 @@ public class SanPham {
         this.donViTinh = donViTinh;
         this.hopDong = hopDong;
     }
+
+    
 
     public SanPham(String maSP) {
         this.maSP = maSP;
@@ -138,7 +142,9 @@ public class SanPham {
 
     @Override
     public String toString() {
-        return "SanPham{" + "maSP=" + maSP + ", tenSP=" + tenSP + ", soLuong=" + soLuong + ", donGia=" + donGia + ", thongTin=" + thongTin + ", soCongDoan=" + soCongDoan + ", chatLieu=" + chatLieu + ", donViTinh=" + donViTinh + ", hopDong=" + hopDong + '}';
+        return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
+
+    
  
 }

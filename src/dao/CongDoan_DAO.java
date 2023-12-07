@@ -117,33 +117,6 @@ public class CongDoan_DAO {
         return n > 0;
     }
 
-//    public boolean (String maCD) throws SQLException {
-//        ConnectDB.getInstance();
-//        Connection con = ConnectDB.getConnection();
-//        ConnectDB.connect();
-//        PreparedStatement prepStmt = null;
-//        int n = 0;
-//
-//        Connection con = ConnectDB.getConnection();
-//
-//        try {
-//            String sql = "Delete from Xe WHERE maXe=?";
-//            prepStmt = con.prepareStatement(sql);
-//
-//            prepStmt.setString(1, maCD);
-//            n = prepStmt.executeUpdate();
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                prepStmt.close();
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return n > 0;
-//    }
     public boolean xoaCongDoan(String ma) throws SQLException {
         Connection con = ConnectDB.getConnection();
         PreparedStatement stmt = null;
@@ -173,36 +146,72 @@ public class CongDoan_DAO {
         }
         return null;
     }
-     public ArrayList<CongDoan> getAllCongDoanTheoMaSP(String MaSP)
-	{
-		ArrayList<CongDoan> dsCongDoan = new ArrayList<CongDoan>();
-		try {
-			ConnectDB.getInstance();
-			Connection con = ConnectDB.getConnection();
-			String sql = "select * from CongDoan cd join SanPham sp\n" +
-                                    "on cd.maSP = sp.maSP\n" +
-                                    "where sp.maSP ="+MaSP;
-			Statement stm = con.createStatement();
-			ResultSet rs = stm.executeQuery(sql);
-			while(rs.next())
-			{
-				String maCD = rs.getString(1);
-				String tenCD = rs.getString(2);
-                                int soLuong = rs.getInt(3);
-                                double donGia = rs.getFloat(4);
-                                Date ngayBatDau = rs.getDate(5);
-                                Date ngayKetThuc = rs.getDate(6);
-                                String tenCDTruoc = rs.getString(7);
-                                int trangThai = rs.getInt(8);
-                                SanPham_DAO spdao = new SanPham_DAO();
-                                SanPham sp = spdao.getSanPhamTheoMa(rs.getString(9));
-                                CongDoan cd = new CongDoan(maCD, tenCD, soLuong, donGia, ngayBatDau, ngayKetThuc, tenCDTruoc, trangThai, sp);
-				dsCongDoan.add(cd);
-			}
-		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		return dsCongDoan;
-	}
+
+    public ArrayList<CongDoan> getCongDoanTheoTenCD(String tenCD) {
+        ArrayList<CongDoan> dsCongDoan = getAllCongDoan();
+        ArrayList<CongDoan> ketQua = new ArrayList<>();
+        for (CongDoan x : dsCongDoan) {
+            if (x.getTenCD().equalsIgnoreCase(tenCD)) {
+                ketQua.add(x);
+            }
+        }
+        return ketQua;
+    }
+
+    public ArrayList<CongDoan> getCongDoanTheoNgayBD(Date ngayBD) {
+        ArrayList<CongDoan> dsCongDoan = getAllCongDoan();
+        ArrayList<CongDoan> ketQua = new ArrayList<>();
+
+        for (CongDoan x : dsCongDoan) {
+            if (x.getNgayBatDau()!= null && x.getNgayBatDau().compareTo(ngayBD) == 0) {
+                ketQua.add(x);
+            }
+        }
+
+        return ketQua;
+    }
+
+    public ArrayList<CongDoan> getCongDoanTheoNgayKT(Date ngayKT) {
+        ArrayList<CongDoan> dsCongDoan = getAllCongDoan();
+        ArrayList<CongDoan> ketQua = new ArrayList<>();
+
+        for (CongDoan x : dsCongDoan) {
+            if (x.getNgayKetThuc() != null && x.getNgayKetThuc().compareTo(ngayKT) == 0) {
+                ketQua.add(x);
+            }
+        }
+
+        return ketQua;
+    }
+
+    public ArrayList<CongDoan> getAllCongDoanTheoMaSP(String MaSP) {
+        ArrayList<CongDoan> dsCongDoan = new ArrayList<CongDoan>();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from CongDoan where maSP = '" + MaSP + "'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maCD = rs.getString(1);
+                String tenCD = rs.getString(2);
+                int soLuong = rs.getInt(3);
+                double donGia = rs.getDouble(4);
+                Date ngayBatDau = rs.getDate(5);
+                Date ngayKetThuc = rs.getDate(6);
+                String tenCDTruoc = rs.getString(7);
+                int trangThai = rs.getInt(8);
+                SanPham_DAO spdao = new SanPham_DAO();
+                SanPham sp = spdao.getSanPhamTheoMa(rs.getString(9));
+
+                CongDoan cd = new CongDoan(maCD, tenCD, soLuong, donGia, ngayBatDau, ngayKetThuc, tenCDTruoc, trangThai, sp);
+                dsCongDoan.add(cd);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return dsCongDoan;
+    }
+
 }
