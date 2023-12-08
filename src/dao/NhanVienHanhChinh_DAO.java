@@ -588,4 +588,40 @@ public class NhanVienHanhChinh_DAO {
         }
         return true;
     }
+    
+    public NhanVienHanhChinh getNhanVienTheoMaVer2(String maNv) {
+        NhanVienHanhChinh nv = null;
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from NhanVienHanhChinh where maNV = " + maNv;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maNV = rs.getString(1);
+                String hoTen = rs.getString(2);
+                boolean phai = rs.getBoolean(3);
+                Date ngaySinh = rs.getDate(4);
+                String soDT = rs.getString(5);
+                String diaChi = rs.getString(6);
+                boolean tinhTrang = rs.getBoolean(7);
+                Date ngayVaoLam = rs.getDate(8);
+                String hinhAnh = rs.getString(9);
+                double heSoLuong = rs.getFloat(10);
+                double luognCoBan = rs.getFloat(11);
+                String chucVu = rs.getString(12);
+                String email = rs.getString(13);
+                double tienPhuCapTheoNgay = rs.getFloat(14);
+                double tienChuyenCan = rs.getFloat(15);
+                String ghiChu = rs.getString(16);
+                PhongBan_DAO pbdao = new PhongBan_DAO();
+                PhongBan phongBan = pbdao.getPhongBanTheoMa(rs.getString(17));
+                nv = new NhanVienHanhChinh(maNV, hoTen, phai, ngaySinh, soDT, diaChi, tinhTrang, ngayVaoLam, hinhAnh, heSoLuong, luognCoBan, chucVu, email, tienPhuCapTheoNgay, tienChuyenCan, ghiChu, phongBan);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return nv;
+    }
 }

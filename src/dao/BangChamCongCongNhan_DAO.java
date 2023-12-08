@@ -119,6 +119,33 @@ public class BangChamCongCongNhan_DAO {
         return null;
     }
 
+    public BangChamCongCongNhan getBangChamCongCongNhanTheoMaVer2(String maBangChamCongCongNhan) {
+        BangChamCongCongNhan bcc = new BangChamCongCongNhan();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "SELECT * FROM BangChamCongCongNhan where maBangChamCong = " + maBangChamCongCongNhan;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maBangCC = rs.getString(1);
+                LocalTime gioVao = rs.getTime(2).toLocalTime();
+                LocalTime gioRa = rs.getTime(3).toLocalTime();
+                LocalDateTime ngayChamCong = rs.getTimestamp(4).toLocalDateTime();
+                String caLamViec = rs.getString(5);
+                CongNhan_DAO cndao = new CongNhan_DAO();
+                CongNhan cn = cndao.getCongNhanTheoMa(rs.getString(6));
+
+                bcc = new BangChamCongCongNhan(maBangCC, gioVao, gioRa, ngayChamCong, caLamViec, cn);
+
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return bcc;
+    }
+
     public BangChamCongCongNhan getBangChamCongMoiNhat() {
         BangChamCongCongNhan bcc = new BangChamCongCongNhan();
         try {
@@ -174,7 +201,7 @@ public class BangChamCongCongNhan_DAO {
             Connection con = ConnectDB.getConnection();
             String sql = "select * from ChiTietBangChamCong ct join BangChamCongCongNhan cc\n"
                     + "on ct.maBangChamCong = cc.maBangChamCong\n"
-                    + "where ngayChamCong between '"+ngayBD+"' and '"+ngayKT+"'";
+                    + "where ngayChamCong between '" + ngayBD + "' and '" + ngayKT + "'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
@@ -185,7 +212,7 @@ public class BangChamCongCongNhan_DAO {
                 BangChamCongCongNhan_DAO ccdao = new BangChamCongCongNhan_DAO();
                 BangPhanCong pc = pcdao.getBangPhanCongTheoMa(maBangPC);
                 BangChamCongCongNhan ccCN = ccdao.getBangChamCongCongNhanTheoMa(maBangChamCong);
-                
+
                 ChiTietBangChamCong ctcc = new ChiTietBangChamCong(sl, pc, ccCN);
                 dsCtCC.add(ctcc);
             }
