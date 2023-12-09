@@ -979,10 +979,11 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                         break;
                     }
                 }
-                if(check != 1)
-                    dsCN.add(((ChiTietBangChamCong)obj[1]).getBangPC().getCongNhan());
+                if (check != 1) {
+                    dsCN.add(((ChiTietBangChamCong) obj[1]).getBangPC().getCongNhan());
+                }
             }
-            
+
             for (CongNhan cn : dsCN) {
                 int count = 0;
                 String hoTen = cn.getHoTen();
@@ -1032,7 +1033,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                 for (Object[] obj : chiTietSLCN) {
                     //Vị trí trong arr thangs
                     if (obj[0].toString().equals(cn.getMaCN())) {
-                        ChiTietBangChamCong ct = ((ChiTietBangChamCong)obj[1]);
+                        ChiTietBangChamCong ct = ((ChiTietBangChamCong) obj[1]);
                         row = sheet.createRow(count++);
                         cell = row.createCell(0, CellType.NUMERIC);
                         cell.setCellValue(stt + 1);
@@ -1154,7 +1155,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
     public void createBarChartSanLuong() {
         // Create sample data
         dsCongDoan = new ArrayList<String>();
-        ArrayList<ChiTietBangChamCong> dsChiTietChamCong = chiTietBangChamCong_DAO.getAllChiTietBangChamCong();
+        ArrayList<ChiTietBangChamCong> dsChiTietChamCong = chiTietBangChamCong_DAO.getAllChiTietBangChamCongVer2();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (BangChamCongCongNhan bcc : bangChamCongCongNhan_DAO.getAllBangChamCongCongNhan()) {
             //Kiểm tra xem bảng chấm công có thuộc tháng và năm ko
@@ -1180,12 +1181,14 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                 }
             }
         }
-
+        jComboBoxCongDoanCN.removeAllItems();
         for (String cd : dsCongDoan) {
             jComboBoxCongDoanCN.addItem(cd);
         }
         jComboBoxCongDoanCN.removeItem("Tất cả");
-        jComboBoxCongDoanCN.setSelectedIndex(0);
+        if (jComboBoxCongDoanCN.getSelectedItem() != null) {
+            jComboBoxCongDoanCN.setSelectedIndex(0);
+        }
         // Create chart
         JFreeChart chart = ChartFactory.createBarChart(
                 "Thống kê sản luọng công ty TNHH May mặc Thịnh Vượng", // Chart title
@@ -1239,11 +1242,12 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
 
             String key = entry.getKey();
-            if (key.substring(7).equals(jComboBoxCongDoanCN.getSelectedItem().toString())) {
-                Integer value = entry.getValue();
-//                System.out.println(key + "-" + value);
-                Object[] obj = {key.substring(0, 6), value};
-                modelCN.addRow(obj);
+            if (jComboBoxCongDoanCN.getSelectedItem() != null) {
+                if (key.substring(7).equals(jComboBoxCongDoanCN.getSelectedItem().toString())) {
+                    Integer value = entry.getValue();
+                    Object[] obj = {key.substring(0, 6), value};
+                    modelCN.addRow(obj);
+                }
             }
         }
     }
@@ -1275,7 +1279,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
     }
 
     public void checkBangPhanCong(ChiTietBangChamCong chiTietBangChamCong, Map<String, Integer> dsTopCongNhan) {
-        for (BangPhanCong bangPhanCong : bangPhanCong_DAO.getAllBangPhanCong()) {
+        for (BangPhanCong bangPhanCong : bangPhanCong_DAO.getAllBangPhanCongVer2()) {
             if (chiTietBangChamCong.getBangPC().getMaBangPC().equals(bangPhanCong.getMaBangPC())) {
                 String maCN = bangPhanCong.getCongNhan().getMaCN();
                 dsTopCongNhan.put(maCN, dsTopCongNhan.get(maCN) + chiTietBangChamCong.getSoLuong());

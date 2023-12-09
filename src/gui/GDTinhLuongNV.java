@@ -104,8 +104,6 @@ public class GDTinhLuongNV extends javax.swing.JPanel {
         loadComponentsTableBangLuong(); //load model table bảng lương
         resetHashMapAndPhongBan(); // khởi tạo 
         resetTableNV(dsNhanVien);
-
-//        numberFormat.setRoundingMode(RoundingMode.DOWN);
     }
 
     /**

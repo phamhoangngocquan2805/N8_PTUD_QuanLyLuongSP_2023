@@ -107,7 +107,7 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
         dsCongNhanTmp = new ArrayList<CongNhan>();
         dsBangChamCong = bangChamCong_dao.getAllBangChamCongCongNhan();
         dsAllBangPhanCong = bangPhanCong_DAO.getAllBangPhanCong();
-        dsAllCTChamCong = chiTietBangChamCong_DAO.getAllChiTietBangChamCong();
+        dsAllCTChamCong = chiTietBangChamCong_DAO.getAllChiTietBangChamCongVer2();
         dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); //format ngày
         dstienUng = new HashMap<String, Double>(); //Lưu ds tiền ứng
         loadComponentsTableCN();
@@ -1265,16 +1265,11 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
 
     private void jComboBoxThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxThangActionPerformed
         //Sự kiện combobox tháng, khi nhấn vào 1 tháng thì reset lại bảng lương và bảng chấm công
-//        resetTableBangChamCong(jTableCN.getSelectedRow());
-//        resetTableBangLuong();
-
         resetTableCN(dsCongNhan);
     }//GEN-LAST:event_jComboBoxThangActionPerformed
 
     private void jComboBoxNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNamActionPerformed
         //Sự kiện combobox tháng, khi nhấn vào 1 tháng thì reset lại bảng lương và bảng chấm công
-//        resetTableBangChamCong(jTableCN.getSelectedRow());
-//        resetTableBangLuong();
         resetTableCN(dsCongNhan);
     }//GEN-LAST:event_jComboBoxNamActionPerformed
 
