@@ -114,9 +114,9 @@ public class ChiTietBangChamCong_DAO {
     }
 
     public ArrayList<ChiTietBangChamCong> getChiTietBangChamCongTheoMaCD(String maCD) {
-        ArrayList<ChiTietBangChamCong> dsSP = new ArrayList<>() ;
+        ArrayList<ChiTietBangChamCong> dsSP = new ArrayList<>();
         for (ChiTietBangChamCong x : getAllChiTietBangChamCong()) {
-            if(x.getBangPC().getCongDoan().getMaCD().equals(maCD)){
+            if (x.getBangPC().getCongDoan().getMaCD().equals(maCD)) {
                 dsSP.add(x);
             }
         }
@@ -147,4 +147,32 @@ public class ChiTietBangChamCong_DAO {
         }
         return n > 0;
     }
+
+    public ArrayList<ChiTietBangChamCong> getAllChiTietBangChamCongVer2() {
+        ArrayList<ChiTietBangChamCong> dsChiTietBangChamCong = new ArrayList<ChiTietBangChamCong>();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from ChiTietBangChamCong";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+
+                int soLuongHT = rs.getInt(1);
+
+                BangPhanCong bpc = bpcdao.getBangPhanCongTheoMaBPC(rs.getString(2));
+
+                BangChamCongCongNhan bcc = bccdao.getBangChamCongCongNhanTheoMaVer2(rs.getString(3));
+
+                ChiTietBangChamCong ct = new ChiTietBangChamCong(soLuongHT, bpc, bcc);
+                dsChiTietBangChamCong.add(ct);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return dsChiTietBangChamCong;
+    }
+    BangPhanCong_DAO bpcdao = new BangPhanCong_DAO();
+    BangChamCongCongNhan_DAO bccdao = new BangChamCongCongNhan_DAO();
 }

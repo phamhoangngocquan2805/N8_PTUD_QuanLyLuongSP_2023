@@ -62,7 +62,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
         chamCongCongNhan_DAO = new BangChamCongCongNhan_DAO();
         chiTietBangChamCong_DAO = new ChiTietBangChamCong_DAO();
         dsBCC = chamCongCongNhan_DAO.getAllBangChamCongCongNhan();
-        dsCT = chiTietBangChamCong_DAO.getAllChiTietBangChamCong();
+        dsCT = chiTietBangChamCong_DAO.getAllChiTietBangChamCongVer2();
         loadComponentsTableBangLuongNV();
         loadComponentsTableBangLuongCN();
         resetTableBangLuongNV();
@@ -1081,7 +1081,9 @@ public class GDXemBangLuong extends javax.swing.JPanel {
     void resetTableBangLuongNV() {
         modelBangLuongNV.setRowCount(0);
         bangLuongNhanVien_DAO = new BangLuongNhanVien_DAO();
-        ArrayList<BangLuongNhanVien> danhSachBangLuong = bangLuongNhanVien_DAO.getDSBangLuongNhanVienTheoThangNam(String.format("%02d", Integer.parseInt(jComboBoxThangNV.getSelectedItem().toString())), jComboBoxNamNV.getSelectedItem().toString().substring(2));
+        String thang = String.format("%02d", Integer.parseInt(jComboBoxThangNV.getSelectedItem().toString()));
+        String nam = jComboBoxNamNV.getSelectedItem().toString().substring(2);
+        ArrayList<BangLuongNhanVien> danhSachBangLuong = bangLuongNhanVien_DAO.getDSBangLuongNhanVienTheoThangNam(thang, nam);
         Locale vietNam = new Locale("vi", "VN");
         NumberFormat numberFormat = NumberFormat.getInstance(vietNam);
         numberFormat.setMaximumFractionDigits(0); //Format tiền vnd
@@ -1155,7 +1157,9 @@ public class GDXemBangLuong extends javax.swing.JPanel {
     void resetTableBangLuongCN() {
         modelBangLuongCN.setRowCount(0);
         bangLuongCongNhan_DAO = new BangLuongCongNhan_DAO();
-        ArrayList<BangLuongCongNhan> danhSachBangLuong = bangLuongCongNhan_DAO.getDSBangLuongCongNhanTheoThangNam(String.format("%02d", Integer.parseInt(jComboBoxThangCN.getSelectedItem().toString())), jComboBoxNamCN.getSelectedItem().toString().substring(2));
+        String thang = String.format("%02d", Integer.parseInt(jComboBoxThangCN.getSelectedItem().toString()));
+        String nam = jComboBoxNamCN.getSelectedItem().toString().substring(2);
+        ArrayList<BangLuongCongNhan> danhSachBangLuong = bangLuongCongNhan_DAO.getDSBangLuongCongNhanTheoThangNam(thang, nam);
         Locale vietNam = new Locale("vi", "VN");
         NumberFormat numberFormat = NumberFormat.getInstance(vietNam);
         numberFormat.setMaximumFractionDigits(0); //Format tiền vnd
