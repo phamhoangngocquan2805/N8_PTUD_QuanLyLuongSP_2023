@@ -7,6 +7,7 @@ package xuli;
 import entity.NhanVienHanhChinh;
 import gui.GDBaoCaoThongKe;
 import gui.GDChinh;
+import gui.GDLogin;
 import gui.GDPhanCong;
 import gui.GDQLCongDoan;
 import gui.GDQLHopDong;
@@ -274,11 +275,11 @@ public class ChuyenManHinh implements BienMacDinh {
                 case "DangXuat": {
                     ImageIcon icon = new ImageIcon("/image/logo.png");
                     // Các lựa chọn
-                    Object[] options = {"Quay lại", "Thoát"};
+                    Object[] options = {"Hủy", "Đăng xuất"};
                     // Hiển thị JOptionPane với biểu tượng
-                    int result = JOptionPane.showOptionDialog(null, "Bạn có muốn tiếp tục không?", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options, options[0]);
+                    int result = JOptionPane.showOptionDialog(null, "Bạn đang thực hiện đăng xuất khỏi hệ thống?", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options, options[0]);
                     if (result == JOptionPane.NO_OPTION) {
-                        System.exit(0);
+                        new GDLogin().setVisible(true);
                     }
                 }
                 break;

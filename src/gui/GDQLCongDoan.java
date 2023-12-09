@@ -271,6 +271,11 @@ public class GDQLCongDoan extends javax.swing.JPanel {
 
         cbbHD.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cbbHD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbHDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pSanPhamLayout = new javax.swing.GroupLayout(pSanPham);
         pSanPham.setLayout(pSanPhamLayout);
@@ -1029,7 +1034,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
             }
             for (SanPham sp : sanphamDao.getSanPhamByMaSP(maSP)) {
                 if (soLuongCDTrongSP > sp.getSoCongDoan()) {
-                    JOptionPane.showMessageDialog(this, "Sản phẩm đã đủ số công đoạn!! \nVui lòng chọn sản phẩm khác");
+                    JOptionPane.showMessageDialog(null, "Sản phẩm đã đủ số công đoạn!! \nVui lòng chọn sản phẩm khác");
                 } else {
                     txtMaCD.setText(maSP + ((soLuongCDTrongSP < 10) ? "0" + soLuongCDTrongSP : soLuongCDTrongSP));
                 }
@@ -1319,6 +1324,10 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         );
         locNgayBatDau(chooseNgayBD);
     }//GEN-LAST:event_locTheoNgayBDActionPerformed
+
+    private void cbbHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbHDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbHDActionPerformed
 
     public void setTrangThaiTextField() {
         if (txtMaCD.isEditable()) {

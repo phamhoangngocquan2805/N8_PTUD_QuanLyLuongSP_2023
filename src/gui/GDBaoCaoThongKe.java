@@ -91,7 +91,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         loadComponentTabelCN();
         loadComponentsTableBangLuong();
         jButtonTKeTL.doClick();
-        jButtonThongKeSL.doClick();
+//        jButtonThongKeSL.doClick();
     }
 
     /**
@@ -1155,7 +1155,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         // Create sample data
         dsCongDoan = new ArrayList<String>();
         ArrayList<ChiTietBangChamCong> dsChiTietChamCong = chiTietBangChamCong_DAO.getAllChiTietBangChamCong();
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset(); // biểu đồ
         for (BangChamCongCongNhan bcc : bangChamCongCongNhan_DAO.getAllBangChamCongCongNhan()) {
             //Kiểm tra xem bảng chấm công có thuộc tháng và năm ko
             int m = checkBangChamCong(bcc);
