@@ -16,9 +16,9 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="960" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="965" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Component id="pBaoCaoThongKe" alignment="0" pref="960" max="32767" attributes="0"/>
+              <Component id="pBaoCaoThongKe" alignment="0" pref="965" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,7 +60,14 @@
         <Container class="javax.swing.JPanel" name="pTittle">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+              <Color blue="de" green="a7" red="55" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                <MatteColorBorder bottom="0" left="5" right="0" top="0">
+                  <Color PropertyName="color" blue="e7" green="e7" red="e9" type="rgb"/>
+                </MatteColorBorder>
+              </Border>
             </Property>
           </Properties>
 
@@ -87,7 +94,7 @@
                   <Font name="Arial" size="24" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="5f" green="5f" red="bf" type="rgb"/>
+                  <Color blue="e9" green="e9" red="ea" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="B&#xc1;O C&#xc1;O TH&#x1ed0;NG K&#xca;"/>
               </Properties>
@@ -98,6 +105,13 @@
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="d9" red="d9" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                <MatteColorBorder bottom="0" left="5" right="0" top="0">
+                  <Color PropertyName="color" blue="e7" green="e7" red="e9" type="rgb"/>
+                </MatteColorBorder>
+              </Border>
             </Property>
           </Properties>
 
@@ -207,12 +221,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="14" style="1"/>
                         </Property>
-<<<<<<< HEAD
-=======
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
->>>>>>> 5b5c382437d465bc2f6fc2608d9ee8cc570768c0
                         <Property name="text" type="java.lang.String" value="N&#x103;m:"/>
                       </Properties>
                     </Component>
@@ -239,12 +247,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="14" style="1"/>
                         </Property>
-<<<<<<< HEAD
-=======
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
->>>>>>> 5b5c382437d465bc2f6fc2608d9ee8cc570768c0
                         <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n k&#x1ef3; b&#xe1;o c&#xe1;o:"/>
                       </Properties>
                     </Component>
@@ -285,7 +287,7 @@
                     <Component class="javax.swing.JButton" name="jButtonTKeTL">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="4c" green="4c" red="99" type="rgb"/>
+                          <Color blue="de" green="a7" red="55" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="14" style="1"/>
@@ -308,12 +310,6 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
-<<<<<<< HEAD
-=======
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="null"/>
-                        </Property>
->>>>>>> 5b5c382437d465bc2f6fc2608d9ee8cc570768c0
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[946, 523]"/>
                         </Property>
@@ -338,7 +334,7 @@
                     <Component class="javax.swing.JButton" name="jButtonXuatExcelBangLuong">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="4c" green="4c" red="99" type="rgb"/>
+                          <Color blue="de" green="a7" red="55" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="14" style="1"/>
@@ -361,12 +357,6 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="99" green="cc" red="0" type="rgb"/>
                         </Property>
-<<<<<<< HEAD
-=======
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
->>>>>>> 5b5c382437d465bc2f6fc2608d9ee8cc570768c0
                       </Properties>
 
                       <Layout>
@@ -434,12 +424,6 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="0" type="rgb"/>
                         </Property>
-<<<<<<< HEAD
-=======
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
->>>>>>> 5b5c382437d465bc2f6fc2608d9ee8cc570768c0
                       </Properties>
 
                       <Layout>
@@ -499,13 +483,7 @@
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-<<<<<<< HEAD
                             <TitledBorder title="Chi ti&#x1ebf;t t&#x1ed5;ng l&#x1b0;&#x1a1;ng t&#x1eeb;ng th&#xe1;ng"/>
-=======
-                            <TitledBorder title="Chi ti&#x1ebf;t t&#x1ed5;ng l&#x1b0;&#x1a1;ng t&#x1eeb;ng th&#xe1;ng">
-                              <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
-                            </TitledBorder>
->>>>>>> 5b5c382437d465bc2f6fc2608d9ee8cc570768c0
                           </Border>
                         </Property>
                       </Properties>
@@ -655,13 +633,7 @@
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-<<<<<<< HEAD
                             <TitledBorder title="Top c&#xf4;ng nh&#xe2;n theo s&#x1ea3;n l&#x1b0;&#x1ee3;ng"/>
-=======
-                            <TitledBorder title="Top c&#xf4;ng nh&#xe2;n theo s&#x1ea3;n l&#x1b0;&#x1ee3;ng">
-                              <Color PropertyName="color" blue="0" green="0" red="0" type="rgb"/>
-                            </TitledBorder>
->>>>>>> 5b5c382437d465bc2f6fc2608d9ee8cc570768c0
                           </Border>
                         </Property>
                       </Properties>
@@ -686,11 +658,7 @@
                                       <Component id="jComboBoxCongDoanCN" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-<<<<<<< HEAD
                                   <Component id="jScrollPane2" pref="459" max="32767" attributes="0"/>
-=======
-                                  <Component id="jScrollPane2" pref="445" max="32767" attributes="0"/>
->>>>>>> 5b5c382437d465bc2f6fc2608d9ee8cc570768c0
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -741,12 +709,6 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Arial" size="14" style="1"/>
                             </Property>
-<<<<<<< HEAD
-=======
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
->>>>>>> 5b5c382437d465bc2f6fc2608d9ee8cc570768c0
                             <Property name="text" type="java.lang.String" value="C&#xf4;ng &#x111;o&#x1ea1;n:"/>
                           </Properties>
                         </Component>
@@ -775,12 +737,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="14" style="1"/>
                         </Property>
-<<<<<<< HEAD
-=======
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
->>>>>>> 5b5c382437d465bc2f6fc2608d9ee8cc570768c0
                         <Property name="text" type="java.lang.String" value="N&#x103;m:"/>
                       </Properties>
                     </Component>
@@ -807,12 +763,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="14" style="1"/>
                         </Property>
-<<<<<<< HEAD
-=======
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="0" green="0" red="0" type="rgb"/>
-                        </Property>
->>>>>>> 5b5c382437d465bc2f6fc2608d9ee8cc570768c0
                         <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n k&#x1ef3; b&#xe1;o c&#xe1;o:"/>
                       </Properties>
                     </Component>
@@ -853,7 +803,7 @@
                     <Component class="javax.swing.JButton" name="jButtonThongKeSL">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="4c" green="4c" red="99" type="rgb"/>
+                          <Color blue="de" green="a7" red="55" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="14" style="1"/>
@@ -874,7 +824,7 @@
                     <Component class="javax.swing.JButton" name="jButtonXuatExcelSanLuong">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="4c" green="4c" red="99" type="rgb"/>
+                          <Color blue="de" green="a7" red="55" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="14" style="1"/>

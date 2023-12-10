@@ -93,10 +93,11 @@ public class GDTroGiup extends javax.swing.JPanel {
 
         pBaoCaoThongKe.setPreferredSize(new java.awt.Dimension(958, 735));
 
-        pTittle.setBackground(new java.awt.Color(0, 0, 0));
+        pTittle.setBackground(new java.awt.Color(85, 167, 222));
+        pTittle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(191, 95, 95));
+        jLabel15.setForeground(new java.awt.Color(234, 233, 233));
         jLabel15.setText("Trợ giúp");
 
         javax.swing.GroupLayout pTittleLayout = new javax.swing.GroupLayout(pTittle);
@@ -114,12 +115,13 @@ public class GDTroGiup extends javax.swing.JPanel {
         );
 
         pTongQuan.setBackground(new java.awt.Color(217, 217, 217));
+        pTongQuan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
 
         javax.swing.GroupLayout pTongQuanLayout = new javax.swing.GroupLayout(pTongQuan);
         pTongQuan.setLayout(pTongQuanLayout);
         pTongQuanLayout.setHorizontalGroup(
             pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
+            .addGap(0, 955, Short.MAX_VALUE)
         );
         pTongQuanLayout.setVerticalGroup(
             pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

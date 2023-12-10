@@ -131,12 +131,15 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         txtTimTenCD = new javax.swing.JTextField();
         btnTimTenCD = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(958, 735));
+
         pQLCongDoan.setPreferredSize(new java.awt.Dimension(958, 735));
 
-        pTittle.setBackground(new java.awt.Color(0, 0, 0));
+        pTittle.setBackground(new java.awt.Color(85, 167, 222));
+        pTittle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(191, 95, 95));
+        jLabel15.setForeground(new java.awt.Color(234, 233, 233));
         jLabel15.setText("QUẢN LÝ CÔNG ĐOẠN");
 
         javax.swing.GroupLayout pTittleLayout = new javax.swing.GroupLayout(pTittle);
@@ -153,10 +156,12 @@ public class GDQLCongDoan extends javax.swing.JPanel {
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        pTongQuan.setBackground(new java.awt.Color(204, 204, 204));
+        pTongQuan.setBackground(new java.awt.Color(255, 255, 255));
+        pTongQuan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
         pTongQuan.setForeground(new java.awt.Color(255, 255, 255));
         pTongQuan.setPreferredSize(new java.awt.Dimension(958, 735));
 
+        pSanPham.setBackground(new java.awt.Color(255, 255, 255));
         pSanPham.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Thông tin sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         lblMaSP.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -381,6 +386,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                         .addContainerGap())))
         );
 
+        pChiTietCD.setBackground(new java.awt.Color(255, 255, 255));
         pChiTietCD.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Chi tiết công đoạn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         lblMaCD.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -447,7 +453,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         pChiTietCDLayout.setHorizontalGroup(
             pChiTietCDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pChiTietCDLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pChiTietCDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pChiTietCDLayout.createSequentialGroup()
                         .addGroup(pChiTietCDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,8 +484,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                                     .addGroup(pChiTietCDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(ngayKT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                                         .addComponent(ngayBD, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtDonGiaCD, javax.swing.GroupLayout.Alignment.LEADING)))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(txtDonGiaCD, javax.swing.GroupLayout.Alignment.LEADING))))))))
         );
         pChiTietCDLayout.setVerticalGroup(
             pChiTietCDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -522,10 +527,14 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        pChucNang.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 102, 102), 2));
+        pChucNang.setBackground(new java.awt.Color(255, 255, 255));
+        pChucNang.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         pChucNang.setPreferredSize(new java.awt.Dimension(393, 120));
 
-        btnThem.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnThem.setBackground(new java.awt.Color(85, 167, 222));
+        btnThem.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnThem.setForeground(new java.awt.Color(255, 255, 255));
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/addadd.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -533,7 +542,10 @@ public class GDQLCongDoan extends javax.swing.JPanel {
             }
         });
 
-        btnXoa.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnXoa.setBackground(new java.awt.Color(85, 167, 222));
+        btnXoa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Td_Del_32px.png"))); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -541,7 +553,10 @@ public class GDQLCongDoan extends javax.swing.JPanel {
             }
         });
 
-        btnCapNhat.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnCapNhat.setBackground(new java.awt.Color(85, 167, 222));
+        btnCapNhat.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnCapNhat.setForeground(new java.awt.Color(255, 255, 255));
+        btnCapNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/write.png"))); // NOI18N
         btnCapNhat.setText("Cập nhật");
         btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -549,7 +564,10 @@ public class GDQLCongDoan extends javax.swing.JPanel {
             }
         });
 
-        btnLuu.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnLuu.setBackground(new java.awt.Color(85, 167, 222));
+        btnLuu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLuu.setForeground(new java.awt.Color(255, 255, 255));
+        btnLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Save.png"))); // NOI18N
         btnLuu.setText("Lưu");
         btnLuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -557,7 +575,10 @@ public class GDQLCongDoan extends javax.swing.JPanel {
             }
         });
 
-        btnNhapLai.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnNhapLai.setBackground(new java.awt.Color(85, 167, 222));
+        btnNhapLai.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnNhapLai.setForeground(new java.awt.Color(255, 255, 255));
+        btnNhapLai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         btnNhapLai.setText("Nhập lại");
         btnNhapLai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -570,33 +591,32 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         pChucNangLayout.setHorizontalGroup(
             pChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pChucNangLayout.createSequentialGroup()
-                .addGroup(pChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pChucNangLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(btnThem)
-                        .addGap(43, 43, 43)
-                        .addComponent(btnXoa)
-                        .addGap(47, 47, 47)
-                        .addComponent(btnCapNhat))
-                    .addGroup(pChucNangLayout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(btnLuu)
-                        .addGap(39, 39, 39)
-                        .addComponent(btnNhapLai)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addGap(98, 98, 98)
+                .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnNhapLai)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pChucNangLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(btnThem)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(btnXoa)
+                .addGap(27, 27, 27)
+                .addComponent(btnCapNhat)
+                .addGap(58, 58, 58))
         );
         pChucNangLayout.setVerticalGroup(
             pChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pChucNangLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(pChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThem)
-                    .addComponent(btnXoa)
-                    .addComponent(btnCapNhat))
+                .addContainerGap()
+                .addGroup(pChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCapNhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLuu)
-                    .addComponent(btnNhapLai))
+                    .addComponent(btnLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNhapLai, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
 
@@ -636,6 +656,8 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        pTimKiemLoc.setBackground(new java.awt.Color(255, 255, 255));
+
         lblTimMaCD.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblTimMaCD.setText("Tìm kiếm theo mã công đoạn: ");
 
@@ -645,9 +667,9 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         txtLocNgayKT.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtLocNgayKT.setText("Lọc theo Ngày kết thúc:");
 
-        btnReload.setBackground(new java.awt.Color(255, 102, 102));
+        btnReload.setBackground(new java.awt.Color(85, 167, 222));
         btnReload.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnReload.setText("Reload");
+        btnReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
         btnReload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReloadActionPerformed(evt);
@@ -737,8 +759,8 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                                 .addComponent(chooseNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(locTheoNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnReload)
+                        .addGap(36, 36, 36)
+                        .addComponent(btnReload, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         pTimKiemLocLayout.setVerticalGroup(
@@ -746,7 +768,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTimKiemLocLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pTimKiemLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(locTheoNgayKT)
+                    .addComponent(btnReload, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pTimKiemLocLayout.createSequentialGroup()
                         .addGroup(pTimKiemLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTimMaCD)
@@ -758,46 +780,42 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                             .addGroup(pTimKiemLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtTimTenCD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblTimTenCD)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pTimKiemLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(locTheoNgayBD)
+                            .addGroup(pTimKiemLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(chooseNgayBD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtLocNgayBD)))
                         .addGroup(pTimKiemLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pTimKiemLocLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pTimKiemLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(locTheoNgayBD)
-                                    .addGroup(pTimKiemLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(chooseNgayBD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtLocNgayBD)))
                                 .addGap(6, 6, 6)
                                 .addGroup(pTimKiemLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(chooseNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtLocNgayKT)))
-                            .addGroup(pTimKiemLocLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(btnReload)))))
-                .addGap(3, 3, 3))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTimKiemLocLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(locTheoNgayKT)))))
+                .addGap(2, 2, 2))
         );
 
         javax.swing.GroupLayout pTongQuanLayout = new javax.swing.GroupLayout(pTongQuan);
         pTongQuan.setLayout(pTongQuanLayout);
         pTongQuanLayout.setHorizontalGroup(
             pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTongQuanLayout.createSequentialGroup()
-                .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pTongQuanLayout.createSequentialGroup()
-                        .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pDanhSachCD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(pTongQuanLayout.createSequentialGroup()
-                                .addComponent(pTimKiemLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pTongQuanLayout.createSequentialGroup()
-                                .addComponent(pChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, Short.MAX_VALUE))
-                            .addComponent(pChiTietCD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(pTongQuanLayout.createSequentialGroup()
+                .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pDanhSachCD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pTongQuanLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(pSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(434, 434, 434))
+                        .addComponent(pTimKiemLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 16, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pChiTietCD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(418, Short.MAX_VALUE))
+            .addGroup(pTongQuanLayout.createSequentialGroup()
+                .addComponent(pSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pTongQuanLayout.setVerticalGroup(
             pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -812,7 +830,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                     .addGroup(pTongQuanLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pChiTietCD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
@@ -822,7 +840,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         pQLCongDoanLayout.setHorizontalGroup(
             pQLCongDoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pTittle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pTongQuan, javax.swing.GroupLayout.DEFAULT_SIZE, 1377, Short.MAX_VALUE)
+            .addComponent(pTongQuan, javax.swing.GroupLayout.DEFAULT_SIZE, 1380, Short.MAX_VALUE)
         );
         pQLCongDoanLayout.setVerticalGroup(
             pQLCongDoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -836,15 +854,15 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1377, Short.MAX_VALUE)
+            .addGap(0, 1380, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pQLCongDoan, javax.swing.GroupLayout.DEFAULT_SIZE, 1377, Short.MAX_VALUE))
+                .addComponent(pQLCongDoan, javax.swing.GroupLayout.PREFERRED_SIZE, 1380, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 791, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pQLCongDoan, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE))
+                .addComponent(pQLCongDoan, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

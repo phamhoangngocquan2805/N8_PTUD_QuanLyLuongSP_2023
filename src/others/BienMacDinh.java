@@ -14,9 +14,9 @@ public interface BienMacDinh {
 /*
     * Màu mặc định cho chương trình
     */
-    Color mauDanhMucDangChon = new Color(134,102,134);
-    Color mauTrang = new Color(235,228,228);
+    Color mauDanhMucDangChon = new Color(85,167,222);
+    Color mauTrang = new Color(255,255,255);
     Color mauDen = new Color(0, 0, 0);
-    Color mauNenMenu = new Color(191,95,95);
+    Color mauNenMenu = new Color(255,255,255);
     Color mauBorderBottomMenu = new Color(255,102,0);
 }

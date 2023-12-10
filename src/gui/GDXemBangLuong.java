@@ -114,10 +114,11 @@ public class GDXemBangLuong extends javax.swing.JPanel {
 
         pXemBangLuong.setPreferredSize(new java.awt.Dimension(958, 735));
 
-        pTittle.setBackground(new java.awt.Color(0, 0, 0));
+        pTittle.setBackground(new java.awt.Color(85, 167, 222));
+        pTittle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(191, 95, 95));
+        jLabel15.setForeground(new java.awt.Color(234, 233, 233));
         jLabel15.setText("XEM BẢNG LƯƠNG");
 
         javax.swing.GroupLayout pTittleLayout = new javax.swing.GroupLayout(pTittle);
@@ -135,6 +136,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
         );
 
         pTongQuan.setBackground(new java.awt.Color(217, 217, 217));
+        pTongQuan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
 
         jPanelXemLuongNVHC.setBackground(new java.awt.Color(217, 217, 217));
 
@@ -142,7 +144,6 @@ public class GDXemBangLuong extends javax.swing.JPanel {
 
         jLabel1ThangNV.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1ThangNV.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1ThangNV.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1ThangNV.setText("Tháng");
 
         jComboBoxThangNV.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -163,10 +164,9 @@ public class GDXemBangLuong extends javax.swing.JPanel {
 
         jLabelNamNV.setBackground(new java.awt.Color(255, 255, 255));
         jLabelNamNV.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelNamNV.setForeground(new java.awt.Color(0, 0, 0));
         jLabelNamNV.setText("Năm");
 
-        jButtonInPDFNV.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonInPDFNV.setBackground(new java.awt.Color(85, 167, 222));
         jButtonInPDFNV.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonInPDFNV.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInPDFNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/file-regular.png"))); // NOI18N
@@ -179,12 +179,9 @@ public class GDXemBangLuong extends javax.swing.JPanel {
         });
 
         jLabelTimKiemNV.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelTimKiemNV.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTimKiemNV.setText("Tìm kiếm:");
 
-        jTextFieldTimKiemNV.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTimKiemNV.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldTimKiemNV.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTimKiemNV.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldTimKiemNVFocusLost(evt);
@@ -201,7 +198,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
             }
         });
 
-        jButtonTimKiemNV.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonTimKiemNV.setBackground(new java.awt.Color(85, 167, 222));
         jButtonTimKiemNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/magnifying-glass-solid.png"))); // NOI18N
         jButtonTimKiemNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,7 +224,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldTimKiemNV, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonTimKiemNV, javax.swing.GroupLayout.PREFERRED_SIZE, 39, Short.MAX_VALUE)
+                .addComponent(jButtonTimKiemNV, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonInPDFNV, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(180, 180, 180))
@@ -252,7 +249,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
         );
 
         jPanelDSBangLuongNV.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDSBangLuongNV.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách bảng lương", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(195, 95, 95))); // NOI18N
+        jPanelDSBangLuongNV.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách bảng lương", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(195, 95, 95))); // NOI18N
 
         jTableBangLuongNV.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTableBangLuongNV.setModel(new javax.swing.table.DefaultTableModel(
@@ -287,7 +284,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
         jPanelDSBangLuongNVLayout.setVerticalGroup(
             jPanelDSBangLuongNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDSBangLuongNVLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -301,7 +298,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
                     .addComponent(jPanelXuLyNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelXemLuongNVHCLayout.createSequentialGroup()
                         .addComponent(jPanelDSBangLuongNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 4, Short.MAX_VALUE)))
+                        .addGap(0, 17, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelXemLuongNVHCLayout.setVerticalGroup(
@@ -309,7 +306,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
             .addGroup(jPanelXemLuongNVHCLayout.createSequentialGroup()
                 .addComponent(jPanelXuLyNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelDSBangLuongNV, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelDSBangLuongNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -318,7 +315,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
         jPanelXemLuongCN.setBackground(new java.awt.Color(217, 217, 217));
 
         jPanelDSBangLuongCN.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDSBangLuongCN.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách bảng lương", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(195, 95, 95))); // NOI18N
+        jPanelDSBangLuongCN.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách bảng lương", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(195, 95, 95))); // NOI18N
 
         jTableBangLuongCN.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTableBangLuongCN.setModel(new javax.swing.table.DefaultTableModel(
@@ -347,7 +344,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
             jPanelDSBangLuongCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDSBangLuongCNLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 925, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelDSBangLuongCNLayout.setVerticalGroup(
@@ -359,7 +356,6 @@ public class GDXemBangLuong extends javax.swing.JPanel {
 
         jLabel1ThangNV1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1ThangNV1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1ThangNV1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1ThangNV1.setText("Tháng");
 
         jComboBoxThangCN.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -380,10 +376,9 @@ public class GDXemBangLuong extends javax.swing.JPanel {
 
         jLabelNamCN.setBackground(new java.awt.Color(255, 255, 255));
         jLabelNamCN.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelNamCN.setForeground(new java.awt.Color(0, 0, 0));
         jLabelNamCN.setText("Năm");
 
-        jButtonInPDFCN.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonInPDFCN.setBackground(new java.awt.Color(85, 167, 222));
         jButtonInPDFCN.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonInPDFCN.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInPDFCN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/file-regular.png"))); // NOI18N
@@ -396,12 +391,9 @@ public class GDXemBangLuong extends javax.swing.JPanel {
         });
 
         jLabelTimKiemCN.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelTimKiemCN.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTimKiemCN.setText("Tìm kiếm:");
 
-        jTextFieldTimKiemCN.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTimKiemCN.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldTimKiemCN.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTimKiemCN.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldTimKiemCNFocusLost(evt);
@@ -418,7 +410,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
             }
         });
 
-        jButtonTimKiemCN.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonTimKiemCN.setBackground(new java.awt.Color(85, 167, 222));
         jButtonTimKiemCN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/magnifying-glass-solid.png"))); // NOI18N
         jButtonTimKiemCN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -444,7 +436,7 @@ public class GDXemBangLuong extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldTimKiemCN, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonTimKiemCN, javax.swing.GroupLayout.PREFERRED_SIZE, 39, Short.MAX_VALUE)
+                .addComponent(jButtonTimKiemCN, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonInPDFCN, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(180, 180, 180))

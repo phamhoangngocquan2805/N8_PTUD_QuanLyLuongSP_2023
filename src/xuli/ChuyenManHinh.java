@@ -11,7 +11,6 @@ import gui.GDLogin;
 import gui.GDPhanCong;
 import gui.GDQLCongDoan;
 import gui.GDQLHopDong;
-import gui.GDQLNhanVienHanhChinh;
 import gui.GDQLSanPham;
 import gui.GDQLTaiKhoan;
 import gui.GDTongQuan;
@@ -44,16 +43,18 @@ import static others.BienMacDinh.mauTrang;
 public class ChuyenManHinh implements BienMacDinh {
 
     public static JPanel pChinh;
+    public GDChinh gdChinh;
     private String danhMucDangChon = "";
     private List<DanhMucBean> listDanhMucBean = null;
     private NhanVienHanhChinh nvLog;
     private ArrayList<String> phanQuyenManHinh;
     public ArrayList<JPanel> ds;
 
-    public ChuyenManHinh(JPanel pChinh, NhanVienHanhChinh nvLog, ArrayList<JPanel> ds) {
+    public ChuyenManHinh(JPanel pChinh, NhanVienHanhChinh nvLog, ArrayList<JPanel> ds, GDChinh gdChinh) {
         this.pChinh = pChinh;
         this.nvLog = nvLog;
         this.ds = ds;
+        this.gdChinh = gdChinh;
         phanQuyenManHinh = new ArrayList<>();
         if (nvLog.getPhongBan().getMaPB().equals("231")) {
             phanQuyenManHinh.add("TrangChu");
@@ -279,7 +280,13 @@ public class ChuyenManHinh implements BienMacDinh {
                     // Hiển thị JOptionPane với biểu tượng
                     int result = JOptionPane.showOptionDialog(null, "Bạn đang thực hiện đăng xuất khỏi hệ thống?", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options, options[0]);
                     if (result == JOptionPane.NO_OPTION) {
-                        new GDLogin().setVisible(true);
+                        try {
+                            gdChinh.setVisible(false);
+                            gdChinh = new GDChinh();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(ChuyenManHinh.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                            
                     }
                 }
                 break;
@@ -330,7 +337,7 @@ public class ChuyenManHinh implements BienMacDinh {
                     if (!danhMucDangChon.equalsIgnoreCase(loaiDanhMuc)) {
                         panel.setBackground(mauNenMenu);
                         lbl.setBackground(mauNenMenu);
-                        lbl.setForeground(mauTrang);
+                        lbl.setForeground(mauDen);
 //                lbl.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, mauBorderBottomMenu));
                     }
                 }
@@ -354,7 +361,7 @@ public class ChuyenManHinh implements BienMacDinh {
                     if (check != 1) {
                         item.getPanel().setBackground(mauNenMenu);
                         item.getLbl().setBackground(mauNenMenu);
-                        item.getLbl().setForeground(mauTrang);
+                        item.getLbl().setForeground(mauDen);
                     }
 //                    item.getLbl().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, mauBorderBottomMenu));
                 }

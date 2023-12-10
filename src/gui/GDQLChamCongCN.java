@@ -425,10 +425,11 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
 
         pQLChamCongCN.setPreferredSize(new java.awt.Dimension(958, 735));
 
-        pTittle.setBackground(new java.awt.Color(0, 0, 0));
+        pTittle.setBackground(new java.awt.Color(85, 167, 222));
+        pTittle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(191, 95, 95));
+        jLabel15.setForeground(new java.awt.Color(234, 233, 233));
         jLabel15.setText("QUẢN LÝ CHẤM CÔNG CÔNG NHÂN");
 
         javax.swing.GroupLayout pTittleLayout = new javax.swing.GroupLayout(pTittle);
@@ -437,7 +438,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             pTittleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pTittleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 941, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pTittleLayout.setVerticalGroup(
@@ -445,7 +446,8 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel18.setBackground(new java.awt.Color(217, 217, 217));
+        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel18.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
         jPanel18.setPreferredSize(new java.awt.Dimension(958, 679));
 
         scrollCC.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(102, 102, 102), null, new java.awt.Color(204, 0, 0)), "Danh sách chi tiết chấm công", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
@@ -549,7 +551,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
 
         pnXuLy.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, new java.awt.Color(204, 204, 255)), "Xử lý"));
 
-        btnBatDauCC.setBackground(new java.awt.Color(255, 102, 102));
+        btnBatDauCC.setBackground(new java.awt.Color(85, 167, 222));
         btnBatDauCC.setForeground(new java.awt.Color(255, 255, 255));
         btnBatDauCC.setText("Điểm danh");
         btnBatDauCC.addActionListener(new java.awt.event.ActionListener() {
@@ -558,7 +560,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             }
         });
 
-        btnKetThucCC.setBackground(new java.awt.Color(255, 102, 102));
+        btnKetThucCC.setBackground(new java.awt.Color(85, 167, 222));
         btnKetThucCC.setForeground(new java.awt.Color(255, 255, 255));
         btnKetThucCC.setText("Chấm công");
         btnKetThucCC.addActionListener(new java.awt.event.ActionListener() {
@@ -567,7 +569,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             }
         });
 
-        btnChonTatCN.setBackground(new java.awt.Color(255, 102, 102));
+        btnChonTatCN.setBackground(new java.awt.Color(85, 167, 222));
         btnChonTatCN.setForeground(new java.awt.Color(255, 255, 255));
         btnChonTatCN.setText("<html><center>Chọn<br>tất cả</center></html>");
         btnChonTatCN.addActionListener(new java.awt.event.ActionListener() {
@@ -620,7 +622,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
         pnTraCuuCC.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, new java.awt.Color(204, 204, 255)), "Tra cứu chấm công"));
         pnTraCuuCC.setPreferredSize(new java.awt.Dimension(419, 65));
 
-        btnXemCong.setBackground(new java.awt.Color(255, 102, 102));
+        btnXemCong.setBackground(new java.awt.Color(85, 167, 222));
         btnXemCong.setForeground(new java.awt.Color(255, 255, 255));
         btnXemCong.setText("Xem công");
         btnXemCong.setActionCommand("");
@@ -639,7 +641,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
         pnTraCuuCCLayout.setHorizontalGroup(
             pnTraCuuCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTraCuuCCLayout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addComponent(dateBatDauXemCong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(dateKetThucXemCong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -657,7 +659,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
 
         pnChinhSuaCC.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, new java.awt.Color(204, 204, 255)), "Chỉnh sửa chấm công"));
 
-        btnXoaCC.setBackground(new java.awt.Color(255, 102, 102));
+        btnXoaCC.setBackground(new java.awt.Color(85, 167, 222));
         btnXoaCC.setForeground(new java.awt.Color(255, 255, 255));
         btnXoaCC.setText("Xóa");
         btnXoaCC.setActionCommand("");
@@ -667,7 +669,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             }
         });
 
-        btnUpdateSPHT.setBackground(new java.awt.Color(255, 102, 102));
+        btnUpdateSPHT.setBackground(new java.awt.Color(85, 167, 222));
         btnUpdateSPHT.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdateSPHT.setText("<html><center>Cập nhật<br>Số lượng HT</center></html>");
         btnUpdateSPHT.setToolTipText("");
@@ -721,7 +723,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(scrollCC)
                             .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addComponent(pnTraCuuCC, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
+                                .addComponent(pnTraCuuCC, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(pnChinhSuaCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(6, 6, 6))
@@ -872,26 +874,6 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             modelKTCC.setNumRows(0);
             if (cbbTayNghe.getSelectedItem().toString().equals("Tất cả")) {
                 addListKTCC();
-                TableColumnModel columnModel = tableDanhSachPC.getColumnModel();
-
-                // Ẩn cột ở vị trí cột thứ 8 (Mã PC)
-                int columnIndexToHide = 8;
-                TableColumn column = columnModel.getColumn(columnIndexToHide);
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-                column.setWidth(0);
-                column.setPreferredWidth(0);
-                column.setResizable(false);
-
-                // Ẩn cột ở vị trí cột thứ 9 (Mã CC)
-                int columnIndexToHide9 = 9;
-                TableColumn column9 = columnModel.getColumn(columnIndexToHide9);
-                column9.setMinWidth(0);
-                column9.setMaxWidth(0);
-                column9.setWidth(0);
-                column9.setPreferredWidth(0);
-                column9.setResizable(false);
-
                 return;
             }
             int stt = 1;
@@ -900,7 +882,6 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             // Format ngày tháng năm bằng DateTimeFormatter
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
             String formattedDateNow = localDateCC.format(formatter);
-
             for (ChiTietBangChamCong s : bangCCCN_Dao.getAllBangChamCongCongNhanTheoNgay(formattedDateNow, formattedDateNow)) {
                 if (s.getBangCC().getCn().getTayNghe().equals(cbbTayNghe.getSelectedItem().toString())) {
                     if (s.getBangPC().getSoLuong() - phanCong_Dao.getTongSLHT(s.getBangPC().getMaBangPC()) != 0 && s.getBangCC().getNgayChamCongString().equals(formattedDateNow)) {
@@ -946,39 +927,19 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             calendar.setTime(selectedDate);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String formattedDate = sdf.format(selectedDate);
-
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-            int month = calendar.get(Calendar.MONTH) + 1; // Tháng bắt đầu từ 0
-            int year = calendar.get(Calendar.YEAR);
-            String nowMonth = String.format("%02d", month);
-            String nowDay = String.format("%02d", day);
             LocalDateTime localDateTime = convertToLocalDateTime(dateChamCong.getDate());
             int rows = modelDSPC.getRowCount();
+            BangChamCongCongNhan ccCN = null;
+            ChiTietBangChamCong ctCC = null;
             for (int i = 0; i < rows; i++) {
                 boolean selected = (boolean) modelDSPC.getValueAt(i, 0);
                 if (selected) {
-                    if (bangCCCN_Dao.checkBangChamCongTrongNgay(modelDSPC.getValueAt(i, 2).toString(), formattedDate)) { //check Công nhân đã được điểm danh chưa.
-                        JOptionPane.showMessageDialog(null, "Công nhân " + modelDSPC.getValueAt(i, 3).toString() + " Đã được điểm danh");
-                        continue;
-                    }
-                    String maBangCCMoiNhat = bangCCCN_Dao.getBangChamCongMoiNhat().getMaBangChamCong();
-                    String ngayThangNamHTai = Integer.toString(year % 100) + nowMonth + nowDay;
-                    int bonSoCuoiMaBangPCMoiNhat = 1;
-                    String maBangPCNew = null;
-                    String ddddMa;
-                    if (maBangCCMoiNhat == null) {// nếu là bảng chấm công đầu tiên
-                        ddddMa = String.format("%04d", bonSoCuoiMaBangPCMoiNhat);
-                        maBangPCNew = ngayThangNamHTai + ddddMa;
-                    } else if (maBangCCMoiNhat.substring(0, 6).equals(ngayThangNamHTai)) {
-                        bonSoCuoiMaBangPCMoiNhat = Integer.valueOf(maBangCCMoiNhat.substring(maBangCCMoiNhat.length() - 4)) + 1;
-                        ddddMa = String.format("%04d", bonSoCuoiMaBangPCMoiNhat);
-                        maBangPCNew = ngayThangNamHTai + ddddMa;
-                    } else {
-                        ddddMa = String.format("%04d", bonSoCuoiMaBangPCMoiNhat);
-                        maBangPCNew = ngayThangNamHTai + ddddMa;
-                    }
-                    BangChamCongCongNhan ccCN = new BangChamCongCongNhan(maBangPCNew, LocalTime.now(), LocalTime.of(0, 0, 0), localDateTime, null, congNhan_Dao.getCongNhanTheoMa(modelDSPC.getValueAt(i, 2).toString()));
-                    ChiTietBangChamCong ctCC = new ChiTietBangChamCong(0, phanCong_Dao.getBangPhanCongTheoMa(modelDSPC.getValueAt(i, 9).toString()), ccCN);
+//                    if (bangCCCN_Dao.checkBangChamCongTrongNgay(modelDSPC.getValueAt(i, 2).toString(), formattedDate)) { //check Công nhân đã được điểm danh chưa.
+//                        JOptionPane.showMessageDialog(null, "Công nhân " + modelDSPC.getValueAt(i, 3).toString() + " Đã được điểm danh");
+//                        continue;
+//                    }
+                    ccCN = new BangChamCongCongNhan(getMaCCNew(), LocalTime.now(), LocalTime.of(0, 0, 0), localDateTime, null, congNhan_Dao.getCongNhanTheoMa(modelDSPC.getValueAt(i, 2).toString()));
+                    ctCC = new ChiTietBangChamCong(0, phanCong_Dao.getBangPhanCongTheoMa(modelDSPC.getValueAt(i, 9).toString()), ccCN);
                     if (bangCCCN_Dao.createBangChamCongCongNhan(ccCN)) {
                         if (ctBangCC_Dao.createChiTietBangChamCong(ctCC)) {
                             temp = 1;
@@ -986,14 +947,17 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                             lbThongBao.setText("tạo CT Chấm công thất bại");
                         }
                     } else {
-                        lbThongBao.setText("Chấm công thất bại");
+                        lbThongBao.setText("điểm danh " + ccCN.getCn().getHoTen() + "thất bại");
                     }
                 }
             }
             if (temp == 1) {
                 addListChamCong();
                 lbThongBao.setText("Đã ghi nhận công nhân có mặt");
+            } else {
+                lbThongBao.setText("Chưa chọn phân công");
             }
+
         }
     }//GEN-LAST:event_btnBatDauCCActionPerformed
 
@@ -1017,25 +981,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                 btnKetThucCC.setText("<html><center>Lưu<br>chấm công</center></html>");
                 btnBatDauCC.setText("<html><center>Hủy<br>chấm công</center></html>");
                 // Lấy TableColumnModel của JTable
-                TableColumnModel columnModel = tableDanhSachPC.getColumnModel();
-
-                // Ẩn cột ở vị trí cột thứ 8 (Mã PC)
-                int columnIndexToHide = 8;
-                TableColumn column = columnModel.getColumn(columnIndexToHide);
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-                column.setWidth(0);
-                column.setPreferredWidth(0);
-                column.setResizable(false);
-
-                // Ẩn cột ở vị trí cột thứ 9 (Mã CC)
-                int columnIndexToHide9 = 9;
-                TableColumn column9 = columnModel.getColumn(columnIndexToHide9);
-                column9.setMinWidth(0);
-                column9.setMaxWidth(0);
-                column9.setWidth(0);
-                column9.setPreferredWidth(0);
-                column9.setResizable(false);
+                
 
                 modelKTCC.addTableModelListener(new TableModelListener() {
                     @Override
@@ -1079,11 +1025,15 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             LocalTime endTime1 = LocalTime.of(12, 30);
             LocalTime startTime2 = LocalTime.of(12, 30);
             LocalTime endTime2 = LocalTime.of(17, 30);
+            int test = 0;
+            BangChamCongCongNhan ccCNTC = null;
+            BangChamCongCongNhan ccCN = null;
+            ChiTietBangChamCong ctcc = null;
             for (int i = 0; i < rows; i++) {
                 Boolean TC = false;
                 if (Boolean.valueOf((boolean) modelKTCC.getValueAt(i, 0))) {
-                    BangChamCongCongNhan ccCNTC = new BangChamCongCongNhan();
-                    BangChamCongCongNhan ccCN = bangCCCN_Dao.getBangChamCongCongNhanTheoMa(modelKTCC.getValueAt(i, 9).toString());
+                    ccCNTC = new BangChamCongCongNhan();
+                    ccCN = bangCCCN_Dao.getBangChamCongCongNhanTheoMa(modelKTCC.getValueAt(i, 9).toString());
                     ccCN.setGioRa(LocalTime.now());
                     if (Boolean.valueOf((boolean) modelKTCC.getValueAt(i, 10))) {
                         ccCNTC = new BangChamCongCongNhan(getMaCCNew(), ccCN.getGioVao(), ccCN.getGioRa(), ccCN.getNgayChamCong(), null, ccCN.getCn());
@@ -1109,32 +1059,27 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                     }
                     if (TC) {
                         bangCCCN_Dao.createBangChamCongCongNhan(ccCNTC);
-                        ChiTietBangChamCong ctcc = new ChiTietBangChamCong(Integer.valueOf(modelKTCC.getValueAt(i, 7).toString()), phanCong_Dao.getBangPhanCongTheoMa(modelKTCC.getValueAt(i, 8).toString()), ccCNTC);
+                        ctcc = new ChiTietBangChamCong(Integer.valueOf(modelKTCC.getValueAt(i, 7).toString()), phanCong_Dao.getBangPhanCongTheoMa(modelKTCC.getValueAt(i, 8).toString()), ccCNTC);
                         ctBangCC_Dao.createChiTietBangChamCong(ctcc);
                         testCCTC = true;
                     } else if (!TC) {
                         bangCCCN_Dao.updateBangChamCongCongNhan(ccCN);
-                        ChiTietBangChamCong ctcc = new ChiTietBangChamCong(Integer.valueOf(modelKTCC.getValueAt(i, 7).toString()), phanCong_Dao.getBangPhanCongTheoMa(modelKTCC.getValueAt(i, 8).toString()), ccCN);
-                        listKTCC.add(ctcc);
+                        ctcc = new ChiTietBangChamCong(Integer.valueOf(modelKTCC.getValueAt(i, 7).toString()), phanCong_Dao.getBangPhanCongTheoMa(modelKTCC.getValueAt(i, 8).toString()), ccCN);
+                        if (ctBangCC_Dao.updateChiTietBangChamCong(ctcc)) {
+                            test = 1;
+                            updateTinhTrangHTCD(ctcc.getBangPC().getCongDoan().getMaCD());
+                        } else {
+                            JOptionPane.showMessageDialog(null, "chấm công bảng chấm công: " + ctcc.getBangCC().getMaBangChamCong() + "thất bại");
+                        }
                     }
                 }
             }
-            int test = 0;
-            if (listKTCC.size() == 0) {
-                if (!testCCTC) {
-                    lbThongBao.setText("Chưa chọn công nhân!");
-                    return;
-                } else {
-                    test = 1;
-                }
-            }
-            for (ChiTietBangChamCong s : listKTCC) {
-                if (ctBangCC_Dao.updateChiTietBangChamCong(s)) {
-                    test = 1;
-                    updateTinhTrangHTCD(s.getBangPC().getCongDoan().getMaCD());
-                } else {
-                    JOptionPane.showMessageDialog(null, "chấm công bảng chấm công: " + s.getBangCC().getMaBangChamCong() + "thất bại");
-                }
+
+            if (!testCCTC) {
+                lbThongBao.setText("Chưa chọn công nhân!");
+                return;
+            } else {
+                test = 1;
             }
             if (test == 1) {
                 btnKetThucCC.setText("Chấm công");
@@ -1156,13 +1101,17 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
         int year = calendar.get(Calendar.YEAR);
         String nowMonth = String.format("%02d", month);
         String nowDay = String.format("%02d", day);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = sdf.format(selectedDate);
         LocalDateTime localDateTime = convertToLocalDateTime(dateChamCong.getDate());
 
-        String maBangCCMoiNhat = bangCCCN_Dao.getBangChamCongMoiNhat().getMaBangChamCong();
+        String maBangCCMoiNhat = bangCCCN_Dao.getBangChamCongMoiNhat(formattedDate).getMaBangChamCong();
         String ngayThangNamHTai = Integer.toString(year % 100) + nowMonth + nowDay;
         int bonSoCuoiMaBangPCMoiNhat = 1;
-        if (maBangCCMoiNhat.substring(0, 6).equals(ngayThangNamHTai)) {
-            bonSoCuoiMaBangPCMoiNhat = Integer.valueOf(maBangCCMoiNhat.substring(maBangCCMoiNhat.length() - 4)) + 1;
+        if (maBangCCMoiNhat != null) {
+            if (maBangCCMoiNhat.substring(0, 6).equals(ngayThangNamHTai)) {
+                bonSoCuoiMaBangPCMoiNhat = Integer.valueOf(maBangCCMoiNhat.substring(maBangCCMoiNhat.length() - 4)) + 1;
+            }
         }
         String ddddMa = String.format("%04d", bonSoCuoiMaBangPCMoiNhat);
         String maBangPCNew = ngayThangNamHTai + ddddMa;
@@ -1441,9 +1390,9 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
     }
 
     private Boolean addListKTCC() {
-        cbbCD.setSelectedIndex(0);
-        cbbSP.setSelectedIndex(0);
-        cbbTayNghe.setSelectedIndex(0);
+//        cbbCD.setSelectedIndex(0);
+//        cbbSP.setSelectedIndex(0);
+//        cbbTayNghe.setSelectedIndex(0);
 
         testModelTBPC = 0;
         modelKTCC = new DefaultTableModel() {
@@ -1508,12 +1457,13 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
         // Format ngày tháng năm bằng DateTimeFormatter
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         String formattedDateNow = localDateCC.format(formatter);
-
+        Boolean chon = true;
         for (ChiTietBangChamCong s : bangCCCN_Dao.getAllBangChamCongCongNhanTheoNgay(formattedDateNow, formattedDateNow)) {
             if (s.getBangPC().getSoLuong() - phanCong_Dao.getTongSLHT(s.getBangPC().getMaBangPC()) != 0) {
-                Boolean chon = true;
                 if (s.getSoLuong() != 0) {
                     chon = false;
+                } else {
+                    chon = true;
                 }
                 modelKTCC.addRow(new Object[]{chon, Integer.toString(stt), s.getBangCC().getCn().getMaCN(), s.getBangCC().getCn().getHoTen(), s.getBangPC().getSoLuong() - phanCong_Dao.getTongSLHT(s.getBangPC().getMaBangPC()), s.getBangPC().getCongDoan().getSanPham().getTenSP(), s.getBangPC().getCongDoan().getTenCD(), s.getSoLuong(), s.getBangPC().getMaBangPC(), s.getBangCC().getMaBangChamCong(), false, false, false});
                 stt++;
@@ -1525,6 +1475,25 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             addListPC();
             return false;
         }
+        TableColumnModel columnModel = tableDanhSachPC.getColumnModel();
+
+                // Ẩn cột ở vị trí cột thứ 8 (Mã PC)
+                int columnIndexToHide = 8;
+                TableColumn column = columnModel.getColumn(columnIndexToHide);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+                column.setWidth(0);
+                column.setPreferredWidth(0);
+                column.setResizable(false);
+
+                // Ẩn cột ở vị trí cột thứ 9 (Mã CC)
+                int columnIndexToHide9 = 9;
+                TableColumn column9 = columnModel.getColumn(columnIndexToHide9);
+                column9.setMinWidth(0);
+                column9.setMaxWidth(0);
+                column9.setWidth(0);
+                column9.setPreferredWidth(0);
+                column9.setResizable(false);
         return true;
     }
 

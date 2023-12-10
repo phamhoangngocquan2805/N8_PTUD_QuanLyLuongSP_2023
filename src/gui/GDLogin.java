@@ -108,7 +108,7 @@ public class GDLogin extends javax.swing.JFrame {
 
         jFrameNhapMKMoi.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonXacNhan.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonXacNhan.setBackground(new java.awt.Color(85, 167, 222));
         jButtonXacNhan.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonXacNhan.setForeground(new java.awt.Color(255, 255, 255));
         jButtonXacNhan.setText("Xác nhận");
@@ -210,7 +210,7 @@ public class GDLogin extends javax.swing.JFrame {
 
         jFrameGuiEmail.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonQuayLai.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonQuayLai.setBackground(new java.awt.Color(85, 167, 222));
         jButtonQuayLai.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonQuayLai.setForeground(new java.awt.Color(255, 255, 255));
         jButtonQuayLai.setText("Quay lại");
@@ -234,7 +234,7 @@ public class GDLogin extends javax.swing.JFrame {
             }
         });
 
-        jButtonGuiEmail.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonGuiEmail.setBackground(new java.awt.Color(85, 167, 222));
         jButtonGuiEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonGuiEmail.setForeground(new java.awt.Color(255, 255, 255));
         jButtonGuiEmail.setText("Gửi email");
@@ -292,7 +292,7 @@ public class GDLogin extends javax.swing.JFrame {
 
         jFrameNhapMaXacNhan.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonQuayLai2.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonQuayLai2.setBackground(new java.awt.Color(85, 167, 222));
         jButtonQuayLai2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonQuayLai2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonQuayLai2.setText("Quay lại");
@@ -316,7 +316,7 @@ public class GDLogin extends javax.swing.JFrame {
             }
         });
 
-        jButtonXacNhanMa.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonXacNhanMa.setBackground(new java.awt.Color(85, 167, 222));
         jButtonXacNhanMa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonXacNhanMa.setForeground(new java.awt.Color(255, 255, 255));
         jButtonXacNhanMa.setText("Xác nhận");
@@ -375,7 +375,7 @@ public class GDLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jButtonDangNhap.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonDangNhap.setBackground(new java.awt.Color(85, 167, 222));
         jButtonDangNhap.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonDangNhap.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDangNhap.setMnemonic('L');
@@ -397,14 +397,14 @@ public class GDLogin extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldTenTK.setText("thinh");
+        jTextFieldTenTK.setText("tho");
         jTextFieldTenTK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTenTKActionPerformed(evt);
             }
         });
 
-        jPasswordFieldMatKhau.setText("thinh");
+        jPasswordFieldMatKhau.setText("tho");
         jPasswordFieldMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPasswordFieldMatKhauMousePressed(evt);

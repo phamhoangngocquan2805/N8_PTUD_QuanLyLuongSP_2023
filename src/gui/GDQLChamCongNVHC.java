@@ -88,13 +88,15 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(958, 735));
         setPreferredSize(new java.awt.Dimension(958, 735));
 
+        pQLChamCongNVHC.setBackground(new java.awt.Color(255, 255, 255));
         pQLChamCongNVHC.setMaximumSize(new java.awt.Dimension(958, 735));
         pQLChamCongNVHC.setPreferredSize(new java.awt.Dimension(958, 735));
 
-        pTittle.setBackground(new java.awt.Color(0, 0, 0));
+        pTittle.setBackground(new java.awt.Color(85, 167, 222));
+        pTittle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(191, 95, 95));
+        jLabel15.setForeground(new java.awt.Color(234, 233, 233));
         jLabel15.setText("QUẢN LÝ CHẤM CÔNG NHÂN VIÊN HÀNH CHÍNH");
 
         javax.swing.GroupLayout pTittleLayout = new javax.swing.GroupLayout(pTittle);
@@ -111,11 +113,14 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        pTongQuan.setBackground(new java.awt.Color(217, 217, 217));
+        pTongQuan.setBackground(new java.awt.Color(255, 255, 255));
+        pTongQuan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         pXuLy.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, new java.awt.Color(204, 204, 255)), "Xử lý"));
 
-        btnChamCong.setBackground(new java.awt.Color(255, 102, 102));
+        btnChamCong.setBackground(new java.awt.Color(85, 167, 222));
         btnChamCong.setForeground(new java.awt.Color(255, 255, 255));
         btnChamCong.setText("Chấm công");
         btnChamCong.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +129,7 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
             }
         });
 
-        btnChamTangCa.setBackground(new java.awt.Color(255, 102, 102));
+        btnChamTangCa.setBackground(new java.awt.Color(85, 167, 222));
         btnChamTangCa.setForeground(new java.awt.Color(255, 255, 255));
         btnChamTangCa.setText("<html><center>Chấm<br>tăng ca</center></html");
         btnChamTangCa.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +138,7 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
             }
         });
 
-        btnCoMat.setBackground(new java.awt.Color(255, 102, 102));
+        btnCoMat.setBackground(new java.awt.Color(85, 167, 222));
         btnCoMat.setForeground(new java.awt.Color(255, 255, 255));
         btnCoMat.setText("<html><center>Có mặt<br>Tất cả</center></html>");
         btnCoMat.addActionListener(new java.awt.event.ActionListener() {
@@ -253,7 +258,7 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(cbxLocTheoPB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxLocTheoCV, 0, 246, Short.MAX_VALUE)
+                .addComponent(cbxLocTheoCV, 0, 235, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pLocLayout.setVerticalGroup(
@@ -303,7 +308,7 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
         pnTraCuuCC.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, new java.awt.Color(204, 204, 255)), "Tra cứu chấm công"));
         pnTraCuuCC.setPreferredSize(new java.awt.Dimension(419, 65));
 
-        btnXemCong.setBackground(new java.awt.Color(255, 102, 102));
+        btnXemCong.setBackground(new java.awt.Color(85, 167, 222));
         btnXemCong.setForeground(new java.awt.Color(255, 255, 255));
         btnXemCong.setText("Xem công");
         btnXemCong.setActionCommand("");
@@ -342,8 +347,9 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
 
         pnChinhSuaCC.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, null, null, new java.awt.Color(204, 204, 255)), "Chỉnh sửa chấm công"));
 
-        btnXoaCC.setBackground(new java.awt.Color(255, 102, 102));
+        btnXoaCC.setBackground(new java.awt.Color(85, 167, 222));
         btnXoaCC.setForeground(new java.awt.Color(255, 255, 255));
+        btnXoaCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Td_Del_32px.png"))); // NOI18N
         btnXoaCC.setText("Xóa");
         btnXoaCC.setActionCommand("");
         btnXoaCC.addActionListener(new java.awt.event.ActionListener() {
@@ -358,8 +364,8 @@ public class GDQLChamCongNVHC extends javax.swing.JPanel {
             pnChinhSuaCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnChinhSuaCCLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnXoaCC, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(354, Short.MAX_VALUE))
+                .addComponent(btnXoaCC, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(338, Short.MAX_VALUE))
         );
         pnChinhSuaCCLayout.setVerticalGroup(
             pnChinhSuaCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
