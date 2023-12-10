@@ -4,8 +4,10 @@
  */
 package xuli;
 
+import entity.NhanVienHanhChinh;
 import gui.GDBaoCaoThongKe;
 import gui.GDChinh;
+import gui.GDLogin;
 import gui.GDPhanCong;
 import gui.GDQLCongDoan;
 import gui.GDQLHopDong;
@@ -13,15 +15,19 @@ import gui.GDQLNhanVienHanhChinh;
 import gui.GDQLSanPham;
 import gui.GDQLTaiKhoan;
 import gui.GDTongQuan;
+import gui.GDTroGiup;
 import java.awt.BorderLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.colorchooser.AbstractColorChooserPanel;
 import others.BienMacDinh;
@@ -35,15 +41,47 @@ import static others.BienMacDinh.mauTrang;
  *
  * @author acer
  */
-public class ChuyenManHinh implements BienMacDinh{
+public class ChuyenManHinh implements BienMacDinh {
+
     public static JPanel pChinh;
     private String danhMucDangChon = "";
     private List<DanhMucBean> listDanhMucBean = null;
+    private NhanVienHanhChinh nvLog;
+    private ArrayList<String> phanQuyenManHinh;
+    public ArrayList<JPanel> ds;
 
-    public ChuyenManHinh(JPanel pChinh) {
+    public ChuyenManHinh(JPanel pChinh, NhanVienHanhChinh nvLog, ArrayList<JPanel> ds) {
         this.pChinh = pChinh;
+        this.nvLog = nvLog;
+        this.ds = ds;
+        phanQuyenManHinh = new ArrayList<>();
+        if (nvLog.getPhongBan().getMaPB().equals("231")) {
+            phanQuyenManHinh.add("TrangChu");
+            phanQuyenManHinh.add("QLNhanSu");
+            phanQuyenManHinh.add("QLChamCong");
+            phanQuyenManHinh.add("TroGiup");
+            phanQuyenManHinh.add("DangXuat");
+            if (!nvLog.getChucVu().equals("Nhân viên")) {
+                phanQuyenManHinh.add("QLTaiKhoan");
+            }
+        } else if (nvLog.getPhongBan().getMaPB().equals("232")) {
+            phanQuyenManHinh.add("TrangChu");
+            phanQuyenManHinh.add("QLLuong");
+            phanQuyenManHinh.add("BaoCaoThongKe");
+            phanQuyenManHinh.add("TroGiup");
+            phanQuyenManHinh.add("DangXuat");
+        } else {
+            phanQuyenManHinh.add("TrangChu");
+            phanQuyenManHinh.add("QLHopDong");
+            phanQuyenManHinh.add("QLSanPham");
+            phanQuyenManHinh.add("QLCongDoan");
+            phanQuyenManHinh.add("PhanCong");
+            phanQuyenManHinh.add("QLChamCong");
+            phanQuyenManHinh.add("TroGiup");
+            phanQuyenManHinh.add("DangXuat");
+        }
     }
-    
+
     public void setManHinhNoiDung(JPanel pDanhMucDangChon, JLabel lblDanhMucDangChon) throws SQLException {
         danhMucDangChon = "TrangChu";
         pDanhMucDangChon.setBackground(mauDanhMucDangChon);
@@ -57,7 +95,7 @@ public class ChuyenManHinh implements BienMacDinh{
         pChinh.validate();
         pChinh.repaint();
     }
-    
+
     public void setSuKienClickDanhMuc(List<DanhMucBean> listDanhMucBean) {
         this.listDanhMucBean = listDanhMucBean;
         for (DanhMucBean item : listDanhMucBean) {
@@ -85,172 +123,222 @@ public class ChuyenManHinh implements BienMacDinh{
         public void mouseClicked(MouseEvent e) {
             danhMucDangChon = loaiDanhMuc;
             switch (loaiDanhMuc) {
-                case "TrangChu":  {
+                case "TrangChu": {
                     pNoiDung = new GDTongQuan();
                 }
                 break;
-                
+
                 case "QLNhanSu": {
-                    pNoiDung = new AbstractColorChooserPanel() {
-                        @Override
-                        public void updateChooser() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                    if (nvLog.getPhongBan().getMaPB().equals("231")) {
+                        pNoiDung = new AbstractColorChooserPanel() {
+                            @Override
+                            public void updateChooser() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
 
-                        @Override
-                        protected void buildChooser() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                            @Override
+                            protected void buildChooser() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
 
-                        @Override
-                        public String getDisplayName() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                            @Override
+                            public String getDisplayName() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
 
-                        @Override
-                        public Icon getSmallDisplayIcon() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                            @Override
+                            public Icon getSmallDisplayIcon() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
 
-                        @Override
-                        public Icon getLargeDisplayIcon() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-                    };
+                            @Override
+                            public Icon getLargeDisplayIcon() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
+                        };
+                    }
                 }
                 break;
-                
-                case "QLHopDong":  {
-                    pNoiDung = new GDQLHopDong();
+
+                case "QLHopDong": {
+                    if (nvLog.getPhongBan().getMaPB().equals("233")) {
+                        pNoiDung = new GDQLHopDong();
+                    }
                 }
                 break;
-                
+
                 case "QLSanPham": {
-                    pNoiDung = new GDQLSanPham();
+                    if (nvLog.getPhongBan().getMaPB().equals("233")) {
+                        pNoiDung = new GDQLSanPham();
+                    }
                 }
                 break;
-                
-                case "QLCongDoan" : {
-                    pNoiDung = new GDQLCongDoan();
+
+                case "QLCongDoan": {
+                    if (nvLog.getPhongBan().getMaPB().equals("233")) {
+                        pNoiDung = new GDQLCongDoan();
+                    }
                 }
                 break;
-                
+
                 case "PhanCong": {
-                    pNoiDung = new GDPhanCong();
+                    if (nvLog.getPhongBan().getMaPB().equals("233")) {
+                        pNoiDung = new GDPhanCong();
+                    }
                 }
                 break;
-                
+
                 case "QLChamCong": {
-                    pNoiDung =  new AbstractColorChooserPanel() {
-                        @Override
-                        public void updateChooser() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                    if (nvLog.getPhongBan().getMaPB().equals("233")
+                            || nvLog.getPhongBan().getMaPB().equals("23")) {
+                        pNoiDung = new AbstractColorChooserPanel() {
+                            @Override
+                            public void updateChooser() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
 
-                        @Override
-                        protected void buildChooser() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                            @Override
+                            protected void buildChooser() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
 
-                        @Override
-                        public String getDisplayName() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                            @Override
+                            public String getDisplayName() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
 
-                        @Override
-                        public Icon getSmallDisplayIcon() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                            @Override
+                            public Icon getSmallDisplayIcon() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
 
-                        @Override
-                        public Icon getLargeDisplayIcon() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-                    };
+                            @Override
+                            public Icon getLargeDisplayIcon() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
+                        };
+                    }
                 }
                 break;
                 case "QLLuong": {
-                    pNoiDung = new AbstractColorChooserPanel() {
-                        @Override
-                        public void updateChooser() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                    if (nvLog.getPhongBan().getMaPB().equals("232")) {
+                        pNoiDung = new AbstractColorChooserPanel() {
+                            @Override
+                            public void updateChooser() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
 
-                        @Override
-                        protected void buildChooser() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                            @Override
+                            protected void buildChooser() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
 
-                        @Override
-                        public String getDisplayName() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                            @Override
+                            public String getDisplayName() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
 
-                        @Override
-                        public Icon getSmallDisplayIcon() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                            @Override
+                            public Icon getSmallDisplayIcon() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
 
-                        @Override
-                        public Icon getLargeDisplayIcon() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
-                    };
+                            @Override
+                            public Icon getLargeDisplayIcon() {
+                                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                            }
+                        };
+                    }
                 }
                 break;
-                
+
                 case "QLTaiKhoan": {
-                    pNoiDung = new GDQLTaiKhoan();
+                    if (nvLog.getPhongBan().getMaPB().equals("231")
+                            && !(nvLog.getChucVu().equals("Nhân viên"))) {
+                        pNoiDung = new GDQLTaiKhoan();
+                    }
                 }
                 break;
-                
+
                 case "BaoCaoThongKe": {
-                    pNoiDung = new GDBaoCaoThongKe();
+                    if (nvLog.getPhongBan().getMaPB().equals("232")) {
+                        pNoiDung = new GDBaoCaoThongKe();
+                    }
                 }
                 break;
-                
+
+                case "TroGiup": {
+                    pNoiDung = new GDTroGiup();
+                }
+                break;
+
+                case "DangXuat": {
+                    ImageIcon icon = new ImageIcon("/image/logo.png");
+                    // Các lựa chọn
+                    Object[] options = {"Hủy", "Đăng xuất"};
+                    // Hiển thị JOptionPane với biểu tượng
+                    int result = JOptionPane.showOptionDialog(null, "Bạn đang thực hiện đăng xuất khỏi hệ thống?", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options, options[0]);
+                    if (result == JOptionPane.NO_OPTION) {
+                        new GDLogin().setVisible(true);
+                    }
+                }
+                break;
+
                 default:
                     break;
             }
-             pChinh.removeAll();
-            pChinh.setLayout(new BorderLayout());
-            pChinh.add(pNoiDung);
-            pChinh.validate();
-            pChinh.repaint();
-            thayDoiBackGroundKhiClick(loaiDanhMuc);
+            if (pNoiDung != null) {
+                pChinh.removeAll();
+                pChinh.setLayout(new BorderLayout());
+                pChinh.add(pNoiDung);
+                pChinh.validate();
+                pChinh.repaint();
+                thayDoiBackGroundKhiClick(loaiDanhMuc);
+            }
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-           
+
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            
+
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
             // set hiệu ứng khi được để chuột vào
-            panel.setBackground(mauDanhMucDangChon);
-            lbl.setBackground(mauDanhMucDangChon);
-            lbl.setForeground(mauTrang);
-            lbl.setBorder(null);
+            for (String label : phanQuyenManHinh) {
+                if (loaiDanhMuc.equals(label)) {
+                    panel.setBackground(mauDanhMucDangChon);
+                    lbl.setBackground(mauDanhMucDangChon);
+                    lbl.setForeground(mauTrang);
+                    lbl.setBorder(null);
+                    break;
+                }
+            }
+
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
             //set hiệu ứng khi lia chuột ra chỗ khác
-            if (!danhMucDangChon.equalsIgnoreCase(loaiDanhMuc)) {
-                panel.setBackground(mauNenMenu);
-                lbl.setBackground(mauNenMenu);
-                lbl.setForeground(mauTrang);
+            for (String label : phanQuyenManHinh) {
+                if (loaiDanhMuc.equals(label)) {
+                    if (!danhMucDangChon.equalsIgnoreCase(loaiDanhMuc)) {
+                        panel.setBackground(mauNenMenu);
+                        lbl.setBackground(mauNenMenu);
+                        lbl.setForeground(mauTrang);
 //                lbl.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, mauBorderBottomMenu));
+                    }
+                }
             }
         }
 
         private void thayDoiBackGroundKhiClick(String loaiDangChon) {
+            int check = 0;
             for (DanhMucBean item : listDanhMucBean) {
                 if (item.getLoaiDanhMuc().equalsIgnoreCase(loaiDangChon)) {
                     item.getPanel().setBackground(mauDanhMucDangChon);
@@ -258,9 +346,16 @@ public class ChuyenManHinh implements BienMacDinh{
                     item.getLbl().setForeground(mauTrang);
                     item.getLbl().setBorder(null);
                 } else {
-                    item.getPanel().setBackground(mauNenMenu);
-                    item.getLbl().setBackground(mauNenMenu);
-                    item.getLbl().setForeground(mauTrang);
+                    for (JPanel panel : ds) {
+                        if (panel == item.getPanel()) {
+                            check = 1;
+                        }
+                    }
+                    if (check != 1) {
+                        item.getPanel().setBackground(mauNenMenu);
+                        item.getLbl().setBackground(mauNenMenu);
+                        item.getLbl().setForeground(mauTrang);
+                    }
 //                    item.getLbl().setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, mauBorderBottomMenu));
                 }
             }

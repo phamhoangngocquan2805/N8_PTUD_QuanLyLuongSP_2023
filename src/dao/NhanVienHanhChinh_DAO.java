@@ -509,26 +509,57 @@ public class NhanVienHanhChinh_DAO {
         String soDT = txtSDT.getText().trim();
         String diaChi = txtDiaChi.getText().trim();
         String email = txtEmail.getText().trim();
+        
+        if (cbxPhongBan.getSelectedItem().toString().equals("Chọn phòng ban")) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn phòng ban!!!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            cbxPhongBan.requestFocus();
+            return false;
+        }
+        if (cbxPhongBan.getSelectedItem().toString().equals("Chọn chức vụ")) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn chức vụ!!!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            cbxPhongBan.requestFocus();
+            return false;
+        }
+        if (!(hoTen.length()>0)) {
+            JOptionPane.showMessageDialog(null, "Họ tên không được để trống!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtHoTen.requestFocus();
+            return false;
+        }
+        if (!(soDT.length()>0)) {
+            JOptionPane.showMessageDialog(null, "Số điện thoại không được để trống!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtSDT.requestFocus();
+            return false;
+        }
+        if (!(diaChi.length()>0)) {
+            JOptionPane.showMessageDialog(null, "Địa chỉ không được để trống!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtDiaChi.requestFocus();
+            return false;
+        }
+        if (!(email.length()>0)) {
+            JOptionPane.showMessageDialog(null, "Email không được để trống!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            txtEmail.requestFocus();
+            return false;
+        }
 
-        if (!(hoTen.length() > 0 && hoTen.matches("^([ A-Za-za-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*(\\s?))+$"))) {
+        if (!hoTen.matches("^([ A-Za-za-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*(\\s?))+$")) {
             JOptionPane.showMessageDialog(null, "Họ tên không hợp lệ \nVui lòng nhập họ tên theo mẫu: Lê Văn A", "Thông báo", JOptionPane.ERROR_MESSAGE);
             txtHoTen.requestFocus();
             return false;
         }
 
-        if (!(soDT.length() > 0 && soDT.matches("^(03|08|09|07|05)[0-9]{8}$"))) {
+        if (!soDT.matches("^(03|08|09|07|05)[0-9]{8}$")) {
             JOptionPane.showMessageDialog(null, "Số điện thoại không hợp lệ \nSDT gồm 10 chữ số, bắt đầu bằng 2 chữ số: 03, 08, 07, 09, 05", "Thông báo", JOptionPane.ERROR_MESSAGE);
             txtSDT.requestFocus();
             return false;
         }
 
-        if (!(diaChi.length() > 0 && diaChi.matches("^([ A-Za-z0-9,\\/.a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*(\\s?))+$"))) {
+        if (!diaChi.matches("^([ A-Za-z0-9,\\/.a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*(\\s?))+$")) {
             JOptionPane.showMessageDialog(null, "Địa chỉ không hợp lệ \nVui lòng nhập địa chỉ theo mẫu: 1428 Huỳnh Tấn Phát, Phú Mỹ, Quận 7", "Thông báo", JOptionPane.ERROR_MESSAGE);
             txtDiaChi.requestFocus();
             return false;
         }
 
-        if (!(email.length() > 0 && email.matches("^[a-zA-Z0-9_.]+@[a-z]{3,15}(\\.com)$"))) {
+        if (!email.matches("^[a-zA-Z0-9_.]+@[a-z]{3,15}(\\.com)$")) {
             JOptionPane.showMessageDialog(null, "Email không hợp lệ \nVui lòng nhập email theo mẫu: nguyenvana123@example.com", "Thông báo", JOptionPane.ERROR_MESSAGE);
             txtSDT.requestFocus();
             return false;
@@ -556,5 +587,41 @@ public class NhanVienHanhChinh_DAO {
             return false;
         }
         return true;
+    }
+    
+    public NhanVienHanhChinh getNhanVienTheoMaVer2(String maNv) {
+        NhanVienHanhChinh nv = null;
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from NhanVienHanhChinh where maNV = " + maNv;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maNV = rs.getString(1);
+                String hoTen = rs.getString(2);
+                boolean phai = rs.getBoolean(3);
+                Date ngaySinh = rs.getDate(4);
+                String soDT = rs.getString(5);
+                String diaChi = rs.getString(6);
+                boolean tinhTrang = rs.getBoolean(7);
+                Date ngayVaoLam = rs.getDate(8);
+                String hinhAnh = rs.getString(9);
+                double heSoLuong = rs.getFloat(10);
+                double luognCoBan = rs.getFloat(11);
+                String chucVu = rs.getString(12);
+                String email = rs.getString(13);
+                double tienPhuCapTheoNgay = rs.getFloat(14);
+                double tienChuyenCan = rs.getFloat(15);
+                String ghiChu = rs.getString(16);
+                PhongBan_DAO pbdao = new PhongBan_DAO();
+                PhongBan phongBan = pbdao.getPhongBanTheoMa(rs.getString(17));
+                nv = new NhanVienHanhChinh(maNV, hoTen, phai, ngaySinh, soDT, diaChi, tinhTrang, ngayVaoLam, hinhAnh, heSoLuong, luognCoBan, chucVu, email, tienPhuCapTheoNgay, tienChuyenCan, ghiChu, phongBan);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return nv;
     }
 }
