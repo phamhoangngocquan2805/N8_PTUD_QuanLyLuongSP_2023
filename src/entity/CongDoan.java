@@ -14,6 +14,10 @@ import java.util.Objects;
  * @author tho
  */
 public class CongDoan {
+
+    public static int indexOf(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     private String maCD;
     private String tenCD;
     private int soLuong;

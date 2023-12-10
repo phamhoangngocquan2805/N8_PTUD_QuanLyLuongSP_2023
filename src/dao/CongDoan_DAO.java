@@ -213,13 +213,13 @@ public class CongDoan_DAO {
         }
         return dsCongDoan;
     }
-    
-    public CongDoan getCongDoanTheoMaVer2(String maCd) {
-        CongDoan cd = null;
+public ArrayList<CongDoan> getAllCongDoanTheoTenCD(String congDoan) {
+        ArrayList<CongDoan> dsCongDoan = new ArrayList<CongDoan>();
         try {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
-            String sql = "select * from CongDoan where maCD = " + maCd;
+            String sql = "select * from CongDoan\n"
+                    + "where tenCD = N'"+congDoan+"'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
@@ -234,13 +234,13 @@ public class CongDoan_DAO {
                 SanPham_DAO spdao = new SanPham_DAO();
                 SanPham sp = spdao.getSanPhamTheoMa(rs.getString(9));
 
-                cd = new CongDoan(maCD, tenCD, soLuong, donGia, ngayBatDau, ngayKetThuc, tenCDTruoc, trangThai, sp);
+                CongDoan cd = new CongDoan(maCD, tenCD, soLuong, donGia, ngayBatDau, ngayKetThuc, tenCDTruoc, trangThai, sp);
+                dsCongDoan.add(cd);
             }
         } catch (SQLException e) {
             // TODO: handle exception
             e.printStackTrace();
         }
-        return cd;
+        return dsCongDoan;
     }
-
 }

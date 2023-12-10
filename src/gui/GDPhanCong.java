@@ -4,13 +4,11 @@
  */
 package gui;
 
-import dao.BangChamCongCongNhan_DAO;
 import dao.BangPhanCong_DAO;
 import dao.ChiTietBangChamCong_DAO;
 import dao.CongDoan_DAO;
 import dao.CongNhan_DAO;
 import dao.SanPham_DAO;
-import entity.BangChamCongCongNhan;
 import entity.BangPhanCong;
 import entity.ChiTietBangChamCong;
 import entity.CongDoan;
@@ -20,12 +18,10 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -64,6 +60,10 @@ public class GDPhanCong extends javax.swing.JPanel {
         addListCN(CongDoan.substring(0, indexCD));
         addListCD(CongDoan.substring(0, indexCD));
         cbbTimTheoSP.setSelectedIndex(1);
+//        if (processEvent) {
+//            cbbTayNghe.setSelectedIndex(0);
+//            System.out.println("2");
+//        }
     }
 
     /**
@@ -347,6 +347,7 @@ public class GDPhanCong extends javax.swing.JPanel {
 
         btnXacNhan.setBackground(new java.awt.Color(255, 102, 102));
         btnXacNhan.setForeground(new java.awt.Color(255, 255, 255));
+        btnXacNhan.setMnemonic('t');
         btnXacNhan.setLabel("Xác nhận");
         btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -786,8 +787,10 @@ public class GDPhanCong extends javax.swing.JPanel {
                 if (phanCong_Dao.createBangPhanCong(pcNew)) {
                     lbThongBao.setText("phân công thành công");
                     modelPhanCong.setNumRows(0);
-                    addListPhanCong();
-                    cbbSK();
+                    String congDoan = txtTenCD.getText();
+                    int indexCD = CongDoan.indexOf("-");
+                    cbbTimTheoSP.setSelectedItem(congDoan.substring(indexCD + 1));
+                    cbbTayNghe.setSelectedIndex(cbbTayNghe.getSelectedIndex());
                     xoaTrang();
                 } else {
                     lbThongBao.setText("Thất bại");
@@ -828,12 +831,14 @@ public class GDPhanCong extends javax.swing.JPanel {
             }
         }
         String CongDoan = cbbCongDoan.getSelectedItem().toString();
-        int indexCD = CongDoan.indexOf("-");
-        String tenCD = CongDoan.substring(0, indexCD);
-        addListCN(tenCD);
-        processEvent = false;
-        cbbTayNghe.setSelectedItem(tenCD);
-        processEvent = true;
+        if (CongDoan != null) {
+            int indexCD = CongDoan.indexOf("-");
+            String tenCD = CongDoan.substring(0, indexCD);
+            addListCN(tenCD);
+            processEvent = false;
+            cbbTayNghe.setSelectedItem(tenCD);
+            processEvent = true;
+        }
     }
 
     private int getSLConTrongCD(String maCD) {
@@ -847,10 +852,6 @@ public class GDPhanCong extends javax.swing.JPanel {
     }
     private void cbbTimTheoSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTimTheoSPActionPerformed
         modelPhanCong.setNumRows(0);
-        if (modelcbbSanPham2.getSelectedItem().toString().equals("Tất cả")) {
-            addListPhanCong();
-            return;
-        }
         int stt = 0;
         for (BangPhanCong s : phanCong_Dao.getAllBangPhanCong()) {
             if (modelcbbSanPham2.getSelectedItem().toString().equals(s.getCongDoan().getSanPham().getTenSP())) {
@@ -985,7 +986,7 @@ public class GDPhanCong extends javax.swing.JPanel {
         String[] row1 = {"Mã CN", "Họ tên"};
         modelDSCN = new DefaultTableModel(row1, 0);
         tableCongNhan.setModel(modelDSCN);
-        ArrayList<CongNhan> listCN = congNhan_Dao.getAllCongNhan();
+        ArrayList<CongNhan> listCN = congNhan_Dao.getAllCongNhanTheoTayNghe(tayNghe);
         for (CongNhan s : listCN) {
             if (s.getTinhTrang()) {
                 if (s.getTayNghe().equals(tayNghe)) {
@@ -1001,22 +1002,21 @@ public class GDPhanCong extends javax.swing.JPanel {
         String[] row1 = {"Mã CĐ", "Tên CĐ", "SL còn", "CĐ trước"};
         modelCongDoan = new DefaultTableModel(row1, 0);
         tableCongDoan.setModel(modelCongDoan);
-        ArrayList<CongDoan> listCD = congDoan_Dao.getAllCongDoan();
+        ArrayList<CongDoan> listCD = congDoan_Dao.getAllCongDoanTheoTenCD(tenCD);
         tableCongDoan.getColumnModel().getColumn(2).setPreferredWidth(40);
         tableCongDoan.getColumnModel().getColumn(1).setPreferredWidth(120);
         if (tenCD.equals("")) {
             for (CongDoan s : listCD) {
-                if (s.getTenCD().equals(cbbTayNghe.getSelectedItem().toString())) {
-                    String[] row = {s.getMaCD(), s.getTenCD() + "-" + "(" + s.getSanPham().getTenSP() + ")", Integer.toString(s.getSoLuong() - getSLConTrongCD(s.getMaCD())), s.getTenCDTruoc()};
-                    modelCongDoan.addRow(row);
-                }
+                String[] row = {s.getMaCD(), s.getTenCD() + "-" + "(" + s.getSanPham().getTenSP() + ")", Integer.toString(s.getSoLuong() - getSLConTrongCD(s.getMaCD())), s.getTenCDTruoc()};
+                modelCongDoan.addRow(row);
             }
         } else {
+            int i = 3;
             for (CongDoan s : listCD) {
-                if (s.getTenCD().equals(tenCD)) {
-                    String[] row = {s.getMaCD(), s.getTenCD() + "-" + "(" + s.getSanPham().getTenSP() + ")", Integer.toString(s.getSoLuong() - getSLConTrongCD(s.getMaCD())), s.getTenCDTruoc()};
-                    modelCongDoan.addRow(row);
-                }
+                System.out.println("4." + i);
+                String[] row = {s.getMaCD(), s.getTenCD() + "-" + "(" + s.getSanPham().getTenSP() + ")", Integer.toString(s.getSoLuong() - getSLConTrongCD(s.getMaCD())), s.getTenCDTruoc()};
+                modelCongDoan.addRow(row);
+                i++;
             }
         }
     }
@@ -1026,14 +1026,15 @@ public class GDPhanCong extends javax.swing.JPanel {
         String[] row1 = {"STT", "Mã CN", "Họ tên", "Mã công đoạn", "Công đoạn", "Sản phẩm", "Ngày bắt đầu", "Số lượng"};
         modelPhanCong = new DefaultTableModel(row1, 0);
         tableDSPhanCong.setModel(modelPhanCong);
-        ArrayList<BangPhanCong> listPhanCong = phanCong_Dao.getAllBangPhanCong();
+//        ArrayList<BangPhanCong> listPhanCong = phanCong_Dao.getAllBangPhanCong();
         tableDSPhanCong.getColumnModel().getColumn(0).setPreferredWidth(10);
-        int stt = 0;
-        for (BangPhanCong s : listPhanCong) {
-            String[] row = {Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongDoan().getMaCD(), s.getCongDoan().getTenCD(), s.getCongDoan().getSanPham().getTenSP(), s.getCongDoan().getNgayBatDauString(), Integer.toString(s.getSoLuong())};
-            modelPhanCong.addRow(row);
-            stt++;
-        }
+        System.out.println("1.1");
+//        int stt = 0;
+//        for (BangPhanCong s : listPhanCong) {
+//            String[] row = {Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongDoan().getMaCD(), s.getCongDoan().getTenCD(), s.getCongDoan().getSanPham().getTenSP(), s.getCongDoan().getNgayBatDauString(), Integer.toString(s.getSoLuong())};
+//            modelPhanCong.addRow(row);
+//            stt++;
+//        }
     }
 
     //add dữ liệu vào Các CBB tìm kiếm
