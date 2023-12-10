@@ -175,4 +175,38 @@ public class CongNhan_DAO {
         }
         return false;
     }
+
+    public ArrayList<CongNhan> getAllCongNhanTheoTayNghe(String tayNghe) {
+        ArrayList<CongNhan> dsCongNhan = new ArrayList<CongNhan>();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from CongNhan\n"
+                    + "where tayNghe = N'"+tayNghe+"'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maCN = rs.getString(1);
+                String tenCN = rs.getString(2);
+                Boolean phai = rs.getBoolean(3);
+                Date ngaySinh = rs.getDate(4);
+                String soDT = rs.getString(5);
+                String diaChi = rs.getString(6);
+                Boolean tinhTrang = rs.getBoolean(7);
+                Date ngayVaoLam = rs.getDate(8);
+                String hinhAnh = rs.getString(9);
+                String tayNghee = rs.getString(10);
+                String kinhNghiem = rs.getString(11);
+                double tienPhuCapTheoNgay = rs.getFloat(12);
+                double tienChuyenCan = rs.getFloat(13);
+                String ghiChu = rs.getString(14);
+                CongNhan cn = new CongNhan(maCN, tenCN, phai, ngaySinh, soDT, diaChi, tinhTrang, ngayVaoLam, hinhAnh, tayNghee, kinhNghiem, tienPhuCapTheoNgay, tienChuyenCan, ghiChu);
+                dsCongNhan.add(cn);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return dsCongNhan;
+    }
 }
