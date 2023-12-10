@@ -91,7 +91,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         loadComponentTabelCN();
         loadComponentsTableBangLuong();
         jButtonTKeTL.doClick();
-//        jButtonThongKeSL.doClick();
+        jButtonThongKeSL.doClick();
     }
 
     /**
@@ -140,10 +140,11 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
 
         pBaoCaoThongKe.setPreferredSize(new java.awt.Dimension(958, 735));
 
-        pTittle.setBackground(new java.awt.Color(0, 0, 0));
+        pTittle.setBackground(new java.awt.Color(85, 167, 222));
+        pTittle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(191, 95, 95));
+        jLabel15.setForeground(new java.awt.Color(234, 233, 233));
         jLabel15.setText("BÁO CÁO THỐNG KÊ");
 
         javax.swing.GroupLayout pTittleLayout = new javax.swing.GroupLayout(pTittle);
@@ -161,11 +162,11 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         );
 
         pTongQuan.setBackground(new java.awt.Color(217, 217, 217));
+        pTongQuan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
 
         jPanel1.setBackground(new java.awt.Color(217, 217, 217));
 
         jLabelTKeTLNam.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelTKeTLNam.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTKeTLNam.setText("Năm:");
 
         jComboBoxTKeTLNam.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -177,7 +178,6 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         });
 
         jLabelTKeTLKy.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelTKeTLKy.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTKeTLKy.setText("Chọn kỳ báo cáo:");
 
         jComboBoxTKeTLKy.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -188,7 +188,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
             }
         });
 
-        jButtonTKeTL.setBackground(new java.awt.Color(153, 76, 76));
+        jButtonTKeTL.setBackground(new java.awt.Color(85, 167, 222));
         jButtonTKeTL.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonTKeTL.setForeground(new java.awt.Color(255, 255, 255));
         jButtonTKeTL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/iconthongke.png"))); // NOI18N
@@ -201,7 +201,6 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         });
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(null);
         jPanel4.setMaximumSize(new java.awt.Dimension(946, 523));
         jPanel4.setMinimumSize(new java.awt.Dimension(946, 523));
 
@@ -216,7 +215,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jButtonXuatExcelBangLuong.setBackground(new java.awt.Color(153, 76, 76));
+        jButtonXuatExcelBangLuong.setBackground(new java.awt.Color(85, 167, 222));
         jButtonXuatExcelBangLuong.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonXuatExcelBangLuong.setForeground(new java.awt.Color(255, 255, 255));
         jButtonXuatExcelBangLuong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/file-regular.png"))); // NOI18N
@@ -229,7 +228,6 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         });
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 153));
-        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabelTongBHXH.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabelTongBHXH.setForeground(new java.awt.Color(255, 255, 255));
@@ -268,7 +266,6 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
-        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabelTongChi.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabelTongChi.setForeground(new java.awt.Color(255, 255, 255));
@@ -302,7 +299,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi tiết tổng lương từng tháng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder("Chi tiết tổng lương từng tháng"));
 
         jTableTongLuongCTy.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTableTongLuongCTy.setModel(new javax.swing.table.DefaultTableModel(
@@ -391,7 +388,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Top công nhân theo sản lượng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Top công nhân theo sản lượng"));
 
         jTableTopCN.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -421,7 +418,6 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTableTopCN);
 
         jLabelCongDoan.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelCongDoan.setForeground(new java.awt.Color(0, 0, 0));
         jLabelCongDoan.setText("Công đoạn:");
 
         jComboBoxCongDoanCN.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -450,11 +446,10 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                     .addComponent(jLabelCongDoan)
                     .addComponent(jComboBoxCongDoanCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE))
         );
 
         jLabelTKeSLNam.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelTKeSLNam.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTKeSLNam.setText("Năm:");
 
         jComboBoxTKeSLNam.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -466,7 +461,6 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         });
 
         jLabelTKeSLKy.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelTKeSLKy.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTKeSLKy.setText("Chọn kỳ báo cáo:");
 
         jComboBoxTKeSLKy.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -477,7 +471,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
             }
         });
 
-        jButtonThongKeSL.setBackground(new java.awt.Color(153, 76, 76));
+        jButtonThongKeSL.setBackground(new java.awt.Color(85, 167, 222));
         jButtonThongKeSL.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonThongKeSL.setForeground(new java.awt.Color(255, 255, 255));
         jButtonThongKeSL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/iconthongke.png"))); // NOI18N
@@ -489,7 +483,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
             }
         });
 
-        jButtonXuatExcelSanLuong.setBackground(new java.awt.Color(153, 76, 76));
+        jButtonXuatExcelSanLuong.setBackground(new java.awt.Color(85, 167, 222));
         jButtonXuatExcelSanLuong.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonXuatExcelSanLuong.setForeground(new java.awt.Color(255, 255, 255));
         jButtonXuatExcelSanLuong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/file-regular.png"))); // NOI18N
@@ -580,9 +574,9 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
+            .addGap(0, 965, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pBaoCaoThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE))
+                .addComponent(pBaoCaoThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 965, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1155,13 +1149,8 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
     public void createBarChartSanLuong() {
         // Create sample data
         dsCongDoan = new ArrayList<String>();
-<<<<<<< HEAD
-        ArrayList<ChiTietBangChamCong> dsChiTietChamCong = chiTietBangChamCong_DAO.getAllChiTietBangChamCong();
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset(); // biểu đồ
-=======
         ArrayList<ChiTietBangChamCong> dsChiTietChamCong = chiTietBangChamCong_DAO.getAllChiTietBangChamCongVer2();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
->>>>>>> 5b5c382437d465bc2f6fc2608d9ee8cc570768c0
         for (BangChamCongCongNhan bcc : bangChamCongCongNhan_DAO.getAllBangChamCongCongNhan()) {
             //Kiểm tra xem bảng chấm công có thuộc tháng và năm ko
             int m = checkBangChamCong(bcc);

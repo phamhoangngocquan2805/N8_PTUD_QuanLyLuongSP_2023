@@ -102,60 +102,45 @@ public class PrintReviewNV extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabelTenNV.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelTenNV.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTenNV.setText("Tên nhân viên:");
 
         jLabelTieuDe.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabelTieuDe.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTieuDe.setText("Công ty TNHH May mặc Thịnh Vượng");
 
         jLabelPhietTT.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelPhietTT.setForeground(new java.awt.Color(0, 0, 0));
         jLabelPhietTT.setText("Phiếu thanh toán lương tháng");
 
         jLabelNgay.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelNgay.setForeground(new java.awt.Color(0, 0, 0));
         jLabelNgay.setText("Ngày: ");
 
         jLabelSoNgayLam.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelSoNgayLam.setForeground(new java.awt.Color(0, 0, 0));
         jLabelSoNgayLam.setText("Số ngày làm:");
 
         jLabelSoNgayNghi.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelSoNgayNghi.setForeground(new java.awt.Color(0, 0, 0));
         jLabelSoNgayNghi.setText("Số ngày nghỉ:");
 
         jLabelLuongChinh.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelLuongChinh.setForeground(new java.awt.Color(0, 0, 0));
         jLabelLuongChinh.setText("Lương chính:");
 
         jLabelLuongTangCa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelLuongTangCa.setForeground(new java.awt.Color(0, 0, 0));
         jLabelLuongTangCa.setText("Lương tăng ca:");
 
         jLabelTienPhuCap.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelTienPhuCap.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTienPhuCap.setText("Tiền phụ cấp:");
 
         jLabelTienChuyenCan.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelTienChuyenCan.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTienChuyenCan.setText("Tiền chuyên cần:");
 
         jLabelTienUng.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelTienUng.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTienUng.setText("Tiền ứng:");
 
         jLabelBHXH.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelBHXH.setForeground(new java.awt.Color(0, 0, 0));
         jLabelBHXH.setText("Bảo hiểm xã hội:");
 
         jLabelThucLanh.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelThucLanh.setForeground(new java.awt.Color(0, 0, 0));
         jLabelThucLanh.setText("Thực lãnh:");
 
-        jTextFieldSNL.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldSNL.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldSNL.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldSNL.setBorder(null);
         jTextFieldSNL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,9 +148,7 @@ public class PrintReviewNV extends javax.swing.JPanel {
             }
         });
 
-        jTextFieldTen.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTen.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldTen.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTen.setBorder(null);
         jTextFieldTen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,9 +156,7 @@ public class PrintReviewNV extends javax.swing.JPanel {
             }
         });
 
-        jTextFieldSNN.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldSNN.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldSNN.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldSNN.setBorder(null);
         jTextFieldSNN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,9 +164,7 @@ public class PrintReviewNV extends javax.swing.JPanel {
             }
         });
 
-        jTextFieldLC.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldLC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldLC.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldLC.setBorder(null);
         jTextFieldLC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,9 +172,7 @@ public class PrintReviewNV extends javax.swing.JPanel {
             }
         });
 
-        jTextFieldLTC.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldLTC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldLTC.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldLTC.setBorder(null);
         jTextFieldLTC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,9 +180,7 @@ public class PrintReviewNV extends javax.swing.JPanel {
             }
         });
 
-        jTextFieldTPC.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTPC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldTPC.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTPC.setBorder(null);
         jTextFieldTPC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,9 +188,7 @@ public class PrintReviewNV extends javax.swing.JPanel {
             }
         });
 
-        jTextFieldTCC.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTCC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldTCC.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTCC.setBorder(null);
         jTextFieldTCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,9 +196,7 @@ public class PrintReviewNV extends javax.swing.JPanel {
             }
         });
 
-        jTextFieldTU.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTU.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldTU.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTU.setBorder(null);
         jTextFieldTU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,9 +204,7 @@ public class PrintReviewNV extends javax.swing.JPanel {
             }
         });
 
-        jTextFieldBHXH.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldBHXH.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldBHXH.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldBHXH.setBorder(null);
         jTextFieldBHXH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,9 +212,7 @@ public class PrintReviewNV extends javax.swing.JPanel {
             }
         });
 
-        jTextFieldTL.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTL.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldTL.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTL.setBorder(null);
         jTextFieldTL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,8 +220,9 @@ public class PrintReviewNV extends javax.swing.JPanel {
             }
         });
 
-        jButtonPDF.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonPDF.setBackground(new java.awt.Color(85, 167, 222));
         jButtonPDF.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonPDF.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPDF.setText("In PDF");
         jButtonPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,9 +230,7 @@ public class PrintReviewNV extends javax.swing.JPanel {
             }
         });
 
-        jTextFieldThang.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldThang.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldThang.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldThang.setBorder(null);
         jTextFieldThang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,9 +238,7 @@ public class PrintReviewNV extends javax.swing.JPanel {
             }
         });
 
-        jTextFieldNgay.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldNgay.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldNgay.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldNgay.setBorder(null);
         jTextFieldNgay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
