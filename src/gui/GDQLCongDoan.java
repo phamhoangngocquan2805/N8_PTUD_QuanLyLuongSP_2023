@@ -276,11 +276,6 @@ public class GDQLCongDoan extends javax.swing.JPanel {
 
         cbbHD.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cbbHD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbbHD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbbHDActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pSanPhamLayout = new javax.swing.GroupLayout(pSanPham);
         pSanPham.setLayout(pSanPhamLayout);
@@ -1052,9 +1047,13 @@ public class GDQLCongDoan extends javax.swing.JPanel {
             }
             for (SanPham sp : sanphamDao.getSanPhamByMaSP(maSP)) {
                 if (soLuongCDTrongSP > sp.getSoCongDoan()) {
-                    JOptionPane.showMessageDialog(null, "Sản phẩm đã đủ số công đoạn!! \nVui lòng chọn sản phẩm khác");
+                    JOptionPane.showMessageDialog(this, "Sản phẩm đã đủ số công đoạn!! \nVui lòng chọn sản phẩm khác");
+                    btnThem.setEnabled(false);
                 } else {
                     txtMaCD.setText(maSP + ((soLuongCDTrongSP < 10) ? "0" + soLuongCDTrongSP : soLuongCDTrongSP));
+                    HopDong hopdong = hopdongDao.getHopDongTheoMa(cbbHD.getSelectedItem().toString().trim());
+                    ngayBD.setDate(hopdong.getNgayKiHD());
+                    ngayKT.setDate(hopdong.getNgayBanGiao());
                 }
             }
         }
@@ -1064,7 +1063,6 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         Object o = evt.getSource();
         if (o.equals(btnThem)) {
             if (btnThem.getText().equals("Thêm")) {
-                
                 nhapLai();
                 cbbTenCD.setEnabled(true);
                 txtSLCD.setEditable(true);
@@ -1127,6 +1125,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                         } else {
                             JOptionPane.showMessageDialog(null, "Đã đủ số lượng công đoạn cần thêm vào sản phẩm.");
                             btnThem.setText("Thêm");
+                            btnThem.setEnabled(false);
                             btnCapNhat.setEnabled(true);
                             nhapLai();
                             txtMaCD.setText("");
@@ -1135,14 +1134,13 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                     } else {
                         btnThem.setText("Thêm");
                         btnCapNhat.setEnabled(true);
-
                         return;
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Đã đủ số lượng công đoạn cần thêm vào sản phẩm.");
                     btnThem.setText("Thêm");
+                    btnThem.setEnabled(false);
                     btnCapNhat.setEnabled(true);
-
                 }
             } else if (btnCapNhat.getText().equalsIgnoreCase("Hủy")) {
                 updateCongDoan();
@@ -1215,6 +1213,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
             Object selectedValue = cbbTenCD.getItemAt(5);
             txtTenCDT.setText(selectedValue != null ? selectedValue.toString() : "");
         }
+        txtSLCD.setText(Double.toString(Integer.parseInt(txtSoLuong.getText()) * 1.025));
     }//GEN-LAST:event_cbbTenCDActionPerformed
 
 
@@ -1343,10 +1342,6 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         locNgayBatDau(chooseNgayBD);
     }//GEN-LAST:event_locTheoNgayBDActionPerformed
 
-    private void cbbHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbHDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbbHDActionPerformed
-
     public void setTrangThaiTextField() {
         if (txtMaCD.isEditable()) {
             cbbTenCD.setEditable(false);
@@ -1374,7 +1369,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
 
     private boolean validateData() {
         try {
-            ArrayList<CongDoan> danhSachCongDoan = congdoanDao.getAllCongDoan();
+            ArrayList<CongDoan> danhSachCongDoan = congdoanDao.getAllCongDoanTheoMaSP(cbbMaSP.getSelectedItem().toString().substring(0, 8));
 
             String currentSoLuongCD = txtSLCD.getText().trim();
             String currentSoLuong = txtSoLuong.getText().trim();
@@ -1412,11 +1407,11 @@ public class GDQLCongDoan extends javax.swing.JPanel {
 
             double tongDonGiaCD = tinhTongDonGiaCD(danhSachCongDoan);
 
-            if (tongDonGiaCD > 0.5 * donGiasp) {
-                showErrorMessage("Tổng đơn giá của công đoạn phải nhỏ hơn hoặc bằng 50% đơn giá sản phẩm");
-                txtDonGiaCD.requestFocusInWindow();
-                return false;
-            }
+//            if (tongDonGiaCD > 0.5 * donGiasp) {
+//                showErrorMessage("Tổng đơn giá của công đoạn phải nhỏ hơn hoặc bằng 50% đơn giá sản phẩm");
+//                txtDonGiaCD.requestFocusInWindow();
+//                return false;
+//            }
             Date ngayBD = new Date(this.ngayBD.getDate().getYear(), this.ngayBD.getDate().getMonth(), this.ngayBD.getDate().getDate());
             Date ngayKT = new Date(this.ngayKT.getDate().getYear(), this.ngayKT.getDate().getMonth(), this.ngayKT.getDate().getDate());
             HopDong hopdong = hopdongDao.getHopDongTheoMa(cbbHD.getSelectedItem().toString().trim());
@@ -1465,9 +1460,6 @@ public class GDQLCongDoan extends javax.swing.JPanel {
     }
 
     public boolean addCongDoan() {
-//        String soLuongText = txtSoCD.getText().trim();
-//        int soLuongCanThem = Integer.parseInt(soLuongText);
-//        if (soLuongDaThem < soLuongCanThem) {
         String maCD = txtMaCD.getText().trim();
         String tenCD = cbbTenCD.getSelectedItem().toString();
         int soLuongCD = Integer.parseInt(txtSLCD.getText().toString().trim());
@@ -1493,82 +1485,11 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                 loadDanhSachCongDoan();
                 JOptionPane.showMessageDialog(null, "Thêm công đoạn thành công");
                 soLuongDaThem++;
-//                     int xacNhan = JOptionPane.showConfirmDialog(null, "Bạn có muốn tiếp tục thêm công đoạn?", "Xác nhận thêm", JOptionPane.YES_NO_OPTION);
-//                    if (xacNhan == JOptionPane.YES_OPTION) {
-//                        btnThem.setText("Hủy");
-//                        btnCapNhat.setEnabled(false);
-//                        return true;
-//                    } else {
-//                        btnThem.setText("Thêm");
-//                        btnCapNhat.setEnabled(true);
-//                        
-//                    }                
             } else {
                 JOptionPane.showMessageDialog(null, "Thêm công đoạn không thành công");
             }
         }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Đã đủ số lượng công đoạn cần thêm vào sản phẩm.");
-//            btnThem.setText("Thêm");
-//            btnCapNhat.setEnabled(true);
-//            return false;
-//        }
         return false;
-//        String soLuongText = txtSoCD.getText().trim();
-//        int soLuongCanThem = Integer.parseInt(soLuongText);
-//        int soLuongDaThem = 1;
-//        if (soLuongDaThem < soLuongCanThem) {
-//            String maCD = txtMaCD.getText().trim();
-//            String tenCD = cbbTenCD.getSelectedItem().toString();
-//            int soLuongCD = Integer.parseInt(txtSLCD.getText().trim());
-//            double donGiaCD = Double.parseDouble(txtDonGiaCD.getText());
-//            Date ngayBD = new Date(this.ngayBD.getDate().getYear(), this.ngayBD.getDate().getMonth(), this.ngayBD.getDate().getDate());
-//            Date ngayKT = new Date(this.ngayKT.getDate().getYear(), this.ngayKT.getDate().getMonth(), this.ngayKT.getDate().getDate());
-//            String tenCDT = txtTenCDT.getText().trim();
-//            int trangThai;
-//
-//            if (cbbTrangThai.getSelectedItem().toString().equalsIgnoreCase("Chưa thực hiện")) {
-//                trangThai = 1;
-//            } else if (cbbTrangThai.getSelectedItem().toString().equalsIgnoreCase("Đang thực hiện")) {
-//                trangThai = 2;
-//            } else {
-//                trangThai = 3;
-//            }
-//            SanPham sp = new SanPham(cbbMaSP.getSelectedItem().toString().substring(0, 8));
-//            CongDoan cd = new CongDoan(maCD, tenCD, soLuongCD, donGiaCD, ngayBD, ngayKT, tenCDT, trangThai, sp);
-//
-//            if (validateData()) {
-//                if (congdoanDao.createCongDoan(cd)) {
-//                    nhapLai();
-//                    loadDanhSachCongDoan();
-//                    JOptionPane.showMessageDialog(null, "Thêm công đoạn thành công");
-//                    soLuongDaThem++;
-//                    if (soLuongDaThem < soLuongCanThem) {
-//                        int xacNhan = JOptionPane.showConfirmDialog(null, "Bạn có muốn tiếp tục thêm công đoạn?", "Xác nhận thêm", JOptionPane.YES_NO_OPTION);
-//                        if (xacNhan == JOptionPane.YES_OPTION) {
-//                            btnThem.setText("Hủy");
-//                            btnCapNhat.setEnabled(false);
-//                        } else {
-//                            btnThem.setText("Thêm");
-//                            btnCapNhat.setEnabled(true);
-//                        }
-//                    } else {
-//                        btnThem.setText("Thêm");
-//                        btnCapNhat.setEnabled(true);
-//                    }
-//                    return true;
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "Thêm công đoạn không thành công");
-//                }
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Đã đủ số lượng công đoạn cần thêm vào sản phẩm.");
-//            btnThem.setText("Thêm");
-//            btnCapNhat.setEnabled(true);
-//            return false;
-//        }
-//        return false;
-
     }
 
     private void updateCongDoan() {
@@ -1587,7 +1508,18 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         } else {
             trangThai = 3;
         }
-
+        Calendar ngayHienTai = Calendar.getInstance();
+        // Kiểm tra ngày bắt đầu
+        if (ngayBD.after(ngayHienTai.getTime())) {
+            cbbTrangThai.setSelectedItem("Chưa thực hiện");
+            trangThai = 1;
+        } else if (ngayKT.before(ngayHienTai.getTime())) {
+            cbbTrangThai.setSelectedItem("Đã thực hiện");
+            trangThai = 3;
+        } else {
+            cbbTrangThai.setSelectedItem("Đang thực hiện");
+            trangThai = 2;
+        }
         CongDoan congdoan = congdoanDao.getCongDoanTheoMa(maCD);
         SanPham sp = sanphamDao.getSanPhamTheoMa(modelCD.getValueAt(tableDSCD.getSelectedRow(), 1).toString().substring(0, 8).trim());
         CongDoan cd = new CongDoan(maCD, tenCD, soLuongCD, donGiaCD, ngayBD, ngayKT, tenCDT, trangThai, sp);
@@ -1599,7 +1531,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                 btnThem.setEnabled(true);
                 modelCD.setRowCount(0);
                 loadDanhSachCongDoan();
-
+                JOptionPane.showMessageDialog(null, "Sửa thông tin công đoạn thành công");
             } else {
                 JOptionPane.showMessageDialog(null, "Sửa thông tin công đoạn không thành công");
             }
@@ -1610,7 +1542,6 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         String maCD = txtMaCD.getText().trim();
         CongDoan congdoan = congdoanDao.getCongDoanTheoMa(maCD);
         if (congdoan != null) {
-
             if (congdoanDao.xoaCongDoan(maCD)) {
                 nhapLai();
                 setTrangThaiTextField();
@@ -1618,6 +1549,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
                 btnThem.setEnabled(true);
                 modelCD.setRowCount(0);
                 loadDanhSachCongDoan();
+                JOptionPane.showMessageDialog(null, "Xóa công đoạn thành công");
             } else {
                 JOptionPane.showMessageDialog(null, "Xóa công đoạn không thành công");
             }
@@ -1713,38 +1645,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
             } else if (cd.getTrangThai() == 3) {
                 trangThai = "Đã thực hiện";
             }
-            // Kiểm tra ngày bắt đầu, ngày kết thúc của công đoạn
-//            Calendar ngayBatDau = Calendar.getInstance();
-//            Calendar ngayKetThuc = Calendar.getInstance();
-//            ngayBatDau.setTime(cd.getNgayBatDau());
-//            ngayKetThuc.setTime(cd.getNgayKetThuc());
-//            Calendar ngayHienTai = Calendar.getInstance();
-//
-//            if (ngayBatDau.get(Calendar.DATE) > ngayHienTai.get(Calendar.DATE)
-//                    && ngayBatDau.get(Calendar.MONTH) > ngayHienTai.get(Calendar.MONTH)
-//                    && ngayBatDau.get(Calendar.YEAR) > ngayHienTai.get(Calendar.YEAR)) {
-//                trangThai = "Chưa thực hiện";
-//            }
-//            if (ngayKetThuc.get(Calendar.DATE) == ngayHienTai.get(Calendar.DATE)
-//                    && ngayKetThuc.get(Calendar.MONTH) == ngayHienTai.get(Calendar.MONTH)
-//                    && ngayKetThuc.get(Calendar.YEAR) == ngayHienTai.get(Calendar.YEAR)) {
-//                trangThai = "Đã thực hiện";
-//            }else {
-//                trangThai = "Đang thực hiện";
-//            }
-//            Calendar ngayBatDau = Calendar.getInstance();
-//            Calendar ngayKetThuc = Calendar.getInstance();
-//            ngayBatDau.setTime(cd.getNgayBatDau());
-//            ngayKetThuc.setTime(cd.getNgayKetThuc());
-//            Calendar ngayHienTai = Calendar.getInstance();
-//
-//            if (ngayBatDau.compareTo(ngayHienTai) > 0) {
-//                trangThai = "Chưa thực hiện";
-//            } else if (ngayBatDau.compareTo(ngayHienTai) < 0 && ngayKetThuc.compareTo(ngayHienTai)<0) {
-//                trangThai = "Đang thực hiện";
-//            } else if(ngayKetThuc.compareTo(ngayHienTai)==0) {
-//                trangThai = "Đã thực hiện";
-//            }
+
             modelCD.addRow(new Object[]{
                 stt, cd.getMaCD(), cd.getTenCD(), cd.getSoLuong(), cd.getDonGia(), cd.getNgayBatDau(), cd.getNgayKetThuc(), cd.getTenCDTruoc(), trangThai
             });

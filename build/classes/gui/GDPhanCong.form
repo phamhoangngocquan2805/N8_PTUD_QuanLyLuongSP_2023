@@ -716,6 +716,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/image/Save.png"/>
                         </Property>
+                        <Property name="mnemonic" type="int" value="116"/>
                         <Property name="label" type="java.lang.String" value="X&#xe1;c nh&#x1ead;n"/>
                       </Properties>
                       <Events>

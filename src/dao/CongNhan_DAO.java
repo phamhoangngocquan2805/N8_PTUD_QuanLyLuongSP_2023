@@ -175,13 +175,14 @@ public class CongNhan_DAO {
         }
         return false;
     }
-    
-    public CongNhan getCongNhanTheoMaVer2(String maCn) {
-        CongNhan cn = null;
+
+    public ArrayList<CongNhan> getAllCongNhanTheoTayNghe(String tayNghe) {
+        ArrayList<CongNhan> dsCongNhan = new ArrayList<CongNhan>();
         try {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
-            String sql = "select * from CongNhan where maCN = " + maCn;
+            String sql = "select * from CongNhan\n"
+                    + "where tayNghe = N'"+tayNghe+"'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
@@ -194,17 +195,18 @@ public class CongNhan_DAO {
                 Boolean tinhTrang = rs.getBoolean(7);
                 Date ngayVaoLam = rs.getDate(8);
                 String hinhAnh = rs.getString(9);
-                String tayNghe = rs.getString(10);
+                String tayNghee = rs.getString(10);
                 String kinhNghiem = rs.getString(11);
                 double tienPhuCapTheoNgay = rs.getFloat(12);
                 double tienChuyenCan = rs.getFloat(13);
                 String ghiChu = rs.getString(14);
-                cn = new CongNhan(maCN, tenCN, phai, ngaySinh, soDT, diaChi, tinhTrang, ngayVaoLam, hinhAnh, tayNghe, kinhNghiem, tienPhuCapTheoNgay, tienChuyenCan, ghiChu);
+                CongNhan cn = new CongNhan(maCN, tenCN, phai, ngaySinh, soDT, diaChi, tinhTrang, ngayVaoLam, hinhAnh, tayNghee, kinhNghiem, tienPhuCapTheoNgay, tienChuyenCan, ghiChu);
+                dsCongNhan.add(cn);
             }
         } catch (SQLException e) {
             // TODO: handle exception
             e.printStackTrace();
         }
-        return cn;
+        return dsCongNhan;
     }
 }
