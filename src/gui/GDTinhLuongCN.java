@@ -175,13 +175,14 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
         jButtonLamMoi = new javax.swing.JButton();
         jButtonTimKiem = new javax.swing.JButton();
 
-        pTinhLuongNV.setBackground(new java.awt.Color(217, 217, 217));
+        pTinhLuongNV.setBackground(new java.awt.Color(255, 255, 255));
         pTinhLuongNV.setPreferredSize(new java.awt.Dimension(958, 735));
 
-        pTittle.setBackground(new java.awt.Color(0, 0, 0));
+        pTittle.setBackground(new java.awt.Color(85, 167, 222));
+        pTittle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(191, 95, 95));
+        jLabel15.setForeground(new java.awt.Color(234, 233, 233));
         jLabel15.setText("TÍNH LƯƠNG CÔNG NHÂN");
 
         javax.swing.GroupLayout pTittleLayout = new javax.swing.GroupLayout(pTittle);
@@ -198,57 +199,47 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        pTongQuan.setBackground(new java.awt.Color(217, 217, 217));
+        pTongQuan.setBackground(new java.awt.Color(255, 255, 255));
+        pTongQuan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(233, 231, 231)));
         pTongQuan.setRequestFocusEnabled(false);
 
-        jPanelThongTinLuong.setBackground(new java.awt.Color(204, 204, 204));
-        jPanelThongTinLuong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin lương công nhân", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
-        jPanelThongTinLuong.setForeground(new java.awt.Color(0, 0, 0));
+        jPanelThongTinLuong.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelThongTinLuong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin lương công nhân", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         jLabelTenCN.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelTenCN.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTenCN.setText("Tên công nhân:");
 
         jTextFieldTenCN.setEditable(false);
         jTextFieldTenCN.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTenCN.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldTenCN.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabelNgayTinhLuong.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelNgayTinhLuong.setForeground(new java.awt.Color(0, 0, 0));
         jLabelNgayTinhLuong.setText("Ngày tính lương:");
 
         jTextFieldNgayTinhLuong.setEditable(false);
         jTextFieldNgayTinhLuong.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldNgayTinhLuong.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldNgayTinhLuong.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabelSoNgayLam.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelSoNgayLam.setForeground(new java.awt.Color(0, 0, 0));
         jLabelSoNgayLam.setText("Số ngày làm:");
 
         jTextFieldSoNgayLam.setEditable(false);
         jTextFieldSoNgayLam.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldSoNgayLam.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldSoNgayLam.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabelSoNgayNghi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelSoNgayNghi.setForeground(new java.awt.Color(0, 0, 0));
         jLabelSoNgayNghi.setText("Số ngày nghỉ:");
 
         jTextFieldSoNgayNghi.setEditable(false);
         jTextFieldSoNgayNghi.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldSoNgayNghi.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldSoNgayNghi.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabelLuongSP.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelLuongSP.setForeground(new java.awt.Color(0, 0, 0));
         jLabelLuongSP.setText("Lương sản phẩm:");
 
         jTextFieldLuongSP.setEditable(false);
         jTextFieldLuongSP.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldLuongSP.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldLuongSP.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldLuongSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldLuongSPActionPerformed(evt);
@@ -258,19 +249,14 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
         jTextFieldTangCa.setEditable(false);
         jTextFieldTangCa.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTangCa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldTangCa.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabelTangCa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelTangCa.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTangCa.setText("Lương tăng ca:");
 
         jLabelTienUng.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelTienUng.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTienUng.setText("Tiền ứng:");
 
-        jTextFieldTienUng.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTienUng.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldTienUng.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTienUng.setText("0");
         jTextFieldTienUng.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -289,39 +275,31 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
         });
 
         jLabelPhuCap.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelPhuCap.setForeground(new java.awt.Color(0, 0, 0));
         jLabelPhuCap.setText("Phụ cấp:");
 
         jTextFieldPhuCap.setEditable(false);
         jTextFieldPhuCap.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldPhuCap.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldPhuCap.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabelChuyenCan.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelChuyenCan.setForeground(new java.awt.Color(0, 0, 0));
         jLabelChuyenCan.setText("Chuyên cần:");
 
         jTextFieldChuyenCan.setEditable(false);
         jTextFieldChuyenCan.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldChuyenCan.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldChuyenCan.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabelBHXH.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelBHXH.setForeground(new java.awt.Color(0, 0, 0));
         jLabelBHXH.setText("BHXH:");
 
         jTextFieldBHXH.setEditable(false);
         jTextFieldBHXH.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldBHXH.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldBHXH.setForeground(new java.awt.Color(0, 0, 0));
 
         jTextFieldThucLanh.setEditable(false);
         jTextFieldThucLanh.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldThucLanh.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldThucLanh.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabelThucLanh.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelThucLanh.setForeground(new java.awt.Color(0, 0, 0));
         jLabelThucLanh.setText("Thực lãnh:");
 
         javax.swing.GroupLayout jPanelThongTinLuongLayout = new javax.swing.GroupLayout(jPanelThongTinLuong);
@@ -433,13 +411,11 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
         );
 
         jPanelDSCN.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDSCN.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách công nhân", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
-        jPanelDSCN.setForeground(new java.awt.Color(0, 0, 0));
+        jPanelDSCN.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách công nhân", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         jTableCN.setBackground(new java.awt.Color(204, 204, 204));
         jTableCN.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTableCN.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTableCN.setForeground(new java.awt.Color(0, 0, 0));
         jTableCN.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -534,8 +510,6 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
         );
 
         jPanelLuong.setBackground(new java.awt.Color(204, 204, 204));
-        jPanelLuong.setBorder(null);
-        jPanelLuong.setForeground(new java.awt.Color(0, 0, 0));
 
         jTableBangLuong.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jTableBangLuong.setModel(new javax.swing.table.DefaultTableModel(
@@ -570,7 +544,6 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
 
         jTableBangChamCong.setBackground(new java.awt.Color(204, 204, 204));
         jTableBangChamCong.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTableBangChamCong.setForeground(new java.awt.Color(0, 0, 0));
         jTableBangChamCong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -643,7 +616,7 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButtonTinhLuong.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonTinhLuong.setBackground(new java.awt.Color(85, 167, 222));
         jButtonTinhLuong.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jButtonTinhLuong.setForeground(new java.awt.Color(255, 255, 255));
         jButtonTinhLuong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/calculator-solid.png"))); // NOI18N
@@ -655,7 +628,7 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
             }
         });
 
-        jButtonPDF.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonPDF.setBackground(new java.awt.Color(85, 167, 222));
         jButtonPDF.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jButtonPDF.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/file-regular.png"))); // NOI18N
@@ -683,11 +656,9 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
         });
 
         jLabelThang.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabelThang.setForeground(new java.awt.Color(0, 0, 0));
         jLabelThang.setText("Tháng:");
 
         jLabelNam.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabelNam.setForeground(new java.awt.Color(0, 0, 0));
         jLabelNam.setText("Năm:");
 
         jComboBoxNam.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -702,12 +673,10 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm công nhân", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Tìm kiếm công nhân"));
 
-        jTextFieldTimKiem.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTimKiem.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextFieldTimKiem.setForeground(new java.awt.Color(0, 0, 0));
         jTextFieldTimKiem.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldTimKiemFocusLost(evt);
@@ -725,10 +694,9 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
         });
 
         jLabelTimKiem.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabelTimKiem.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTimKiem.setText("Tìm kiếm:");
 
-        jButtonLamMoi.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonLamMoi.setBackground(new java.awt.Color(85, 167, 222));
         jButtonLamMoi.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jButtonLamMoi.setForeground(new java.awt.Color(255, 255, 255));
         jButtonLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/arrows-rotate-solid.png"))); // NOI18N
@@ -740,7 +708,7 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
             }
         });
 
-        jButtonTimKiem.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonTimKiem.setBackground(new java.awt.Color(85, 167, 222));
         jButtonTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/magnifying-glass-solid.png"))); // NOI18N
         jButtonTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -848,7 +816,7 @@ public class GDTinhLuongCN extends javax.swing.JPanel {
                 .addComponent(pTittle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pTongQuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
