@@ -666,7 +666,8 @@ public class GDQLSanPham extends javax.swing.JPanel {
         dialog.setLayout(new BorderLayout());
         dialog.add(new JScrollPane(table), BorderLayout.CENTER);
         dialog.add(selectButton, BorderLayout.SOUTH);
-        dialog.setSize(200, 200);
+        dialog.setSize(600, 200);
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
 
         selectButton.addActionListener(new ActionListener() {
