@@ -981,7 +981,6 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                 btnKetThucCC.setText("<html><center>Lưu<br>chấm công</center></html>");
                 btnBatDauCC.setText("<html><center>Hủy<br>chấm công</center></html>");
                 // Lấy TableColumnModel của JTable
-                
 
                 modelKTCC.addTableModelListener(new TableModelListener() {
                     @Override
@@ -1061,7 +1060,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                         bangCCCN_Dao.createBangChamCongCongNhan(ccCNTC);
                         ctcc = new ChiTietBangChamCong(Integer.valueOf(modelKTCC.getValueAt(i, 7).toString()), phanCong_Dao.getBangPhanCongTheoMa(modelKTCC.getValueAt(i, 8).toString()), ccCNTC);
                         ctBangCC_Dao.createChiTietBangChamCong(ctcc);
-                        testCCTC = true;
+                        test = 1;
                     } else if (!TC) {
                         bangCCCN_Dao.updateBangChamCongCongNhan(ccCN);
                         ctcc = new ChiTietBangChamCong(Integer.valueOf(modelKTCC.getValueAt(i, 7).toString()), phanCong_Dao.getBangPhanCongTheoMa(modelKTCC.getValueAt(i, 8).toString()), ccCN);
@@ -1075,12 +1074,12 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                 }
             }
 
-            if (!testCCTC) {
-                lbThongBao.setText("Chưa chọn công nhân!");
-                return;
-            } else {
-                test = 1;
-            }
+//            if (!testCCTC) {
+//                lbThongBao.setText("Chưa chọn công nhân!");
+//                return;
+//            } else {
+//                test = 1;
+//            }
             if (test == 1) {
                 btnKetThucCC.setText("Chấm công");
                 lbThongBao.setText("chấm công thành công");
@@ -1477,23 +1476,23 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
         }
         TableColumnModel columnModel = tableDanhSachPC.getColumnModel();
 
-                // Ẩn cột ở vị trí cột thứ 8 (Mã PC)
-                int columnIndexToHide = 8;
-                TableColumn column = columnModel.getColumn(columnIndexToHide);
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-                column.setWidth(0);
-                column.setPreferredWidth(0);
-                column.setResizable(false);
+        // Ẩn cột ở vị trí cột thứ 8 (Mã PC)
+        int columnIndexToHide = 8;
+        TableColumn column = columnModel.getColumn(columnIndexToHide);
+        column.setMinWidth(0);
+        column.setMaxWidth(0);
+        column.setWidth(0);
+        column.setPreferredWidth(0);
+        column.setResizable(false);
 
-                // Ẩn cột ở vị trí cột thứ 9 (Mã CC)
-                int columnIndexToHide9 = 9;
-                TableColumn column9 = columnModel.getColumn(columnIndexToHide9);
-                column9.setMinWidth(0);
-                column9.setMaxWidth(0);
-                column9.setWidth(0);
-                column9.setPreferredWidth(0);
-                column9.setResizable(false);
+        // Ẩn cột ở vị trí cột thứ 9 (Mã CC)
+        int columnIndexToHide9 = 9;
+        TableColumn column9 = columnModel.getColumn(columnIndexToHide9);
+        column9.setMinWidth(0);
+        column9.setMaxWidth(0);
+        column9.setWidth(0);
+        column9.setPreferredWidth(0);
+        column9.setResizable(false);
         return true;
     }
 

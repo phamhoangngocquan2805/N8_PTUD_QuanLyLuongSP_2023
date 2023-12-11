@@ -386,7 +386,7 @@ public class GDLogin extends javax.swing.JFrame {
             }
         });
 
-        jButtonQuenMatKhau.setBackground(new java.awt.Color(191, 95, 95));
+        jButtonQuenMatKhau.setBackground(new java.awt.Color(85, 167, 222));
         jButtonQuenMatKhau.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonQuenMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         jButtonQuenMatKhau.setMnemonic('F');
