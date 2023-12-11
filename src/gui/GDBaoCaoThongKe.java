@@ -23,10 +23,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.AbstractMap;
@@ -42,6 +45,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.Timer;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -54,14 +58,18 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jdesktop.animation.timing.Animator;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.GroupedStackedBarRenderer;
 import org.jfree.data.KeyToGroupMap;
+import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
@@ -229,12 +237,12 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 153));
 
-        jLabelTongBHXH.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabelTongBHXH.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabelTongBHXH.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTongBHXH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTongBHXH.setText("Tiền chi BHXH");
 
-        jLabelTongChiBHXH.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabelTongChiBHXH.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabelTongChiBHXH.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTongChiBHXH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -243,14 +251,10 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabelTongBHXH, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(jLabelTongBHXH, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(5, 5, 5)
-                    .addComponent(jLabelTongChiBHXH, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jLabelTongChiBHXH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,12 +271,12 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
 
-        jLabelTongChi.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabelTongChi.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabelTongChi.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTongChi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTongChi.setText("Tổng lương");
 
-        jLabelTongTL.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabelTongTL.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabelTongTL.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTongTL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -281,12 +285,12 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabelTongChi, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelTongTL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTongTL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabelTongChi, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -301,7 +305,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder("Chi tiết tổng lương từng tháng"));
 
-        jTableTongLuongCTy.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jTableTongLuongCTy.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTableTongLuongCTy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -336,14 +340,14 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                 .addContainerGap(189, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 480, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
@@ -358,15 +362,14 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                     .addComponent(jButtonTKeTL)
                     .addComponent(jButtonXuatExcelBangLuong))
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Thống kê tiền lương", jPanel1);
@@ -446,7 +449,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                     .addComponent(jLabelCongDoan)
                     .addComponent(jComboBoxCongDoanCN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
         );
 
         jLabelTKeSLNam.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -533,9 +536,9 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                     .addComponent(jButtonXuatExcelSanLuong))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(216, 216, 216))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(185, 185, 185))
         );
 
         jTabbedPane1.addTab("Thống kê sản lượng", jPanel5);
@@ -551,8 +554,8 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         pTongQuanLayout.setVerticalGroup(
             pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pTongQuanLayout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pBaoCaoThongKeLayout = new javax.swing.GroupLayout(pBaoCaoThongKe);
@@ -580,9 +583,9 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 697, Short.MAX_VALUE)
+            .addGap(0, 705, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pBaoCaoThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE))
+                .addComponent(pBaoCaoThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -590,10 +593,14 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         // TODO add your handling code here:
         dsChiTietTKeTL = new Double[thangs.length];
         dsChiTietTKeBHXH = new Double[thangs.length];
+        dsChiTietTKeTLNV = new Double[thangs.length];
+        dsChiTietTKeTLCN = new Double[thangs.length];
         int count = 0;
         for (String m : thangs) {
             dsChiTietTKeTL[count] = 0.0;
             dsChiTietTKeBHXH[count] = 0.0;
+            dsChiTietTKeTLCN[count] = 0.0;
+            dsChiTietTKeTLNV[count] = 0.0;
             count++;
         }
         createBarChartLuong();
@@ -649,6 +656,12 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
 
     private void jButtonThongKeSLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThongKeSLActionPerformed
         // TODO add your handling code here:
+        dsChiTietTKeSL = new Double[thangs.length];
+        int count = 0;
+        for (String m : thangs) {
+            dsChiTietTKeSL[count] = 0.0;
+            count++;
+        }
         createBarChartSanLuong();
     }//GEN-LAST:event_jButtonThongKeSLActionPerformed
 
@@ -1088,7 +1101,6 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
         double tongTL = 0, tongChiBHXH = 0;
         ArrayList<BangLuongNhanVien> dsBangLuongNV = bangLuongNhanVien_DAO.getAllBangLuongNhanVien();
         ArrayList<BangLuongCongNhan> dsBangLuongCN = bangLuongCongNhan_DAO.getAllBangLuongCongNhan();
-
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (BangLuongNhanVien bangLuong : dsBangLuongNV) {
             //Vị trí trong arr thangs
@@ -1096,7 +1108,21 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
             if (m != -1) {
                 dsChiTietTKeTL[m] += bangLuong.getThucLanh();
                 dsChiTietTKeBHXH[m] += bangLuong.getBaoHiemXaHoi();
-                dataset.addValue(bangLuong.getThucLanh(), "Lương NV", "Tháng " + thangs[m]);
+                dsChiTietTKeTLNV[m] += bangLuong.getThucLanh();
+//                int index = dataset.getColumnIndex("Lương NV");
+//                int row = dataset.getRowIndex("Tháng " + thangs[m]);
+//                System.out.println("index: " + index + "-row: " + row);
+//                if (row == -1) {
+//                    System.out.println("ko tim thay - chua co");
+//                    row = dataset.getRowCount();
+//                    System.out.println(row);
+//                    dataset.addValue(0, "Lương NV", "Tháng " + thangs[m]);
+//                } else {
+//                    System.out.println("tim thay");
+//                    double oldValue = dataset.getValue(row, index).doubleValue();
+//                    System.out.println(oldValue + "");
+
+//                }
             }
         }
 
@@ -1106,8 +1132,12 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
             if (m != -1) {
                 dsChiTietTKeTL[m] += bangLuong.getThucLanh();
                 dsChiTietTKeBHXH[m] += bangLuong.getBaoHiemXaHoi();
-                dataset.addValue(bangLuong.getThucLanh(), "Lương CN", "Tháng " + thangs[m]);
+                dsChiTietTKeTLCN[m] += bangLuong.getThucLanh();
             }
+        }
+        for (int i = 0; i < dsChiTietTKeTLNV.length; i++) {
+            dataset.addValue(dsChiTietTKeTLNV[i], "Lương NV", "T" + thangs[i]);
+            dataset.addValue(dsChiTietTKeTLCN[i], "Lương CN", "T" + thangs[i]);
         }
 
         // Create chart
@@ -1122,6 +1152,21 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                 false
         );
         CategoryPlot plot = chart.getCategoryPlot();
+        NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+        rangeAxis.setNumberFormatOverride(new DecimalFormat("#"));
+//        BarRenderer renderer = (BarRenderer) plot.getRenderer();
+//        DecimalFormat df = new DecimalFormat("#,###.##");
+//        renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator("{0}", df) {
+//            public String generateLabel(CategoryDataset dataset, int row, int column) {
+//                String label = super.generateLabel(dataset, row, column);
+//                if (label.equals("0")) {
+//                    return "";
+//                } else {
+//                    return label;
+//                }
+//            }
+//        });
+//        renderer.setBaseItemLabelsVisible(true);
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setMaximumSize(jPanel4.getPreferredSize());
         jPanel4.removeAll();
@@ -1140,6 +1185,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
             modelBangLuong.addRow(arr);
             tongTL += dsChiTietTKeTL[i];
             tongChiBHXH += dsChiTietTKeBHXH[i];
+
         }
         jLabelTongTL.setText(numberFormat.format(tongTL) + "đ");
         jLabelTongChiBHXH.setText(numberFormat.format(tongChiBHXH) + "đ");
@@ -1167,13 +1213,18 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                         Object[] obj = {maCN, ct};
                         chiTietSLCN.add(obj);
                         dsTopCongNhan.put(maCN + "-" + tenCD, dsTopCongNhan.getOrDefault(maCN, 0) + ct.getSoLuong());
-                        dataset.addValue(ct.getSoLuong(), "Sản lượng", "Tháng " + thangs[m]);
+
+                        dsChiTietTKeSL[m] += ct.getSoLuong();
                         dsChiTietChamCong.remove(ct);
                         i--;
                     }
 
                 }
             }
+        }
+
+        for (int i = 0; i < dsChiTietTKeSL.length; i++) {
+            dataset.addValue(dsChiTietTKeSL[i], "Sản lượng", "T" + thangs[i]);
         }
         jComboBoxCongDoanCN.removeAllItems();
         for (String cd : dsCongDoan) {
@@ -1188,9 +1239,14 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                 "Thống kê sản luọng công ty TNHH May mặc Thịnh Vượng", // Chart title
                 "Tháng", // Domain axis label
                 "Sản lượng", // Range axis label
-                dataset // Data
+                dataset //Data
         );
         CategoryPlot plot = chart.getCategoryPlot();
+        NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+        rangeAxis.setNumberFormatOverride(new DecimalFormat("#"));
+        BarRenderer renderer = (BarRenderer) plot.getRenderer();
+        renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+        renderer.setBaseItemLabelsVisible(true);
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setMaximumSize(jPanel6.getPreferredSize());
         jPanel6.removeAll();
@@ -1356,6 +1412,9 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
     private ArrayList<SanPham> dsSanPham;
     private Map<String, Integer> dsTopCongNhan;
     private Double[] dsChiTietTKeTL;
+    private Double[] dsChiTietTKeTLNV;
+    private Double[] dsChiTietTKeTLCN;
+    private Double[] dsChiTietTKeSL;
     private Double[] dsChiTietTKeBHXH;
     private ArrayList<Object[]> chiTietSLCN;
     private DefaultTableModel modelCN;
@@ -1365,4 +1424,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
     private DateTimeFormatter dateTimeFormatter;
     private DefaultTableModel modelBangLuong;
     private ArrayList<String> dsCongDoan;
+//    private static final int DELAY = 1000; // in milliseconds
+//    private static final int MAX_VALUE = 140000000; // maximum value for the bar chart
+//    private static int currentValue = 0;
 }
