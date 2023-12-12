@@ -197,7 +197,6 @@ public class BangChamCongCongNhan_DAO {
         }
         return dsCtCC;
     }
-    
     public BangChamCongCongNhan getBangChamCongCongNhanTheoMaVer2(String maBangChamCongCongNhan) {
         BangChamCongCongNhan bcc = new BangChamCongCongNhan();
         try {

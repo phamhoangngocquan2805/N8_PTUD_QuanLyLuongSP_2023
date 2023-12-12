@@ -209,7 +209,6 @@ public class CongNhan_DAO {
         }
         return dsCongNhan;
     }
-    
     public CongNhan getCongNhanTheoMaVer2(String maCn) {
         CongNhan cn = null;
         try {
