@@ -8,6 +8,7 @@ import connectDB.ConnectDB;
 import entity.NhanVienHanhChinh;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -86,7 +88,7 @@ public class GDChinh extends javax.swing.JFrame {
 
                 String tl = LocalDateTime.now().toString();
                 jLabel12.setText("Ngày " + tl.substring(8, 10) + " tháng " + tl.substring(5, 7) + " năm " + tl.substring(0, 4));
-                jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource(nvLog.getHinhAnh())));
+                lblHinhNV.setIcon(resizeImage(getClass().getResource(nvLog.getHinhAnh()).getPath()));
                 jLabel14.setText(nvLog.getHoTen());
                 lblChucVu.setText(nvLog.getChucVu());
                 
@@ -123,7 +125,15 @@ public class GDChinh extends javax.swing.JFrame {
     public void icon() {
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/image/logo.png")));
     }
-
+    // resize hình theo kích thước label
+    public ImageIcon resizeImage(String imagePath) {
+        ImageIcon myImage = new ImageIcon(imagePath);
+        Image img = myImage.getImage();
+        Image newImg = img.getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(newImg);
+        return image;
+    }
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -147,7 +157,7 @@ public class GDChinh extends javax.swing.JFrame {
         pMenu = new javax.swing.JPanel();
         pNhanVien = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lblHinhNV = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         lblChucVu = new javax.swing.JLabel();
         pListMenu = new javax.swing.JPanel();
@@ -270,8 +280,8 @@ public class GDChinh extends javax.swing.JFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Ngày tháng năm");
 
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user_60px.png"))); // NOI18N
+        lblHinhNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHinhNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user_60px.png"))); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -287,21 +297,21 @@ public class GDChinh extends javax.swing.JFrame {
         pNhanVien.setLayout(pNhanVienLayout);
         pNhanVienLayout.setHorizontalGroup(
             pNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pNhanVienLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(pNhanVienLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblChucVu, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addComponent(lblHinhNV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pNhanVienLayout.setVerticalGroup(
             pNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pNhanVienLayout.createSequentialGroup()
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblHinhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -955,7 +965,6 @@ public class GDChinh extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -965,6 +974,7 @@ public class GDChinh extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTroGiup;
     private javax.swing.JLabel lblBaoCao;
     private javax.swing.JLabel lblChucVu;
+    private javax.swing.JLabel lblHinhNV;
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblPhanCong;
     private javax.swing.JLabel lblQLChamCong;

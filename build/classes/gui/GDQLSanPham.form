@@ -123,12 +123,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtTimKiemMa" min="-2" pref="181" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnTim" min="-2" pref="34" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="337" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnReload" min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
                           <Component id="pDanhSachSP" min="-2" max="-2" attributes="0"/>
@@ -147,13 +148,19 @@
                           <Component id="pChiTietSP" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnReload" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="txtTimKiemMa" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnTim" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="btnReload" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtTimKiemMa" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
+                                          <Component id="btnTim" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="8" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="pDanhSachSP" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -752,7 +759,15 @@
               </SubComponents>
             </Container>
             <Component class="javax.swing.JTextField" name="txtTimKiemMa">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Nh&#x1ead;p m&#xe3; s&#x1ea3;n ph&#x1ea9;m c&#x1ea7;n t&#xec;m..."/>
+              </Properties>
               <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTimKiemMaFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTimKiemMaFocusLost"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTimKiemMaActionPerformed"/>
               </Events>
             </Component>
@@ -768,6 +783,9 @@
                   <Image iconType="3" name="/image/reset.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReloadActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnTim">
               <Properties>

@@ -11,6 +11,7 @@ import entity.CongDoan;
 import entity.HopDong;
 import entity.SanPham;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -444,6 +445,16 @@ public class GDQLSanPham extends javax.swing.JPanel {
                     .addComponent(btnNhapLai, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        txtTimKiemMa.setForeground(new java.awt.Color(204, 204, 204));
+        txtTimKiemMa.setText("Nhập mã sản phẩm cần tìm...");
+        txtTimKiemMa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTimKiemMaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTimKiemMaFocusLost(evt);
+            }
+        });
         txtTimKiemMa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTimKiemMaActionPerformed(evt);
@@ -453,6 +464,11 @@ public class GDQLSanPham extends javax.swing.JPanel {
         btnReload.setBackground(new java.awt.Color(85, 167, 222));
         btnReload.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/reset.png"))); // NOI18N
+        btnReload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReloadActionPerformed(evt);
+            }
+        });
 
         btnTim.setBackground(new java.awt.Color(169, 203, 225));
         btnTim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/find.png"))); // NOI18N
@@ -467,12 +483,13 @@ public class GDQLSanPham extends javax.swing.JPanel {
         pTongQuanLayout.setHorizontalGroup(
             pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pTongQuanLayout.createSequentialGroup()
-                .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(pTongQuanLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(txtTimKiemMa, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnTim, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(337, 337, 337)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnReload, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pDanhSachSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -487,11 +504,15 @@ public class GDQLSanPham extends javax.swing.JPanel {
                     .addComponent(pChiTietSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pTongQuanLayout.createSequentialGroup()
                         .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnReload, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtTimKiemMa, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnTim, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                            .addGroup(pTongQuanLayout.createSequentialGroup()
+                                .addComponent(btnReload, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 2, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTongQuanLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTimKiemMa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnTim, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pDanhSachSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -606,7 +627,7 @@ public class GDQLSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     private void txtTimKiemMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemMaActionPerformed
-        // TODO add your handling code here:
+       btnTim.doClick();
     }//GEN-LAST:event_txtTimKiemMaActionPerformed
 
     private void jtableSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableSanPhamMouseClicked
@@ -680,19 +701,7 @@ public class GDQLSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btnReloadActionPerformed
 
     private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
-        // TODO add your handling code here:
-        String maSP = txtTimKiemMa.getText().trim();
-        if (maSP.equalsIgnoreCase("")) {
-//            JOptionPane.
-        } else {
-            modelSP.setRowCount(0);
-            SanPham sp = sanpham_DAO.getSanPhamTheoMa(txtTimKiemMa.getText().trim());
-            int stt = 1;
-            modelSP.addRow(new Object[]{
-                stt, sp.getMaSP(), sp.getTenSP(), sp.getSoLuong(), sp.getDonViTinh(), sp.getDonGia(), sp.getThongTin(), sp.getSoCongDoan(), sp.getChatLieu(), sp.getHopDong().getTenHD()
-            });
-            clearTextField();
-        }
+
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
 
     private void jtableSanPhamKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtableSanPhamKeyReleased
@@ -702,7 +711,40 @@ public class GDQLSanPham extends javax.swing.JPanel {
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
         // TODO add your handling code here:
+        String maSP = txtTimKiemMa.getText().trim();
+        if (maSP.equals("Nhập mã sản phẩm cần tìm...")) {
+            JOptionPane.showMessageDialog(null, "Vui long nhập mã sản phẩm đề tìm");
+        } else {
+            modelSP.setRowCount(0);
+            SanPham sp = sanpham_DAO.getSanPhamTheoMa(maSP);
+            int stt = 1;
+            if (sp != null) {
+                modelSP.addRow(new Object[]{
+                    stt, sp.getMaSP(), sp.getTenSP(), sp.getSoLuong(), sp.getDonViTinh(), sp.getDonGia(), sp.getThongTin(), sp.getSoCongDoan(), sp.getChatLieu(), sp.getHopDong().getTenHD()
+                });
+                clearTextField();
+            }else {
+                JOptionPane.showMessageDialog(null, "Không tìm thấy sản phẩm"  );
+            }
+
+            
+        }
     }//GEN-LAST:event_btnTimActionPerformed
+
+    private void txtTimKiemMaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemMaFocusGained
+        txtTimKiemMa.setText("");
+        txtTimKiemMa.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txtTimKiemMaFocusGained
+
+    private void txtTimKiemMaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemMaFocusLost
+        if (txtTimKiemMa.getText().equals("")) {
+            txtTimKiemMa.setText("Nhập mã sản phẩm cần tìm...");
+            txtTimKiemMa.setForeground(new Color(204, 204, 204));
+        } else {
+            txtTimKiemMa.setForeground(Color.BLACK);
+        }
+        
+    }//GEN-LAST:event_txtTimKiemMaFocusLost
 
     private void loadDanhSachSanPham() {
         sanpham_DAO = new SanPham_DAO();
