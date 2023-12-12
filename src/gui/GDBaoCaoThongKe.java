@@ -9,6 +9,7 @@ import dao.BangLuongCongNhan_DAO;
 import dao.BangLuongNhanVien_DAO;
 import dao.BangPhanCong_DAO;
 import dao.ChiTietBangChamCong_DAO;
+import dao.CongNhan_DAO;
 import dao.HopDong_DAO;
 import dao.SanPham_DAO;
 import entity.BangChamCongCongNhan;
@@ -1274,12 +1275,14 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
                 return false;
             }
         };
-        modelCN.addColumn("Công nhân");
+        modelCN.addColumn("Mã");
+        modelCN.addColumn("Họ tên");
         modelCN.addColumn("Tổng sản phẩm");
         jTableTopCN.setModel(modelCN);
     }
 
     public void resertTableCN(Map<String, Integer> dsTopCongNhan) {
+        CongNhan_DAO cndao = new CongNhan_DAO();
         modelCN.setRowCount(0);
         Map<String, Integer> sortedMap = new TreeMap<>(new Comparator<String>() {
             @Override
@@ -1295,7 +1298,7 @@ public class GDBaoCaoThongKe extends javax.swing.JPanel {
             if (jComboBoxCongDoanCN.getSelectedItem() != null) {
                 if (key.substring(7).equals(jComboBoxCongDoanCN.getSelectedItem().toString())) {
                     Integer value = entry.getValue();
-                    Object[] obj = {key.substring(0, 6), value};
+                    Object[] obj = {key.substring(0, 6),cndao.getCongNhanTheoMaVer2(key.substring(0, 6)).getHoTen(), value};
                     modelCN.addRow(obj);
                 }
             }

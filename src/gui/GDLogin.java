@@ -46,7 +46,7 @@ public class GDLogin extends javax.swing.JFrame {
     public GDLogin() {
 
         initComponents();
-
+        this.setTitle("Chương trình quản lý lương của công ty Thịnh Vượng.");
         icon();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(3);
@@ -397,14 +397,14 @@ public class GDLogin extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldTenTK.setText("tho");
+        jTextFieldTenTK.setText("quan");
         jTextFieldTenTK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTenTKActionPerformed(evt);
             }
         });
 
-        jPasswordFieldMatKhau.setText("tho");
+        jPasswordFieldMatKhau.setText("1111");
         jPasswordFieldMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPasswordFieldMatKhauMousePressed(evt);
@@ -791,7 +791,7 @@ public class GDLogin extends javax.swing.JFrame {
 
     private void jPasswordFieldMatKhauMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldMatKhauMousePressed
         // TODO add your handling code here:
-        jPasswordFieldMatKhau.setEchoChar((char)0);
+        jPasswordFieldMatKhau.setEchoChar((char) 0);
     }//GEN-LAST:event_jPasswordFieldMatKhauMousePressed
 
     private void jPasswordFieldMatKhauMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldMatKhauMouseReleased
@@ -801,7 +801,7 @@ public class GDLogin extends javax.swing.JFrame {
 
     private void jPasswordFieldMKMoiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldMKMoiMousePressed
         // TODO add your handling code here:
-        jPasswordFieldMKMoi.setEchoChar((char)0);
+        jPasswordFieldMKMoi.setEchoChar((char) 0);
     }//GEN-LAST:event_jPasswordFieldMKMoiMousePressed
 
     private void jPasswordFieldMKMoiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldMKMoiMouseReleased
@@ -811,7 +811,7 @@ public class GDLogin extends javax.swing.JFrame {
 
     private void jPasswordFieldXacNhanMKMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldXacNhanMKMousePressed
         // TODO add your handling code here:
-        jPasswordFieldXacNhanMK.setEchoChar((char)0);
+        jPasswordFieldXacNhanMK.setEchoChar((char) 0);
     }//GEN-LAST:event_jPasswordFieldXacNhanMKMousePressed
 
     private void jPasswordFieldXacNhanMKMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldXacNhanMKMouseReleased
