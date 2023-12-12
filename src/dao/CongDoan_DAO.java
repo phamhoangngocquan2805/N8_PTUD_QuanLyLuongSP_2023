@@ -163,7 +163,7 @@ public class CongDoan_DAO {
         ArrayList<CongDoan> ketQua = new ArrayList<>();
 
         for (CongDoan x : dsCongDoan) {
-            if (x.getNgayBatDau()!= null && x.getNgayBatDau().compareTo(ngayBD) == 0) {
+            if (x.getNgayBatDau() != null && x.getNgayBatDau().compareTo(ngayBD) == 0) {
                 ketQua.add(x);
             }
         }
@@ -213,13 +213,14 @@ public class CongDoan_DAO {
         }
         return dsCongDoan;
     }
-public ArrayList<CongDoan> getAllCongDoanTheoTenCD(String congDoan) {
+
+    public ArrayList<CongDoan> getAllCongDoanTheoTenCD(String congDoan) {
         ArrayList<CongDoan> dsCongDoan = new ArrayList<CongDoan>();
         try {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
             String sql = "select * from CongDoan\n"
-                    + "where tenCD = N'"+congDoan+"'";
+                    + "where tenCD = N'" + congDoan + "'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
@@ -242,5 +243,34 @@ public ArrayList<CongDoan> getAllCongDoanTheoTenCD(String congDoan) {
             e.printStackTrace();
         }
         return dsCongDoan;
+    }
+
+    public CongDoan getCongDoanTheoMaVer2(String maCd) {
+        CongDoan cd = null;
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from CongDoan where maCD = " + maCd;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maCD = rs.getString(1);
+                String tenCD = rs.getString(2);
+                int soLuong = rs.getInt(3);
+                double donGia = rs.getFloat(4);
+                Date ngayBatDau = rs.getDate(5);
+                Date ngayKetThuc = rs.getDate(6);
+                String tenCDTruoc = rs.getString(7);
+                int trangThai = rs.getInt(8);
+                SanPham_DAO spdao = new SanPham_DAO();
+                SanPham sp = spdao.getSanPhamTheoMa(rs.getString(9));
+
+                cd = new CongDoan(maCD, tenCD, soLuong, donGia, ngayBatDau, ngayKetThuc, tenCDTruoc, trangThai, sp);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return cd;
     }
 }

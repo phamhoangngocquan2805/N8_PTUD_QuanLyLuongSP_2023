@@ -21,7 +21,7 @@ public class App_TinhLuongThinhVuong extends JFrame {
         label = new JLabel();
 
         // Táº¡o má»™t biá»ƒu tÆ°á»£ng má»›i vá»›i hÃ¬nh áº£nh cá»§a báº¡n
-		ImageIcon hinhgt= new ImageIcon("/image/login.png");
+		ImageIcon hinhgt= new ImageIcon(getClass().getResource("/image/login.jpg"));
 		Image image = hinhgt.getImage();
 		Image newImage = image.getScaledInstance(400, 400, java.awt.Image.SCALE_SMOOTH);
 		hinhgt = new ImageIcon(newImage);

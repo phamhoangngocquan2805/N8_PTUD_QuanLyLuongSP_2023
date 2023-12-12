@@ -9,6 +9,7 @@ import entity.BangChamCongNhanVien;
 import entity.CongDoan;
 import entity.CongNhan;
 import entity.NhanVienHanhChinh;
+import entity.PhongBan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -216,5 +217,34 @@ public class BangChamCongNhanVien_DAO {
             e.printStackTrace();
         }
         return dsBangChamCongNhanVien;
+    }
+    
+   // return bảng chấm công theo mã bảng cc
+    public ArrayList<BangChamCongNhanVien> getBangCCByMaBCC(String maBCC) {
+        ArrayList<BangChamCongNhanVien> bangChamCong = new ArrayList<BangChamCongNhanVien>();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from BangChamCongNhanVien where maBangChamCong = ?";
+            PreparedStatement preStmt = con.prepareStatement(sql);
+            preStmt.setString(1, maBCC);
+            ResultSet rs = preStmt.executeQuery();
+            while (rs.next()) {
+                String maBangChamCong = rs.getString(1);
+                LocalTime gioVao = rs.getTime(2).toLocalTime();
+                LocalTime gioRa = rs.getTime(3).toLocalTime();
+                LocalDateTime ngayChamCong = rs.getTimestamp(4).toLocalDateTime();
+                String caLamViec = rs.getString(5);
+                NhanVienHanhChinh_DAO nvdao = new NhanVienHanhChinh_DAO();
+                NhanVienHanhChinh nv = nvdao.getNhanVienTheoMa(rs.getString(6));
+
+                BangChamCongNhanVien bcc = new BangChamCongNhanVien(maBangChamCong, gioVao, gioRa, ngayChamCong, caLamViec, nv);
+                bangChamCong.add(bcc);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return bangChamCong;
     }
 }
