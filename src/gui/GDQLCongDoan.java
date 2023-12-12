@@ -1111,6 +1111,7 @@ public class GDQLCongDoan extends javax.swing.JPanel {
 
         Object o = evt.getSource();
         if (o.equals(btnLuu)) {
+            soLuongDaThem = tableDSCD.getRowCount();
             if (btnThem.getText().equalsIgnoreCase("Hủy")) {
                 String soLuongText = txtSoCD.getText().trim();
                 int soLuongCanThem = Integer.parseInt(soLuongText);
@@ -1371,8 +1372,9 @@ public class GDQLCongDoan extends javax.swing.JPanel {
         try {
             ArrayList<CongDoan> danhSachCongDoan = congdoanDao.getAllCongDoanTheoMaSP(cbbMaSP.getSelectedItem().toString().substring(0, 8));
 
-            String currentSoLuongCD = txtSLCD.getText().trim();
+            String currentSoLuongCD = txtSLCD.getText().trim().replace(".0", "");
             String currentSoLuong = txtSoLuong.getText().trim();
+//            JOptionPane.showMessageDialog(null, currentSoLuongCD);
             String currentDonGiaCD = txtDonGiaCD.getText().trim();
             String currentDonGiaSP = txtDonGia.getText().trim();
 
@@ -1462,7 +1464,8 @@ public class GDQLCongDoan extends javax.swing.JPanel {
     public boolean addCongDoan() {
         String maCD = txtMaCD.getText().trim();
         String tenCD = cbbTenCD.getSelectedItem().toString();
-        int soLuongCD = Integer.parseInt(txtSLCD.getText().toString().trim());
+        int soLuongCD = Integer.parseInt(txtSLCD.getText().toString().replace(".0", "").trim());
+//        JOptionPane.showMessageDialog(null, soLuongCD+"");
         double donGiaCD = Double.parseDouble(txtDonGiaCD.getText());
         Date ngayBD = new Date(this.ngayBD.getDate().getYear(), this.ngayBD.getDate().getMonth(), this.ngayBD.getDate().getDate());
         Date ngayKT = new Date(this.ngayKT.getDate().getYear(), this.ngayKT.getDate().getMonth(), this.ngayKT.getDate().getDate());
