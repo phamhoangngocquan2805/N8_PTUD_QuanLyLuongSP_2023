@@ -397,7 +397,7 @@ public class GDLogin extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldTenTK.setText("quan");
+        jTextFieldTenTK.setText("thinh");
         jTextFieldTenTK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTenTKActionPerformed(evt);

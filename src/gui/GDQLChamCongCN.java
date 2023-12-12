@@ -531,9 +531,9 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             pnLocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnLocLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbbTayNghe, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbbCD, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbbTayNghe, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbbCD, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbbSP, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -812,8 +812,8 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                 return;
             }
             int stt = 1;
-            for (BangPhanCong s : phanCong_Dao.getAllBangPhanCong()) {
-                if (modelcbbSanPham.getSelectedItem().toString().equals(s.getCongDoan().getSanPham().getTenSP()) && s.getSoLuong() - phanCong_Dao.getTongSLHT(s.getMaBangPC()) != 0) {
+            for (BangPhanCong s : phanCong_Dao.getAllBangPhanCongChuaHT()) {
+                if (modelcbbSanPham.getSelectedItem().toString().equals(s.getCongDoan().getSanPham().getTenSP())) {
                     modelDSPC.addRow(new Object[]{false, Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongNhan().getTayNghe(), s.getCongDoan().getTenCD(), Integer.toString(s.getSoLuong()), s.getCongDoan().getSanPham().getTenSP(), Integer.toString(s.getSoLuong() - phanCong_Dao.getTongSLHT(s.getMaBangPC())), s.getMaBangPC()});
                     stt++;
                 }
@@ -857,9 +857,9 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             }
             int stt = 1;
             String cdSP;
-            for (BangPhanCong s : phanCong_Dao.getAllBangPhanCong()) {
+            for (BangPhanCong s : phanCong_Dao.getAllBangPhanCongChuaHT()) {
                 cdSP = s.getCongDoan().getTenCD() + "-" + "(" + s.getCongDoan().getSanPham().getTenSP() + ")";
-                if (modelcbbCongDoan.getSelectedItem().toString().equals(cdSP) && s.getSoLuong() - phanCong_Dao.getTongSLHT(s.getMaBangPC()) != 0) {
+                if (modelcbbCongDoan.getSelectedItem().toString().equals(cdSP)) {
                     modelDSPC.addRow(new Object[]{false, Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongNhan().getTayNghe(), s.getCongDoan().getTenCD(), Integer.toString(s.getSoLuong()), s.getCongDoan().getSanPham().getTenSP(), Integer.toString(s.getSoLuong() - phanCong_Dao.getTongSLHT(s.getMaBangPC())), s.getMaBangPC()});
                     stt++;
                 }
@@ -901,8 +901,8 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
                 return;
             }
             int stt = 1;
-            for (BangPhanCong s : phanCong_Dao.getAllBangPhanCong()) {
-                if (s.getCongNhan().getTayNghe().equalsIgnoreCase(cbbTayNghe.getSelectedItem().toString()) && s.getSoLuong() - phanCong_Dao.getTongSLHT(s.getMaBangPC()) != 0) {
+            for (BangPhanCong s : phanCong_Dao.getAllBangPhanCongChuaHT()) {
+                if (s.getCongNhan().getTayNghe().equalsIgnoreCase(cbbTayNghe.getSelectedItem().toString())) {
                     modelDSPC.addRow(new Object[]{false, Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongNhan().getTayNghe(), s.getCongDoan().getTenCD(), Integer.toString(s.getSoLuong()), s.getCongDoan().getSanPham().getTenSP(), Integer.toString(s.getSoLuong() - phanCong_Dao.getTongSLHT(s.getMaBangPC())), s.getMaBangPC()});
                     stt++;
                 }
@@ -934,10 +934,10 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
             for (int i = 0; i < rows; i++) {
                 boolean selected = (boolean) modelDSPC.getValueAt(i, 0);
                 if (selected) {
-//                    if (bangCCCN_Dao.checkBangChamCongTrongNgay(modelDSPC.getValueAt(i, 2).toString(), formattedDate)) { //check Công nhân đã được điểm danh chưa.
-//                        JOptionPane.showMessageDialog(null, "Công nhân " + modelDSPC.getValueAt(i, 3).toString() + " Đã được điểm danh");
-//                        continue;
-//                    }
+                    if (bangCCCN_Dao.checkBangChamCongTrongNgay(modelDSPC.getValueAt(i, 2).toString(), formattedDate)) { //check Công nhân đã được điểm danh chưa.
+                        JOptionPane.showMessageDialog(null, "Phân công " + modelDSPC.getValueAt(i, 3).toString() +"trong công đoạn "+ modelDSPC.getValueAt(i, 5).toString()+" Đã được điểm danh");
+                        continue;
+                    }
                     ccCN = new BangChamCongCongNhan(getMaCCNew(), LocalTime.now(), LocalTime.of(0, 0, 0), localDateTime, null, congNhan_Dao.getCongNhanTheoMa(modelDSPC.getValueAt(i, 2).toString()));
                     ctCC = new ChiTietBangChamCong(0, phanCong_Dao.getBangPhanCongTheoMa(modelDSPC.getValueAt(i, 9).toString()), ccCN);
                     if (bangCCCN_Dao.createBangChamCongCongNhan(ccCN)) {
@@ -1321,7 +1321,7 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
     private void addCBB() {
         modelcbbCongDoan = new DefaultComboBoxModel<String>();
         modelcbbCongDoan.addElement("Tất cả");
-        for (CongDoan s : congDoan_Dao.getAllCongDoan()) {
+        for (CongDoan s : congDoan_Dao.getAllCongDoanTheoTrangThai()) {
             modelcbbCongDoan.addElement("" + s.getTenCD() + "-(" + s.getSanPham().getTenSP() + ")");
         }
         cbbCD.setModel(modelcbbCongDoan);
@@ -1380,11 +1380,9 @@ public class GDQLChamCongCN extends javax.swing.JPanel {
         tableDanhSachPC.getColumnModel().getColumn(6).setPreferredWidth(50);
         tableDanhSachPC.getColumnModel().getColumn(8).setPreferredWidth(40);
         int stt = 1;
-        for (BangPhanCong s : phanCong_Dao.getAllBangPhanCong()) {
-            if (s.getSoLuong() - phanCong_Dao.getTongSLHT(s.getMaBangPC()) != 0) {
-                modelDSPC.addRow(new Object[]{true, Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongNhan().getTayNghe(), s.getCongDoan().getTenCD(), Integer.toString(s.getSoLuong()), s.getCongDoan().getSanPham().getTenSP(), Integer.toString(s.getSoLuong() - phanCong_Dao.getTongSLHT(s.getMaBangPC())), s.getMaBangPC()});
-                stt++;
-            }
+        for (BangPhanCong s : phanCong_Dao.getAllBangPhanCongChuaHT()) {
+            modelDSPC.addRow(new Object[]{true, Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongNhan().getTayNghe(), s.getCongDoan().getTenCD(), Integer.toString(s.getSoLuong()), s.getCongDoan().getSanPham().getTenSP(), Integer.toString(s.getSoLuong() - phanCong_Dao.getTongSLHT(s.getMaBangPC())), s.getMaBangPC()});
+            stt++;
         }
     }
 

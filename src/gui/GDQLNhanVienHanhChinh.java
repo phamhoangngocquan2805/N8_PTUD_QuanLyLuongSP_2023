@@ -64,6 +64,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGrPhai = new javax.swing.ButtonGroup();
         pTittle = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         pTongQuan = new javax.swing.JPanel();
@@ -421,6 +422,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
         lblPhai.setPreferredSize(new java.awt.Dimension(100, 25));
 
         radNam.setBackground(new java.awt.Color(255, 255, 255));
+        btnGrPhai.add(radNam);
         radNam.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         radNam.setSelected(true);
         radNam.setText("Nam");
@@ -428,6 +430,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
         radNam.setPreferredSize(new java.awt.Dimension(55, 25));
 
         radNu.setBackground(new java.awt.Color(255, 255, 255));
+        btnGrPhai.add(radNu);
         radNu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         radNu.setText("Nữ");
         radNu.setEnabled(false);
@@ -889,7 +892,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
             String regexMaNV = "([0-9]{2}(1)[0-9]{3})|";
             String regexTenNV = "([ A-Za-za-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+)|";
             String regexSDT = "((03|08|09|07|05)[0-9]{8})";
-            if (!txtTimTheoTTNV.getText().equals("")) {
+            if (!txtTimTheoTTNV.getText().equals("Tìm kiếm")) {
                 if (nvhcDAO.regexTimNV(txtTimTheoTTNV)) {
                     if (input.matches(regexMaNV) || input.matches(regexSDT)) {
                         loadDSNhanVienTheoMaHoacSDT();
@@ -947,7 +950,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
     }//GEN-LAST:event_btnChonAnhActionPerformed
 
     // resize hình theo kích thước label
-    private ImageIcon resizeImage(String imagePath) {
+    public ImageIcon resizeImage(String imagePath) {
         ImageIcon myImage = new ImageIcon(imagePath);
         Image img = myImage.getImage();
         Image newImg = img.getScaledInstance(lblHinhNV.getWidth(), lblHinhNV.getHeight(), Image.SCALE_SMOOTH);
@@ -1222,14 +1225,20 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
     }//GEN-LAST:event_txtTimTheoTTNVFocusGained
 
     private void txtTimTheoTTNVFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimTheoTTNVFocusLost
-        txtTimTheoTTNV.setText("Tìm kiếm");
-        txtTimTheoTTNV.setForeground(new Color(204,204,204));
+       if (txtTimTheoTTNV.getText().equals("")) {
+           txtTimTheoTTNV.setText("Tìm kiếm");
+           txtTimTheoTTNV.setForeground(new Color(204, 204, 204));
+       } else {
+           txtTimTheoTTNV.setForeground( Color.BLACK);
+       }
+        
     }//GEN-LAST:event_txtTimTheoTTNVFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
     private javax.swing.JButton btnChonAnh;
+    private javax.swing.ButtonGroup btnGrPhai;
     private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnNhapLai;
     private javax.swing.JButton btnReload;
@@ -1309,7 +1318,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
         cbxPhongBan.setSelectedItem(modelNhanVien.getValueAt(row, 15).toString());
         txtGhiChu.setText(modelNhanVien.getValueAt(row, 16).toString());
         for (NhanVienHanhChinh nvhc : nvhcDAO.getNhanVienByMaNV(modelNhanVien.getValueAt(row, 1).toString())) {
-            lblHinhNV.setIcon(new ImageIcon(getClass().getResource(nvhc.getHinhAnh())));
+            lblHinhNV.setIcon(resizeImage(getClass().getResource(nvhc.getHinhAnh()).getPath()));
             dateNgaySinh.setDate(nvhc.getNgaySinh());
             dateNgayVaoLam.setDate(nvhc.getNgayVaoLam());
         }
