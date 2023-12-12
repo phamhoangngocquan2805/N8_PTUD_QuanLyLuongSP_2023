@@ -280,7 +280,7 @@ public class CongDoan_DAO {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
             String sql = "select * from CongDoan\n"
-                    + "where maSP = "+ congDoan.getSanPham().getMaSP()+"and tenCD = N'"+congDoan.getTenCDTruoc()+"'";
+                    + "where maSP = " + congDoan.getSanPham().getMaSP() + "and tenCD = N'" + congDoan.getTenCDTruoc() + "'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
@@ -302,5 +302,67 @@ public class CongDoan_DAO {
             e.printStackTrace();
         }
         return cdoan;
+    }
+
+    public CongDoan getCongDoanTheoTenCDTenSP(String tenCd, String tenSP) {
+        CongDoan cdoan = new CongDoan();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from CongDoan cd join SanPham sp \n"
+                    + "on cd.maSP = sp.maSP\n"
+                    + "where sp.tenSP = N'" + tenSP + "' and cd.tenCD =N'" + tenCd + "'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maCD = rs.getString(1);
+                String tenCD = rs.getString(2);
+                int soLuong = rs.getInt(3);
+                double donGia = rs.getFloat(4);
+                Date ngayBatDau = rs.getDate(5);
+                Date ngayKetThuc = rs.getDate(6);
+                String tenCDTruoc = rs.getString(7);
+                int trangThai = rs.getInt(8);
+                SanPham_DAO spdao = new SanPham_DAO();
+                SanPham sp = spdao.getSanPhamTheoMa(rs.getString(9));
+
+                cdoan = new CongDoan(maCD, tenCD, soLuong, donGia, ngayBatDau, ngayKetThuc, tenCDTruoc, trangThai, sp);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return cdoan;
+    }
+
+    public ArrayList<CongDoan> getAllCongDoanTheoTrangThai() {
+        ArrayList<CongDoan> dsCongDoan = new ArrayList<CongDoan>();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from CongDoan \n"
+                    + "where trangThai = 1 or trangThai = 2";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maCD = rs.getString(1);
+                String tenCD = rs.getString(2);
+                int soLuong = rs.getInt(3);
+                double donGia = rs.getFloat(4);
+                Date ngayBatDau = rs.getDate(5);
+                Date ngayKetThuc = rs.getDate(6);
+                String tenCDTruoc = rs.getString(7);
+                int trangThai = rs.getInt(8);
+                SanPham_DAO spdao = new SanPham_DAO();
+                SanPham sp = spdao.getSanPhamTheoMa(rs.getString(9));
+
+                CongDoan cd = new CongDoan(maCD, tenCD, soLuong, donGia, ngayBatDau, ngayKetThuc, tenCDTruoc, trangThai, sp);
+                dsCongDoan.add(cd);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return dsCongDoan;
     }
 }
