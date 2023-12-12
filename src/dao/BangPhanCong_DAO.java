@@ -293,12 +293,12 @@ public class BangPhanCong_DAO {
     }
 
     public BangPhanCong getBangPCTheoMaCDMaCN(String maCD, String maCN) {
-        BangPhanCong bpc = new BangPhanCong(); 
+        BangPhanCong bpc = new BangPhanCong();
         try {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
             String sql = "select * from BangPhanCong\n"
-                    + "where maCD = "+maCD+ "and maCN = "+maCN;
+                    + "where maCD = " + maCD + "and maCN = " + maCN;
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
@@ -310,6 +310,27 @@ public class BangPhanCong_DAO {
                 CongNhan cn = cndao.getCongNhanTheoMaVer2(rs.getString(4));
 
                 bpc = new BangPhanCong(maBangPhanCong, soLuong, cd, cn);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return bpc;
+    }
+
+    public int getTongSLHTCuaCD(String maCD) {
+        int bpc = 0;
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select sum(ct.soLuongHT) from ChiTietBangChamCong ct join BangPhanCong pc\n"
+                    + "on ct.maBangPC = pc.maBangPC \n"
+                    + "where pc.maCD = "+ maCD;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                bpc = rs.getInt(1);
+
             }
         } catch (SQLException e) {
             // TODO: handle exception

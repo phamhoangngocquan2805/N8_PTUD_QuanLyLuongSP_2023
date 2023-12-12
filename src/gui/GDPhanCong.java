@@ -59,7 +59,7 @@ public class GDPhanCong extends javax.swing.JPanel {
         int indexCD = CongDoan.indexOf("-");
         addListCN(CongDoan.substring(0, indexCD));
         addListCD(CongDoan.substring(0, indexCD));
-//        cbbTimTheoSP.setSelectedIndex(1);
+        cbbTimTheoSP.setSelectedIndex(1);
 //        if (processEvent) {
 //            cbbTayNghe.setSelectedIndex(0);
 //            System.out.println("2");
@@ -769,7 +769,7 @@ public class GDPhanCong extends javax.swing.JPanel {
                         lbThongBao.setText("Thêm số lượng thành công!");
                         int indexCD = txtTenCD.getText().indexOf("-");
                         cbbTimTheoSP.setSelectedItem(txtTenCD.getText().substring(indexCD + 1));
-                        cbbSK();
+                        cbbTayNghe.setSelectedIndex(cbbTayNghe.getSelectedIndex());
                         xoaTrang();
                         return;
                     } else {
@@ -794,10 +794,12 @@ public class GDPhanCong extends javax.swing.JPanel {
                     lbThongBao.setText("phân công thành công");
                     modelPhanCong.setNumRows(0);
                     String congDoan = txtTenCD.getText();
-                    int indexCD = CongDoan.indexOf("-");
-                    cbbTimTheoSP.setSelectedItem(congDoan.substring(indexCD + 1));
-                    cbbTayNghe.setSelectedIndex(cbbTayNghe.getSelectedIndex());
-                    xoaTrang();
+                    int indexCD = congDoan.indexOf("-");
+                    if (indexCD != -1) {
+                        cbbTimTheoSP.setSelectedItem(congDoan.substring(indexCD + 1).trim());
+                        cbbTayNghe.setSelectedIndex(cbbTayNghe.getSelectedIndex());
+                        xoaTrang();
+                    }
                 } else {
                     lbThongBao.setText("Thất bại");
                 }
@@ -819,7 +821,7 @@ public class GDPhanCong extends javax.swing.JPanel {
             processEvent = false;
             cbbCongDoan.setSelectedIndex(0);
             processEvent = true;
-            addListCD("");
+            addListCD(cbbTayNghe.getSelectedItem().toString());
         }
     }//GEN-LAST:event_cbbTayNgheActionPerformed
 
@@ -874,7 +876,6 @@ public class GDPhanCong extends javax.swing.JPanel {
         ArrayList<CongNhan> listCN = congNhan_Dao.getAllCongNhanTheoTayNghe(cn.getTayNghe());
         ArrayList<BangPhanCong> listPC = phanCong_Dao.getAllBangPhanCongTheoCD(txtMaCD.getText());
         int slCNChuaChiaCD = listCN.size() - listPC.size();
-        System.out.println(slCNChuaChiaCD);
         if (slCNChuaChiaCD > 1) {
             txtSoLuong.setText(Integer.toString(slconLai / slCNChuaChiaCD));
         } else if (slCNChuaChiaCD == 1) {
@@ -1086,12 +1087,8 @@ public class GDPhanCong extends javax.swing.JPanel {
         String maSP = cd.getMaCD().substring(0, 8);//lấy mã sp
         for (CongDoan s : congDoan_Dao.getAllCongDoanTheoMaSP(maSP)) {
             if (cd.getTenCDTruoc().equalsIgnoreCase(s.getTenCD())) {
-                for (ChiTietBangChamCong ct : ctBangCC_Dao.getAllChiTietBangChamCong()) {
-                    if (ct.getBangPC().getCongDoan().getMaCD().equalsIgnoreCase(s.getMaCD())) {
-                        slCDTruoc += ct.getSoLuong();//lấy số lượng công đoạn trước đã được hoàn thành
-                        check = 1;
-                    }
-                }
+                slCDTruoc = phanCong_Dao.getTongSLHTCuaCD(s.getMaCD());//lấy số lượng công đoạn trước đã được hoàn thành
+                check = 1;
             }
         }
         if (!cd.getTenCDTruoc().equals("")) {
@@ -1107,10 +1104,6 @@ public class GDPhanCong extends javax.swing.JPanel {
         tableCongDoan.clearSelection();
         tableCongNhan.clearSelection();
         tableDSPhanCong.clearSelection();
-
-//        cbbCongDoan.setSelectedIndex(0);
-//        cbbTayNghe.setSelectedIndex(0);
-//        cbbTimTheoSP.setSelectedIndex(0);
         txtHoTenCN.setText("");
         txtMaCD.setText("");
         txtMaCN.setText("");
