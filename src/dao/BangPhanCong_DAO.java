@@ -325,7 +325,7 @@ public class BangPhanCong_DAO {
             Connection con = ConnectDB.getConnection();
             String sql = "select sum(ct.soLuongHT) from ChiTietBangChamCong ct join BangPhanCong pc\n"
                     + "on ct.maBangPC = pc.maBangPC \n"
-                    + "where pc.maCD = "+ maCD;
+                    + "where pc.maCD = " + maCD;
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
@@ -337,5 +337,116 @@ public class BangPhanCong_DAO {
             e.printStackTrace();
         }
         return bpc;
+    }
+
+    public int getSLConCuaCD(String maCD) {
+        int bpc = 0;
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select sum(soLuong) from BangPhanCong\n"
+                    + "where maCD = " + maCD;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                bpc = rs.getInt(1);
+
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return bpc;
+    }
+
+    public ArrayList<BangPhanCong> getAllBangPhanCongTheoSP(String tenSP) {
+        ArrayList<BangPhanCong> dsBangPhanCong = new ArrayList<BangPhanCong>();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from BangPhanCong pc join CongDoan cd\n"
+                    + "on pc.maCD = cd.maCD join SanPham sp on cd.maSP = sp.maSP\n"
+                    + "where sp.tenSP = N'" + tenSP + "'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maBangPhanCong = rs.getString(1);
+                int soLuong = rs.getInt(2);
+
+                CongDoan_DAO cddao = new CongDoan_DAO();
+                CongDoan cd = cddao.getCongDoanTheoMa(rs.getString(3));
+
+                CongNhan_DAO cndao = new CongNhan_DAO();
+                CongNhan cn = cndao.getCongNhanTheoMa(rs.getString(4));
+
+                BangPhanCong bpc = new BangPhanCong(maBangPhanCong, soLuong, cd, cn);
+                dsBangPhanCong.add(bpc);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return dsBangPhanCong;
+    }
+
+    public ArrayList<BangPhanCong> getAllBangPhanCongTheoNgayBD(String ngayBD) {
+        ArrayList<BangPhanCong> dsBangPhanCong = new ArrayList<BangPhanCong>();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from BangPhanCong pc join CongDoan cd\n"
+                    + "on pc.maCD = cd.maCD\n"
+                    + "where cd.ngayBatDau = '" + ngayBD + "'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maBangPhanCong = rs.getString(1);
+                int soLuong = rs.getInt(2);
+
+                CongDoan_DAO cddao = new CongDoan_DAO();
+                CongDoan cd = cddao.getCongDoanTheoMa(rs.getString(3));
+
+                CongNhan_DAO cndao = new CongNhan_DAO();
+                CongNhan cn = cndao.getCongNhanTheoMa(rs.getString(4));
+
+                BangPhanCong bpc = new BangPhanCong(maBangPhanCong, soLuong, cd, cn);
+                dsBangPhanCong.add(bpc);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return dsBangPhanCong;
+    }
+
+    public ArrayList<BangPhanCong> getAllBangPhanCongChuaHT() {
+        ArrayList<BangPhanCong> dsBangPhanCong = new ArrayList<BangPhanCong>();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from BangPhanCong pc\n"
+                    + "where (soLuong - (select sum(soLuongHT)\n"
+                    + "                    from ChiTietBangChamCong\n"
+                    + "                    where maBangPC = pc.maBangPC) )!=0";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maBangPhanCong = rs.getString(1);
+                int soLuong = rs.getInt(2);
+
+                CongDoan_DAO cddao = new CongDoan_DAO();
+                CongDoan cd = cddao.getCongDoanTheoMa(rs.getString(3));
+
+                CongNhan_DAO cndao = new CongNhan_DAO();
+                CongNhan cn = cndao.getCongNhanTheoMa(rs.getString(4));
+
+                BangPhanCong bpc = new BangPhanCong(maBangPhanCong, soLuong, cd, cn);
+                dsBangPhanCong.add(bpc);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return dsBangPhanCong;
     }
 }

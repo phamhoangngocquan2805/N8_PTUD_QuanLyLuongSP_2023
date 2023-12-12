@@ -125,7 +125,7 @@ public class BangChamCongCongNhan_DAO {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
             String sql = "SELECT TOP 1 * FROM BangChamCongCongNhan\n"
-                    + "where ngayChamCong = '"+ngayCham+"'\n"
+                    + "where ngayChamCong = '" + ngayCham + "'\n"
                     + "ORDER BY maBangChamCong DESC";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
@@ -148,12 +148,14 @@ public class BangChamCongCongNhan_DAO {
         return bcc;
     }
 
-    public boolean checkBangChamCongTrongNgay(String maCN, String ngayCham) {
+    public boolean checkBangChamCongTrongNgay(String maPC, String ngayCham) {
         boolean check = false;
         try {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
-            String sql = "SELECT * FROM BangChamCongCongNhan where maCN =" + maCN + "and " + "ngayChamCong = '" + ngayCham + "'";
+            String sql = "select * from BangChamCongCongNhan cc join ChiTietBangChamCong ct\n"
+                    + "on cc.maBangChamCong = ct.maBangChamCong\n"
+                    + "where ct.maBangPC =" + maPC + "and " + "ngayChamCong = '" + ngayCham + "'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
@@ -197,6 +199,7 @@ public class BangChamCongCongNhan_DAO {
         }
         return dsCtCC;
     }
+
     public BangChamCongCongNhan getBangChamCongCongNhanTheoMaVer2(String maBangChamCongCongNhan) {
         BangChamCongCongNhan bcc = new BangChamCongCongNhan();
         try {
