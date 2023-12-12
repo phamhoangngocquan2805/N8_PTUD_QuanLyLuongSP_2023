@@ -59,7 +59,7 @@ public class GDPhanCong extends javax.swing.JPanel {
         int indexCD = CongDoan.indexOf("-");
         addListCN(CongDoan.substring(0, indexCD));
         addListCD(CongDoan.substring(0, indexCD));
-        cbbTimTheoSP.setSelectedIndex(1);
+//        cbbTimTheoSP.setSelectedIndex(1);
 //        if (processEvent) {
 //            cbbTayNghe.setSelectedIndex(0);
 //            System.out.println("2");
@@ -376,10 +376,10 @@ public class GDPhanCong extends javax.swing.JPanel {
         panelXuLyLayout.setHorizontalGroup(
             panelXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelXuLyLayout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(panelXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLamMoi))
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(panelXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLamMoi, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
                 .addGap(19, 19, 19)
                 .addGroup(panelXuLyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnXacNhan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -547,10 +547,10 @@ public class GDPhanCong extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(dateCBD, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                .addComponent(dateCBD, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnXemPC)
-                .addGap(52, 52, 52))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -767,7 +767,8 @@ public class GDPhanCong extends javax.swing.JPanel {
                     pcTemp.setSoLuong(pcTemp.getSoLuong() + Integer.parseInt(txtSoLuong.getText()));
                     if (phanCong_Dao.updateBangPhanCong(pcTemp)) {
                         lbThongBao.setText("Thêm số lượng thành công!");
-                        addListPhanCong();
+                        int indexCD = txtTenCD.getText().indexOf("-");
+                        cbbTimTheoSP.setSelectedItem(txtTenCD.getText().substring(indexCD + 1));
                         cbbSK();
                         xoaTrang();
                         return;
@@ -836,7 +837,7 @@ public class GDPhanCong extends javax.swing.JPanel {
             }
         }
         String CongDoan = cbbCongDoan.getSelectedItem().toString();
-        if (CongDoan != null) {
+        if (!CongDoan.equals("")) {
             int indexCD = CongDoan.indexOf("-");
             String tenCD = CongDoan.substring(0, indexCD);
             addListCN(tenCD);
@@ -866,10 +867,25 @@ public class GDPhanCong extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_cbbTimTheoSPActionPerformed
-
+    private void setSLPCTuDong() {
+        CongNhan cn = congNhan_Dao.getCongNhanTheoMa(txtMaCN.getText());
+        int slconLai = Integer.valueOf(tableCongDoan.getValueAt(tableCongDoan.getSelectedRow(), 2).toString());
+        BangPhanCong pc = phanCong_Dao.getBangPCTheoMaCDMaCN(txtMaCD.getText(), txtMaCN.getText());
+        ArrayList<CongNhan> listCN = congNhan_Dao.getAllCongNhanTheoTayNghe(cn.getTayNghe());
+        ArrayList<BangPhanCong> listPC = phanCong_Dao.getAllBangPhanCongTheoCD(txtMaCD.getText());
+        int slCNChuaChiaCD = listCN.size() - listPC.size();
+        System.out.println(slCNChuaChiaCD);
+        if (slCNChuaChiaCD > 1) {
+            txtSoLuong.setText(Integer.toString(slconLai / slCNChuaChiaCD));
+        } else if (slCNChuaChiaCD == 1) {
+            txtSoLuong.setText(Integer.toString(slconLai));
+        }
+    }
     private void tableCongDoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCongDoanMouseClicked
         txtMaCD.setText(tableCongDoan.getValueAt(tableCongDoan.getSelectedRow(), 0).toString());
         txtTenCD.setText(tableCongDoan.getValueAt(tableCongDoan.getSelectedRow(), 1).toString());
+        if (!txtMaCN.getText().equals(""))
+            setSLPCTuDong();
     }//GEN-LAST:event_tableCongDoanMouseClicked
 
     private void tableDSPhanCongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDSPhanCongMouseClicked
@@ -907,7 +923,8 @@ public class GDPhanCong extends javax.swing.JPanel {
         if (phanCong_Dao.xoaBangPhanCong(phanCong_Dao.getAllBangPhanCong().get(tableDSPhanCong.getSelectedRow()).getMaBangPC())) {
             comfirmDelete.setVisible(false);
             lbThongBao.setText("Xóa thành công!");
-            addListPhanCong();
+            int indexCD = txtTenCD.getText().indexOf("-");
+            cbbTimTheoSP.setSelectedItem(txtTenCD.getText().substring(indexCD + 1));
             cbbSK();
             addListCN(cbbTayNghe.getSelectedItem().toString());
             xoaTrang();
@@ -921,6 +938,8 @@ public class GDPhanCong extends javax.swing.JPanel {
     private void tableCongNhanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCongNhanMouseClicked
         txtMaCN.setText(tableCongNhan.getValueAt(tableCongNhan.getSelectedRow(), 0).toString());
         txtHoTenCN.setText(tableCongNhan.getValueAt(tableCongNhan.getSelectedRow(), 1).toString());
+        if (!txtMaCD.getText().equals(""))
+            setSLPCTuDong();
     }//GEN-LAST:event_tableCongNhanMouseClicked
 
     private void tableDSPhanCongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableDSPhanCongKeyPressed
@@ -1016,12 +1035,9 @@ public class GDPhanCong extends javax.swing.JPanel {
                 modelCongDoan.addRow(row);
             }
         } else {
-            int i = 3;
             for (CongDoan s : listCD) {
-                System.out.println("4." + i);
                 String[] row = {s.getMaCD(), s.getTenCD() + "-" + "(" + s.getSanPham().getTenSP() + ")", Integer.toString(s.getSoLuong() - getSLConTrongCD(s.getMaCD())), s.getTenCDTruoc()};
                 modelCongDoan.addRow(row);
-                i++;
             }
         }
     }
@@ -1033,7 +1049,6 @@ public class GDPhanCong extends javax.swing.JPanel {
         tableDSPhanCong.setModel(modelPhanCong);
 //        ArrayList<BangPhanCong> listPhanCong = phanCong_Dao.getAllBangPhanCong();
         tableDSPhanCong.getColumnModel().getColumn(0).setPreferredWidth(10);
-        System.out.println("1.1");
 //        int stt = 0;
 //        for (BangPhanCong s : listPhanCong) {
 //            String[] row = {Integer.toString(stt), s.getCongNhan().getMaCN(), s.getCongNhan().getHoTen(), s.getCongDoan().getMaCD(), s.getCongDoan().getTenCD(), s.getCongDoan().getSanPham().getTenSP(), s.getCongDoan().getNgayBatDauString(), Integer.toString(s.getSoLuong())};
@@ -1065,6 +1080,9 @@ public class GDPhanCong extends javax.swing.JPanel {
         ctBangCC_Dao = new ChiTietBangChamCong_DAO();
         int slCDTruoc = 0;
         int check = 0;
+        if (cd.getTenCDTruoc().equals("")) {
+            return true;
+        }
         String maSP = cd.getMaCD().substring(0, 8);//lấy mã sp
         for (CongDoan s : congDoan_Dao.getAllCongDoanTheoMaSP(maSP)) {
             if (cd.getTenCDTruoc().equalsIgnoreCase(s.getTenCD())) {

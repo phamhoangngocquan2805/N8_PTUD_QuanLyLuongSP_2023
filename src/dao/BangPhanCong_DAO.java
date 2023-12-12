@@ -234,8 +234,7 @@ public class BangPhanCong_DAO {
         }
         return bpc;
     }
-    
-    
+
     public ArrayList<BangPhanCong> getAllBangPhanCongVer2() {
         ArrayList<BangPhanCong> dsBangPhanCong = new ArrayList<BangPhanCong>();
         try {
@@ -262,5 +261,60 @@ public class BangPhanCong_DAO {
             e.printStackTrace();
         }
         return dsBangPhanCong;
+    }
+
+    public ArrayList<BangPhanCong> getAllBangPhanCongTheoCD(String cdoan) {
+        ArrayList<BangPhanCong> dsBangPhanCong = new ArrayList<BangPhanCong>();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from BangPhanCong\n"
+                    + "where maCD = " + cdoan;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maBangPhanCong = rs.getString(1);
+                int soLuong = rs.getInt(2);
+
+                CongDoan_DAO cddao = new CongDoan_DAO();
+                CongDoan cd = cddao.getCongDoanTheoMa(rs.getString(3));
+
+                CongNhan_DAO cndao = new CongNhan_DAO();
+                CongNhan cn = cndao.getCongNhanTheoMa(rs.getString(4));
+
+                BangPhanCong bpc = new BangPhanCong(maBangPhanCong, soLuong, cd, cn);
+                dsBangPhanCong.add(bpc);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return dsBangPhanCong;
+    }
+
+    public BangPhanCong getBangPCTheoMaCDMaCN(String maCD, String maCN) {
+        BangPhanCong bpc = new BangPhanCong(); 
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select * from BangPhanCong\n"
+                    + "where maCD = "+maCD+ "and maCN = "+maCN;
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String maBangPhanCong = rs.getString(1);
+                int soLuong = rs.getInt(2);
+                CongDoan_DAO cddao = new CongDoan_DAO();
+                CongDoan cd = cddao.getCongDoanTheoMaVer2(rs.getString(3));
+                CongNhan_DAO cndao = new CongNhan_DAO();
+                CongNhan cn = cndao.getCongNhanTheoMaVer2(rs.getString(4));
+
+                bpc = new BangPhanCong(maBangPhanCong, soLuong, cd, cn);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return bpc;
     }
 }
