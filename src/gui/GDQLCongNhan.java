@@ -6,6 +6,7 @@ package gui;
 
 import dao.CongNhan_DAO;
 import entity.CongNhan;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -39,8 +40,21 @@ public class GDQLCongNhan extends javax.swing.JPanel {
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(radNu);
         buttonGroup.add(radNam);
+         addListCN();
+        tableCN.getColumnModel().getColumn(0).setPreferredWidth(40); // stt
+        tableCN.getColumnModel().getColumn(1).setPreferredWidth(90); // mã nv
+        tableCN.getColumnModel().getColumn(2).setPreferredWidth(120); // họ tên 
+        tableCN.getColumnModel().getColumn(4).setPreferredWidth(80); // ngày sinh
+        tableCN.getColumnModel().getColumn(5).setPreferredWidth(90); // số điện thoại
+        tableCN.getColumnModel().getColumn(6).setPreferredWidth(140); // địa chỉ
+        tableCN.getColumnModel().getColumn(7).setPreferredWidth(115);  // tình trạng
+        tableCN.getColumnModel().getColumn(8).setPreferredWidth(85); // ngày vào làm
+        tableCN.getColumnModel().getColumn(9).setPreferredWidth(95);
+        tableCN.getColumnModel().getColumn(10).setPreferredWidth(85); // lương cơ bản
+        tableCN.getColumnModel().getColumn(11).setPreferredWidth(120); // chức vụ
+        tableCN.getColumnModel().getColumn(12).setPreferredWidth(120);  // email
+        tableCN.getColumnModel().getColumn(13).setPreferredWidth(120); // tiền phụ cấp ngày
 
-        addListCN();
     }
 
     /**
@@ -106,6 +120,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        pQLCongNhan.setBackground(new java.awt.Color(255, 255, 255));
         pQLCongNhan.setPreferredSize(new java.awt.Dimension(958, 735));
 
         pTittle.setBackground(new java.awt.Color(85, 167, 222));
@@ -171,10 +186,20 @@ public class GDQLCongNhan extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtTimCN.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTimCN.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        txtTimCN.setForeground(new java.awt.Color(204, 204, 204));
         txtTimCN.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtTimCN.setText("Tìm kiếm");
         txtTimCN.setAlignmentY(1.0F);
         txtTimCN.setPreferredSize(new java.awt.Dimension(170, 35));
+        txtTimCN.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTimCNFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTimCNFocusLost(evt);
+            }
+        });
         txtTimCN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTimCNActionPerformed(evt);
@@ -243,12 +268,11 @@ public class GDQLCongNhan extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jscrCN.setBackground(new java.awt.Color(217, 217, 217));
+        jscrCN.setBackground(new java.awt.Color(255, 255, 255));
         jscrCN.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(204, 204, 204), null, new java.awt.Color(0, 102, 102)), "Danh sách công nhân", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
         jscrCN.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jscrCN.setAutoscrolls(true);
 
-        tableCN.setBackground(new java.awt.Color(242, 242, 242));
         tableCN.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -279,6 +303,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
         tableCN.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tableCN.setRowHeight(30);
         tableCN.setShowGrid(true);
+        tableCN.setShowVerticalLines(false);
         tableCN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableCNMouseClicked(evt);
@@ -751,15 +776,13 @@ public class GDQLCongNhan extends javax.swing.JPanel {
                     .addComponent(pReload, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jscrCN, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pTongQuanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pTongQuanLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTongQuanLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(pImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(pImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout pQLCongNhanLayout = new javax.swing.GroupLayout(pQLCongNhan);
@@ -1217,6 +1240,16 @@ public class GDQLCongNhan extends javax.swing.JPanel {
             btnChonAnh.setEnabled(false);
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void txtTimCNFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimCNFocusGained
+        txtTimCN.setText("");
+        txtTimCN.setForeground( Color.BLACK);
+    }//GEN-LAST:event_txtTimCNFocusGained
+
+    private void txtTimCNFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimCNFocusLost
+        txtTimCN.setText("Tìm kiếm");
+        txtTimCN.setForeground(new Color(204,204,204));
+    }//GEN-LAST:event_txtTimCNFocusLost
     private ImageIcon resizeImage(String imagePath) {
         ImageIcon myImage = new ImageIcon(imagePath);
         Image img = myImage.getImage();

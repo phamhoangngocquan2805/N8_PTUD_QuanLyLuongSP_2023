@@ -522,9 +522,9 @@ public class PrintReviewCN extends javax.swing.JPanel {
         jTextFieldSNN.setText(obj[4].toString());
         jTextFieldLC.setText(obj[5].toString());
         jTextFieldLTC.setText(obj[6].toString());
-        jTextFieldTPC.setText(obj[7].toString());
+        jTextFieldTPC.setText(obj[9].toString());
         jTextFieldTCC.setText(obj[8].toString());
-        jTextFieldTU.setText(obj[9].toString());
+        jTextFieldTU.setText(obj[7].toString());
         jTextFieldBHXH.setText(obj[10].toString());
         jTextFieldTL.setText(obj[11].toString());
         String[] columnNames = {"Mã chấm công", "Ngày chấm", "Sản phẩm", "Công đoạn", "Số lượng"};

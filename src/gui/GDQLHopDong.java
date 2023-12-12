@@ -235,10 +235,9 @@ public class GDQLHopDong extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jscrHopDong.setBackground(new java.awt.Color(217, 217, 217));
+        jscrHopDong.setBackground(new java.awt.Color(255, 255, 255));
         jscrHopDong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách hợp đồng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16))); // NOI18N
 
-        tableHopDong.setBackground(new java.awt.Color(217, 217, 217));
         tableHopDong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
