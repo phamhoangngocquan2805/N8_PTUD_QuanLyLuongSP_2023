@@ -364,7 +364,7 @@ public class BangPhanCong_DAO {
         try {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
-            String sql = "select * from BangPhanCong pc join CongDoan cd\n"
+            String sql = "select maBangPC,pc.soLuong,pc.maCD,maCN from BangPhanCong pc join CongDoan cd\n"
                     + "on pc.maCD = cd.maCD join SanPham sp on cd.maSP = sp.maSP\n"
                     + "where sp.tenSP = N'" + tenSP + "'";
             Statement stm = con.createStatement();
@@ -394,7 +394,7 @@ public class BangPhanCong_DAO {
         try {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
-            String sql = "select * from BangPhanCong pc join CongDoan cd\n"
+            String sql = "select maBangPC,pc.soLuong,pc.maCD,maCN from BangPhanCong pc join CongDoan cd\n"
                     + "on pc.maCD = cd.maCD\n"
                     + "where cd.ngayBatDau = '" + ngayBD + "'";
             Statement stm = con.createStatement();
