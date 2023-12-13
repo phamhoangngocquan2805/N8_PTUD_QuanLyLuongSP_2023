@@ -103,25 +103,6 @@ public class ChiTietBangChamCong_DAO {
         return n > 0;
     }
 
-    public ChiTietBangChamCong getChiTietBangChamCongTheoMa(String maBPC, String maBCC) {
-        ArrayList<ChiTietBangChamCong> dsSP = getAllChiTietBangChamCong();
-        for (ChiTietBangChamCong x : dsSP) {
-            if (x.getBangPC().getMaBangPC().equalsIgnoreCase(maBPC) && x.getBangCC().getMaBangChamCong().equalsIgnoreCase(maBCC)) {
-                return x;
-            }
-        }
-        return null;
-    }
-
-    public ArrayList<ChiTietBangChamCong> getChiTietBangChamCongTheoMaCD(String maCD) {
-        ArrayList<ChiTietBangChamCong> dsSP = new ArrayList<>();
-        for (ChiTietBangChamCong x : getAllChiTietBangChamCong()) {
-            if (x.getBangPC().getCongDoan().getMaCD().equals(maCD)) {
-                dsSP.add(x);
-            }
-        }
-        return dsSP;
-    }
 
     public boolean xoaCTCC(String maPC, String maCC) {
         ConnectDB.getInstance();

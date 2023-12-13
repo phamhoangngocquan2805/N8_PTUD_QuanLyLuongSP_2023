@@ -176,12 +176,43 @@ public class BangChamCongCongNhan_DAO {
         try {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
-            String sql = "select * from ChiTietBangChamCong ct join BangChamCongCongNhan cc\n"
+            String sql = "select soLuongHT, ct.maBangPC, ct.maBangChamCong from ChiTietBangChamCong ct join BangChamCongCongNhan cc\n"
                     + "on ct.maBangChamCong = cc.maBangChamCong\n"
                     + "where ngayChamCong between '" + ngayBD + "' and '" + ngayKT + "'";
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
+                int sl = rs.getInt(1);
+                String maBangPC = rs.getString(2);
+                String maBangChamCong = rs.getString(3);
+                BangPhanCong_DAO pcdao = new BangPhanCong_DAO();
+                BangChamCongCongNhan_DAO ccdao = new BangChamCongCongNhan_DAO();
+                BangPhanCong pc = pcdao.getBangPhanCongTheoMa(maBangPC);
+                BangChamCongCongNhan ccCN = ccdao.getBangChamCongCongNhanTheoMa(maBangChamCong);
+
+                ChiTietBangChamCong ctcc = new ChiTietBangChamCong(sl, pc, ccCN);
+                dsCtCC.add(ctcc);
+            }
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return dsCtCC;
+    }
+
+    public ArrayList<ChiTietBangChamCong> getAllBangChamCongCongNhanTheoNgayChamCong(String ngayCC) {
+        ArrayList<ChiTietBangChamCong> dsCtCC = new ArrayList<ChiTietBangChamCong>();
+        try {
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+            String sql = "select soLuongHT, ct.maBangPC, ct.maBangChamCong from ChiTietBangChamCong ct join BangChamCongCongNhan cc\n"
+                    + "on ct.maBangChamCong = cc.maBangChamCong\n"
+                    + "where ngayChamCong = '" + ngayCC + "'";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            int i = 1;
+            while (rs.next()) {
+                i++;
                 int sl = rs.getInt(1);
                 String maBangPC = rs.getString(2);
                 String maBangChamCong = rs.getString(3);
