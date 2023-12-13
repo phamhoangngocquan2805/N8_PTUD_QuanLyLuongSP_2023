@@ -873,7 +873,7 @@ public class GDQLCongNhan extends javax.swing.JPanel {
     }//GEN-LAST:event_cbbLocTayNgheActionPerformed
 
     private void txtTimCNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimCNActionPerformed
-        // TODO add your handling code here:
+        btnTimKiem.doClick();
     }//GEN-LAST:event_txtTimCNActionPerformed
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
@@ -1247,8 +1247,12 @@ public class GDQLCongNhan extends javax.swing.JPanel {
     }//GEN-LAST:event_txtTimCNFocusGained
 
     private void txtTimCNFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimCNFocusLost
-        txtTimCN.setText("Tìm kiếm");
-        txtTimCN.setForeground(new Color(204,204,204));
+        if (txtTimCN.getText().equals("")) {
+           txtTimCN.setText("Tìm kiếm");
+           txtTimCN.setForeground(new Color(204, 204, 204));
+       } else {
+           txtTimCN.setForeground( Color.BLACK);
+       }
     }//GEN-LAST:event_txtTimCNFocusLost
     private ImageIcon resizeImage(String imagePath) {
         ImageIcon myImage = new ImageIcon(imagePath);

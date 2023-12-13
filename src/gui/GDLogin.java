@@ -494,6 +494,7 @@ public class GDLogin extends javax.swing.JFrame {
 
     private void jButtonDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDangNhapActionPerformed
         // TODO add your handling code here:
+        isValid = false;
         nvhc_dao = new NhanVienHanhChinh_DAO();
         tkdao = new TaiKhoan_DAO();
         dsnv = nvhc_dao.getAllNhanVien();

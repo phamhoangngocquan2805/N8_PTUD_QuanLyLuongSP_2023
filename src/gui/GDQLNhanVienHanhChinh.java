@@ -958,27 +958,27 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
         return image;
     }
     private void cbxPhongBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPhongBanActionPerformed
-        //        String phongBan = cbxPhongBan.getSelectedItem().toString();
-        //        if (phongBan.equalsIgnoreCase("phòng nhân sự")) {
-        //            cbxChucVu.removeAllItems();
-        //            cbxChucVu.addItem("Chọn chức vụ");
-        //            cbxChucVu.addItem("Trưởng phòng nhân sự");
-        //            cbxChucVu.addItem("Nhân viên");
-        //        } else if (phongBan.equalsIgnoreCase("phòng kế toán")) {
-        //            cbxChucVu.removeAllItems();
-        //            cbxChucVu.addItem("Chọn chức vụ");
-        //            cbxChucVu.addItem("Trưởng phòng kế toán");
-        //            cbxChucVu.addItem("Nhân viên");
-        //        } else if (phongBan.equalsIgnoreCase("phòng điều hành phân xưởng")) {
-        //            cbxChucVu.removeAllItems();
-        //            cbxChucVu.addItem("Chọn chức vụ");
-        //            cbxChucVu.addItem("Quản đốc");
-        //            cbxChucVu.addItem("Nhân viên");
-        //        }
-        //        else {
-        //            cbxChucVu.removeAllItems();
-        //            cbxChucVu.addItem("Chọn chức vụ");
-        //        }
+//                String phongBan = cbxPhongBan.getSelectedItem().toString().trim();
+//                if (phongBan.equalsIgnoreCase("Phòng nhân sự")) {
+//                    cbxChucVu.removeAllItems();
+//                    cbxChucVu.addItem("Chọn chức vụ");
+//                    cbxChucVu.addItem("Trưởng phòng nhân sự");
+//                    cbxChucVu.addItem("Nhân viên");
+//                } else if (phongBan.equalsIgnoreCase("Phòng kế toán")) {
+//                    cbxChucVu.removeAllItems();
+//                    cbxChucVu.addItem("Chọn chức vụ");
+//                    cbxChucVu.addItem("Trưởng phòng kế toán");
+//                    cbxChucVu.addItem("Nhân viên");
+//                } else if (phongBan.equalsIgnoreCase("Phòng điều hành phân xưởng")) {
+//                    cbxChucVu.removeAllItems();
+//                    cbxChucVu.addItem("Chọn chức vụ");
+//                    cbxChucVu.addItem("Quản đốc");
+//                    cbxChucVu.addItem("Nhân viên");
+//                }
+//                else {
+//                    cbxChucVu.removeAllItems();
+//                    cbxChucVu.addItem("Chọn chức vụ");
+//                }
     }//GEN-LAST:event_cbxPhongBanActionPerformed
 
     private void cbxChucVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxChucVuActionPerformed
@@ -997,6 +997,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
                         cbxHSLuong.addItem("4.5");
                         txtTienPhuCapTheoNgay.setText(dfTien.format(300000));
                         txtTienChuyenCan.setText(dfTien.format(1000000));
+                        cbxPhongBan.setSelectedItem("Phòng điều hành phân xưởng");
                         break;
                     case "Trưởng phòng nhân sự":
                         cbxHSLuong.removeAllItems();
@@ -1007,6 +1008,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
                         cbxHSLuong.addItem("3.4");
                         txtTienPhuCapTheoNgay.setText(dfTien.format(200000));
                         txtTienChuyenCan.setText(dfTien.format(700000));
+                        cbxPhongBan.setSelectedItem("Phòng nhân sự");
                         break;
                     case "Trưởng phòng kế toán":
                         cbxHSLuong.removeAllItems();
@@ -1017,6 +1019,7 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
                         cbxHSLuong.addItem("3.9");
                         txtTienPhuCapTheoNgay.setText(dfTien.format(200000));
                         txtTienChuyenCan.setText(dfTien.format(700000));
+                        cbxPhongBan.setSelectedItem("Phòng kế toán");
                         break;
                     case "Nhân viên":
                         cbxHSLuong.removeAllItems();
@@ -1029,10 +1032,12 @@ public class GDQLNhanVienHanhChinh extends javax.swing.JPanel {
                         cbxHSLuong.addItem("2.8");
                         txtTienPhuCapTheoNgay.setText(dfTien.format(80000));
                         txtTienChuyenCan.setText(dfTien.format(500000));
+                        cbxPhongBan.setSelectedItem("Phòng nhân sự");
                         break;
                     default:
                         cbxHSLuong.removeAllItems();
                         cbxHSLuong.addItem("");
+                        txtLuongCB.setText("");
                         txtTienPhuCapTheoNgay.setText("");
                         txtTienChuyenCan.setText("");
                         break;

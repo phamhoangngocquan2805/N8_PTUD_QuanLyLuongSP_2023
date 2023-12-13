@@ -281,7 +281,7 @@ public class ChuyenManHinh implements BienMacDinh {
                     int result = JOptionPane.showOptionDialog(null, "Bạn đang thực hiện đăng xuất khỏi hệ thống?", "Xác nhận", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options, options[0]);
                     if (result == JOptionPane.NO_OPTION) {
                         try {
-                            gdChinh.setVisible(false);
+                            gdChinh.dispose();
                             gdChinh = new GDChinh();
                         } catch (SQLException ex) {
                             Logger.getLogger(ChuyenManHinh.class.getName()).log(Level.SEVERE, null, ex);

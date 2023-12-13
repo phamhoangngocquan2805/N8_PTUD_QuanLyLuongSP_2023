@@ -92,7 +92,7 @@ public class SanPham_DAO {
         int n = 0;
         try {
             stm = con.prepareStatement("update SanPham set tenSP = ?, soLuong = ?, donGia = ?, thongTin = ?, soCongDoan = ?, chatLieu = ?, donViTinh = ?, maHD = ? where maSP = ?");
-            stm.setString(10, sp.getMaSP());
+            stm.setString(9, sp.getMaSP());
             stm.setString(1, sp.getTenSP());
             stm.setInt(2, sp.getSoLuong());
             stm.setFloat(3, (float) sp.getDonGia());
@@ -100,8 +100,7 @@ public class SanPham_DAO {
             stm.setInt(5, sp.getSoCongDoan());
             stm.setString(6, sp.getChatLieu());
             stm.setString(7, sp.getDonViTinh());
-            stm.setString(8, sp.getDonViTinh());
-            stm.setString(9, sp.getHopDong().getMaHD());
+            stm.setString(8, sp.getHopDong().getMaHD());
             n = stm.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
